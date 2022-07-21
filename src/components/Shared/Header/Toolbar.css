@@ -1,0 +1,32 @@
+.tool-bar {
+    display: none;
+}
+
+@media screen and (max-width: 576px) {
+    .tool-bar {
+        /* background-color: rgb(0, 0, 0); */
+        color: black;
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        box-shadow: inset 1px 1px 0 rgb(0 0 0 / 10%), inset 0 -1px 0 rgb(0 0 0 / 7%);
+        padding: .3rem;
+        position: sticky;
+        top: 0;
+    }
+
+    .burger {
+        padding: 12px 16px;
+        border-radius: 50%;
+    }
+
+    .burger:hover {
+        padding: 12px 16px;
+        border-radius: 50%;
+        background: #f1f3f4;
+    }
+
+    /* #search-field {
+        background-color: #808191;
+    } */
+}

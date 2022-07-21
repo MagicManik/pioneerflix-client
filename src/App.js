@@ -13,8 +13,9 @@ function App() {
       <Routes></Routes>
 
       <Footer></Footer>
+
     </div>
-  );
+  )
 }
 
 export default App;
