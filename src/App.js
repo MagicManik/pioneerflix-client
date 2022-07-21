@@ -1,6 +1,7 @@
 import { Routes } from "react-router-dom";
 import "./App.css";
 import Banner from "./components/Home/Banner";
+import Footer from "./components/Shared/Footer/Footer";
 
 function App() {
   return (
@@ -10,6 +11,8 @@ function App() {
       </h1>
       <Banner></Banner>
       <Routes></Routes>
+
+      <Footer></Footer>
     </div>
   );
 }
