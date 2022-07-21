@@ -5,18 +5,13 @@ const Footer = () => {
   return (
     <footer class="footer p-10 bg-base-300 text-base-content">
       <div>
-        <span class="footer-title">Services</span>
-        <a class="link link-hover">Branding</a>
-        <a class="link link-hover">Design</a>
-        <a class="link link-hover">Marketing</a>
-        <a class="link link-hover">Advertisement</a>
+        <a class="link link-hover">FAQ</a>
+        <a class="link link-hover">Help Center</a>
+        <a class="link link-hover">Contact Us</a>
       </div>
       <div>
-        <span class="footer-title">Company</span>
-        <a class="link link-hover">About us</a>
-        <a class="link link-hover">Contact</a>
-        <a class="link link-hover">Jobs</a>
-        <a class="link link-hover">Press kit</a>
+        <a class="link link-hover">Terms &#38; Condition</a>
+        <a class="link link-hover">Privacy Policy</a>
       </div>
       <div>
         <span class="footer-title">Social</span>
