@@ -14,9 +14,9 @@ const Header = () => {
 
     return (
         <header className='header-container flex'>
-            <Toolbar openSidebar={toggleSidebar}></Toolbar>
+            {/* <Toolbar openSidebar={toggleSidebar}></Toolbar>
             <Sidebar sidebar={sidebar} toggleSidebar={toggleSidebar}></Sidebar>
-            {/* <Backdrop sidebar={sidebar} closeSidebar={toggleSidebar}></Backdrop> */}
+            <Backdrop sidebar={sidebar} closeSidebar={toggleSidebar}></Backdrop> */}
         </header>
     );
 };
