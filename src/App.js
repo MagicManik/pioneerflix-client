@@ -1,16 +1,16 @@
-import { Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Banner from "./components/Home/Banner";
+import Home from "./components/Home/Home";
 import Footer from "./components/Shared/Footer/Footer";
+import Navbar from "./components/Shared/Header/Navbar/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <h1 className="text-4xl text-center bg-primary text-red-500">
-        Pioneerflix
-      </h1>
-      <Banner></Banner>
-      <Routes></Routes>
+      <Navbar></Navbar>
+      <Routes>
+        <Route path="/" element={<Home></Home>}></Route>
+      </Routes>
 
       <Footer></Footer>
 

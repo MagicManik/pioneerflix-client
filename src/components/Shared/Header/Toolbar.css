@@ -1,10 +1,10 @@
-.tool-bar {
+/* .tool-bar {
     display: none;
 }
 
 @media screen and (max-width: 576px) {
     .tool-bar {
-        /* background-color: rgb(0, 0, 0); */
+        background-color: rgb(0, 0, 0);
         color: black;
         display: flex;
         gap: 1rem;
@@ -26,7 +26,7 @@
         background: #f1f3f4;
     }
 
-    /* #search-field {
+    #search-field {
         background-color: #808191;
-    } */
-}
+    }
+} */
