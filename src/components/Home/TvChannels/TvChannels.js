@@ -6,9 +6,9 @@ import movie4 from '../../../assets/bangla-movie/movie (4).jpg';
 import movie5 from '../../../assets/bangla-movie/movie (5).jpg';
 import movie6 from '../../../assets/bangla-movie/movie (6).jpg';
 import movie7 from '../../../assets/bangla-movie/movie (7).jpg';
-import './MostPopular.css';
+import './TvChannels.css';
 
-const MostPopular = () => {
+const TvChannels = () => {
 
     const popularMovies = [
         {
@@ -55,10 +55,11 @@ const MostPopular = () => {
         }
     ]
 
+
     return (
         <section className='bg-secondary'>
             <div className='bg-primary'>
-                <h1 className='text-2xl text-white py-6'>PIONEERFLIX MOST POPULAR</h1>
+                <h1 className='text-2xl text-white py-6'>TV CHANNELS</h1>
                 <div className='grid lg:grid-cols-7 gap-4 popular-movie-section'>
 
                     {
@@ -74,4 +75,4 @@ const MostPopular = () => {
     );
 };
 
-export default MostPopular;
+export default TvChannels;

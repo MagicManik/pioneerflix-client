@@ -3,6 +3,7 @@ import Banner from './Banner';
 import './Home.css';
 import KidsProfile from './KidsProfile/KidsProfile';
 import MostPopular from './MostPopular/MostPopular';
+import TvChannels from './TvChannels/TvChannels';
 import WatchOffline from './WatchOffline/WatchOffline';
 import WatchTv from './WatchTv/WatchTv';
 
@@ -10,10 +11,12 @@ const Home = () => {
     return (
         <main>
             <Banner></Banner>
+            <TvChannels></TvChannels>
+            <WatchTv></WatchTv>
             <MostPopular></MostPopular>
 
 
-            <WatchTv></WatchTv>
+
             <WatchOffline></WatchOffline>
             <KidsProfile></KidsProfile>
 
