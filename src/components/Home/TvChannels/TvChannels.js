@@ -1,13 +1,15 @@
 import React from 'react';
-import movie1 from '../../../assets/bangla-movie/movie (1).jpg';
-import movie2 from '../../../assets/bangla-movie/movie (2).jpg';
-import movie3 from '../../../assets/bangla-movie/movie (3).jpg';
-import movie4 from '../../../assets/bangla-movie/movie (4).jpg';
-import movie5 from '../../../assets/bangla-movie/movie (5).jpg';
-import movie6 from '../../../assets/bangla-movie/movie (6).jpg';
-import './MostPopular.css';
+import movie1 from '../../../assets/tvchannels/tv-chaneel (1).png';
+import movie2 from '../../../assets/tvchannels/tv-chaneel (2).png';
+import movie3 from '../../../assets/tvchannels/tv-chaneel (3).png';
+import movie4 from '../../../assets/tvchannels/tv-chaneel (4).png';
+import movie5 from '../../../assets/tvchannels/tv-chaneel (5).png';
+import movie6 from '../../../assets/tvchannels/tv-chaneel (6).png';
+import movie7 from '../../../assets/tvchannels/tv-chaneel (7).png';
 
-const MostPopular = () => {
+import './TvChannels.css';
+
+const TvChannels = () => {
 
     const popularMovies = [
         {
@@ -45,20 +47,34 @@ const MostPopular = () => {
             name: 'Movie 6',
             description: '',
             img: movie6
+        },
+        {
+            _id: 7,
+            name: 'Movie 7',
+            description: '',
+            img: movie7
+        },
+        {
+            _id: 8,
+            name: 'Movie 7',
+            description: '',
+            img: movie7
         }
     ]
 
+
     return (
+
         <section className='bg-secondary'>
             <div className='bg-primary video-section'>
                 <div className='bg-primary lg:px-20 sm:px-4 video-container'>
-                    <h1 className='text-2xl text-white py-6'>PIONEERFLIX MOST POPULAR</h1>
-                    <div className='grid lg:grid-cols-6 gap-4 popular-movie-section'>
+                    <h1 className='text-2xl text-white py-6'>TV CHANNELS</h1>
+                    <div className='grid lg:grid-cols-8 gap-4 popular-movie-section'>
 
                         {
                             popularMovies.map(movie =>
 
-                                <div className='zoom-div' key={movie._id}>
+                                <div className='zoom-div-1' key={movie._id}>
                                     <img className='popular-movie' src={movie.img} alt="" />
                                 </div>)
                         }
@@ -69,4 +85,4 @@ const MostPopular = () => {
     );
 };
 
-export default MostPopular;
+export default TvChannels;

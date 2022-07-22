@@ -1,8 +1,10 @@
 import React from 'react';
+import Footer from '../Shared/Footer/Footer';
 import Banner from './Banner';
 import './Home.css';
 import KidsProfile from './KidsProfile/KidsProfile';
 import MostPopular from './MostPopular/MostPopular';
+import TvChannels from './TvChannels/TvChannels';
 import WatchOffline from './WatchOffline/WatchOffline';
 import WatchTv from './WatchTv/WatchTv';
 
@@ -10,12 +12,16 @@ const Home = () => {
     return (
         <main>
             <Banner></Banner>
+            <TvChannels></TvChannels>
+            <WatchTv></WatchTv>
             <MostPopular></MostPopular>
 
 
-            <WatchTv></WatchTv>
+
             <WatchOffline></WatchOffline>
             <KidsProfile></KidsProfile>
+
+            <Footer></Footer>
 
             {/* <div className='bg-black flex justify-between items-center py-2 px-10'>
                 <h3 className='text-red-500 text-3xl'>Pioneerflix</h3>
