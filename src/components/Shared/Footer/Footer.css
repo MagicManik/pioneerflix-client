@@ -1,0 +1,95 @@
+.footer-section {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    justify-content: space-between;
+    padding: 70px 100px 10px 100px;
+
+}
+
+.footer-container {
+    margin: 0px auto;
+}
+
+.app-logo {
+    width: 100%;
+    border: 2px solid #222;
+    border-radius: 8px;
+}
+
+.footer-text {
+    margin: 2px;
+}
+
+.footer-text a {
+    text-decoration: none;
+    color: rgb(138, 138, 138);
+}
+
+.footer-text a:hover {
+    color: #29613d;
+}
+
+.footer-span {
+    color: #29613d;
+}
+
+.company-others {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 50px;
+    padding-right: 20px;
+}
+
+.social-icon-container {
+    margin-top: 10px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-media p {
+    color: rgb(94, 94, 94);
+}
+
+.social-icon {
+    color: #2d2c39;
+    font-size: 36px;
+}
+
+.social-icon:hover {
+    color: #29613d;
+}
+
+.copy-right {
+    color: rgb(191, 196, 201);
+}
+
+
+
+@media screen and (max-width: 576px) {
+    .footer-section {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: space-between;
+        padding: 50px 30px 5px 30px;
+
+    }
+
+    .company-others {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 10px 0px 10px;
+    }
+
+    .footer-container {
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .social-media {
+        display: none;
+    }
+
+    .footer-others {
+        text-align: right;
+    }
+}
