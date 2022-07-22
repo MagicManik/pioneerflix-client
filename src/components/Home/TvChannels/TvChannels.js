@@ -68,7 +68,7 @@ const TvChannels = () => {
         <section className='bg-secondary'>
             <div className='bg-primary video-section'>
                 <div className='bg-primary lg:px-20 sm:px-4 video-container'>
-                    <h1 className='text-2xl text-white py-6'>PIONEERFLIX MOST POPULAR</h1>
+                    <h1 className='text-2xl text-white py-6'>TV CHANNELS</h1>
                     <div className='grid lg:grid-cols-8 gap-4 popular-movie-section'>
 
                         {

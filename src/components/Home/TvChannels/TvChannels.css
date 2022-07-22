@@ -14,3 +14,9 @@
     width: 85%;
     border-radius: 10px;
 }
+
+@media screen and (max-width: 576px) {
+    .zoom-div-1:hover {
+        --tw-translate-y: -.7rem;
+    }
+}
