@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../Shared/Footer/Footer';
 import Banner from './Banner';
 import './Home.css';
 import KidsProfile from './KidsProfile/KidsProfile';
@@ -19,6 +20,8 @@ const Home = () => {
 
             <WatchOffline></WatchOffline>
             <KidsProfile></KidsProfile>
+
+            <Footer></Footer>
 
             {/* <div className='bg-black flex justify-between items-center py-2 px-10'>
                 <h3 className='text-red-500 text-3xl'>Pioneerflix</h3>
