@@ -5,7 +5,7 @@ import './Footer.css';
 
 const Footer = () => {
     return (
-        <footer className='bg-sendary pt-3 bg-secondary'>
+        <footer className='bg-sendary bg-secondary'>
             <div className="footer-section bg-primary">
                 <div className='footer-container'>
                     <h2 className='text-4xl font-bold text-red-500 py-2'>Pioneerplix</h2>

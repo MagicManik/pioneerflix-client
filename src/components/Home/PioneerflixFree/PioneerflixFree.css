@@ -1,0 +1,9 @@
+.text-container-2 {
+    padding: 80px 80px 80px 80px;
+}
+
+@media screen and (max-width: 576px) {
+    .text-container-2 {
+        padding: 80px 16px 80px 16px;
+    }
+}
