@@ -1,0 +1,22 @@
+.text-container-left-2 {
+    padding-right: 50px;
+}
+
+.text-container-left-2 p {
+    padding-top: 16px;
+}
+
+.text-container-left-2 h1 {
+    line-height: 3.6rem;
+}
+
+@media screen and (max-width: 576px) {
+    .text-container-left-2 {
+        padding: 16px 16px 0 16px;
+    }
+
+    .text-container-left-2 p {
+        padding-top: 16px;
+        padding-bottom: 0px;
+    }
+}
