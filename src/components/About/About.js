@@ -8,20 +8,8 @@ const About = () => {
       dev: "MERN Stack Web Developer",
       img: "https://km-mohiuddin-patwary.netlify.app/images/profile.png",
       cell: "+880 1680 106149",
-      expertise: [
-        "JavaScript",
-        "ES6",
-        "ReactJs",
-        "Bootstrap5",
-        "React Bootstrap",
-        "HTML5",
-        "CSS3",
-      ],
-      familiar: ["NodeJs", "ExpressJs", "MongoDB", "Firebase", "Tailwind"],
-      Tools: ["Git", "VSCod", "Netlify", "Heroku", "Chrome Dev Tool"],
       resume:
         "https://drive.google.com/file/d/1C0e3zDmnhyNpamUijjdgTgobeNpkqECS/view",
-      education: "Graduated from University of Dhaka.",
       gmail: "developermohiuddin1@gmail.com",
       portfolio: "https://km-mohiuddin-patwary.netlify.app/",
       github: "https://github.com/mohiuddin2721",
@@ -29,38 +17,12 @@ const About = () => {
     },
     {
       id: 2,
-      name: "MD. SAIYADUL AMIN AKHAND",
+      name: "Md. Saiyadul  Amin Akhand ",
       dev: "Junior Web Developer",
       img: "https://my-portfolio-52c27.web.app/static/media/123.708c647ccf809cf4b8e4.jpg",
-      cell: "01911-870358",
-      expertise: [
-        "HTML5",
-        "CSS3",
-        "JavaScript",
-        "Bootstrap",
-        "React Bootstrap",
-        "Tailwind CSS",
-
-        "Daisy UI",
-        "React",
-        "React Router",
-      ],
-      familiar: ["JWT Token", "NextJS", "TypeScript"],
-      Tools: [
-        "VS Code",
-        "Github",
-        ,
-        "Figma",
-        "Imgbb",
-        "Photopea",
-        "dev tools",
-        "Firebase",
-        "React Firebase hooks",
-      ],
+      cell: "+8801911-870358",
       resume:
         "https://drive.google.com/file/d/1brcpLP8GRfJeG_7_djB3mHiGyBJ2biDu/view",
-      education:
-        "B.Sc. in Computer Science & Engineering .( Prime University )",
       gmail: "saiyadul77@gmail.com",
       portfolio: "https://my-portfolio-52c27.web.app/",
       github: "https://github.com/Saiyadul77/",
@@ -73,30 +35,112 @@ const About = () => {
       img: "https://kubb-photography.web.app/static/media/aboutMe.d26479d7cf1371dcc957.jpg",
       cell: "+8801778825868",
       gmail: "uddinmdshihab452@gmail.com",
-      expertise: [
-        "HTML5",
-        "CSS3",
-        "Bootstrap",
-        "JavaScript",
-        "React",
-        "Tailwind",
-        "React Router",
-        "Firebase",
-      ],
-      familiar: ["TypeScript", " React Native", "Next Js"],
-      Tools: ["VS code", "Github", "Netlify", "Heroku", "Firebase"],
       resume:
         "https://drive.google.com/file/d/1AVhEON4sZzX5oolg1_bFzqEQ80Ew5S8D/view",
-      education:
-        "Bachelor of Science in Applied Mathematics from (Rajshahi University )",
       portfolio: "https://my-portfolio-52c27.web.app/",
       github: "https://github.com/Shihab2022",
       linkedin: "https://www.linkedin.com/in/shihab-uddin-4b6369241/",
     },
+    {
+      id: 4,
+      name: "Manik Islam Mahi",
+      dev: "MERN Stack Web Developer",
+      img: "https://magicmanik.netlify.app/static/media/manik-islam-mahi.2ac5fd851ee35c1c4920.png",
+      cell: "+8801682440404",
+      gmail: "megamindedmanik@gmail.com",
+      resume:
+        "https://drive.google.com/file/d/14K7q05kEYptqFhPM3eyLfA3Ocg-1Ysqr/view",
+      portfolio: "https://magicmanik.netlify.app/",
+      github: "https://github.com/MagicManik/",
+      linkedin: "https://www.linkedin.com/in/manikislammahi/",
+    },
+    
+    {
+      id: 5,
+      name: "Shaila Nasrin",
+      dev: "Junior Web Developer",
+      img: "https://my-portfolio-61811.web.app/static/media/pic-myself.014b75908a0544d99915.png",
+      cell: "+1 832 998 4894",
+      gmail: "drshaila2021@gmail.com",
+      resume:
+        "https://drive.google.com/file/d/1qPifx_gYiF6JHUBBnkFMnC0cvcIPt1f6/view",
+      portfolio: "https://my-portfolio-61811.web.app/",
+      github: "https://github.com/drshaila2021",
+      linkedin: "https://www.linkedin.com/in/shaila-nasrin/",
+    },
+    {
+      id: 6,
+      name: "Md.Muyed Moktadir Chowdhury",
+      dev: "Web-Developer",
+      img: "https://muyed-portfolio-site.netlify.app/static/media/introo.af62548f9b1830b7f7a2.png",
+      cell: "+8801738505555",
+      gmail: "muyed004@gmail.com",
+      resume:
+        "https://drive.google.com/file/d/1JBCR251PbpeV8lDkSs7OCUMNU5h-_kZR/view",
+      portfolio: "https://muyed-portfolio-site.netlify.app/",
+      github: "https://github.com/muyed-moktadir",
+      linkedin: "https://www.linkedin.com/in/muyed-moktadir-842272110/",
+    },
+    {
+      id: 7,
+      name: "Abdul Barek",
+      dev: "FRONTEND DEVELOPER",
+      img: "https://my-portfolio-react1.netlify.app/static/media/profili.70581cedde0721618cec.png",
+      cell: "+8801872702423",
+      gmail: "barik6286@gmail.com",
+      resume:
+        "https://drive.google.com/file/d/13gy8QhmC12vKBtwbn6i-DVZqMVhupww3/view",
+      portfolio: "https://my-portfolio-react1.netlify.app/",
+      github: "https://github.com/bariknishan",
+      linkedin: "https://www.linkedin.com/in/barik-nishan-430b34220/",
+    }
   ];
   return (
-    <div className="bg-primary  text-white px-20 py-10 ">
-      {developerDetails.map((d) => (
+    <div className="bg-primary  text-white px-5 lg:px-20 py-5 ">
+      <div className="flex justify-center items-center flex-col ">
+        <div>
+          {developerDetails.map((d,index) => (
+            <>
+              <div key={index} className="hero flex my-3 justify-start   ">
+                <div className="hero-content lg:flex lg:flex-row lg:items-center lg:justify-start flex-col">
+                  <div className="avatar">
+                    <div className="w-36 rounded-full ring ring-gradient-to-r shadow-xl shadow-sky-500 from-indigo-500 via-purple-500 to-pink-500 ring-offset-2">
+                      <img src={d?.img} alt='developer img' />
+                    </div>
+                  </div>
+
+                  <div className="ml-3">
+                    <h1 className="text-3xl  text-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-bold">{d?.name}</h1>
+                    <p className="py-2 font-semibold">{d?.dev}</p>
+                    <p>Email : {d?.gmail}</p>
+                    <p className="py-2">Contact : {d?.cell}</p>
+                    <div>
+                      <a href={d?.resume} target="_blank">
+                        <button className="badge badge-warning">Resume</button>
+                      </a>
+                      <a href={d?.portfolio} target="_blank">
+                        <button className="badge badge-ghost mx-3">
+                          Portfolio
+                        </button>
+                      </a>
+                      <a href={d?.github} target="_blank">
+                        <button className="badge badge-accent">Github</button>
+                      </a>
+                      <a href={d?.linkedin} target="_blank">
+                        <button className="badge badge-ghost ml-3">Linkedin</button>
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* <img src={d?.img} className="max-w-sm rounded-lg shadow-2xl" /> */}
+                </div>
+              </div>
+            </>
+          ))}
+        </div>
+      </div>
+
+      {/* {developerDetails.map((d) => (
         <>
           <div className="grid grid-cols-2 gap-5">
             <div className="my-4">
@@ -120,21 +164,11 @@ const About = () => {
               </a>
              </div>
              <p>Education : {d.education}</p>
-             <div>
-                {
-                    d.expertise.map((e,index)=><>
-                    <div className="flex">
-                        <ul>
-                            <li>{e}</li>
-                        </ul>
-                    </div>
-                    </>)
-                }
-             </div>
+           
             </div>
           </div>
         </>
-      ))}
+      ))} */}
     </div>
   );
 };

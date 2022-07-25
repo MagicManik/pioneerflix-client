@@ -5,7 +5,7 @@
 //     return (
 //         <div className='tool-bar'>
 //             <div onClick={openSidebar} className='burger'>
-//                 <i class="fa fal fa-bars"></i>
+//                 <i className="fa fal fa-bars"></i>
 //             </div>
 //             <div className='flex justify-between items-center'>
 //                 <h1 className='website-title text-red-600 text-3xl'>       Pioneerflix</h1>

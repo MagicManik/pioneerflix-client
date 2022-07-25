@@ -22,10 +22,10 @@ const Home = () => {
                 <h3 className='text-red-500 text-3xl'>Pioneerflix</h3>
 
                 <form>
-                    <div class="form-group">
+                    <div className="form-group">
         
-                        <input type="text" class="search-field" placeholder="Type to Search" />
-                        <select class="search-field">
+                        <input type="text" className="search-field" placeholder="Type to Search" />
+                        <select className="search-field">
                                 <option>select</option>
                                 <option>params 1</option>
                                 <option>params 2</option>
