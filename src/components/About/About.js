@@ -110,7 +110,7 @@ const About = () => {
                   </div>
 
                   <div className="ml-3">
-                    <h1 className="text-3xl  text-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-bold">{d?.name}</h1>
+                    <h1 className="lg:text-3xl text-2xl  text-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-bold">{d?.name}</h1>
                     <p className="py-2 font-semibold">{d?.dev}</p>
                     <p>Email : {d?.gmail}</p>
                     <p className="py-2">Contact : {d?.cell}</p>
@@ -131,44 +131,12 @@ const About = () => {
                       </a>
                     </div>
                   </div>
-
-                  {/* <img src={d?.img} className="max-w-sm rounded-lg shadow-2xl" /> */}
                 </div>
               </div>
             </>
           ))}
         </div>
       </div>
-
-      {/* {developerDetails.map((d) => (
-        <>
-          <div className="grid grid-cols-2 gap-5">
-            <div className="my-4">
-              <img src={d?.img} alt="" />
-            </div>
-            <div>
-              <p>{d?.name}</p>
-              <p>{d?.cell}</p>
-             <div className=" gap-5">
-             <a href={d?.resume} target="_blank">
-                <button className="ml-3">Resume</button>
-              </a>
-              <a href={d?.portfolio} target="_blank">
-                <button className="ml-3">Portfolio</button>
-              </a>
-              <a href={d?.github} target="_blank">
-                <button className="ml-3">Github</button>
-              </a>
-              <a href={d?.linkedin} target="_blank">
-                <button className="ml-3">Linkedin</button>
-              </a>
-             </div>
-             <p>Education : {d.education}</p>
-           
-            </div>
-          </div>
-        </>
-      ))} */}
     </div>
   );
 };
