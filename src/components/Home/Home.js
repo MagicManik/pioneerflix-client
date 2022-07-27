@@ -1,33 +1,31 @@
 import React from 'react';
 import Banner from './Banner';
 import './Home.css';
-import KidsProfile from './KidsProfile/KidsProfile';
 import MostPopular from './MostPopular/MostPopular';
+import PioneerflixFree from './PioneerflixFree/PioneerflixFree';
+import PioneerflixKids from './PioneerflixKids/PioneerflixKids';
+import PioneerplixExclusive from './PioneerplixExclusive/PioneerplixExclusive';
 import TvChannels from './TvChannels/TvChannels';
-import WatchOffline from './WatchOffline/WatchOffline';
-import WatchTv from './WatchTv/WatchTv';
 
 const Home = () => {
     return (
         <main>
             <Banner></Banner>
             <TvChannels></TvChannels>
-            <WatchTv></WatchTv>
             <MostPopular></MostPopular>
+            <PioneerplixExclusive></PioneerplixExclusive>
+            <PioneerflixKids></PioneerflixKids>
+            <PioneerflixFree></PioneerflixFree>
 
-
-
-            <WatchOffline></WatchOffline>
-            <KidsProfile></KidsProfile>
 
             {/* <div className='bg-black flex justify-between items-center py-2 px-10'>
                 <h3 className='text-red-500 text-3xl'>Pioneerflix</h3>
 
                 <form>
-                    <div class="form-group">
+                    <div className="form-group">
         
-                        <input type="text" class="search-field" placeholder="Type to Search" />
-                        <select class="search-field">
+                        <input type="text" className="search-field" placeholder="Type to Search" />
+                        <select className="search-field">
                                 <option>select</option>
                                 <option>params 1</option>
                                 <option>params 2</option>
