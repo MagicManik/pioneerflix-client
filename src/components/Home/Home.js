@@ -1,5 +1,5 @@
 import React from "react";
-import VideoDetail from "../VideoDetail/VideoDetail";
+
 import Banner from "./Banner";
 import "./Home.css";
 import MostPopular from "./MostPopular/MostPopular";
@@ -17,7 +17,6 @@ const Home = () => {
       <PioneerplixExclusive></PioneerplixExclusive>
       <PioneerflixKids></PioneerflixKids>
       <PioneerflixFree></PioneerflixFree>
-      <VideoDetail></VideoDetail>
 
       {/* <div className='bg-black flex justify-between items-center py-2 px-10'>
                 <h3 className='text-red-500 text-3xl'>Pioneerflix</h3>
