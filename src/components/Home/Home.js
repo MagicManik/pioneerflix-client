@@ -1,25 +1,27 @@
-import React from 'react';
-import Banner from './Banner';
-import './Home.css';
-import MostPopular from './MostPopular/MostPopular';
-import PioneerflixFree from './PioneerflixFree/PioneerflixFree';
-import PioneerflixKids from './PioneerflixKids/PioneerflixKids';
-import PioneerplixExclusive from './PioneerplixExclusive/PioneerplixExclusive';
-import TvChannels from './TvChannels/TvChannels';
+import React from "react";
+import VideoDetail from "../VideoDetail/VideoDetail";
+import Banner from "./Banner";
+import "./Home.css";
+import MostPopular from "./MostPopular/MostPopular";
+import PioneerflixFree from "./PioneerflixFree/PioneerflixFree";
+import PioneerflixKids from "./PioneerflixKids/PioneerflixKids";
+import PioneerplixExclusive from "./PioneerplixExclusive/PioneerplixExclusive";
+import TvChannels from "./TvChannels/TvChannels";
 
 const Home = () => {
-    return (
-        <main>
-            <Banner></Banner>
-            <TvChannels></TvChannels>
-            <MostPopular></MostPopular>
-            <PioneerplixExclusive></PioneerplixExclusive>
-            <PioneerflixKids></PioneerflixKids>
-            <PioneerflixFree></PioneerflixFree>
+  return (
+    <main>
+      <Banner></Banner>
+      <TvChannels></TvChannels>
+      <MostPopular></MostPopular>
+      <PioneerplixExclusive></PioneerplixExclusive>
+      <PioneerflixKids></PioneerflixKids>
+      <PioneerflixFree></PioneerflixFree>
+      <VideoDetail></VideoDetail>
 
 
 
-            {/* <div className='bg-black flex justify-between items-center py-2 px-10'>
+      {/* <div className='bg-black flex justify-between items-center py-2 px-10'>
                 <h3 className='text-red-500 text-3xl'>Pioneerflix</h3>
 
                 <form>
@@ -38,7 +40,7 @@ const Home = () => {
                 <p>U</p>
             </div> */}
 
-            {/* <div>
+      {/* <div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt doloremque nobis sequi eligendi, fugiat beatae velit sunt et vero exercitationem soluta sed iste esse, ducimus perspiciatis rerum iusto? Sed, iure.</p>
                 </div>
                 <div>
@@ -47,9 +49,8 @@ const Home = () => {
                 <div>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt doloremque nobis sequi eligendi, fugiat beatae velit sunt et vero exercitationem soluta sed iste esse, ducimus perspiciatis rerum iusto? Sed, iure.</p>
                 </div> */}
-
-        </main>
-    );
+    </main>
+  );
 };
 
 export default Home;
