@@ -1,13 +1,17 @@
 import React from 'react';
-import './LoginPage.css';
+import './SignUpPage.css';
 
-const LoginPage = () => {
+const SignUpPage = () => {
     return (
         <div>
             <div className='loginRoot'>
                 <div >
                     <form action="" className='loginBody'>
-                        <h1 className='text-2xl text-white border-2 border-none uppercase'>Please Login</h1>
+                        <h1 className='text-2xl text-white border-2 uppercase border-none'>Please Sign-Up</h1>
+                        <div className='loginBox'>
+                            <input type="text" required />
+                            <span className=''>your name</span>
+                        </div>
                         <div className='loginBox'>
                             <input type="text" required />
                             <span className=''>your email</span>
@@ -17,7 +21,7 @@ const LoginPage = () => {
                             <span className=''>Password</span>
                         </div>
                         <div className='button_3_body'>
-                            <input type="submit" value="LOGIN" className='button_3' />
+                            <input type="submit" value="SIGNUP" className='button_3' />
                         </div>
                     </form>
                 </div>
@@ -26,4 +30,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default SignUpPage;
