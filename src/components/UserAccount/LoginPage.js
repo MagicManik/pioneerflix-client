@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
 import './LoginPage.css';
@@ -69,6 +69,7 @@ const LoginPage = () => {
                         </div>
                     </form>
                 </div>
+                <p className='text-xl text-white text-center mt-2'><small>New to Pioneerflix ?</small> <Link to="/signup" className='text-green-500 text-sm'>Please SignUp</Link> </p>
                 <div className="divider text-white">OR</div>
                 <SocialLogin></SocialLogin>
             </div>

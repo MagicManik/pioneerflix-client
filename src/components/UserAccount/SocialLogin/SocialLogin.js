@@ -15,7 +15,7 @@ const SocialLogin = () => {
 
     let errorMessage;
 
-    useEffect( () => {
+    useEffect(() => {
 
         if (user || userFB) {
             navigate(from, { replace: true });
@@ -28,13 +28,13 @@ const SocialLogin = () => {
     }
 
     if (error || errorFB) {
-        errorMessage = <p className='text-danger'>Error: {error?.message} {errorFB?.message}</p>
+        errorMessage = <p className='text-red-500 text-center'>Error: {error?.message} {errorFB?.message}</p>
     }
 
     return (
         <div>
+            {errorMessage}
             <div className='social-button '>
-                {errorMessage}
                 <button
                     onClick={() => signInWithGoogle()}
                     className="button_3 justify-center mx-auto uppercase"
