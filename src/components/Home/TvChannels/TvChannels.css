@@ -1,10 +1,10 @@
-.zoom-div-1 {
+.zoom-div-2 {
     box-shadow: 2px 4px 12px rgb(0 0 0 / 8%);
     transition: all .3s cubic-bezier(0, 0, .5, 1);
 
 }
 
-.zoom-div-1:hover {
+.zoom-div-2:hover {
     box-shadow: 2px 4px 16px rgb(0 0 0 / 16%);
     --tw-translate-y: -1rem;
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skew(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -70,7 +70,7 @@
 }
 
 @media screen and (max-width: 576px) {
-    .zoom-div-1:hover {
+    .zoom-div-2:hover {
         --tw-translate-y: -.7rem;
     }
 }
@@ -92,6 +92,6 @@
     }
 
     .our-story-card-animation {
-        top: 40%;
+        top: 39%;
     }
 }
