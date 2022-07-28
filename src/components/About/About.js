@@ -45,7 +45,7 @@ const About = () => {
       id: 4,
       name: "Manik Islam Mahi",
       dev: "MERN Stack Web Developer",
-      img: "https://magicmanik.netlify.app/static/media/manik-islam-mahi.2ac5fd851ee35c1c4920.png",
+      img: "https://avatars.githubusercontent.com/u/97013257?v=4",
       cell: "+8801682440404",
       gmail: "megamindedmanik@gmail.com",
       resume:
@@ -54,7 +54,7 @@ const About = () => {
       github: "https://github.com/MagicManik/",
       linkedin: "https://www.linkedin.com/in/manikislammahi/",
     },
-    
+
     {
       id: 5,
       name: "Shaila Nasrin",
@@ -99,7 +99,7 @@ const About = () => {
     <div className="bg-primary  text-white px-5 lg:px-20 py-5 ">
       <div className="flex justify-center items-center flex-col ">
         <div>
-          {developerDetails.map((d,index) => (
+          {developerDetails.map((d, index) => (
             <>
               <div key={index} className="hero flex my-3 justify-start   ">
                 <div className="hero-content lg:flex lg:flex-row lg:items-center lg:justify-start flex-col">

@@ -1,12 +1,12 @@
 import React from 'react';
-import movie1 from '../../../assets/kids-videos/kids (1).webp';
-import movie2 from '../../../assets/kids-videos/kids (10).webp';
-import movie3 from '../../../assets/kids-videos/kids (3).webp';
-import movie4 from '../../../assets/kids-videos/kids (4).webp';
-import movie5 from '../../../assets/kids-videos/kids (5).webp';
-import movie6 from '../../../assets/kids-videos/kids (6).webp';
-import movie7 from '../../../assets/kids-videos/kids (7).webp';
-import movie8 from '../../../assets/kids-videos/kids (8).webp';
+import movie1 from '../../../assets/kids-videos/kids (1).jpg';
+import movie2 from '../../../assets/kids-videos/kids (10).jpg';
+import movie3 from '../../../assets/kids-videos/kids (3).jpg';
+import movie4 from '../../../assets/kids-videos/kids (4).jpg';
+import movie5 from '../../../assets/kids-videos/kids (5).jpg';
+import movie6 from '../../../assets/kids-videos/kids (6).jpg';
+import movie7 from '../../../assets/kids-videos/kids (7).jpg';
+import movie8 from '../../../assets/kids-videos/kids (8).jpg';
 import profileKids from '../../../assets/others/profile-kids.png';
 
 const PioneerflixKids = () => {
@@ -67,12 +67,12 @@ const PioneerflixKids = () => {
             <div className='bg-primary video-section'>
                 <div className='bg-primary lg:px-20 sm:px-4 video-container'>
                     <h1 className='text-2xl text-white py-6'>PIONEERFLIX KIDS</h1>
-                    <div className='grid lg:grid-cols-4 gap-5 popular-movie-section'>
+                    <div className='grid lg:grid-cols-4 gap-5 video-section-2'>
 
                         {
                             popularMovies.map(movie =>
 
-                                <div className='zoom-div-1' key={movie._id}>
+                                <div className='zoom-div-2' key={movie._id}>
                                     <img className='popular-movie' src={movie.img} alt="" />
                                 </div>)
                         }

@@ -18,6 +18,7 @@ const Home = () => {
             <PioneerflixFree></PioneerflixFree>
 
 
+
             {/* <div className='bg-black flex justify-between items-center py-2 px-10'>
                 <h3 className='text-red-500 text-3xl'>Pioneerflix</h3>
 
