@@ -1,7 +1,17 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../../../firebase.init';
 
 const Navbar = () => {
+    const [user] = useAuthState(auth);
+    const navigate = useNavigate();
+
+    const handleLogOut = () => {
+        signOut(auth);
+        navigate('/')
+    }
     return (
         <div>
             <div className="navbar bg-black">
@@ -12,9 +22,15 @@ const Navbar = () => {
                         </label>
 
                         <ul tabindex="0" className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><Link to={'/'}>Home</Link></li>
-                            <li><a>Portfolio</a></li>
-                            <li><Link to={'/about'}>About</Link></li>
+                            <li><Link to='/'>Home</Link></li>
+                            {
+                                user
+                                    ?
+                                    <button className='btn btn-link' onClick={handleLogOut}>Log out</button>
+                                    :
+                                    <Link to="/logIn" className='btn btn-link' >LOG IN</Link>
+                            }
+
                         </ul>
                     </div>
                 </div>
@@ -22,6 +38,13 @@ const Navbar = () => {
                     <Link to={'/'} className="btn btn-ghost normal-case text-2xl text-red-500" >Pioneerflix</Link>
                 </div>
                 <div className="navbar-end">
+                    {
+                        user &&
+                        <>
+                            <p className='text-red-700 mr-2'>{user?.displayName} </p>
+                            <img style={{ 'borderRadius': '50%', 'maxHeight': '40px' }} src={user?.photoURL} alt="" />
+                        </>
+                    }
                     <button className="btn btn-ghost btn-circle">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 text-red-500 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                     </button>
