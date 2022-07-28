@@ -1,5 +1,4 @@
 import React from "react";
-
 import Banner from "./Banner";
 import "./Home.css";
 import MostPopular from "./MostPopular/MostPopular";
