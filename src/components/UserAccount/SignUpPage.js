@@ -1,5 +1,6 @@
 import React from 'react';
 import './SignUpPage.css';
+import SocialLogin from './SocialLogin/SocialLogin';
 
 const SignUpPage = () => {
     return (
@@ -25,6 +26,9 @@ const SignUpPage = () => {
                         </div>
                     </form>
                 </div>
+                <div className="divider text-white">OR</div>
+
+                <SocialLogin></SocialLogin>
             </div>
         </div>
     );

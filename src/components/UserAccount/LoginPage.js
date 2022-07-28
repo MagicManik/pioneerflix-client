@@ -1,11 +1,12 @@
 import React from 'react';
 import './LoginPage.css';
+import SocialLogin from './SocialLogin/SocialLogin';
 
 const LoginPage = () => {
     return (
         <div>
             <div className='loginRoot'>
-                <div >
+                <div>
                     <form action="" className='loginBody'>
                         <h1 className='text-2xl text-white border-2 border-none uppercase'>Please Login</h1>
                         <div className='loginBox'>
@@ -21,6 +22,9 @@ const LoginPage = () => {
                         </div>
                     </form>
                 </div>
+                <div className="divider text-white">OR</div>
+
+                <SocialLogin></SocialLogin>
             </div>
         </div>
     );
