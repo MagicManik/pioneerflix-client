@@ -8,9 +8,52 @@ import movie4 from "../../assets/bangla-movie/movie (4).jpg";
 import movie5 from "../../assets/bangla-movie/movie (5).jpg";
 import movie6 from "../../assets/bangla-movie/movie (6).jpg";
 import Comment from "../Comment/Comment";
+import like from "../../assets/like-dislike-icons/like.png";
+import dislike from "../../assets/like-dislike-icons/dislike.png"
 
 const VideoDetail = () => {
   const [comments, setComments] = useState([]);
+  
+  const [likeVideo, setLikeVideo] = useState(null)
+  const[dislikeVideo, setDislikeVideo]= useState(null);
+  
+  const [likeActice, setLikeActive] = useState(false)
+  const[dislikeActive, setDislikeActive]= useState(false);
+
+  function likeVideof(){
+if(likeActice){
+setLikeActive(false)
+setLikeVideo(likeVideo-1)
+console.log("click");
+}
+else{
+  setLikeActive(true)
+  setLikeVideo(likeVideo+1)
+  if(dislikeActive){
+    setDislikeActive(false)
+    setLikeVideo(likeVideo+1)
+    setDislikeVideo(dislikeVideo-1)
+  }
+}
+  }
+
+  function dislikeVideof(){
+    if(dislikeActive){
+      setDislikeActive(false)
+      setDislikeVideo(dislikeVideo-1)
+      console.log("click");
+      }
+      else{
+        setDislikeActive(true)
+        setDislikeVideo(likeVideo+1)
+        if(likeActice){
+          setLikeActive(false)
+          setDislikeVideo(likeVideo+1)
+          setLikeVideo(dislikeVideo-1)
+        }
+      }
+  }
+
 
   const popularMovies = [
     {
@@ -90,7 +133,13 @@ const VideoDetail = () => {
             <button className="btn bg-slate-200  text-zinc-900" type="submit">
               ...
             </button>
-            <br />
+  
+            <div className="flex gap-7 pt-5">
+              <button onClick={likeVideof}><img className="h-9" src={like} alt="" /></button>
+              <button onClick={dislikeVideof}><img className="h-9"  src={dislike} alt="" /></button>
+            </div>
+            
+
 
             {/*............................ Comment Section...................... */}
             <form onSubmit={addComment}>
