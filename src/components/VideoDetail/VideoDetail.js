@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import pic1 from "../../assets/videoDetail-pic/pic1.jpg";
 import "./VideoDetail.css";
 import movie1 from "../../assets/bangla-movie/movie (1).jpg";
@@ -7,8 +7,11 @@ import movie3 from "../../assets/bangla-movie/movie (3).jpg";
 import movie4 from "../../assets/bangla-movie/movie (4).jpg";
 import movie5 from "../../assets/bangla-movie/movie (5).jpg";
 import movie6 from "../../assets/bangla-movie/movie (6).jpg";
+import Comment from "../Comment/Comment";
 
 const VideoDetail = () => {
+  const [comments, setComments] = useState([]);
+
   const popularMovies = [
     {
       _id: 1,
@@ -47,6 +50,16 @@ const VideoDetail = () => {
       img: movie6,
     },
   ];
+
+  const addComment = (event) => {
+    event.preventDefault();
+    const comment = event.target.comment.value;
+    setComments(comment);
+    event.target.reset();
+    const newComments = [comment, ...comments];
+    setComments(newComments);
+  };
+
   return (
     <div>
       <div className="justify-center flex px-10">
@@ -79,19 +92,39 @@ const VideoDetail = () => {
               ...
             </button>
             <br />
-            <input
-              type="text"
-              placeholder="Please comment here"
-              className="input input-bordered input-slate-400 w-full max-w-xs my-3"
-            />
-            <button
-              className="btn  bg-slate-200 text-zinc-900 mx-2"
-              type="submit"
-            >
-              Submit
-            </button>
+
+            {/*............................ Comment Section...................... */}
+            <form onSubmit={addComment}>
+              <div className="py-4">
+                <textarea
+                  class=" h-28 w-2/4 appearance-none block bg-slate-300  text-zinc-900 resize-none border rounded-lg placeholder-stone-600  pt-3 px-3"
+                  type="text"
+                  name="comment"
+                  placeholder="Comment Here"
+                ></textarea>
+              </div>
+              <div className="pl-80">
+                <button
+                  className="btn  bg-slate-200 text-zinc-900 mx-2"
+                  type="submit"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
           </div>
         </div>
+      </div>
+
+      {/*.............................. Comment will show here..................... */}
+      <h1 class="text-3xl font-semibold text-center">User's Comments</h1>
+      <div className="grid grid-cols-3 justify-items-center gap-6 pt-10">
+        
+        {comments.map((comment) => (
+          <Comment 
+          comment={comment}
+          ></Comment>
+        ))}
       </div>
 
       <div className="py-5 px-10">
