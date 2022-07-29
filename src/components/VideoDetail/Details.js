@@ -43,7 +43,7 @@ const Details = () => {
     },
   ]
   return (
-    <div className="px-14 pt-3 bg-black">
+    <div className="px-14 pt-3 bg-primary">
       <div className="justify-center flex ">
         <iframe
           className="rounded-sm p-1 shadow-2xl border-2 border-zinc-700 "

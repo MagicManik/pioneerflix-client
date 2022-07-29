@@ -89,7 +89,7 @@ const TvChannels = () => {
                 </div>
 
                 <div className='our-story-card-animation-container pb-20'>
-                    <img className='tv-img' src={tv} alt="" />
+                    <img className='tv-img rounded-xl ' src={tv} alt="" />
 
                     <div className='our-story-card-animation' data-uia="our-story-card-animation">
 
