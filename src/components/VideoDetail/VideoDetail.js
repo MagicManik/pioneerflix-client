@@ -7,7 +7,7 @@ import movie3 from "../../assets/bangla-movie/movie (3).jpg";
 import movie4 from "../../assets/bangla-movie/movie (4).jpg";
 import movie5 from "../../assets/bangla-movie/movie (5).jpg";
 import movie6 from "../../assets/bangla-movie/movie (6).jpg";
-
+import { FaRegThumbsUp } from "react-icons/fa";
 const VideoDetail = () => {
   const popularMovies = [
     {
@@ -62,7 +62,7 @@ const VideoDetail = () => {
         ></iframe>
       </div>
 
-      <div className="grid grid-cols-6 h-screen py-8">
+      <div className="grid  grid-cols-6 h-screen py-8">
         <div className=" col-start-1 col-end-3 w-full">
           <img
             src={movie4}
@@ -70,18 +70,33 @@ const VideoDetail = () => {
             alt=""
           />
         </div>
-        <div className=" col-start-3 ml-[-40px] col-end-12 ">
-          <div className="text-white">
-            <h1 class="text-3xl font-semibold">Mogoje Mohaproloy</h1>
-            <h5 className="pt-3">Director: Rajib Asraf</h5>
-            <h5>Reaseased on 2022</h5>
-
-            <p class="pt-6 font-medium">Description:</p>
+        <div className=" mt-5 col-start-3 ml-[-40px] col-end-12 ">
+          <div className=" text-white">
+           <div>
+           <h1 class="text-5xl font-semibold">Mogoje Mohaproloy</h1>
+           <hr className="mt-6 mb-4" />
+           
+            <p className="text-sm">( 2022 )  . 0 hr 4 min . Arabic </p>
+            <p className="my-2 text-sm"> Type : Song</p>
             <p>
               Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
+            <hr className="mt-6 mb-4" />
+            <div className="flex items-center ">
+              <p>150</p>
+              <button><FaRegThumbsUp className="ml-3 text-amber-500"/></button>
+              
+              
+            </div>
+            <div className="mt-5 ">
+              <textarea placeholder="Please Write Your Comment" className="p-3 text-black border-2 rounded-sm border-zinc-700" name="" id="" cols="65" rows="4"></textarea> <br />
+              <button className="  bg-amber-500 px-7 rounded-sm py-2 mt-2 text-xl">Submit</button>
+            </div>
+    
+            
+           </div>
           </div>
         </div>
       </div>
