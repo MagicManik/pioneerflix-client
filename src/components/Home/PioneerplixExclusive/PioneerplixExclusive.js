@@ -7,7 +7,7 @@ import movie5 from '../../../assets/exclusive-videos/exclusive (5).jpg';
 import movie6 from '../../../assets/exclusive-videos/exclusive (6).jpg';
 import movie7 from '../../../assets/exclusive-videos/exclusive (7).jpg';
 import movie8 from '../../../assets/exclusive-videos/exclusive (8).jpg';
-import profileKids from '../../../assets/others/exclusive-removebg-preview.png';
+// import profileKids from '../../../assets/others/exclusive-removebg-preview.png';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import React, { Component } from "react";
