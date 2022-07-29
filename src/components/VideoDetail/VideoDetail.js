@@ -1,5 +1,4 @@
 import React from "react";
-import pic1 from "../../assets/videoDetail-pic/pic1.jpg";
 import "./VideoDetail.css";
 import movie1 from "../../assets/bangla-movie/movie (1).jpg";
 import movie2 from "../../assets/bangla-movie/movie (2).jpg";
@@ -7,7 +6,8 @@ import movie3 from "../../assets/bangla-movie/movie (3).jpg";
 import movie4 from "../../assets/bangla-movie/movie (4).jpg";
 import movie5 from "../../assets/bangla-movie/movie (5).jpg";
 import movie6 from "../../assets/bangla-movie/movie (6).jpg";
-import { FaRegThumbsUp } from "react-icons/fa";
+import { FaRegThumbsUp,FaEllipsisH } from "react-icons/fa";
+
 const VideoDetail = () => {
   const popularMovies = [
     {
@@ -27,25 +27,8 @@ const VideoDetail = () => {
       name: "Movie 3",
       description: "",
       img: movie3,
-    },
-    {
-      _id: 4,
-      name: "Movie 4",
-      description: "",
-      img: movie4,
-    },
-    {
-      _id: 5,
-      name: "Movie 5",
-      description: "",
-      img: movie5,
-    },
-    {
-      _id: 6,
-      name: "Movie 6",
-      description: "",
-      img: movie6,
-    },
+    }
+   
   ];
   return (
     <div className="px-14 pt-3 bg-black">
@@ -62,7 +45,7 @@ const VideoDetail = () => {
         ></iframe>
       </div>
 
-      <div className="grid  grid-cols-6 h-screen py-8">
+      <div className="grid  grid-cols-6  py-8">
         <div className=" col-start-1 col-end-3 w-full">
           <img
             src={movie4}
@@ -100,62 +83,32 @@ const VideoDetail = () => {
           </div>
         </div>
       </div>
-      {/* <div class="hero py-10 pl-[0px]">
-        <div class="hero-content  flex-col lg:flex-row ">
-        <img src={movie4} className="image-size rounded-lg shadow-2xl" alt="" />
-          <div>
-            <h1 class="text-3xl font-semibold">Mogoje Mohaproloy</h1>
-            <h5 className="pt-3">Director: Rajib Asraf</h5>
-            <h5>Reaseased on 2022</h5>
-
-            <p class="pt-6 font-medium">Description:</p>
-            <p>
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
-            {/* <button className="btn bg-slate-200  text-zinc-900" type="submit">
-              Add my list
-            </button>
-            <button
-              className="btn bg-slate-200 text-zinc-900  mx-5"
-              type="submit"
-            >
-              Share
-            </button>
-            <button className="btn bg-slate-200  text-zinc-900" type="submit">
-              ...
-            </button>
-            <br />
-            <input
-              type="text"
-              placeholder="Please comment here"
-              className="input input-bordered input-slate-400 w-full max-w-xs my-3"
-            />
-            <button
-              className="btn  bg-slate-200 text-zinc-900 mx-2"
-              type="submit"
-            >
-              Submit
-            </button> */}
-      {/* </div>
-        </div>
-      </div> */}
-
-      {/* <div className="py-5 px-10">
-        <div className=" lg:px-20 sm:px-4 video-container">
-          <h1 className="text-3xl text-black py-6 font-medium">
+     
+<div className="grid  grid-cols-6 gap-5  ">
+<div className="w-[350px]  col-start-1  col-end-3 ">
+<div className="text-white" >
+  <button className="bg-amber-500 py-3 px-6 ">Add To My List</button>
+  <button className="border-2 border-amber-500 py-2 ml-2 px-6">Share</button>
+  <button className="border-2 border-amber-500 py-3 ml-2 px-6"><FaEllipsisH/></button>
+</div>
+</div>
+<div className="   col-start-3 w-full  col-end-12 ">
+<div className=" text-white">
+        <div className=" video-container">
+          <h1 className="text-4xl mb-4  font-medium">
             You May Also Like
           </h1>
-          <div className="grid lg:grid-cols-6 gap-4 popular-movie-section">
+          <div className="grid lg:grid-cols-3 gap-4 ">
             {popularMovies.map((movie) => (
               <div className="zoom-div" key={movie._id}>
-                <img className="popular-movie" src={movie.img} alt="" />
+                <img className="w-[300px] h-[400px]  border-[1px] border-white " src={movie.img} alt="" />
               </div>
             ))}
           </div>
         </div>
-      </div> */}
+      </div>
+</div>
+</div>
     </div>
   );
 };
