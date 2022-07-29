@@ -69,6 +69,17 @@
     position: relative;
 }
 
+
+
+h1 {
+    font-size: 3rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+
 @media screen and (max-width: 576px) {
     .zoom-div-2:hover {
         --tw-translate-y: -.7rem;
@@ -93,5 +104,14 @@
 
     .our-story-card-animation {
         top: 39%;
+    }
+
+
+    h1 {
+        font-size: 2rem !important;
+    }
+
+    h3 {
+        font-size: 1.1rem !important;
     }
 }

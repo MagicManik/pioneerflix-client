@@ -1,3 +1,7 @@
+.video-container-II {
+    padding: 0 5rem;
+}
+
 .slick-prev.slick-disabled:before,
 .slick-next.slick-disabled:before {
     display: none;
@@ -8,7 +12,7 @@
 }
 
 .slick-prev {
-    left: -60px
+    left: -60px;
 }
 
 .slick-prev:before,
@@ -37,8 +41,8 @@
 
 
 @media screen and (max-width: 576px) {
-    .video-container-2-m {
-        padding: 0 2.5rem;
+    .video-container-II {
+        padding: 0 0 0 1.8rem;
     }
 
     .slick-prev:before,

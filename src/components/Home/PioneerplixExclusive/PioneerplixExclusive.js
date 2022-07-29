@@ -98,7 +98,7 @@ const PioneerplixExclusive = () => {
 
 
     var settings = {
-        dots: true,
+        dots: false,
         infinite: false,
         speed: 500,
         slidesToShow: 4,
@@ -125,8 +125,9 @@ const PioneerplixExclusive = () => {
             {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
+                    arrows: false,
+                    slidesToShow: 2.2,
+                    slidesToScroll: 2
                 }
             }
         ]
@@ -136,19 +137,21 @@ const PioneerplixExclusive = () => {
     return (
         <section className='bg-secondary pb-3'>
 
-            <div className='bg-primary video-container-2-m'>
+            <div className='bg-primary pl-5  video-container-II'>
                 <h3 className='text-2xl text-white pt-6'>PIONEERFLIX EXCLUSIVE</h3>
-                <Slider {...settings}>
+                <div className='pb-24'>
+                    <Slider {...settings}>
 
-                    {
-                        popularMovies.map(movie =>
+                        {
+                            popularMovies.map(movie =>
 
-                            <div className='zoom-div-2 pt-6 pr-4 video-div' key={movie._id}>
-                                <img className='popular-movie' src={movie.img} alt="" />
-                            </div>)
-                    }
+                                <div className='zoom-div-2 pt-6 pr-4 video-div' key={movie._id}>
+                                    <img className='popular-movie' src={movie.img} alt="" />
+                                </div>)
+                        }
 
-                </Slider>
+                    </Slider>
+                </div>
                 <i class="fa fal fa-angle-double-down"></i>
 
 
