@@ -4,9 +4,7 @@ import movie1 from "../../assets/bangla-movie/movie (1).jpg";
 import movie2 from "../../assets/bangla-movie/movie (2).jpg";
 import movie3 from "../../assets/bangla-movie/movie (3).jpg";
 import movie4 from "../../assets/bangla-movie/movie (4).jpg";
-import movie5 from "../../assets/bangla-movie/movie (5).jpg";
-import movie6 from "../../assets/bangla-movie/movie (6).jpg";
-import { FaRegThumbsUp,FaEllipsisH } from "react-icons/fa";
+import { FaRegThumbsUp,FaEllipsisH ,FaComment} from "react-icons/fa";
 
 const VideoDetail = () => {
   const popularMovies = [
@@ -30,6 +28,20 @@ const VideoDetail = () => {
     }
    
   ];
+  const fakeComment=[
+    {
+      name:'Shihab',
+    comment:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting."
+    },
+    {
+      name:'Manik',
+    comment:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+    },
+    {
+      name:'Barik',
+    comment:" It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages."
+    },
+  ]
   return (
     <div className="px-14 pt-3 bg-black">
       <div className="justify-center flex ">
@@ -109,6 +121,22 @@ const VideoDetail = () => {
       </div>
 </div>
 </div>
+
+{/* comment section */}
+<hr className="mt-6 mb-4 text-zinc-500" />
+<div className="text-white grid grid-cols-3 py-10 gap-5">
+{
+ fakeComment.map(c=><>
+ <div>
+ <div className="flex  items-center text-xl font-semibold"> <FaComment className="mr-2 text-amber-500"/>{c.name}</div>
+ <p className="ml-7 text-sm">{c.comment}</p>
+ </div>
+
+ 
+ </>) 
+}
+</div>
+
     </div>
   );
 };
