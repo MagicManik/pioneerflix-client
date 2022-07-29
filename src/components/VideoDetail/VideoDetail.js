@@ -48,13 +48,46 @@ const VideoDetail = () => {
     },
   ];
   return (
-    <div>
-      <div className="justify-center flex px-10">
-        <img src={pic1} alt="" srcset="" className="w-full" />
+    <div className="px-14 pt-3 bg-black">
+      <div className="justify-center flex ">
+        <iframe
+          className="rounded-sm p-1 shadow-2xl border-2 border-zinc-700 "
+          width="100%"
+          height="700px"
+          src="https://www.youtube.com/embed/M3xjz4nxzGQ"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
       </div>
-      <div class="hero py-10 px-10">
+
+      <div className="grid grid-cols-6 h-screen py-8">
+        <div className=" col-start-1 col-end-3 w-full">
+          <img
+            src={movie4}
+            className="w-[350px] h-[500px]  border-[1px] border-white "
+            alt=""
+          />
+        </div>
+        <div className=" col-start-3 ml-[-40px] col-end-12 ">
+          <div className="text-white">
+            <h1 class="text-3xl font-semibold">Mogoje Mohaproloy</h1>
+            <h5 className="pt-3">Director: Rajib Asraf</h5>
+            <h5>Reaseased on 2022</h5>
+
+            <p class="pt-6 font-medium">Description:</p>
+            <p>
+              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
+              et a id nisi.
+            </p>
+          </div>
+        </div>
+      </div>
+      {/* <div class="hero py-10 pl-[0px]">
         <div class="hero-content  flex-col lg:flex-row ">
-          <img src={pic1} className="image-size rounded-lg shadow-2xl" alt="" />
+        <img src={movie4} className="image-size rounded-lg shadow-2xl" alt="" />
           <div>
             <h1 class="text-3xl font-semibold">Mogoje Mohaproloy</h1>
             <h5 className="pt-3">Director: Rajib Asraf</h5>
@@ -66,7 +99,7 @@ const VideoDetail = () => {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
-            <button className="btn bg-slate-200  text-zinc-900" type="submit">
+            {/* <button className="btn bg-slate-200  text-zinc-900" type="submit">
               Add my list
             </button>
             <button
@@ -88,18 +121,13 @@ const VideoDetail = () => {
               className="btn  bg-slate-200 text-zinc-900 mx-2"
               type="submit"
             >
-
-
-
-
-              
               Submit
-            </button>
-          </div>
+            </button> */}
+      {/* </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="py-5 px-10">
+      {/* <div className="py-5 px-10">
         <div className=" lg:px-20 sm:px-4 video-container">
           <h1 className="text-3xl text-black py-6 font-medium">
             You May Also Like
@@ -112,7 +140,7 @@ const VideoDetail = () => {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
