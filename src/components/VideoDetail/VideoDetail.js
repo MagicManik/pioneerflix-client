@@ -54,10 +54,9 @@ const VideoDetail = () => {
   const addComment = (event) => {
     event.preventDefault();
     const comment = event.target.comment.value;
-    setComments(comment);
-    event.target.reset();
     const newComments = [comment, ...comments];
     setComments(newComments);
+    event.target.reset();
   };
 
   return (
