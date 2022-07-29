@@ -9,6 +9,7 @@ import movie7 from '../../../assets/free-videos/free-video (7).jpg';
 import freeVideo from '../../../assets/others/free-video.jpg';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link} from 'react-router-dom';
 import Slider from "react-slick";
 import './PioneerflixFree.css';
 
@@ -107,7 +108,10 @@ const PioneerflixFree = () => {
                             popularMovies.map(movie =>
 
                                 <div className='zoom-div-2 pt-6 pr-4 video-div' key={movie._id}>
+                                    <Link to='/ok'>
                                     <img className='popular-movie' src={movie.img} alt="" />
+                                    </Link>
+                                    
                                 </div>)
                         }
 

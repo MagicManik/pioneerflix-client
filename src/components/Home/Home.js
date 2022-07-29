@@ -1,5 +1,5 @@
 import React from "react";
-import VideoDetail from "../VideoDetail/VideoDetail";
+
 import Banner from "./Banner";
 import "./Home.css";
 import MostPopular from "./MostPopular/MostPopular";
@@ -17,7 +17,7 @@ const Home = () => {
       <PioneerplixExclusive></PioneerplixExclusive>
       <PioneerflixKids></PioneerflixKids>
       <PioneerflixFree></PioneerflixFree>
-      <VideoDetail></VideoDetail>
+
 
 
 

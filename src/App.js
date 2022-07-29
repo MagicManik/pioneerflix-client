@@ -4,6 +4,8 @@ import Home from "./components/Home/Home";
 import Footer from "./components/Shared/Footer/Footer";
 import Navbar from "./components/Shared/Header/Navbar/Navbar";
 import LoginPage from "./components/UserAccount/LoginPage";
+import Details from "./components/VideoDetail/Details";
+
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
+   <Route path='/ok' element={<Details/>} />
+        
       </Routes>
       <Footer></Footer>
     </div>

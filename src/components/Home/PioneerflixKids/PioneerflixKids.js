@@ -11,6 +11,7 @@ import profileKids from '../../../assets/others/profile-kids.png';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { Link} from 'react-router-dom';
 
 const PioneerflixKids = () => {
 
@@ -117,7 +118,10 @@ const PioneerflixKids = () => {
                             popularMovies.map(movie =>
 
                                 <div className='zoom-div-2 pt-6 pr-4 video-div' key={movie._id}>
-                                    <img className='popular-movie' src={movie.img} alt="" />
+                                     <Link to='/ok'>
+                                     <img className='popular-movie' src={movie.img} alt="" />
+                                     </Link>
+                                    
                                 </div>)
                         }
 
