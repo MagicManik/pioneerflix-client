@@ -71,6 +71,16 @@ h3 {
 /* watchTv media query */
 @media screen and (max-width: 576px) {
 
+    .zoom-div-I {
+        transition: none;
+    }
+
+    .zoom-div-I:hover {
+        -ms-transform: scale(1.07);
+        -webkit-transform: scale(1.07);
+        transform: none;
+    }
+
     .text-container {
         padding: 10px;
     }
