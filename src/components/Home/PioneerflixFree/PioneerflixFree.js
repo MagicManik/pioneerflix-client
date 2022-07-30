@@ -9,7 +9,7 @@ import movie7 from '../../../assets/free-videos/free-video (7).jpg';
 import freeVideo from '../../../assets/others/free-video.jpg';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import './PioneerflixFree.css';
 
@@ -100,18 +100,18 @@ const PioneerflixFree = () => {
         <section className='bg-secondary pb-3'>
 
             <div className='bg-primary pl-5  video-container-II'>
-                <h3 className='text-2xl text-white pt-6'>PIONEERFLIX MOST POPULAR</h3>
+                <h3 className='text-2xl text-white pt-6'>PIONEERFLIX FREE</h3>
                 <div className='pb-10'>
                     <Slider {...settings}>
 
                         {
                             popularMovies.map(movie =>
 
-                                <div className='zoom-div-2 pt-6 pr-4 video-div' key={movie._id}>
+                                <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
                                     <Link to='/ok'>
-                                    <img className='popular-movie' src={movie.img} alt="" />
+                                        <img className='popular-movie' src={movie.img} alt="" />
                                     </Link>
-                                    
+
                                 </div>)
                         }
 
@@ -129,7 +129,7 @@ const PioneerflixFree = () => {
                     </div>
 
                     <div className='pb-10'>
-                        <img className='w-10/12 pt-10' src={freeVideo} alt="" />
+                        <img className='w-10/12 pt-10 rounded-2xl' src={freeVideo} alt="" />
                     </div>
                 </div>
             </div>
@@ -143,7 +143,7 @@ const PioneerflixFree = () => {
                         {
                             popularMovies.map(movie =>
 
-                                <div className='zoom-div' key={movie._id}>
+                                <div className='zoom-div-I' key={movie._id}>
                                     <img className='popular-movie' src={movie.img} alt="" />
                                 </div>)
                         }

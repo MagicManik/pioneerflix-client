@@ -43,11 +43,25 @@ const Details = () => {
     },
   ];
 
+
+
   const [like, setLike] = useState(509);
+  const [comment, setComment] = useState([]);
 
   const handleLike = () => {
     const totalLike = like + 1;
     setLike(totalLike);
+  }
+
+  const handleTaskForm = event => {
+    event.preventDefault();
+
+    const comment = event.target.description.value;
+
+    setComment(comment);
+
+    event.target.reset();
+
   }
 
   return (
@@ -94,9 +108,17 @@ const Details = () => {
 
 
               </div>
+
+              <div>
+                <p>{comment}</p>
+              </div>
+
+              {/* comment filed */}
               <div className="mt-5 ">
-                <textarea placeholder="Please Write Your Comment" className="p-3 text-black border-2 rounded-sm border-zinc-700" name="" id="" cols="65" rows="4"></textarea> <br />
-                <button className="  bg-amber-500 px-7 rounded-sm py-2 mt-2 text-xl">Submit</button>
+                <form onSubmit={handleTaskForm}>
+                  <textarea placeholder="Please Write Your Comment" className="p-3 text-black border-2 rounded-sm border-zinc-700" name="description" id="" cols="65" rows="4"></textarea> <br />
+                  <input className="  bg-amber-500 px-7 rounded-sm py-2 mt-2 text-xl" type="submit" value="Submit" />
+                </form>
               </div>
 
 
@@ -121,7 +143,7 @@ const Details = () => {
               </h1>
               <div className="grid lg:grid-cols-3 gap-4 ">
                 {popularMovies.map((movie) => (
-                  <div className="zoom-div" key={movie._id}>
+                  <div className="zoom-div-I" key={movie._id}>
                     <img className="w-[300px] h-[400px]  border-[1px] border-white " src={movie.img} alt="" />
                   </div>
                 ))}
