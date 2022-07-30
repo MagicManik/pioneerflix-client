@@ -63,7 +63,6 @@ const TvChannels = () => {
     ]
 
     return (
-
         <section className='bg-secondary pb-3'>
             <div className='bg-primary video-section'>
                 <div className='bg-primary lg:px-20 sm:px-4 video-container'>
@@ -73,7 +72,7 @@ const TvChannels = () => {
                         {
                             popularMovies.map(movie =>
 
-                                <div className='zoom-div-2' key={movie._id}>
+                                <div className='pr-2 pb-2 pl-2 zoom-div-I' key={movie._id}>
                                     <img className='popular-movie' src={movie.img} alt="" />
                                 </div>)
                         }

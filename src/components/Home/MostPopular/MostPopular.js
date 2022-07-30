@@ -8,7 +8,7 @@ import movie6 from '../../../assets/bangla-movie/movie (6).jpg';
 import offlineWatch from '../../../assets/others/watch-off.jpg';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import './MostPopular.css';
 
@@ -121,11 +121,11 @@ const MostPopular = () => {
                         {
                             popularMovies.map(movie =>
 
-                                <div className='zoom-div-2 pt-6 pr-4 video-div' key={movie._id}>
+                                <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
                                     <Link to='/ok'>
-                                    <img className='popular-movie' src={movie.img} alt="" />
+                                        <img className='popular-movie' src={movie.img} alt="" />
                                     </Link>
-                                    
+
                                 </div>)
                         }
 
@@ -143,8 +143,7 @@ const MostPopular = () => {
                     </div>
 
                     <div className='pb-10'>
-                        
-                        <img src={offlineWatch} alt="" />
+                        <img className='rounded-2xl' src={offlineWatch} alt="" />
                     </div>
                 </div>
             </div>
@@ -158,7 +157,7 @@ const MostPopular = () => {
                         {
                             popularMovies.map(movie =>
 
-                                <div className='zoom-div' key={movie._id}>
+                                <div className='zoom-div-I' key={movie._id}>
                                     <img className='popular-movie' src={movie.img} alt="" />
                                 </div>)
                         }

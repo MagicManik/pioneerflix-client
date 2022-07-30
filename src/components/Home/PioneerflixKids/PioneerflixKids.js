@@ -11,7 +11,7 @@ import profileKids from '../../../assets/others/profile-kids.png';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const PioneerflixKids = () => {
 
@@ -109,7 +109,7 @@ const PioneerflixKids = () => {
         <section className='bg-secondary pb-3'>
 
             <div className='bg-primary pl-5  video-container-II'>
-                <h3 className='text-2xl text-white pt-6'>PIONEERFLIX EXCLUSIVE</h3>
+                <h3 className='text-2xl text-white pt-6'>PIONEERFLIX KIDS</h3>
 
                 <div className='pb-10'>
                     <Slider {...settings}>
@@ -117,11 +117,11 @@ const PioneerflixKids = () => {
                         {
                             popularMovies.map(movie =>
 
-                                <div className='zoom-div-2 pt-6 pr-4 video-div' key={movie._id}>
-                                     <Link to='/ok'>
-                                     <img className='popular-movie' src={movie.img} alt="" />
-                                     </Link>
-                                    
+                                <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
+                                    <Link to='/ok'>
+                                        <img className='popular-movie' src={movie.img} alt="" />
+                                    </Link>
+
                                 </div>)
                         }
 
@@ -139,7 +139,7 @@ const PioneerflixKids = () => {
                     </div>
 
                     <div className='pb-10'>
-                        <img src={profileKids} alt="" />
+                        <img className='rounded-2xl' src={profileKids} alt="" />
                     </div>
                 </div>
             </div>
@@ -154,7 +154,7 @@ const PioneerflixKids = () => {
         //                 {
         //                     popularMovies.map(movie =>
 
-        //                         <div className='zoom-div-2' key={movie._id}>
+        //                         <div className='zoom-div-I' key={movie._id}>
         //                             <img className='popular-movie' src={movie.img} alt="" />
         //                         </div>)
         //                 }
