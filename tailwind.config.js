@@ -23,7 +23,7 @@ module.exports = {
       {
         dark: {
           primary: "#000",
-          secondary: "#222",
+          secondary: "#FFFFFF",
           accent: "#111111",
           neutral: "#FFFFFF",
           info: "#252525",
@@ -32,9 +32,9 @@ module.exports = {
       },
       {
         light: {
+          primary: "#EFD8BD",
           // primary: "#ffffff",
-          primary: '#023',
-          secondary: "#D3D3D3",
+          secondary: "#000",
           // accent: "#404040",
           accent: "#1c4662",
           neutral: "#FFFFFF",
