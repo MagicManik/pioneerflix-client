@@ -8,7 +8,12 @@ import {
   FaSun,
   FaSearch,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import auth from "../../../../firebase.init";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+
+
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Dashboard", href: "/" },
@@ -19,6 +24,13 @@ function classNames(...classes) {
 const NavbarResponsive = ({ theme, setTheme }) => {
     const [scrollNavbar,setScrollNavbar]=useState(false)
 
+    const [user] = useAuthState(auth);
+    const navigate = useNavigate();
+
+    const handleLogOut = () => {
+        signOut(auth);
+        navigate('/')
+    }
     const changeBackground=()=>{
         console.log(window.scrollY)
         if(window.scrollY >=50){
@@ -120,11 +132,18 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     <div>
                       <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                         <span className="sr-only">Open user menu</span>
-                        <img
-                          className="h-9 w-9 rounded-full"
-                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt=""
-                        />
+                        {
+                                user
+                                    ?
+                                    <img
+                                    className="h-9 w-9 rounded-full"
+                                    src={user?.photoURL}
+                                    alt=""
+                                  />
+                                    :
+                                    <Link to="/logIn" className='bg-white px-4 py-2 rounded-xl' >LOG IN</Link>
+                            }
+                       
                       </Menu.Button>
                     </div>
                     <Transition
@@ -139,28 +158,27 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       <Menu.Items className="origin-top-right absolute z-20 right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-primary ring-1 ring-black ring-opacity-5 focus:outline-none">
                         <Menu.Item>
                           {({ active }) => (
-                            <a
-                              href="#"
+                            <button
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm "
                               )}
                             >
                               Your Profile
-                            </a>
+                            </button>
                           )}
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <a
-                              href="#"
+                            <button
+                            onClick={handleLogOut}
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm "
                               )}
                             >
                               Sign out
-                            </a>
+                            </button>
                           )}
                         </Menu.Item>
                       </Menu.Items>
