@@ -108,11 +108,6 @@ const Details = () => {
 
 
               </div>
-<<<<<<< HEAD
-              <div className="mt-5 hidden md:block">
-                <textarea placeholder="Please Write Your Comment" className="p-3 w-3/4 text-black border-2 rounded-sm border-zinc-700" name="" id=""  rows="4"></textarea> <br />
-                <button className="  bg-amber-500 px-7 rounded-sm py-2 mt-2 text-xl">Submit</button>
-=======
 
               <div>
                 <p>{comment}</p>
@@ -124,7 +119,6 @@ const Details = () => {
                   <textarea placeholder="Please Write Your Comment" className="p-3 text-black border-2 rounded-sm border-zinc-700" name="description" id="" cols="65" rows="4"></textarea> <br />
                   <input className="  bg-amber-500 px-7 rounded-sm py-2 mt-2 text-xl" type="submit" value="Submit" />
                 </form>
->>>>>>> 03593bced5d4a0dea0f99580c6c7e1cbbf1079c7
               </div>
 
 
@@ -156,13 +150,8 @@ const Details = () => {
               </h1>
               <div className="grid grid-cols-3 gap-2 md:gap-4 ">
                 {popularMovies.map((movie) => (
-<<<<<<< HEAD
-                  <div className="zoom-div" key={movie._id}>
-                    <img className="md:w-[300px] md:h-[400px]  border-[1px] border-white " src={movie.img} alt="" />
-=======
                   <div className="zoom-div-I" key={movie._id}>
                     <img className="w-[300px] h-[400px]  border-[1px] border-white " src={movie.img} alt="" />
->>>>>>> 03593bced5d4a0dea0f99580c6c7e1cbbf1079c7
                   </div>
                 ))}
               </div>
