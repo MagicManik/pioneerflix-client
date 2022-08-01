@@ -125,7 +125,7 @@ const PioneerflixFree = () => {
                     <div className='text-container-left-2 pb-10'>
                         <h1 className='text-5xl font-bold text-white'>Watch 100+ Exclusive Videos</h1>
                         <br />
-                        <p className='text-white text-2xl'>Download your shows to watch offline.</p>
+                        <p className='text-white'>Download your shows to watch offline.</p>
                     </div>
 
                     <div className='pb-10'>

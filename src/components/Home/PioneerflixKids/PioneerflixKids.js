@@ -135,7 +135,7 @@ const PioneerflixKids = () => {
                     <div className='text-container-left-2 pb-10'>
                         <h1 className='text-5xl font-bold text-white'>Watch 100+ Exclusive Videos</h1>
                         <br />
-                        <p className='text-white text-2xl'>Send Exclusive videos on adventures with their favorite characters in a space made just for them—free with your membership.</p>
+                        <p className='text-white'>Send Exclusive videos on adventures with their favorite characters in a space made just for them—free with your membership.</p>
                     </div>
 
                     <div className='pb-10'>

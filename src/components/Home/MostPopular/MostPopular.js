@@ -121,10 +121,14 @@ const MostPopular = () => {
                         {
                             popularMovies.map(movie =>
 
-                                <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
-                                    <Link to='/ok'>
-                                        <img className='popular-movie' src={movie.img} alt="" />
-                                    </Link>
+                                <div>
+                                    <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
+                                        <Link to='/ok'>
+                                            <img className='popular-movie' src={movie.img} alt="" />
+                                        </Link>
+
+
+                                    </div>
 
                                 </div>)
                         }
@@ -139,7 +143,7 @@ const MostPopular = () => {
                     <div className='text-container-left-2 pb-10'>
                         <h1 className='text-5xl font-bold text-white'>Download your shows to watch offline.</h1>
                         <br />
-                        <p className='text-white text-2xl'>Save your favorites easily and always have something to watch.</p>
+                        <p className='text-white'>Save your favorites easily and always have something to watch.</p>
                     </div>
 
                     <div className='pb-10'>

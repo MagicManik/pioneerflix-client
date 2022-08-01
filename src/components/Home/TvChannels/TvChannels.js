@@ -84,7 +84,7 @@ const TvChannels = () => {
 
                 <div className='text-container-left'>
                     <h1 className='text-5xl font-bold text-white'>Enjoy on your TV.</h1>
-                    <p className='text-white text-2xl'>Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.</p>
+                    <p className='text-white'>Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.</p>
                 </div>
 
                 <div className='our-story-card-animation-container pb-20'>
