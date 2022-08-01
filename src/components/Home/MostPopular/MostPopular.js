@@ -121,10 +121,14 @@ const MostPopular = () => {
                         {
                             popularMovies.map(movie =>
 
-                                <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
-                                    <Link to='/ok'>
-                                        <img className='popular-movie' src={movie.img} alt="" />
-                                    </Link>
+                                <div>
+                                    <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
+                                        <Link to='/ok'>
+                                            <img className='popular-movie' src={movie.img} alt="" />
+                                        </Link>
+
+
+                                    </div>
 
                                 </div>)
                         }

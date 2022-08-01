@@ -46,23 +46,32 @@ const Details = () => {
 
 
   const [like, setLike] = useState(509);
-  const [comment, setComment] = useState([]);
+  const [comments, setComments] = useState([]);
+
+
+  const addComment = (event) => {
+    event.preventDefault();
+    const comment = event.target.description.value;
+    const newComments = [comment, ...comments];
+    setComments(newComments);
+    event.target.reset();
+  };
 
   const handleLike = () => {
     const totalLike = like + 1;
     setLike(totalLike);
   }
 
-  const handleTaskForm = event => {
-    event.preventDefault();
+  // const handleTaskForm = event => {
+  //   event.preventDefault();
 
-    const comment = event.target.description.value;
+  //   const comment = event.target.description.value;
 
-    setComment(comment);
+  //   setComments(comment);
 
-    event.target.reset();
+  //   event.target.reset();
 
-  }
+  // }
 
   return (
     <div className="md:px-14 px-3 pt-3 bg-primary text-secondary">
@@ -70,7 +79,7 @@ const Details = () => {
         <iframe
           className="rounded-sm h-full md:h-[700px] md:p-1 shadow-2xl border-2 border-zinc-700 "
           width="100%"
-         
+
           src="https://www.youtube.com/embed/M3xjz4nxzGQ"
           title="YouTube video player"
           frameborder="0"
@@ -110,12 +119,14 @@ const Details = () => {
               </div>
 
               <div>
-                <p>{comment}</p>
+                {
+                  comments.map(comment => <p>{comment}</p>)
+                }
               </div>
 
               {/* comment filed */}
               <div className="mt-5 hidden md:block">
-                <form onSubmit={handleTaskForm}>
+                <form >
                   <textarea placeholder="Please Write Your Comment" className="p-3 text-black border-2 rounded-sm border-zinc-700" name="description" id="" cols="65" rows="4"></textarea> <br />
                   <input className="  bg-amber-500 px-7 rounded-sm py-2 mt-2 text-xl" type="submit" value="Submit" />
                 </form>
@@ -137,10 +148,10 @@ const Details = () => {
             <button className="border-2 border-amber-500 py-3 md:ml-2 ml-4 px-7 md:px-6"><FaEllipsisH /></button>
           </div>
           {/* this is another input field for mobile device  */}
-      <div className=" block md:hidden my-5">
-                <textarea placeholder="Please Write Your Comment" className="p-3 w-full text-black border-2 rounded-sm border-zinc-700" name="" id=""  rows="4"></textarea> <br />
-                <button className="  bg-amber-500 px-7 rounded-sm py-2 mt-2 text-xl">Submit</button>
-              </div>
+          <div className=" block md:hidden my-5">
+            <textarea placeholder="Please Write Your Comment" className="p-3 w-full text-black border-2 rounded-sm border-zinc-700" name="" id="" rows="4"></textarea> <br />
+            <button className="  bg-amber-500 px-7 rounded-sm py-2 mt-2 text-xl">Submit</button>
+          </div>
         </div>
         <div className="   md:col-start-3 w-full  md:col-end-12 ">
           <div >
