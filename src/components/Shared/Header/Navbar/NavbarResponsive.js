@@ -43,7 +43,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
     window.addEventListener('scroll',changeBackground)
   return (
     <>
-      <Disclosure as="nav" className={scrollNavbar ?  "bg-violet-900 sticky top-0 left-0 z-20": "bg-primary sticky top-0 left-0 z-20"}>
+      <Disclosure as="nav" className={scrollNavbar ?  "bg-violet-900 sticky top-0 left-0 z-20": "bg-info sticky top-0 left-0 z-20"}>
         {({ open }) => (
           <>
             <div className="max-w-8xl  mx-auto px-2 sm:px-6 lg:px-14 ">

@@ -66,7 +66,7 @@ const TvChannels = () => {
         <section className='bg-secondary pb-3'>
             <div className='bg-primary video-section'>
                 <div className='bg-primary lg:px-20 sm:px-4 video-container'>
-                    <h1 className='text-2xl text-white py-6'>TV CHANNELS</h1>
+                    <h1 className='text-2xl text-secondary py-6'>TV CHANNELS</h1>
                     <div className='grid lg:grid-cols-8 gap-4 popular-movie-section'>
 
                         {
@@ -80,11 +80,11 @@ const TvChannels = () => {
                 </div>
             </div>
 
-            <div className='text-container bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
+            <div className='text-container text-secondary bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
 
                 <div className='text-container-left'>
-                    <h1 className='text-5xl font-bold text-white'>Enjoy on your TV.</h1>
-                    <p className='text-white text-2xl'>Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.</p>
+                    <h1 className='text-5xl font-bold '>Enjoy on your TV.</h1>
+                    <p className=' text-2xl'>Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.</p>
                 </div>
 
                 <div className='our-story-card-animation-container pb-20'>

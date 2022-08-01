@@ -5,20 +5,6 @@ module.exports = {
     extend: {},
   },
   daisyui: {
-    // themes: [
-    //   {
-    //     mytheme: {
-    //       primary: "#000",
-    //       secondary: "#222",
-    //       accent: "#37cdbe",
-    //       neutral: "#3d4451",
-    //       "base-100": "#ffffff",
-    //     },
-    //   },
-    //   "dark",
-    //   "cupcake",
-    // ],
-
     themes: [
       {
         dark: {
@@ -26,19 +12,19 @@ module.exports = {
           secondary: "#FFFFFF",
           accent: "#111111",
           neutral: "#FFFFFF",
-          info: "#252525",
+          info: "#000",
           error: "#FA5C5C",
         },
       },
       {
         light: {
-          primary: "#EFD8BD",
-          // primary: "#ffffff",
+         
+          primary: "#ffffff",
           secondary: "#000",
           // accent: "#404040",
           accent: "#1c4662",
           neutral: "#FFFFFF",
-          info: "#252525",
+          info: "#0C4A6E",
           error: "#FB7185",
         },
       },
