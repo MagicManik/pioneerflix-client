@@ -110,10 +110,10 @@ const MostPopular = () => {
 
 
     return (
-        <section className='bg-secondary pb-3'>
+        <section className=' text-secondary pb-3'>
 
             <div className='bg-primary pl-5  video-container-II'>
-                <h3 className='text-2xl text-white pt-6'>PIONEERFLIX MOST POPULAR</h3>
+                <h3 className='text-2xl pt-6'>PIONEERFLIX MOST POPULAR</h3>
 
                 <div className='pb-10'>
                     <Slider {...settings}>
@@ -141,9 +141,9 @@ const MostPopular = () => {
                 <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
 
                     <div className='text-container-left-2 pb-10'>
-                        <h1 className='text-5xl font-bold text-white'>Download your shows to watch offline.</h1>
+                        <h1 className='text-5xl font-bold '>Download your shows to watch offline.</h1>
                         <br />
-                        <p className='text-white'>Save your favorites easily and always have something to watch.</p>
+                        <p className=' text-2xl'>Save your favorites easily and always have something to watch.</p>
                     </div>
 
                     <div className='pb-10'>

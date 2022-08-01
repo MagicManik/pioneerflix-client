@@ -10,7 +10,7 @@ import TvChannels from "./TvChannels/TvChannels";
 
 const Home = () => {
   return (
-    <main>
+    <main className="z-10">
       <Banner></Banner>
       <TvChannels></TvChannels>
       <MostPopular></MostPopular>

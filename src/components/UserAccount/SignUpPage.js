@@ -38,10 +38,10 @@ const SignUpPage = () => {
 
     return (
         <div>
-            <div className='loginRoot'>
+            <div className='loginRoot text-secondary'>
                 <div >
                     <form action="" onSubmit={handleSignUp} className='loginBody'>
-                        <h1 className='text-2xl text-white border-2 uppercase border-none'>Please Sign-Up</h1>
+                        <h1 className='text-2xl  border-2 uppercase border-none'>Please Sign-Up</h1>
                         <div className='loginBox'>
                             <input type="text" name='name' required />
                             <span className=''>your name</span>
@@ -59,8 +59,9 @@ const SignUpPage = () => {
                         </div>
                     </form>
                 </div>
-                <p className='text-xl text-white text-center mt-2'><small>Already have an account?</small> <Link to="/login" className='text-green-500 text-sm'>Please Login</Link> </p>
-                <div className="divider text-white">OR</div>
+                <p className='text-xl  text-center mt-2'><small>Already have an account?</small> <Link to="/login" className='text-green-500 text-sm'>Please Login</Link> </p>
+
+                <div className="divider ">OR</div>
 
                 <SocialLogin></SocialLogin>
             </div>
