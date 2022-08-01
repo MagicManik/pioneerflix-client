@@ -46,31 +46,40 @@ const Details = () => {
 
 
   const [like, setLike] = useState(509);
-  const [comment, setComment] = useState([]);
+  const [comments, setComments] = useState([]);
+
+
+  const addComment = (event) => {
+    event.preventDefault();
+    const comment = event.target.description.value;
+    const newComments = [comment, ...comments];
+    setComments(newComments);
+    event.target.reset();
+  };
 
   const handleLike = () => {
     const totalLike = like + 1;
     setLike(totalLike);
   }
 
-  const handleTaskForm = event => {
-    event.preventDefault();
+  // const handleTaskForm = event => {
+  //   event.preventDefault();
 
-    const comment = event.target.description.value;
+  //   const comment = event.target.description.value;
 
-    setComment(comment);
+  //   setComments(comment);
 
-    event.target.reset();
+  //   event.target.reset();
 
-  }
+  // }
 
   return (
-    <div className="md:px-14 px-3 pt-3 bg-primary">
+    <div className="md:px-14 px-3 pt-3 bg-primary text-secondary">
       <div className="justify-center flex ">
         <iframe
           className="rounded-sm h-full md:h-[700px] md:p-1 shadow-2xl border-2 border-zinc-700 "
           width="100%"
-         
+
           src="https://www.youtube.com/embed/M3xjz4nxzGQ"
           title="YouTube video player"
           frameborder="0"
@@ -88,10 +97,10 @@ const Details = () => {
           />
         </div>
         <div className=" md:mt-5 md:col-start-3 col-start-7 col-end-12 md:ml-[-40px] ml-5 ">
-          <div className=" text-white">
+          <div >
             <div>
               <h1 class="md:text-5xl text-lg md:font-semibold">Mogoje Mohaproloy</h1>
-              <hr className="md:mt-6 my-4 md:mb-4" />
+              <hr className="md:mt-6 bg-secondary h-0.5 my-4 md:mb-4" />
 
               <p className="text-sm">( 2022 )  . 0 hr 4 min . Arabic </p>
               <p className="my-2 text-sm"> Type : Song</p>
@@ -100,7 +109,7 @@ const Details = () => {
                 excepturi exercitationem quasi. In deleniti eaque aut repudiandae
                 et a id nisi.
               </p>
-              <hr className="md:mt-6 my-3 md:mb-4" />
+              <hr className="md:mt-6 bg-secondary h-0.5 my-3 md:mb-4" />
               <div className="flex items-center ">
                 <p>{like}</p>
 
@@ -110,12 +119,14 @@ const Details = () => {
               </div>
 
               <div>
-                <p>{comment}</p>
+                {
+                  comments.map(comment => <p>{comment}</p>)
+                }
               </div>
 
               {/* comment filed */}
-              <div className="mt-5 ">
-                <form onSubmit={handleTaskForm}>
+              <div className="mt-5 hidden md:block">
+                <form >
                   <textarea placeholder="Please Write Your Comment" className="p-3 text-black border-2 rounded-sm border-zinc-700" name="description" id="" cols="65" rows="4"></textarea> <br />
                   <input className="  bg-amber-500 px-7 rounded-sm py-2 mt-2 text-xl" type="submit" value="Submit" />
                 </form>
@@ -131,27 +142,27 @@ const Details = () => {
 
       <div className="grid  md:grid-cols-6 gap-5  ">
         <div className="md:w-[350px] w-full md:col-start-1  md:col-end-3 ">
-          <div className="text-white" >
+          <div  >
             <button className="bg-amber-500 py-3 px-6 ">Add To My List</button>
             <button className="border-2 border-amber-500 py-2 md:ml-2 ml-3 px-7 md:px-6">Share</button>
             <button className="border-2 border-amber-500 py-3 md:ml-2 ml-4 px-7 md:px-6"><FaEllipsisH /></button>
           </div>
           {/* this is another input field for mobile device  */}
-      <div className=" block md:hidden my-5">
-                <textarea placeholder="Please Write Your Comment" className="p-3 w-full text-black border-2 rounded-sm border-zinc-700" name="" id=""  rows="4"></textarea> <br />
-                <button className="  bg-amber-500 px-7 rounded-sm py-2 mt-2 text-xl">Submit</button>
-              </div>
+          <div className=" block md:hidden my-5">
+            <textarea placeholder="Please Write Your Comment" className="p-3 w-full text-black border-2 rounded-sm border-zinc-700" name="" id="" rows="4"></textarea> <br />
+            <button className="  bg-amber-500 px-7 rounded-sm py-2 mt-2 text-xl">Submit</button>
+          </div>
         </div>
         <div className="   md:col-start-3 w-full  md:col-end-12 ">
-          <div className=" text-white">
+          <div >
             <div className=" video-container">
               <h1 className="text-4xl mb-4  font-medium">
                 You May Also Like
               </h1>
               <div className="grid grid-cols-3 gap-2 md:gap-4 ">
                 {popularMovies.map((movie) => (
-                  <div className="zoom-div-I" key={movie._id}>
-                    <img className="w-[300px] h-[400px]  border-[1px] border-white " src={movie.img} alt="" />
+                  <div className="zoom-div" key={movie._id}>
+                    <img className="md:w-[300px] md:h-[400px]  border-[1px] border-white " src={movie.img} alt="" />
                   </div>
                 ))}
               </div>
@@ -161,8 +172,8 @@ const Details = () => {
       </div>
 
       {/* comment section */}
-      <hr className="mt-6 md:mb-4 text-zinc-500" />
-      <div className="text-white grid md:grid-cols-3 md:py-10 md:pt-0 pt-5 gap-5">
+      <hr className="mt-6 bg-secondary h-0.5 md:mb-4 " />
+      <div className="grid md:grid-cols-3 md:py-10 md:pt-0 pt-5 gap-5">
         {
           fakeComment.map(c => <>
             <div>
