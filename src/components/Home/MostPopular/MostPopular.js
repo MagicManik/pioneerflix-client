@@ -11,8 +11,11 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import './MostPopular.css';
+import useVideos from '../../../hooks/useVideos';
 
 const MostPopular = () => {
+
+    const [videos, setVideos] = useVideos();
 
     const popularMovies = [
         {
@@ -119,12 +122,12 @@ const MostPopular = () => {
                     <Slider {...settings}>
 
                         {
-                            popularMovies.map(movie =>
+                            videos.map(video =>
 
-                                <div>
-                                    <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
-                                        <Link to='/ok'>
-                                            <img className='popular-movie' src={movie.img} alt="" />
+                                <div key={video._id}>
+                                    <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={video._id}>
+                                        <Link to={`/play/${video._id}`}>
+                                            <img className='popular-movie' src={video.imgLink} alt="" />
                                         </Link>
 
 
@@ -134,8 +137,8 @@ const MostPopular = () => {
                         }
 
                     </Slider>
-                </div>
-                <i class="fa fal fa-angle-double-down"></i>
+                </div >
+                <i className="fa fal fa-angle-double-down"></i>
 
 
                 <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
@@ -150,37 +153,8 @@ const MostPopular = () => {
                         <img className='rounded-2xl' src={offlineWatch} alt="" />
                     </div>
                 </div>
-            </div>
-
-
-            {/* <div className='bg-primary video-section'>
-                <div className='bg-primary lg:px-20 sm:px-4 video-container'>
-                    <h1 className='text-2xl text-white py-6'>PIONEERFLIX MOST POPULAR</h1>
-                    <div className='grid lg:grid-cols-6 gap-4 popular-movie-section'>
-
-                        {
-                            popularMovies.map(movie =>
-
-                                <div className='zoom-div-I' key={movie._id}>
-                                    <img className='popular-movie' src={movie.img} alt="" />
-                                </div>)
-                        }
-                    </div>
-                </div>
-            </div>
-
-            <div className='text-container bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
-
-                <div>
-                    <img src={offlineWatch} alt="" />
-                </div>
-                <div className='text-container-right'>
-                    <h1 className='text-5xl font-bold text-white'>Download your shows to watch offline.</h1>
-                    <p className='text-white text-2xl'>Save your favorites easily and always have something to watch.</p>
-                </div>
-            </div> */}
-
-        </section>
+            </div >
+        </section >
     );
 };
 

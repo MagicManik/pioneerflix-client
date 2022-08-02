@@ -147,13 +147,13 @@ const PioneerplixExclusive = () => {
                             popularMovies.map(movie =>
 
                                 <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
-                                    <Link to='/ok'>   <img className='popular-movie' src={movie.img} alt="" /></Link>
+                                    <Link to='/ok'><img className='popular-movie' src={movie.img} alt="" /></Link>
                                 </div>)
                         }
 
                     </Slider>
                 </div>
-                <i class="fa fal fa-angle-double-down"></i>
+                <i className="fa fal fa-angle-double-down"></i>
 
 
                 <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
