@@ -12,6 +12,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import './PioneerplixExclusive.css';
+import { Link } from 'react-router-dom';
 
 const PioneerplixExclusive = () => {
 
@@ -98,7 +99,7 @@ const PioneerplixExclusive = () => {
 
 
     var settings = {
-        dots: true,
+        dots: false,
         infinite: false,
         speed: 500,
         slidesToShow: 4,
@@ -125,8 +126,9 @@ const PioneerplixExclusive = () => {
             {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
+                    arrows: false,
+                    slidesToShow: 2.2,
+                    slidesToScroll: 2
                 }
             }
         ]
@@ -134,30 +136,32 @@ const PioneerplixExclusive = () => {
 
 
     return (
-        <section className='bg-secondary pb-3'>
+        <section className='text-secondary pb-3'>
 
-            <div className='bg-primary video-container-2-m'>
-                <h3 className='text-2xl text-white pt-6'>PIONEERFLIX EXCLUSIVE</h3>
-                <Slider {...settings}>
+            <div className='bg-primary pl-5  video-container-II'>
+                <h3 className='text-2xl  pt-6'>PIONEERFLIX EXCLUSIVE</h3>
+                <div className='pb-24'>
+                    <Slider {...settings}>
 
-                    {
-                        popularMovies.map(movie =>
+                        {
+                            popularMovies.map(movie =>
 
-                            <div className='zoom-div-2 pt-6 pr-4 video-div' key={movie._id}>
-                                <img className='popular-movie' src={movie.img} alt="" />
-                            </div>)
-                    }
+                                <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
+                                    <Link to='/ok'>   <img className='popular-movie' src={movie.img} alt="" /></Link>
+                                </div>)
+                        }
 
-                </Slider>
+                    </Slider>
+                </div>
                 <i class="fa fal fa-angle-double-down"></i>
 
 
                 <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
 
                     <div className='text-container-left-2 pb-10'>
-                        <h1 className='text-5xl font-bold text-white'>Watch 100+ Exclusive Videos</h1>
+                        <h1 className='text-5xl font-bold '>Watch 100+ Exclusive Videos</h1>
                         <br />
-                        <p className='text-white text-2xl'>Send Exclusive videos on adventures with their favorite characters in a space made just for them—free with your membership.</p>
+                        <p className=' text-2xl'>Send Exclusive videos on adventures with their favorite characters in a space made just for them—free with your membership.</p>
                     </div>
 
                     <div className='pb-10'>

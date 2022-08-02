@@ -1,5 +1,6 @@
 import React from "react";
-import VideoDetail from "../VideoDetail/VideoDetail";
+import AskAnswer from "./AskAnswer/AskAnswer";
+
 import Banner from "./Banner";
 import "./Home.css";
 import MostPopular from "./MostPopular/MostPopular";
@@ -10,14 +11,15 @@ import TvChannels from "./TvChannels/TvChannels";
 
 const Home = () => {
   return (
-    <main>
+    <main className="z-10">
       <Banner></Banner>
       <TvChannels></TvChannels>
       <MostPopular></MostPopular>
       <PioneerplixExclusive></PioneerplixExclusive>
       <PioneerflixKids></PioneerflixKids>
       <PioneerflixFree></PioneerflixFree>
-      <VideoDetail></VideoDetail>
+      <AskAnswer></AskAnswer>
+
 
 
 

@@ -5,8 +5,8 @@ import './Footer.css';
 
 const Footer = () => {
     return (
-        <footer className='bg-sendary bg-secondary'>
-            <div className="footer-section bg-primary">
+        <footer className='bg-info text-white'>
+            <div className="footer-section bg-info">
                 <div className='footer-container'>
                     <h2 className='text-4xl font-bold text-red-500 py-2'>Pioneerflix</h2>
                     <p className='text-2xl'>Download Our Mobile App</p>
@@ -53,7 +53,7 @@ const Footer = () => {
                 </div>
 
             </div>
-
+<hr />
             <div className='text-center py-4 copy-right'>Copyright &copy; pioneerflix.com</div>
 
         </footer>
