@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import movie1 from "../../assets/bangla-movie/movie (1).jpg";
 import movie2 from "../../assets/bangla-movie/movie (2).jpg";
 import movie3 from "../../assets/bangla-movie/movie (3).jpg";
-import movie4 from "../../assets/bangla-movie/movie (4).jpg";
 
 import { FaRegThumbsUp, FaEllipsisH, FaComment } from "react-icons/fa";
 import { useParams } from "react-router-dom";
