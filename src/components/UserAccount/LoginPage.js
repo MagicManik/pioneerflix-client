@@ -51,11 +51,11 @@ const LoginPage = () => {
 
     return (
         <div>
-            <div className='loginRoot'>
+            <div className='bg-primary text-secondary py-14'>
                 <div>
                     <form action="" className='loginBody' onSubmit={handleLogin}>
-                        <h1 className='text-2xl text-white border-2 border-none uppercase'>Please Login</h1>
-                        <div className='loginBox'>
+                        <h1 className='text-2xl  border-2 border-none uppercase'>Please Login</h1>
+                        <div className='loginBox '>
                             <input ref={emailRef} type="text" required />
                             <span className=''>your email</span>
                         </div>
@@ -69,8 +69,8 @@ const LoginPage = () => {
                         </div>
                     </form>
                 </div>
-                <p className='text-xl text-white text-center mt-2'><small>New to Pioneerflix ?</small> <Link to="/signup" className='text-green-500 text-sm'>Please SignUp</Link> </p>
-                <div className="divider text-white">OR</div>
+                <p className='text-xl  text-center mt-2'><small>New to Pioneerflix ?</small> <Link to="/signup" className='text-green-500 text-sm'>Please SignUp</Link> </p>
+                <div className="divider">OR</div>
                 <SocialLogin></SocialLogin>
             </div>
         </div>

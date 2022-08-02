@@ -1,4 +1,5 @@
 import React from "react";
+import AskAnswer from "./AskAnswer/AskAnswer";
 
 import Banner from "./Banner";
 import "./Home.css";
@@ -10,13 +11,14 @@ import TvChannels from "./TvChannels/TvChannels";
 
 const Home = () => {
   return (
-    <main>
+    <main className="z-10">
       <Banner></Banner>
       <TvChannels></TvChannels>
       <MostPopular></MostPopular>
       <PioneerplixExclusive></PioneerplixExclusive>
       <PioneerflixKids></PioneerflixKids>
       <PioneerflixFree></PioneerflixFree>
+      <AskAnswer></AskAnswer>
 
 
 
