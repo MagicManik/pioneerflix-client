@@ -16,7 +16,7 @@ import { signOut } from 'firebase/auth';
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Dashboard", href: "/" },
+  { name: "Dashboard", href: "/dashboard" },
 ];
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
