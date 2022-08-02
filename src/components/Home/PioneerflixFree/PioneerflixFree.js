@@ -117,7 +117,7 @@ const PioneerflixFree = () => {
 
                     </Slider>
                 </div>
-                <i class="fa fal fa-angle-double-down"></i>
+                <i className="fa fal fa-angle-double-down"></i>
 
 
                 <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
@@ -133,35 +133,6 @@ const PioneerflixFree = () => {
                     </div>
                 </div>
             </div>
-
-
-            {/* <div className='bg-primary video-section'>
-                <div className='bg-primary lg:px-20 sm:px-4 video-container'>
-                    <h1 className='text-2xl text-white py-6'>PIONEERFLIX FREE</h1>
-                    <div className='grid lg:grid-cols-7 gap-4 popular-movie-section'>
-
-                        {
-                            popularMovies.map(movie =>
-
-                                <div className='zoom-div-I' key={movie._id}>
-                                    <img className='popular-movie' src={movie.img} alt="" />
-                                </div>)
-                        }
-                    </div>
-                </div>
-            </div>
-
-            <div className='text-container-2 bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
-
-                <div>
-                    <img className='w-11/12 block mx-auto' src={freeVideo} alt="" />
-                </div>
-                <div className='text-container-right'>
-                    <h1 className='text-5xl font-bold text-white'>Download your shows to watch offline.</h1>
-                    <p className='text-white text-2xl'>Save your favorites easily and always have something to watch.</p>
-                </div>
-            </div> */}
-
         </section>
     );
 };

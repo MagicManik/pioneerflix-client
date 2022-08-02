@@ -1,38 +1,92 @@
 [
   {
-    "_id": 1,
-    "category": "Movie",
-    "movie-link": [
-      "https://www.youtube.com/watch?v=paY1O3oD3gg",
-      "https://www.youtube.com/watch?v=paY1O3oD3gg",
-      "https://www.youtube.com/watch?v=paY1O3oD3gg",
-      "https://www.youtube.com/watch?v=paY1O3oD3gg",
-      "https://www.youtube.com/watch?v=paY1O3oD3gg",
-      "https://www.youtube.com/watch?v=paY1O3oD3gg"
-    ]
+    "title": "King Kong",
+    "category": "English Movie",
+    "duration": "2:30",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+    "imgLink": "https://i.ibb.co/kyPY7qv/movie-1.jpg",
+    "videoLink": "https://www.youtube.com/embed/b3EVCvhqcWg",
+    "like": 498
   },
   {
-    "_id": 1,
-    "category": "Movie",
-    "movie-link": [
-      "https://www.youtube.com/watch?v=paY1O3oD3gg",
-      "https://www.youtube.com/watch?v=paY1O3oD3gg",
-      "https://www.youtube.com/watch?v=paY1O3oD3gg",
-      "https://www.youtube.com/watch?v=paY1O3oD3gg",
-      "https://www.youtube.com/watch?v=paY1O3oD3gg",
-      "https://www.youtube.com/watch?v=paY1O3oD3gg"
-    ]
+    "title": "King Kong",
+    "category": "English Movie",
+    "duration": "2:30",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+    "imgLink": "https://i.ibb.co/qngYMtC/movie-2.jpg",
+    "videoLink": "https://www.youtube.com/embed/rAYj4nGYSvw",
+    "like": 492
   },
   {
-    "_id": 1,
-    "category": "Movie",
-    "movie-link": [
-      "https://www.youtube.com/watch?v=paY1O3oD3gg",
-      "https://www.youtube.com/watch?v=paY1O3oD3gg",
-      "https://www.youtube.com/watch?v=paY1O3oD3gg",
-      "https://www.youtube.com/watch?v=paY1O3oD3gg",
-      "https://www.youtube.com/watch?v=paY1O3oD3gg",
-      "https://www.youtube.com/watch?v=paY1O3oD3gg"
-    ]
+    "title": "King Kong",
+    "category": "English Movie",
+    "duration": "2:30",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+    "imgLink": "https://i.ibb.co/T89H5r1/movie-3.jpg",
+    "videoLink": "https://www.youtube.com/embed/uZHKlDL8O20",
+    "like": 456
+  },
+  {
+    "title": "King Kong",
+    "category": "English Movie",
+    "duration": "2:30",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+    "imgLink": "https://i.ibb.co/JtT4P1X/movie-4.jpg",
+    "videoLink": "https://www.youtube.com/embed/wDCbUFTFqnQ",
+    "like": 467
+  },
+  {
+    "title": "King Kong",
+    "category": "English Movie",
+    "duration": "2:30",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+    "imgLink": "https://i.ibb.co/mHHpQMT/movie-5.jpg",
+    "videoLink": "https://www.youtube.com/embed/xVzOSYWf6Nk",
+    "like": 463
+  },
+  {
+    "title": "King Kong",
+    "category": "English Movie",
+    "duration": "2:30",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+    "imgLink": "https://i.ibb.co/2h0K8Rr/movie-6.jpg",
+    "videoLink": "https://www.youtube.com/embed/rJfY0XxXglM",
+    "like": 449
+  },
+  {
+    "title": "King Kong",
+    "category": "English Movie",
+    "duration": "2:30",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+    "imgLink": "https://i.ibb.co/6bP8Bt6/movie-7.jpg",
+    "videoLink": "https://www.youtube.com/embed/trtlmDHtY90",
+    "like": 349
+  },
+  {
+    "title": "King Kong",
+    "category": "English Movie",
+    "duration": "2:30",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+    "imgLink": "https://i.ibb.co/RSnVPdW/movie-8.jpg",
+    "videoLink": "https://www.youtube.com/embed/kCYZp63Mj-c",
+    "like": 349
+  },
+  {
+    "title": "King Kong",
+    "category": "English Movie",
+    "duration": "2:30",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+    "imgLink": "https://i.ibb.co/gJqYXN9/movie-9.jpg",
+    "videoLink": "https://www.youtube.com/embed/6KBlYninigY",
+    "like": 849
+  },
+  {
+    "title": "King Kong",
+    "category": "English Movie",
+    "duration": "2:30",
+    "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.",
+    "imgLink": "https://i.ibb.co/bbPDTGW/movie-10.jpg",
+    "videoLink": "https://www.youtube.com/embed/M3xjz4nxzGQ",
+    "like": 349
   }
 ]

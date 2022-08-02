@@ -32,7 +32,6 @@ const NavbarResponsive = ({ theme, setTheme }) => {
     navigate('/')
   }
   const changeBackground = () => {
-    console.log(window.scrollY)
     if (window.scrollY >= 50) {
       setScrollNavbar(true)
     }
@@ -80,10 +79,9 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   </div>
                   <div className="hidden sm:block sm:ml-6">
                     <div className="flex space-x-4">
-                      {navigation.map((item) => (
+                      {navigation.map(item => (
                         <>
                           <Link
-                            key={item.name}
                             to={item.href}
                             className={classNames(
                               item.current
@@ -103,14 +101,14 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   {/* search here */}
-                  <div class="relative hidden md:block text-black">
-                    <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                  <div className="relative hidden md:block text-black">
+                    <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                       <FaSearch className="text-sm" />
                     </div>
                     <input
                       type="text"
                       id="search-navbar"
-                      class="block p-1 pl-10 w-[95%]  bg-gray-50 rounded-sm border  sm:text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="block p-1 pl-10 w-[95%]  bg-gray-50 rounded-sm border  sm:text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Search..."
                     />
                   </div>
@@ -190,9 +188,8 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
             <Disclosure.Panel className="sm:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1">
-                {navigation.map((item) => (
+                {navigation.map(item => (
                   <Disclosure.Button
-                    key={item.name}
                     as="a"
                     href={item.href}
                     className={classNames(

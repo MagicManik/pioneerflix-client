@@ -99,9 +99,9 @@ const About = () => {
     <div className="bg-primary  text-white px-5 lg:px-20 py-5 ">
       <div className="flex justify-center items-center flex-col ">
         <div>
-          {developerDetails.map((d, index) => (
+          {developerDetails.map(d => (
             <>
-              <div key={index} className="hero flex my-3 justify-start   ">
+              <div key={d.id} className="hero flex my-3 justify-start   ">
                 <div className="hero-content lg:flex lg:flex-row lg:items-center lg:justify-start flex-col">
                   <div className="avatar">
                     <div className="w-36 rounded-full ring ring-gradient-to-r shadow-xl shadow-sky-500 from-indigo-500 via-purple-500 to-pink-500 ring-offset-2">
