@@ -137,8 +137,8 @@ const Details = () => {
                 {
                   comments.map(comment =>
                     <div key={comment._id}>
-                      <p>{comment.name}</p>
-                      <p>{comment.comment}</p>
+                      <p>{comment.id === id && comment.name}</p>
+                      <p>{comment.id === id && comment.comment}</p>
                     </div>)
                 }
               </article>
