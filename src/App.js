@@ -4,6 +4,7 @@ import "./App.css";
 import About from "./components/About/About";
 import DashboardMainPage from "./components/Dashboard/DashboardMainPage";
 import MakeAdmin from "./components/Dashboard/MakeAdmin";
+import ManageVideos from "./components/Dashboard/ManageVideos";
 import MyProfile from "./components/Dashboard/MyProfile";
 import MyVideos from "./components/Dashboard/MyVideos";
 import UploadVideo from "./components/Dashboard/UploadVideo";
@@ -33,6 +34,7 @@ function App() {
           <Route path="uploadVideo" element={<UploadVideo></UploadVideo>}></Route>
           <Route path="myVideos" element={<MyVideos></MyVideos>}></Route>
           <Route path="makeAdmin" element={<MakeAdmin></MakeAdmin>}></Route>
+          <Route path="manageVideos" element={<ManageVideos></ManageVideos>}></Route>
         </Route>
         <Route path='/ok' element={<Details />} />
 

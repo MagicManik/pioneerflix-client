@@ -22,28 +22,28 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const NavbarResponsive = ({ theme, setTheme }) => {
-    const [scrollNavbar,setScrollNavbar]=useState(false)
+  const [scrollNavbar, setScrollNavbar] = useState(false)
 
-    const [user] = useAuthState(auth);
-    const navigate = useNavigate();
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
 
-    const handleLogOut = () => {
-        signOut(auth);
-        navigate('/')
+  const handleLogOut = () => {
+    signOut(auth);
+    navigate('/')
+  }
+  const changeBackground = () => {
+    console.log(window.scrollY)
+    if (window.scrollY >= 50) {
+      setScrollNavbar(true)
     }
-    const changeBackground=()=>{
-        console.log(window.scrollY)
-        if(window.scrollY >=50){
-            setScrollNavbar(true)
-        }
-        else{
-            setScrollNavbar(false)
-        }
+    else {
+      setScrollNavbar(false)
     }
-    window.addEventListener('scroll',changeBackground)
+  }
+  window.addEventListener('scroll', changeBackground)
   return (
     <>
-      <Disclosure as="nav" className={scrollNavbar ?  "bg-violet-900 sticky top-0 left-0 z-20": "bg-info sticky top-0 left-0 z-20"}>
+      <Disclosure as="nav" className={scrollNavbar ? "bg-violet-900 sticky top-0 left-0 z-20" : "bg-info sticky top-0 left-0 z-20"}>
         {({ open }) => (
           <>
             <div className="max-w-8xl  mx-auto px-2 sm:px-6 lg:px-14 ">
@@ -59,10 +59,10 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         className="block h-6 w-6"
                         aria-hidden="true"
                       />
-                     
+
                     )}
-                  
-                
+
+
                   </Disclosure.Button>
                 </div>
                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
@@ -82,27 +82,27 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     <div className="flex space-x-4">
                       {navigation.map((item) => (
                         <>
-                        <Link
-                          key={item.name}
-                          to={item.href}
-                          className={classNames(
-                            item.current
-                              ? "bg-gray-900  text-white"
-                              : "text-white  hover:text-white",
-                            "px-3 py-2 rounded-md text-sm font-medium"
-                          )}
-                          aria-current={item.current ? "page" : undefined}
-                        >
-                          {item.name}
-                        </Link>
-                    
+                          <Link
+                            key={item.name}
+                            to={item.href}
+                            className={classNames(
+                              item.current
+                                ? "bg-gray-900  text-white"
+                                : "text-white  hover:text-white",
+                              "px-3 py-2 rounded-md text-sm font-medium"
+                            )}
+                            aria-current={item.current ? "page" : undefined}
+                          >
+                            {item.name}
+                          </Link>
+
                         </>
                       ))}
                     </div>
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    {/* search here */}
+                  {/* search here */}
                   <div class="relative hidden md:block text-black">
                     <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                       <FaSearch className="text-sm" />
@@ -133,17 +133,17 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       <Menu.Button className=" flex text-sm">
                         <span className="sr-only">Open user menu</span>
                         {
-                                user
-                                    ?
-                                    <img
-                                    className="h-9 w-9 rounded-full"
-                                    src={user?.photoURL}
-                                    alt=""
-                                  />
-                                    :
-                                    <Link to="/logIn" className='bg-white px-4 py-2 rounded-xl' >LOG IN</Link>
-                            }
-                       
+                          user
+                            ?
+                            <img
+                              className="h-9 w-9 rounded-full"
+                              src={user?.photoURL}
+                              alt=""
+                            />
+                            :
+                            <Link to="/logIn" className='bg-white px-4 py-2 rounded-xl' >LOG IN</Link>
+                        }
+
                       </Menu.Button>
                     </div>
                     <Transition
@@ -171,7 +171,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         <Menu.Item>
                           {({ active }) => (
                             <button
-                            onClick={handleLogOut}
+                              onClick={handleLogOut}
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm "
