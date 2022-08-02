@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import './DashboardMainPage.css';
 
 const DashboardMainPage = () => {
@@ -17,8 +17,8 @@ const DashboardMainPage = () => {
                 <label for="my-drawer-2" class="drawer-overlay"></label>
                 <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
                     {/* <!-- Sidebar content here --> */}
-                    <li><a>Sidebar Item 1</a></li>
-                    <li><a>Sidebar Item 2</a></li>
+                    <li><Link to=''>My Profile</Link></li>
+                    <li><Link to='uploadVideo'>Upload video</Link></li>
                 </ul>
 
             </div>

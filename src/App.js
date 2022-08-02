@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import About from "./components/About/About";
 import DashboardMainPage from "./components/Dashboard/DashboardMainPage";
+import MyProfile from "./components/Dashboard/MyProfile";
+import UploadVideo from "./components/Dashboard/UploadVideo";
 import Home from "./components/Home/Home";
 import Footer from "./components/Shared/Footer/Footer";
 import Navbar from "./components/Shared/Header/Navbar/Navbar";
@@ -25,7 +27,8 @@ function App() {
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>
         <Route path="/dashboard" element={<DashboardMainPage></DashboardMainPage>}>
-          
+          <Route index element={<MyProfile></MyProfile>}></Route>
+          <Route path="uploadVideo" element={<UploadVideo></UploadVideo>}></Route>
         </Route>
         <Route path='/ok' element={<Details />} />
 
