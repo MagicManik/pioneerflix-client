@@ -3,7 +3,9 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import About from "./components/About/About";
 import DashboardMainPage from "./components/Dashboard/DashboardMainPage";
+import MakeAdmin from "./components/Dashboard/MakeAdmin";
 import MyProfile from "./components/Dashboard/MyProfile";
+import MyVideos from "./components/Dashboard/MyVideos";
 import UploadVideo from "./components/Dashboard/UploadVideo";
 import Home from "./components/Home/Home";
 import Footer from "./components/Shared/Footer/Footer";
@@ -29,6 +31,8 @@ function App() {
         <Route path="/dashboard" element={<DashboardMainPage></DashboardMainPage>}>
           <Route index element={<MyProfile></MyProfile>}></Route>
           <Route path="uploadVideo" element={<UploadVideo></UploadVideo>}></Route>
+          <Route path="myVideos" element={<MyVideos></MyVideos>}></Route>
+          <Route path="makeAdmin" element={<MakeAdmin></MakeAdmin>}></Route>
         </Route>
         <Route path='/ok' element={<Details />} />
 

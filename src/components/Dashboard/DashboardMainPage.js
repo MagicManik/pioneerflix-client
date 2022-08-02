@@ -19,6 +19,8 @@ const DashboardMainPage = () => {
                     {/* <!-- Sidebar content here --> */}
                     <li><Link to=''>My Profile</Link></li>
                     <li><Link to='uploadVideo'>Upload video</Link></li>
+                    <li><Link to='myVideos'>My Videos</Link></li>
+                    <li><Link to='makeAdmin'>Make Admin</Link></li>
                 </ul>
 
             </div>
