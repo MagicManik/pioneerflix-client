@@ -8,7 +8,7 @@ const MyProfile = () => {
     const [user] = useAuthState(auth);
     const [isEdit, setIsEdit] = useState(null);
     const [updateProfile, updating, error] = useUpdateProfile(auth);
-    console.log(user);
+    // console.log(user);
 
     const {
         register,
@@ -16,8 +16,10 @@ const MyProfile = () => {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = () => {
-
+    const onSubmit = (data, e) => {
+        console.log(data);
+        e.target.reset();
+        
     };
 
     return (

@@ -22,7 +22,7 @@ const DashboardMainPage = () => {
             </div>
             <div className="drawer-side">
                 <label for="my-drawer-2" className="drawer-overlay"></label>
-                <ul className="menu p-4 overflow-y-auto w-60 bg-base-100 text-base-content">
+                <ul className="menu p-4 overflow-y-auto w-60 text-base-content">
                     {/* <!-- Sidebar content here --> */}
                     <li><Link to='' className='uppercase font-bold text-black'>My Profile</Link></li>
                     <li><Link to='uploadVideo' className='uppercase font-bold text-black'>Upload video</Link></li>
