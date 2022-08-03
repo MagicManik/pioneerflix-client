@@ -17,14 +17,14 @@ const MyProfile = () => {
     } = useForm();
 
     const onSubmit = (data, e) => {
-        console.log(data);
-        e.target.reset();
+        // console.log(data);
+        // e.target.reset();
         
     };
 
     return (
-        <div className="container w-full mx-auto p-5 lg:p-10 mb-40 mt-5">
-            <div className="md:flex w-full no-wrap md:-mx-2 ">
+        <div className="container w-full mx-auto p-5 lg:p-10 mb-40">
+            <div className="md:flex w-full no-wrap md:-mx-2">
                 <div className="w-full lg:w-1/3 md:mx-2 lg:mt-1 p-3">
                     <div className="bg-white p-5 rounded-br-lg rounded-bl-lg border-t-4 border-[#125f82]">
                         <div className="image overflow-hidden">
