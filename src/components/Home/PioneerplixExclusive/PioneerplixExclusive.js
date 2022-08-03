@@ -67,7 +67,7 @@ const PioneerplixExclusive = () => {
         <section className='bg-secondary pb-3'>
             <div className='bg-primary video-section'>
                 <div className='bg-primary lg:px-20 sm:px-4 video-container'>
-                    <h1 className='text-2xl text-white py-6'>PIONEERFLIX EXCLUSIVE</h1>
+                    <h1 className='text-2xl text-white py-6'> EXCLUSIVE MOVIES</h1>
                     <div className='grid lg:grid-cols-4 gap-5 popular-movie-section'>
 
                         {
@@ -85,8 +85,8 @@ const PioneerplixExclusive = () => {
             <div className='text-container bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
 
                 <div className='text-container-left-2 pb-10'>
-                    <h1 className='text-5xl font-bold text-white'>Watch 100+ Exclusive Videos</h1>
-                    <p className='text-white text-2xl'>Send Exclusive videos on adventures with their favorite characters in a space made just for them—free with your membership.</p>
+                    <h1 className='text-5xl font-bold text-white'>Watch And Enjoy More Exclusive Videos</h1>
+                    <p className='text-white text-2xl'>Keep touch on your exclusive videos with your enjoyment —free with your membership !</p>
                 </div>
 
                 <div className='pb-10'>

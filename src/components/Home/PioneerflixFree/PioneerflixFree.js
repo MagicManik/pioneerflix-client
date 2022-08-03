@@ -60,7 +60,7 @@ const PioneerflixFree = () => {
         <section className='bg-secondary pb-3'>
             <div className='bg-primary video-section'>
                 <div className='bg-primary lg:px-20 sm:px-4 video-container'>
-                    <h1 className='text-2xl text-white py-6'>PIONEERFLIX FREE</h1>
+                    <h1 className='text-2xl text-white py-6'>TRENDING WEBSERIES</h1>
                     <div className='grid lg:grid-cols-7 gap-4 popular-movie-section'>
 
                         {
@@ -80,8 +80,8 @@ const PioneerflixFree = () => {
                     <img className='w-11/12 block mx-auto' src={freeVideo} alt="" />
                 </div>
                 <div className='text-container-right'>
-                    <h1 className='text-5xl font-bold text-white'>Download your shows to watch offline.</h1>
-                    <p className='text-white text-2xl'>Save your favorites easily and always have something to watch.</p>
+                    <h1 className='text-5xl font-bold text-white'>Have fun With Your web series to watch offline.</h1>
+                    <p className='text-white text-2xl'>Simply save Your favorite show on your watch list and entertaining to watch.</p>
                 </div>
             </div>
 

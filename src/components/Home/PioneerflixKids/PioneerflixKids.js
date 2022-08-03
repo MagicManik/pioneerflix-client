@@ -66,7 +66,7 @@ const PioneerflixKids = () => {
         <section className='bg-secondary pb-3'>
             <div className='bg-primary video-section'>
                 <div className='bg-primary lg:px-20 sm:px-4 video-container'>
-                    <h1 className='text-2xl text-white py-6'>PIONEERFLIX KIDS</h1>
+                    <h1 className='text-2xl text-white py-6'>KIDS COLLECTIONS</h1>
                     <div className='grid lg:grid-cols-4 gap-5 popular-movie-section'>
 
                         {
@@ -83,8 +83,8 @@ const PioneerflixKids = () => {
             <div className='text-container bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
 
                 <div className='text-container-left'>
-                    <h1 className='text-5xl font-bold text-white'>Create profiles for kids.</h1>
-                    <p className='text-white text-2xl'>Send kids on adventures with their favorite characters in a space made just for them—free with your membership.</p>
+                    <h1 className='text-5xl font-bold text-white'>Find Your Kids Collections</h1>
+                    <p className='text-white text-2xl'>Send interactive movies with their favorite characters on fantasy in a realm designed specifically for children— With a Membership!</p>
                 </div>
 
                 <div>

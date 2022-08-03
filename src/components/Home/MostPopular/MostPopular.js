@@ -53,7 +53,7 @@ const MostPopular = () => {
         <section className='bg-secondary pb-3'>
             <div className='bg-primary video-section'>
                 <div className='bg-primary lg:px-20 sm:px-4 video-container'>
-                    <h1 className='text-2xl text-white py-6'>PIONEERFLIX MOST POPULAR</h1>
+                    <h1 className='text-2xl text-white py-6'>POPULAR MOVIES</h1>
                     <div className='grid lg:grid-cols-6 gap-4 popular-movie-section'>
 
                         {
@@ -73,8 +73,8 @@ const MostPopular = () => {
                     <img src={offlineWatch} alt="" />
                 </div>
                 <div className='text-container-right'>
-                    <h1 className='text-5xl font-bold text-white'>Download your shows to watch offline.</h1>
-                    <p className='text-white text-2xl'>Save your favorites easily and always have something to watch.</p>
+                    <h1 className='text-5xl font-bold text-white'>Enjoy Most Popular Movies All times</h1>
+                    <p className='text-white text-2xl'>Watch movies, be happy, and smile from the bottom of your heart.</p>
                 </div>
             </div>
 
