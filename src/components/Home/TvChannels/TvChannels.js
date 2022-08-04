@@ -30,7 +30,7 @@ const TvChannels = () => {
             name: 'Movie1',
             description: '',
             img: movie1,
-            link: 'https://jagobd.com/mytv'
+            link: 'https://www.jagobd.com/jamunatv'
         },
         {
             _id: 2,
