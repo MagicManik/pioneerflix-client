@@ -110,7 +110,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     <input
                       type="text"
                       id="search-navbar"
-                      className="block p-1 hover:p-1.5 hover:rounded-full pl-10 duration-1000 hover:px-14  hover:text-white  hover:scale-x-100 mr-5 bg-gray-50 rounded-sm border  sm:text-sm hover:bg-accent"
+                      className="block p-1 hover:p-1.5  pl-10 duration-1000 hover:px-14  hover:text-white  hover:scale-x-100 mr-1 bg-gray-50 rounded-full border  sm:text-sm hover:bg-accent"
                       placeholder="Search..."
                     />
                   </div>
