@@ -8,12 +8,15 @@ import useVideo from "../../hooks/useVideo";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import useComments from "../../hooks/useComments";
+import './Details.css';
 
 const Details = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth)
   const [video] = useVideo(id);
-  const [like, setLike] = useState(509);
+  const [likes, setLikes] = useComments();
+
+  // const [like, setLike] = useState(509);
 
   const [comments] = useComments();
 
@@ -41,10 +44,29 @@ const Details = () => {
       })
   }
 
+  // handle like
   const handleLike = () => {
-    const totalLike = like + 1;
-    setLike(totalLike);
+    const like = true;
+    const name = user.displayName;
+    const email = user.email;
+    const newLike = { id, like, name, email };
+
+    fetch('http://localhost:5000/like', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newLike)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.insertedId) {
+          alert('Your item successfully added.')
+        }
+      })
   };
+
+
 
   const popularMovies = [
     {
@@ -122,12 +144,20 @@ const Details = () => {
 
               {/* Linke */}
               <div className="flex items-center ">
-                <p>{like}</p>
-                <button onClick={handleLike}><FaRegThumbsUp className="ml-3 text-amber-500" /></button>
+                <div>
+                  {
+                    likes.map((like, index) => <p>{index + 1}</p>)
+                  }
+                </div>
+
+                <button onClick={handleLike} className="btn btn-circle bg-transparent ml-3 custom-like-btn hover:bg-transparent" >
+                  <FaRegThumbsUp className="text-amber-500" />
+                </button>
+
               </div>
 
               {/* show comments */}
-              <article>
+              <article className="pt-5">
                 {
                   comments.map(comment =>
                     <div key={comment._id}>
