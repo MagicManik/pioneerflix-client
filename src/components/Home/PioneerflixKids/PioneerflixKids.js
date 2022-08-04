@@ -127,7 +127,7 @@ const PioneerflixKids = () => {
 
                     </Slider>
                 </div>
-                <i class="fa fal fa-angle-double-down"></i>
+                <i className="fa fal fa-angle-double-down"></i>
 
 
                 <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
@@ -144,36 +144,6 @@ const PioneerflixKids = () => {
                 </div>
             </div>
         </section>
-
-        // <section className='bg-secondary pb-3'>
-        //     <div className='bg-primary video-section'>
-        //         <div className='bg-primary lg:px-20 sm:px-4 video-container'>
-        //             <h1 className='text-2xl  py-6'>PIONEERFLIX KIDS</h1>
-        //             <div className='grid lg:grid-cols-4 gap-5 video-section-2'>
-
-        //                 {
-        //                     popularMovies.map(movie =>
-
-        //                         <div className='zoom-div-I' key={movie._id}>
-        //                             <img className='popular-movie' src={movie.img} alt="" />
-        //                         </div>)
-        //                 }
-        //             </div>
-        //         </div>
-        //     </div>
-
-        //     <div className='text-container bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
-
-        //         <div className='text-container-left'>
-        //             <h1 className='text-5xl font-bold text-white'>Create profiles for kids.</h1>
-        //             <p className='text-white text-2xl'>Send kids on adventures with their favorite characters in a space made just for them—free with your membership.</p>
-        //         </div>
-
-        //         <div>
-        //             <img src={profileKids} alt="" />
-        //         </div>
-        //     </div>
-        // </section>
     );
 };
 

@@ -2,11 +2,50 @@ import React, { useState } from "react";
 import movie1 from "../../assets/bangla-movie/movie (1).jpg";
 import movie2 from "../../assets/bangla-movie/movie (2).jpg";
 import movie3 from "../../assets/bangla-movie/movie (3).jpg";
-import movie4 from "../../assets/bangla-movie/movie (4).jpg";
-
 import { FaRegThumbsUp, FaEllipsisH, FaComment } from "react-icons/fa";
+import { useParams } from "react-router-dom";
+import useVideo from "../../hooks/useVideo";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import useComments from "../../hooks/useComments";
 
 const Details = () => {
+  const { id } = useParams();
+  const [user] = useAuthState(auth)
+  const [video] = useVideo(id);
+  const [like, setLike] = useState(509);
+
+  const [comments] = useComments();
+
+
+  const handleComment = (e) => {
+    e.preventDefault();
+    const comment = e.target.comment.value;
+    const name = user.displayName;
+    const newComment = { id, name, comment };
+
+    fetch('http://localhost:5000/comment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newComment)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.insertedId) {
+          // alert('Your item successfully added.')
+          e.target.reset();
+        }
+
+      })
+  }
+
+  const handleLike = () => {
+    const totalLike = like + 1;
+    setLike(totalLike);
+  };
+
   const popularMovies = [
     {
       _id: 1,
@@ -43,16 +82,6 @@ const Details = () => {
     },
   ];
 
-
-
-  const [like, setLike] = useState(509);
-
-  const handleLike = () => {
-    const totalLike = like + 1;
-    setLike(totalLike);
-  }
-
-
   return (
     <div className="md:px-14 px-3 pt-3 bg-primary text-secondary">
       <div className="justify-center flex ">
@@ -60,7 +89,7 @@ const Details = () => {
           className="rounded-sm h-full md:h-[700px] md:p-1 shadow-2xl border-2 border-zinc-700 "
           width="100%"
 
-          src="https://www.youtube.com/embed/M3xjz4nxzGQ"
+          src={video.videoLink}
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -71,7 +100,7 @@ const Details = () => {
       <div className="grid  md:grid-cols-6  py-8">
         <div className=" col-start-1 md:col-end-3 col-end-7 flex md:justify-start justify-center items-center w-full">
           <img
-            src={movie4}
+            src={video.imgLink}
             className="md:w-[350px] md:h-[500px] h-3/5  border-[1px] border-white "
             alt=""
           />
@@ -79,7 +108,7 @@ const Details = () => {
         <div className=" md:mt-5 md:col-start-3 col-start-7 col-end-12 md:ml-[-40px] ml-5 ">
           <div >
             <div>
-              <h1 class="md:text-5xl text-lg md:font-semibold">Mogoje Mohaproloy</h1>
+              <h1 className="md:text-5xl text-lg md:font-semibold">Mogoje Mohaproloy</h1>
               <hr className="md:mt-6 bg-secondary h-0.5 my-4 md:mb-4" />
 
               <p className="text-sm">( 2022 )  . 0 hr 4 min . Arabic </p>
@@ -90,16 +119,30 @@ const Details = () => {
                 et a id nisi.
               </p>
               <hr className="md:mt-6 bg-secondary h-0.5 my-3 md:mb-4" />
+
+              {/* Linke */}
               <div className="flex items-center ">
                 <p>{like}</p>
-
                 <button onClick={handleLike}><FaRegThumbsUp className="ml-3 text-amber-500" /></button>
-
-
               </div>
+
+              {/* show comments */}
+              <article>
+                {
+                  comments.map(comment =>
+                    <div key={comment._id}>
+                      <p>{comment.id === id && comment.name}</p>
+                      <p>{comment.id === id && comment.comment}</p>
+                    </div>)
+                }
+              </article>
+
+              {/* comment filed */}
               <div className="mt-5 hidden md:block">
-                <textarea placeholder="Please Write Your Comment" className="p-3 w-3/4 text-black border-2 rounded-sm border-zinc-700" name="" id=""  rows="4"></textarea> <br />
-                <button className="  bg-amber-500 px-7 rounded-sm py-2 mt-2 text-xl">Submit</button>
+                <form onSubmit={handleComment}>
+                  <textarea placeholder="Please Write Your Comment" className="p-3 text-black border-2 rounded-sm border-zinc-700" name="comment" id="" cols="65" rows="4"></textarea> <br />
+                  <input className="  bg-amber-500 px-7 rounded-sm py-2 mt-2 text-xl" type="submit" value="Submit" />
+                </form>
               </div>
 
 
@@ -145,8 +188,8 @@ const Details = () => {
       <hr className="mt-6 bg-secondary h-0.5 md:mb-4 " />
       <div className="grid md:grid-cols-3 md:py-10 md:pt-0 pt-5 gap-5">
         {
-          fakeComment.map(c => <>
-            <div>
+          fakeComment.map((c, index) => <>
+            <div key={index}>
               <div className="flex  items-center text-xl font-semibold"> <FaComment className="mr-2 text-amber-500" />{c.name}</div>
               <p className="ml-7 text-sm">{c.comment}</p>
             </div>
