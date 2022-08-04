@@ -226,7 +226,7 @@ const Details = () => {
                   ✕
                 </label>
                 <h3 class="text-2xl font-bold text-white mb-4">
-                  Share your video on Social media !
+                  Share your video on social media 
                 </h3>
                 <FacebookShareButton url={video.videoLink}>
                   <FacebookIcon className="rounded-3xl mr-4"></FacebookIcon>
