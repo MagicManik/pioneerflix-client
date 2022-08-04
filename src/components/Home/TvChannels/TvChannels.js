@@ -30,7 +30,7 @@ const TvChannels = () => {
             name: 'Movie1',
             description: '',
             img: movie1,
-            link: 'https://www.sonyliv.com/'
+            link: 'https://jagobd.com/mytv'
         },
         {
             _id: 2,
@@ -44,7 +44,7 @@ const TvChannels = () => {
             name: 'Movie3',
             description: '',
             img: movie3,
-            link: 'https://www.yupptv.com/channels/zee-bangla/live'
+            link: 'https://jagobd.com/boishakhitv'
         },
         {
             _id: 4,
@@ -58,112 +58,112 @@ const TvChannels = () => {
             name: 'Movie5',
             description: '',
             img: movie5,
-            link: 'https://www.sonyliv.com/'
+            link: 'https://jagobd.com/channeli'
         },
         {
             _id: 6,
             name: 'Movie6',
             description: '',
             img: movie6,
-            link: 'http://www.nick.com.au/'
+            link: 'https://jagobd.com/rtv'
         },
         {
             _id: 7,
             name: 'Movie7',
             description: '',
             img: movie7,
-            link: 'https://www.sonyliv.com/'
+            link: 'https://jagobd.com/atn-bangla'
         },
         {
             _id: 8,
             name: 'Movie8',
             description: '',
             img: movie8,
-            link: 'https://www.sonyliv.com/'
+            link: 'https://jagobd.com/banglavision'
         },
         {
             _id: 9,
             name: 'Movie9',
             description: '',
             img: movie9,
-            link: 'https://www.sonyliv.com/'
+            link: 'https://jagobd.com/somoynews'
         },
         {
             _id: 10,
             name: 'Movie10',
             description: '',
             img: movie10,
-            link: 'https://www.sonyliv.com/'
+            link: 'https://jagobd.com/dbcnews'
         },
         {
             _id: 11,
             name: 'Movie11',
             description: '',
             img: movie11,
-            link: 'https://www.sonyliv.com/'
+            link: 'https://www.satv.tv/live/'
         },
         {
             _id: 12,
             name: 'Movie12',
             description: '',
             img: movie12,
-            link: 'https://www.sonyliv.com/'
+            link: 'https://jagobd.com/channel24'
         },
         {
             _id: 13,
             name: 'Movie13',
             description: '',
             img: movie13,
-            link: 'https://www.sonyliv.com/'
+            link: 'https://jagobd.com/anandatv'
         },
         {
             _id: 14,
             name: 'Movie14',
             description: '',
             img: movie14,
-            link: 'https://www.sonyliv.com/'
+            link: 'https://jagobd.com/news24tv'
         },
         {
             _id: 15,
             name: 'Movie15',
             description: '',
             img: movie15,
-            link: 'https://www.sonyliv.com/'
+            link: 'https://jagobd.com/btvworld'
         },
         {
             _id: 16,
             name: 'Movie16',
             description: '',
             img: movie16,
-            link: 'https://www.sonyliv.com/'
+            link: 'https://jagobd.com/asian'
         },
         {
             _id: 17,
             name: 'Movie17',
             description: '',
             img: movie17,
-            link: 'https://www.sonyliv.com/'
+            link: 'https://jagobd.com/bijoytv'
         },
         {
             _id: 18,
             name: 'Movie18',
             description: '',
             img: movie18,
-            link: 'https://www.sonyliv.com/'
+            link: 'https://jagobd.com/deshtv'
         },
         {
             _id: 19,
             name: 'Movie19',
             description: '',
             img: movie19,
-            link: 'https://www.sonyliv.com/'
+            link: 'https://jagobd.com/makkahlive'
         },
         {
             _id: 20,
             name: 'Movie20',
             description: '',
             img: movie20,
-            link: 'https://www.sonyliv.com/'
+            link: 'https://jagobd.com/madinalive'
         },
     ]
 
