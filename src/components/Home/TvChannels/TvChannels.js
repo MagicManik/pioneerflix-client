@@ -63,17 +63,16 @@ const TvChannels = () => {
     ]
 
     return (
-
         <section className='bg-secondary pb-3'>
             <div className='bg-primary video-section'>
                 <div className='bg-primary lg:px-20 sm:px-4 video-container'>
-                    <h1 className='text-2xl text-white py-6'>TV CHANNELS</h1>
+                    <h1 className='text-2xl text-secondary py-6'>TV CHANNELS</h1>
                     <div className='grid lg:grid-cols-8 gap-4 popular-movie-section'>
 
                         {
                             popularMovies.map(movie =>
 
-                                <div className='zoom-div-1' key={movie._id}>
+                                <div className='pr-2 pb-2 pl-2 zoom-div-I' key={movie._id}>
                                     <img className='popular-movie' src={movie.img} alt="" />
                                 </div>)
                         }
@@ -81,21 +80,21 @@ const TvChannels = () => {
                 </div>
             </div>
 
-            <div className='text-container bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
+            <div className='text-container text-secondary bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
 
                 <div className='text-container-left'>
-                    <h1 className='text-5xl font-bold text-white'>Enjoy on your TV.</h1>
-                    <p className='text-white text-2xl'>Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.</p>
+                    <h1 className='text-5xl font-bold '>Enjoy on your TV.</h1>
+                    <p className=' text-2xl'>Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.</p>
                 </div>
 
                 <div className='our-story-card-animation-container pb-20'>
-                    <img className='tv-img' src={tv} alt="" />
+                    <img className='tv-img rounded-xl ' src={tv} alt="" />
 
                     <div className='our-story-card-animation' data-uia="our-story-card-animation">
 
                         <video className='our-story-card-video'
 
-                            data-uia="our-story-card-video" autoPlay playsinline muted loop>
+                            data-uia="our-story-card-video" autoPlay playsInline muted loop>
                             <source src='https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-0819.m4v' type='video/mp4' />
 
                         </video>

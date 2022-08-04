@@ -7,16 +7,27 @@ module.exports = {
   daisyui: {
     themes: [
       {
-        mytheme: {
+        dark: {
           primary: "#000",
-          secondary: "#222",
-          accent: "#37cdbe",
-          neutral: "#3d4451",
-          "base-100": "#ffffff",
+          secondary: "#FFFFFF",
+          accent: "#111111",
+          neutral: "#FFFFFF",
+          info: "#000",
+          error: "#FA5C5C",
         },
       },
-      "dark",
-      "cupcake",
+      {
+        light: {
+         
+          primary: "#ffffff",
+          secondary: "#000",
+          // accent: "#404040",
+          accent: "#1c4662",
+          neutral: "#FFFFFF",
+          info: "#0C4A6E",
+          error: "#FB7185",
+        },
+      },
     ],
   },
   plugins: [require("daisyui")],
