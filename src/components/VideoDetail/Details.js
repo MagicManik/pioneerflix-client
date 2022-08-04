@@ -218,14 +218,14 @@ const Details = () => {
 
             <input type="checkbox" id="my-modal-3" class="modal-toggle" />
             <div class="modal">
-              <div class="modal-box bg-orange-300 shadow-blue-500/50 relative">
+              <div class="modal-box bg-black relative">
                 <label
                   for="my-modal-3"
                   class="btn btn-sm btn-circle absolute right-2 top-2"
                 >
                   ✕
                 </label>
-                <h3 class="text-2xl font-bold text-slate-900 mb-4">
+                <h3 class="text-2xl font-bold text-white mb-4">
                   Share your video on Social media !
                 </h3>
                 <FacebookShareButton url={video.videoLink}>
