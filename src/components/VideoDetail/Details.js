@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import movie1 from "../../assets/bangla-movie/movie (1).jpg";
 import movie2 from "../../assets/bangla-movie/movie (2).jpg";
 import movie3 from "../../assets/bangla-movie/movie (3).jpg";
-
 import { FaRegThumbsUp, FaEllipsisH, FaComment } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import useVideo from "../../hooks/useVideo";
@@ -13,10 +12,10 @@ import useComments from "../../hooks/useComments";
 const Details = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth)
-  const [video, setVideo] = useVideo(id);
+  const [video] = useVideo(id);
   const [like, setLike] = useState(509);
-  const [comments, setComments] = useComments();
-  ;
+
+  const [comments] = useComments();
 
 
   const handleComment = (e) => {
@@ -35,19 +34,12 @@ const Details = () => {
       .then(res => res.json())
       .then(data => {
         if (data.insertedId) {
-          alert('Your item successfully added.')
+          // alert('Your item successfully added.')
           e.target.reset();
         }
+
       })
   }
-
-  // const addComment = (event) => {
-  //   event.preventDefault();
-  //   const comment = event.target.description.value;
-  //   const newComments = [comment, ...comments];
-  //   setComments(newComments);
-  //   event.target.reset();
-  // };
 
   const handleLike = () => {
     const totalLike = like + 1;
@@ -133,6 +125,8 @@ const Details = () => {
                 <p>{like}</p>
                 <button onClick={handleLike}><FaRegThumbsUp className="ml-3 text-amber-500" /></button>
               </div>
+
+              {/* show comments */}
               <article>
                 {
                   comments.map(comment =>
