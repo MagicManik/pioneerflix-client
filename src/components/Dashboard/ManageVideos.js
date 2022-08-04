@@ -12,10 +12,10 @@ const ManageVideos = () => {
                     {/* <!-- head --> */}
                     <thead>
                         <tr>
-                            <th>Uploaded Video</th>
-                            <th>Uploader</th>
-                            <th>Upload by admin</th>
-                            <th>Odd Videos</th>
+                            <th  className='bg-gray-300 text-[#125f82]'>Uploaded Video</th>
+                            <th  className='bg-gray-300 text-[#125f82]'>Uploader</th>
+                            <th  className='bg-gray-300 text-[#125f82]'>Upload by admin</th>
+                            <th  className='bg-gray-300 text-[#125f82]'>Odd Videos</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -127,10 +127,10 @@ const ManageVideos = () => {
                     {/* <!-- foot --> */}
                     <tfoot>
                         <tr>
-                            <th>Uploaded Video</th>
-                            <th>Uploader</th>
-                            <th>Upload by admin</th>
-                            <th>Odd Videos</th>
+                            <th  className='bg-gray-300 text-[#125f82]'>Uploaded Video</th>
+                            <th  className='bg-gray-300 text-[#125f82]'>Uploader</th>
+                            <th  className='bg-gray-300 text-[#125f82]'>Upload by admin</th>
+                            <th  className='bg-gray-300 text-[#125f82]'>Odd Videos</th>
                         </tr>
                     </tfoot>
 

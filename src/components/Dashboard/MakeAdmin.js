@@ -11,11 +11,11 @@ const MakeAdmin = () => {
                 <table class="table w-full">
                     <thead>
                         <tr>
-                            <th>Index</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th className="text-center">Role</th>
-                            <th className="text-center">Action</th>
+                            <th className='bg-gray-300 text-[#125f82]'>Index</th>
+                            <th className='bg-gray-300 text-[#125f82]'>Name</th>
+                            <th className='bg-gray-300 text-[#125f82]'>Email</th>
+                            <th className="text-center bg-gray-300 text-[#125f82]">Role</th>
+                            <th className="text-center bg-gray-300 text-[#125f82]">Action</th>
                         </tr>
                     </thead>
                     <tbody>
