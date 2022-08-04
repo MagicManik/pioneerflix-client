@@ -10,8 +10,8 @@ const UploadVideo = () => {
     } = useForm();
 
     const onSubmit = (data, e) => {
-        // console.log(data);
-        // e.target.reset();
+        console.log(data);
+        e.target.reset();
 
     };
     return (
@@ -34,7 +34,7 @@ const UploadVideo = () => {
                                 </label>
                                 <textarea
                                     type="text"
-                                    {...register("name")}
+                                    {...register("title")}
                                     required
                                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     placeholder="Title"
@@ -61,11 +61,11 @@ const UploadVideo = () => {
                                     Select Type
                                 </label>
                                 <select
-                                    {...register("type")}
+                                    {...register("category")}
                                     required
                                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    type="type"
-                                    placeholder="Type"
+                                    type="text"
+                                    placeholder="Category"
                                 >
                                     <option value=""></option>
                                     <option value="Drama">Drama</option>
@@ -87,6 +87,30 @@ const UploadVideo = () => {
                                     className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     type="text"
                                     placeholder="Video Link"
+                                />
+                            </div>
+                        </div>
+                        <div className="flex  gap-5 -mx-3 mb-6">
+                            <div className="w-full md:w-1/2 px-3">
+                                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                                Duration
+                                </label>
+                                <input
+                                    {...register("duration")}
+                                    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    type="text"
+                                    placeholder="Video Duration"
+                                />
+                            </div>
+                            <div className="w-full md:w-1/2 px-3">
+                                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                                    Image for Display
+                                </label>
+                                <input
+                                    {...register("imgLink")}
+                                    className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                    type="text"
+                                    placeholder="Image Link"
                                 />
                             </div>
                         </div>
