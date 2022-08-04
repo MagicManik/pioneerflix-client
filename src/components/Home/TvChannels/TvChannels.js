@@ -1,5 +1,5 @@
 import React from 'react';
-import movie1 from '../../../assets/tvchannels/tv-chaneel1.png';
+import movie1 from '../../../assets/';
 import movie2 from '../../../assets/tvchannels/tv-chaneel2.png';
 import movie3 from '../../../assets/tvchannels/tv-chaneel3.png';
 import movie4 from '../../../assets/tvchannels/tv-chaneel4.png';
