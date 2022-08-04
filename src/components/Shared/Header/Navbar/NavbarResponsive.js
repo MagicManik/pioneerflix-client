@@ -14,10 +14,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import CustomLink from "../../customLink/CustomLink";
 
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Dashboard", href: "/d" },
-];
+// const navigation = [
+//   { name: "Home", href: "/" },
+//   { name: "Dashboard", href: "/d" },
+// ];
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -103,14 +103,14 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   {/* search here */}
-                  <div className="relative hidden md:block text-black">
-                    <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                  <div className="relative hidden md:block mr-5 text-black">
+                    <div className="flex absolute inset-y-0  left-0 items-center pl-3 pointer-events-none">
                       <FaSearch className="text-sm" />
                     </div>
                     <input
                       type="text"
                       id="search-navbar"
-                      className="block p-1 pl-10 w-[95%]  bg-gray-50 rounded-sm border  sm:text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="block p-1 hover:p-1.5 hover:rounded-full pl-10 duration-1000 hover:px-14  hover:text-white  hover:scale-x-100 mr-5 bg-gray-50 rounded-sm border  sm:text-sm hover:bg-accent"
                       placeholder="Search..."
                     />
                   </div>
