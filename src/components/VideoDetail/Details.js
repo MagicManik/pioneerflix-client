@@ -22,9 +22,9 @@ const Details = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth);
   const [video] = useVideo(id);
-  const [likes, setLikes] = useComments();
+  // const [likes, setLikes] = useComments();
 
-  // const [like, setLike] = useState(509);
+  const [like, setLike] = useState(509);
 
   const [comments] = useComments();
 
@@ -34,7 +34,7 @@ const Details = () => {
     const name = user.displayName;
     const newComment = { id, name, comment };
 
-    fetch("http://localhost:5000/comment", {
+    fetch("https://infinite-island-65121.herokuapp.com/comment", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,24 +52,25 @@ const Details = () => {
 
   // handle like
   const handleLike = () => {
-    const like = true;
-    const name = user.displayName;
-    const email = user.email;
-    const newLike = { id, like, name, email };
+    setLike(like + 1)
+    // const like = true;
+    // const name = user.displayName;
+    // const email = user.email;
+    // const newLike = { id, like, name, email };
 
-    fetch("http://localhost:5000/like", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newLike),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
-          alert("Your item successfully added.");
-        }
-      });
+    // fetch("https://infinite-island-65121.herokuapp.com/like", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(newLike),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     if (data.insertedId) {
+    //       alert("Your item successfully added.");
+    //     }
+    //   });
   };
 
   const popularMovies = [
@@ -152,9 +153,11 @@ const Details = () => {
               {/* Linke */}
               <div className="flex items-center ">
                 <div>
-                  {likes.map((like, index) => (
+
+                  {like}
+                  {/* {likes.map((like, index) => (
                     <p>{index + 1}</p>
-                  ))}
+                  ))} */}
                 </div>
 
                 <button
@@ -205,7 +208,7 @@ const Details = () => {
             <button className="bg-amber-500 py-3 px-6 ">Add To My List</button>
 
 
-                  {/* ---------------------Share a video------------------ */}
+            {/* ---------------------Share a video------------------ */}
             <label
               for="my-modal-3"
               class=" border-2 cursor-pointer btn btn-outline btn-warning border-amber-500 py-2 md:ml-2 ml-3 px-7 md:px-6"
@@ -214,7 +217,7 @@ const Details = () => {
             </label>
 
 
-            {/* <!------------- Social media Open in a modal ---------------------> */}   
+            {/* <!------------- Social media Open in a modal ---------------------> */}
 
             <input type="checkbox" id="my-modal-3" class="modal-toggle" />
             <div class="modal">
@@ -226,7 +229,7 @@ const Details = () => {
                   ✕
                 </label>
                 <h3 class="text-2xl font-bold text-white mb-4">
-                  Share your video on social media 
+                  Share your video on social media
                 </h3>
                 <FacebookShareButton url={video.videoLink}>
                   <FacebookIcon className="rounded-3xl mr-4"></FacebookIcon>
