@@ -16,6 +16,8 @@ import {
   WhatsappIcon,
   TwitterShareButton,
   TwitterIcon,
+  FacebookMessengerIcon,
+  FacebookMessengerShareButton
 } from "react-share";
 
 const Details = () => {
@@ -207,7 +209,7 @@ const Details = () => {
 
                   {/* ---------------------Share a video------------------ */}
             <label
-              for="my-modal-3"
+              for="my-share-modal-3"
               class=" border-2 cursor-pointer btn btn-outline btn-warning border-amber-500 py-2 md:ml-2 ml-3 px-7 md:px-6"
             >
               Share
@@ -216,11 +218,11 @@ const Details = () => {
 
             {/* <!------------- Social media Open in a modal ---------------------> */}   
 
-            <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+            <input type="checkbox" id="my-share-modal-3" class="modal-toggle" />
             <div class="modal">
               <div class="modal-box bg-black relative">
                 <label
-                  for="my-modal-3"
+                  for="my-share-modal-3"
                   class="btn btn-sm btn-circle absolute right-2 top-2"
                 >
                   ✕
@@ -232,14 +234,18 @@ const Details = () => {
                   <FacebookIcon className="rounded-3xl mr-4"></FacebookIcon>
                 </FacebookShareButton>
 
+                <FacebookMessengerShareButton url={video.videoLink}><FacebookMessengerIcon  className="rounded-3xl mr-4"></FacebookMessengerIcon></FacebookMessengerShareButton>
+
                 <WhatsappShareButton url={video.videoLink}>
                   <WhatsappIcon className="rounded-3xl mr-4"></WhatsappIcon>
                 </WhatsappShareButton>
 
                 <TwitterShareButton url={video.videoLink}>
                   {" "}
-                  <TwitterIcon className="rounded-3xl "></TwitterIcon>
+                  <TwitterIcon className="rounded-3xl mr-4"></TwitterIcon>
                 </TwitterShareButton>
+
+               
               </div>
             </div>
             <button className="border-2 border-amber-500 py-3 md:ml-2 ml-4 px-7 md:px-6">
