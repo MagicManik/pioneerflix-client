@@ -9,16 +9,23 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import useComments from "../../hooks/useComments";
 import './Details.css';
+// import useLikes from "../../hooks/useLikes";
 
 const Details = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth)
   const [video] = useVideo(id);
-  const [likes, setLikes] = useComments();
+  const [comments] = useComments();
+  const [like, setLike] = useState(509);
+  // const [likes, setLikes] = useLikes();
+
+  // console.log(likes)
+
+
 
   // const [like, setLike] = useState(509);
 
-  const [comments] = useComments();
+
 
 
   const handleComment = (e) => {
@@ -46,24 +53,27 @@ const Details = () => {
 
   // handle like
   const handleLike = () => {
-    const like = true;
-    const name = user.displayName;
-    const email = user.email;
-    const newLike = { id, like, name, email };
+    setLike(like + 1);
 
-    fetch('http://localhost:5000/like', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newLike)
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.insertedId) {
-          alert('Your item successfully added.')
-        }
-      })
+
+    // const like = 1;
+    // const name = user.displayName;
+    // const email = user.email;
+    // const newLike = { id, like, name, email };
+
+    // fetch('http://localhost:5000/like', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(newLike)
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     if (data.insertedId) {
+    //       alert('Your item successfully added.')
+    //     }
+    //   })
   };
 
 
@@ -113,9 +123,9 @@ const Details = () => {
 
           src={video.videoLink}
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </div>
 
@@ -142,12 +152,16 @@ const Details = () => {
               </p>
               <hr className="md:mt-6 bg-secondary h-0.5 my-3 md:mb-4" />
 
+
+              {/*  --------------------------------------------------- */}
               {/* Linke */}
               <div className="flex items-center ">
                 <div>
-                  {
-                    likes.map((like, index) => <p>{index + 1}</p>)
-                  }
+                  {like}
+                  {/* {
+                    likes.map(like => <p>{like.like}</p>)
+                  } */}
+
                 </div>
 
                 <button onClick={handleLike} className="btn btn-circle bg-transparent ml-3 custom-like-btn hover:bg-transparent" >
