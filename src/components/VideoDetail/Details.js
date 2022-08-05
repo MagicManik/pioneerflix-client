@@ -242,8 +242,6 @@ const Details = () => {
                   {" "}
                   <TwitterIcon className="rounded-3xl mr-4"></TwitterIcon>
                 </TwitterShareButton>
-
-               
               </div>
             </div>
             <button className="border-2 border-amber-500 py-3 md:ml-2 ml-4 px-7 md:px-6">
