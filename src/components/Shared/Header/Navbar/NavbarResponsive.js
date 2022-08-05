@@ -1,4 +1,4 @@
-import { React, Fragment, useState, useEffect } from "react";
+import { React, Fragment, useState} from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import {
   FaAlignJustify,
@@ -14,16 +14,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import CustomLink from "../../customLink/CustomLink";
 
-// const navigation = [
-//   { name: "Home", href: "/" },
-//   { name: "Dashboard", href: "/d" },
-// ];
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const NavbarResponsive = ({ theme, setTheme }) => {
   const [scrollNavbar, setScrollNavbar] = useState(false);
-  // const [xyz,setXyz]=useState()
 
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
@@ -33,29 +28,15 @@ const NavbarResponsive = ({ theme, setTheme }) => {
     navigate("/");
 
   };
-//   const handleTheme=(colorTheme)=>{
-// // console.log(colorTheme)
-//     if(colorTheme==='dark'){
-//       localStorage.setItem('colorTheme',colorTheme)
-//     }
-//     else{
-//       localStorage.setItem('colorTheme',colorTheme)
-//     }
-//   }
-//   let getTheme=localStorage.getItem('colorTheme')
+  const handleTheme=(colorTheme)=>{
 
-//   useEffect(()=>{
-//     if(getTheme ==='dark'){
-//       setXyz(true)
-//     }
-//     else{
-//       setXyz(false)
-//     }
-  
-//   },[getTheme,xyz])
-
-// console.log(getTheme)
-// console.log(xyz)
+    if(colorTheme==='dark'){
+      localStorage.setItem('colorTheme',colorTheme)
+    }
+    else{
+      localStorage.setItem('colorTheme',colorTheme)
+    }
+  }
 
   const changeBackground = () => {
     if (window.scrollY >= 50) {
@@ -152,19 +133,12 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       placeholder="Search..."
                     />
                   </div>
-
                   <button
                     className=" text-white text-xl"
                     onClick={() => setTheme(!theme)}
                   >
-                    {theme ? <FaRegMoon /> : <FaSun />}
+                    {theme ? <FaRegMoon onClick={()=>handleTheme('white')} /> : <FaSun onClick={()=>handleTheme('dark')} />}
                   </button>
-                  {/* <button
-                    className=" text-white text-xl"
-                    onClick={() => setTheme(xyz)}
-                  >
-                    {xyz ? <FaRegMoon onClick={()=>handleTheme('white')} /> : <FaSun onClick={()=>handleTheme('dark')} />}
-                  </button> */}
                   <button type="button" className=" text-white mx-2 md:mx-3">
                     <span className="sr-only">View notifications</span>
 
