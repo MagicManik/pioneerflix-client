@@ -12,6 +12,7 @@ import auth from "../../../../firebase.init";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
+import pioneerFlix from '../../../../assets/app-logo/pioneerflix.png';
 
 
 const navigation = [
@@ -42,7 +43,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
   window.addEventListener('scroll', changeBackground)
   return (
     <>
-      <Disclosure as="nav" className={scrollNavbar ? "bg-violet-900 sticky top-0 left-0 z-20" : "bg-info sticky top-0 left-0 z-20"}>
+      <Disclosure as="nav" className={scrollNavbar ? "sticky bg-primary top-0 left-0 z-20 border-0" : "border-0 absolute left-0 right-0 z-20 bg-transparent"}>
         {({ open }) => (
           <>
             <div className="max-w-8xl  mx-auto px-2 sm:px-6 lg:px-14 ">
@@ -66,16 +67,20 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                 </div>
                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="flex-shrink-0 flex items-center">
-                    <img
-                      className="block lg:hidden h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                      alt="Workflow"
-                    />
-                    <img
-                      className="hidden lg:block h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                      alt="Workflow"
-                    />
+                    <Link to={'/'}>
+                      <img
+                        className="block lg:hidden h-8 w-auto"
+                        src={pioneerFlix}
+                        alt="Workflow"
+                      />
+                    </Link>
+                    <Link to={'/'}>
+                      <img
+                        className="hidden lg:block h-12 w-auto"
+                        src={pioneerFlix}
+                        alt="Workflow"
+                      />
+                    </Link>
                   </div>
                   <div className="hidden sm:block sm:ml-6">
                     <div className="flex space-x-4">
@@ -139,7 +144,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                               alt=""
                             />
                             :
-                            <Link to="/logIn" className='bg-white px-4 py-2 rounded-xl' >LOG IN</Link>
+                            <Link to="/logIn" className='bg-black px-4 py-2 rounded-xl'>LOG IN</Link>
                         }
 
                       </Menu.Button>
@@ -158,8 +163,8 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                           {({ active }) => (
                             <button
                               className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm "
+                                active ? "bg-zinc-800 w-full text-left" : "w-full",
+                                "block px-4 py-2 text-sm text-left"
                               )}
                             >
                               Your Profile
@@ -171,8 +176,8 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                             <button
                               onClick={handleLogOut}
                               className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm "
+                                active ? "bg-zinc-800 w-full text-left" : "w-full",
+                                "block px-4 py-2 text-sm text-left"
                               )}
                             >
                               Sign out
