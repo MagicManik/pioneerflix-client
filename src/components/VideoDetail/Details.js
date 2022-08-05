@@ -234,8 +234,6 @@ const Details = () => {
                   <FacebookIcon className="rounded-3xl mr-4"></FacebookIcon>
                 </FacebookShareButton>
 
-                <FacebookMessengerShareButton url={video.videoLink}><FacebookMessengerIcon  className="rounded-3xl mr-4"></FacebookMessengerIcon></FacebookMessengerShareButton>
-
                 <WhatsappShareButton url={video.videoLink}>
                   <WhatsappIcon className="rounded-3xl mr-4"></WhatsappIcon>
                 </WhatsappShareButton>
