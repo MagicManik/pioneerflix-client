@@ -16,8 +16,10 @@ import {
   WhatsappIcon,
   TwitterShareButton,
   TwitterIcon,
-  FacebookMessengerIcon,
-  FacebookMessengerShareButton
+  LinkedinShareButton,
+  LinkedinIcon,
+  RedditIcon,
+  RedditShareButton
 } from "react-share";
 
 const Details = () => {
@@ -213,7 +215,7 @@ const Details = () => {
             {/* ---------------------Share a video------------------ */}
             <label
               for="my-share-modal-3"
-              class=" border-2 cursor-pointer btn btn-outline btn-warning border-amber-500 py-2 md:ml-2 ml-3 px-7 md:px-6"
+              class=" border-2 cursor-pointer hover:bg-amber-500 border-amber-500 py-2 md:ml-2 ml-3 px-7 md:px-6"
             >
               Share
             </label>
@@ -245,6 +247,10 @@ const Details = () => {
                   {" "}
                   <TwitterIcon className="rounded-3xl mr-4"></TwitterIcon>
                 </TwitterShareButton>
+
+                <LinkedinShareButton url={video.videoLink}><LinkedinIcon className="rounded-3xl mr-4"></LinkedinIcon></LinkedinShareButton>
+
+                <RedditShareButton url={video.videoLink}><RedditIcon className="rounded-3xl"></RedditIcon></RedditShareButton>
               </div>
             </div>
             <button className="border-2 border-amber-500 py-3 md:ml-2 ml-4 px-7 md:px-6">
