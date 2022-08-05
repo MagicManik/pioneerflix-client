@@ -10,14 +10,13 @@ import Details from "./components/VideoDetail/Details";
 
 
 function App() {
-  const [theme, setTheme] = useState(true)
+  const [theme, setTheme] = useState()
   return (
     <div data-theme={theme ? "dark" : "light"}>
       <NavbarResponsive theme={theme} setTheme={setTheme} />
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/about" element={<About></About>}></Route>
-
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path='/play/:id' element={<Details />} />
 

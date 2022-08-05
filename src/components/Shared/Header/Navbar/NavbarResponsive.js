@@ -1,4 +1,4 @@
-import { React, Fragment, useState } from "react";
+import { React, Fragment, useState, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import {
   FaAlignJustify,
@@ -23,6 +23,7 @@ function classNames(...classes) {
 }
 const NavbarResponsive = ({ theme, setTheme }) => {
   const [scrollNavbar, setScrollNavbar] = useState(false);
+  // const [xyz,setXyz]=useState()
 
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
@@ -30,7 +31,32 @@ const NavbarResponsive = ({ theme, setTheme }) => {
   const handleLogOut = () => {
     signOut(auth);
     navigate("/");
+
   };
+//   const handleTheme=(colorTheme)=>{
+// // console.log(colorTheme)
+//     if(colorTheme==='dark'){
+//       localStorage.setItem('colorTheme',colorTheme)
+//     }
+//     else{
+//       localStorage.setItem('colorTheme',colorTheme)
+//     }
+//   }
+//   let getTheme=localStorage.getItem('colorTheme')
+
+//   useEffect(()=>{
+//     if(getTheme ==='dark'){
+//       setXyz(true)
+//     }
+//     else{
+//       setXyz(false)
+//     }
+  
+//   },[getTheme,xyz])
+
+// console.log(getTheme)
+// console.log(xyz)
+
   const changeBackground = () => {
     if (window.scrollY >= 50) {
       setScrollNavbar(true);
@@ -89,6 +115,18 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         {" "}
                         Home
                       </CustomLink>
+                      <CustomLink
+                        to="/tv"
+                        className=" text-white  hover:text-white"
+                      >
+                        TV Shows
+                      </CustomLink>
+                      <CustomLink
+                        to="/movies"
+                        className=" text-white  hover:text-white"
+                      >
+                        Movies
+                      </CustomLink>
                       {user && (
                         <CustomLink
                           to="/dashboard"
@@ -121,6 +159,12 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   >
                     {theme ? <FaRegMoon /> : <FaSun />}
                   </button>
+                  {/* <button
+                    className=" text-white text-xl"
+                    onClick={() => setTheme(xyz)}
+                  >
+                    {xyz ? <FaRegMoon onClick={()=>handleTheme('white')} /> : <FaSun onClick={()=>handleTheme('dark')} />}
+                  </button> */}
                   <button type="button" className=" text-white mx-2 md:mx-3">
                     <span className="sr-only">View notifications</span>
 
@@ -196,6 +240,18 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   {" "}
                   Home
                 </CustomLink>
+                <CustomLink
+                        to="/tv"
+                        className=" text-white  hover:text-white"
+                      >
+                        TV Shows
+                      </CustomLink>
+                      <CustomLink
+                        to="/movies"
+                        className=" text-white  hover:text-white"
+                      >
+                        Movies
+                      </CustomLink>
                 {user && (
                   <CustomLink
                     to="/dashboard"
