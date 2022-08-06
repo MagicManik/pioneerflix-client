@@ -13,6 +13,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import pioneerFlix from '../../../../assets/app-logo/pioneerflix.png';
+import './NavbarResponsive.css';
 
 
 const navigation = [
@@ -43,7 +44,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
   window.addEventListener('scroll', changeBackground)
   return (
     <>
-      <Disclosure as="nav" className={scrollNavbar ? "sticky bg-primary top-0 left-0 z-20 border-0" : "border-0 absolute left-0 right-0 z-20 bg-transparent"}>
+      <Disclosure as="nav" className={scrollNavbar ? "sticky header-scrolling top-0 left-0 z-20 border-0" : "border-0 absolute left-0 right-0 z-20 bg-transparent"}>
         {({ open }) => (
           <>
             <div className="max-w-8xl  mx-auto px-2 sm:px-6 lg:px-14 ">
