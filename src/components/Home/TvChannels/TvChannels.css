@@ -112,4 +112,8 @@ h3 {
     h3 {
         font-size: 1.1rem !important;
     }
+
+    p {
+        font-size: 14px;
+    }
 }

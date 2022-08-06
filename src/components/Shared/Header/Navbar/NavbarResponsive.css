@@ -6,6 +6,15 @@
     border-bottom: 1px solid #222;
 }
 
+.custom-border {
+    border: 2px solid rgba(255, 255, 255, 0.726);
+    border-radius: 50%;
+}
+
+.custom-border-II {
+    border: 1px solid #222;
+}
+
 .search-input {
     background-color: #222;
 }

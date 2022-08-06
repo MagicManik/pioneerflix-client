@@ -82,7 +82,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     </Link>
                     <Link to={'/'}>
                       <img
-                        className="hidden lg:block h-12 w-auto"
+                        className="hidden lg:block h-12 pt-2 w-auto"
                         src={pioneerFlix}
                         alt="Workflow"
                       />
@@ -147,7 +147,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   </button>
 
                   {/* Profile dropdown */}
-                  <Menu as="div" className="ml-3 relative">
+                  <Menu as="div" className="ml-3 relative custom-border">
                     <div>
                       <Menu.Button className=" flex text-sm">
                         <span className="sr-only">Open user menu</span>
@@ -175,7 +175,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="origin-top-right absolute z-20 right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-primary ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Items className="origin-top-right absolute z-20 right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-primary ring-1 ring-black ring-opacity-5 focus:outline-none custom-border-II">
                         <Menu.Item>
                           {({ active }) => (
                             <button
