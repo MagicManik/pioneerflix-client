@@ -33,6 +33,7 @@ const Details = () => {
     const comment = e.target.comment.value;
     const name = user.displayName;
     const newComment = { id, name, comment };
+    console.log(newComment)
 
     fetch("https://infinite-island-65121.herokuapp.com/comment", {
       method: "POST",
@@ -137,12 +138,12 @@ const Details = () => {
           <div>
             <div>
               <h1 className="md:text-5xl text-lg md:font-semibold">
-                Mogoje Mohaproloy
+                {video?.title}
               </h1>
               <hr className="md:mt-6 bg-secondary h-0.5 my-4 md:mb-4" />
 
               <p className="text-sm">( 2022 ) . 0 hr 4 min . Arabic </p>
-              <p className="my-2 text-sm"> Type : Song</p>
+              <p className="my-2 text-sm"> Category : Bangla Movie</p>
               <p>
                 Provident cupiditate voluptatem et in. Quaerat fugiat ut
                 assumenda excepturi exercitationem quasi. In deleniti eaque aut
@@ -254,7 +255,7 @@ const Details = () => {
           {/* ---------this is another input field for mobile device ----------- */}
 
           <div className=" block md:hidden my-5">
-            <textarea
+            <textarea onSubmit={handleComment}
               placeholder="Please Write Your Comment"
               className="p-3 w-full text-black border-2 rounded-sm border-zinc-700"
               name=""

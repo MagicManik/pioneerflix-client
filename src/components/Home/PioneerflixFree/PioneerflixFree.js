@@ -97,39 +97,40 @@ const PioneerflixFree = () => {
     };
 
     return (
-        <section className='text-secondary pb-3'>
-
-            <div className='bg-primary pl-5  video-container-II'>
-                <h3 className='text-2xl  pt-6'>PIONEERFLIX FREE</h3>
-                <div className='pb-10'>
-                    <Slider {...settings}>
-
-                        {
-                            popularMovies.map(movie =>
-
-                                <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
-                                    <Link to='/ok'>
-                                        <img className='popular-movie' src={movie.img} alt="" />
-                                    </Link>
-
-                                </div>)
-                        }
-
-                    </Slider>
-                </div>
-                <i className="fa fal fa-angle-double-down"></i>
-
-
-                <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
-
-                    <div className='text-container-left-2 pb-10'>
-                        <h1 className='text-5xl font-bold '>Watch 100+ Exclusive Videos</h1>
-                        <br />
-                        <p className=' text-2xl'>Download your shows to watch offline.</p>
-                    </div>
-
+        <section className='text-secondary'>
+            <div className='pb-3 custom-bg'>
+                <div className='bg-primary pl-5  video-container-II'>
+                    <h3 className='text-2xl  pt-6'>PIONEERFLIX FREE</h3>
                     <div className='pb-10'>
-                        <img className='w-10/12 pt-10 rounded-2xl' src={freeVideo} alt="" />
+                        <Slider {...settings}>
+
+                            {
+                                popularMovies.map(movie =>
+
+                                    <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
+                                        <Link to='/ok'>
+                                            <img className='popular-movie' src={movie.img} alt="" />
+                                        </Link>
+
+                                    </div>)
+                            }
+
+                        </Slider>
+                    </div>
+                    <i className="fa fal fa-angle-double-down"></i>
+
+
+                    <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
+
+                        <div className='text-container-left-2 pb-10'>
+                            <h1 className='text-5xl font-bold '>Watch 100+ Exclusive Videos</h1>
+                            <br />
+                            <p className=' text-2xl'>Download your shows to watch offline.</p>
+                        </div>
+
+                        <div className='pb-10'>
+                            <img className='w-10/12 pt-10 rounded-2xl' src={freeVideo} alt="" />
+                        </div>
                     </div>
                 </div>
             </div>

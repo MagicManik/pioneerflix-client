@@ -1,6 +1,7 @@
 import React from 'react';
 import playStore from '../../../assets/app-logo/playstore.png';
 import appStore from '../../../assets/app-logo/appstore.png';
+import pioneerFlix from '../../../assets/app-logo/pioneerflix.png';
 import './Footer.css';
 
 const Footer = () => {
@@ -8,14 +9,14 @@ const Footer = () => {
         <footer className='bg-info text-white'>
             <div className="footer-section bg-info">
                 <div className='footer-container'>
-                    <h2 className='text-4xl font-bold text-red-500 py-2'>Pioneerflix</h2>
+                    <img className='w-8/12 mx-auto pb-3' src={pioneerFlix} alt="" />
                     <p className='text-2xl'>Download Our Mobile App</p>
                     <div className='flex py-5 gap-3'>
                         <a href="https://www.google.com/">
-                            <img className='app-logo' src={playStore} alt="" />
+                            <img className='app-logo mr-1' src={playStore} alt="" />
                         </a>
                         <a href="https://www.google.com/">
-                            <img className='app-logo ps-2' src={appStore} alt="" />
+                            <img className='app-logo ps-2 ml-1' src={appStore} alt="" />
                         </a>
                     </div>
                 </div>
@@ -53,7 +54,6 @@ const Footer = () => {
                 </div>
 
             </div>
-<hr />
             <div className='text-center py-4 copy-right'>Copyright &copy; pioneerflix.com</div>
 
         </footer>
