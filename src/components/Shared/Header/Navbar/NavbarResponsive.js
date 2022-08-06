@@ -9,6 +9,8 @@ import {
   FaSearch,
 } from "react-icons/fa";
 import auth from "../../../../firebase.init";
+import CustomLink from "../../customLink/CustomLink";
+
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
@@ -16,32 +18,38 @@ import pioneerFlix from '../../../../assets/app-logo/pioneerflix.png';
 import './NavbarResponsive.css';
 
 
-const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Dashboard", href: "/dashboard" },
-];
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 const NavbarResponsive = ({ theme, setTheme }) => {
-  const [scrollNavbar, setScrollNavbar] = useState(false)
+  const [scrollNavbar, setScrollNavbar] = useState(false);
 
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
   const handleLogOut = () => {
     signOut(auth);
-    navigate('/')
-  }
-  const changeBackground = () => {
-    if (window.scrollY >= 50) {
-      setScrollNavbar(true)
+    navigate("/");
+
+  };
+  const handleTheme = (colorTheme) => {
+
+    if (colorTheme === 'dark') {
+      localStorage.setItem('colorTheme', colorTheme)
     }
     else {
-      setScrollNavbar(false)
+      localStorage.setItem('colorTheme', colorTheme)
     }
   }
-  window.addEventListener('scroll', changeBackground)
+
+  const changeBackground = () => {
+    if (window.scrollY >= 50) {
+      setScrollNavbar(true);
+    } else {
+      setScrollNavbar(false);
+    }
+  };
+  window.addEventListener("scroll", changeBackground);
   return (
     <>
       <Disclosure as="nav" className={scrollNavbar ? "sticky header-scrolling top-0 left-0 z-20 border-0" : "border-0 absolute left-0 right-0 z-20 bg-transparent"}>
@@ -60,10 +68,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         className="block h-6 w-6"
                         aria-hidden="true"
                       />
-
                     )}
-
-
                   </Disclosure.Button>
                 </div>
                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
@@ -85,45 +90,55 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   </div>
                   <div className="hidden sm:block sm:ml-6">
                     <div className="flex space-x-4">
-                      {navigation.map(item => (
-                        <>
-                          <Link
-                            to={item.href}
-                            className={classNames(
-                              item.current
-                                ? "bg-gray-900  text-white"
-                                : "text-white  hover:text-white",
-                              "px-3 py-2 rounded-md text-sm font-medium"
-                            )}
-                            aria-current={item.current ? "page" : undefined}
-                          >
-                            {item.name}
-                          </Link>
-
-                        </>
-                      ))}
+                      <CustomLink
+                        to="/"
+                        className=" text-white  hover:text-white"
+                      >
+                        {" "}
+                        Home
+                      </CustomLink>
+                      <CustomLink
+                        to="/tv"
+                        className=" text-white  hover:text-white"
+                      >
+                        TV Shows
+                      </CustomLink>
+                      <CustomLink
+                        to="/movies"
+                        className=" text-white  hover:text-white"
+                      >
+                        Movies
+                      </CustomLink>
+                      {user && (
+                        <CustomLink
+                          to="/dashboard"
+                          className=" text-white  hover:text-white"
+                        >
+                          {" "}
+                          Dashboard
+                        </CustomLink>
+                      )}
                     </div>
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   {/* search here */}
-                  <div className="relative hidden md:block text-black">
-                    <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                  <div className="relative hidden md:block mr-5 text-black">
+                    <div className="flex absolute inset-y-0  left-0 items-center pl-3 pointer-events-none">
                       <FaSearch className="text-sm" />
                     </div>
                     <input
                       type="text"
                       id="search-navbar"
-                      className="block p-1 pl-10 w-[95%]  bg-gray-50 rounded-sm border  sm:text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="block p-1 hover:p-1.5  pl-10 duration-1000 hover:px-14  hover:text-white  hover:scale-x-100 mr-1 bg-gray-50 rounded-full border  sm:text-sm hover:bg-accent"
                       placeholder="Search..."
                     />
                   </div>
-
                   <button
                     className=" text-white text-xl"
                     onClick={() => setTheme(!theme)}
                   >
-                    {theme ? <FaRegMoon /> : <FaSun />}
+                    {theme ? <FaRegMoon onClick={() => handleTheme('white')} /> : <FaSun onClick={() => handleTheme('dark')} />}
                   </button>
                   <button type="button" className=" text-white mx-2 md:mx-3">
                     <span className="sr-only">View notifications</span>
@@ -136,6 +151,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     <div>
                       <Menu.Button className=" flex text-sm">
                         <span className="sr-only">Open user menu</span>
+
                         {
                           user
                             ?
@@ -194,21 +210,31 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
             <Disclosure.Panel className="sm:hidden">
               <div className="px-2 pt-2 pb-3 space-y-1">
-                {navigation.map(item => (
-                  <Disclosure.Button
-                    as="a"
-                    href={item.href}
-                    className={classNames(
-                      item.current
-                        ? "bg-gray-900 text-white"
-                        : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                      "block px-3 py-2 rounded-md text-base font-medium"
-                    )}
-                    aria-current={item.current ? "page" : undefined}
+                <CustomLink to="/" className=" text-white  hover:text-white">
+                  {" "}
+                  Home
+                </CustomLink>
+                <CustomLink
+                  to="/tv"
+                  className=" text-white  hover:text-white"
+                >
+                  TV Shows
+                </CustomLink>
+                <CustomLink
+                  to="/movies"
+                  className=" text-white  hover:text-white"
+                >
+                  Movies
+                </CustomLink>
+                {user && (
+                  <CustomLink
+                    to="/dashboard"
+                    className=" text-white my-3 hover:text-white"
                   >
-                    {item.name}
-                  </Disclosure.Button>
-                ))}
+                    {" "}
+                    Dashboard
+                  </CustomLink>
+                )}
               </div>
             </Disclosure.Panel>
           </>
