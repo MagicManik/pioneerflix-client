@@ -1,0 +1,7 @@
+.header-scrolling {
+    backdrop-filter: saturate(180%) blur(20px);
+    background-color: rgba(0, 0, 0, 0.596);
+    transition: background-color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+    transition-property: background-color, backdrop-filter, -webkit-backdrop-filter;
+    border-bottom: 1px solid #222;
+}
