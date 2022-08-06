@@ -1,4 +1,4 @@
-import { React, Fragment, useState} from "react";
+import { React, Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import {
   FaAlignJustify,
@@ -15,6 +15,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import pioneerFlix from '../../../../assets/app-logo/pioneerflix.png';
+import './NavbarResponsive.css';
 
 
 function classNames(...classes) {
@@ -31,13 +32,13 @@ const NavbarResponsive = ({ theme, setTheme }) => {
     navigate("/");
 
   };
-  const handleTheme=(colorTheme)=>{
+  const handleTheme = (colorTheme) => {
 
-    if(colorTheme==='dark'){
-      localStorage.setItem('colorTheme',colorTheme)
+    if (colorTheme === 'dark') {
+      localStorage.setItem('colorTheme', colorTheme)
     }
-    else{
-      localStorage.setItem('colorTheme',colorTheme)
+    else {
+      localStorage.setItem('colorTheme', colorTheme)
     }
   }
 
@@ -51,10 +52,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
   window.addEventListener("scroll", changeBackground);
   return (
     <>
-
-    
-      <Disclosure as="nav" className={scrollNavbar ? "sticky  top-0 left-0 z-20 border-0" : "border-0 absolute left-0 right-0 z-20 bg-transparent"}>
-
+      <Disclosure as="nav" className={scrollNavbar ? "sticky header-scrolling top-0 left-0 z-20 border-0" : "border-0 absolute left-0 right-0 z-20 bg-transparent"}>
         {({ open }) => (
           <>
             <div className="max-w-8xl  mx-auto px-2 sm:px-6 lg:px-14 ">
@@ -140,7 +138,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     className=" text-white text-xl"
                     onClick={() => setTheme(!theme)}
                   >
-                    {theme ? <FaRegMoon onClick={()=>handleTheme('white')} /> : <FaSun onClick={()=>handleTheme('dark')} />}
+                    {theme ? <FaRegMoon onClick={() => handleTheme('white')} /> : <FaSun onClick={() => handleTheme('dark')} />}
                   </button>
                   <button type="button" className=" text-white mx-2 md:mx-3">
                     <span className="sr-only">View notifications</span>
@@ -217,17 +215,17 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   Home
                 </CustomLink>
                 <CustomLink
-                        to="/tv"
-                        className=" text-white  hover:text-white"
-                      >
-                        TV Shows
-                      </CustomLink>
-                      <CustomLink
-                        to="/movies"
-                        className=" text-white  hover:text-white"
-                      >
-                        Movies
-                      </CustomLink>
+                  to="/tv"
+                  className=" text-white  hover:text-white"
+                >
+                  TV Shows
+                </CustomLink>
+                <CustomLink
+                  to="/movies"
+                  className=" text-white  hover:text-white"
+                >
+                  Movies
+                </CustomLink>
                 {user && (
                   <CustomLink
                     to="/dashboard"
