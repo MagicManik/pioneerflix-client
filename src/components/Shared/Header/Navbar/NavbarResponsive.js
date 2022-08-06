@@ -55,7 +55,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
       <Disclosure as="nav" className={scrollNavbar ? "sticky header-scrolling top-0 left-0 z-20 border-0" : "border-0 absolute left-0 right-0 z-20 bg-transparent"}>
         {({ open }) => (
           <>
-            <div className="max-w-8xl  mx-auto px-2 sm:px-6 lg:px-14 ">
+            <div className="max-w-8xl mx-auto px-2 sm:px-6 lg:px-14 ">
               <div className="relative flex items-center justify-between h-16">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                   {/* Mobile menu button*/}
@@ -71,7 +71,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     )}
                   </Disclosure.Button>
                 </div>
-                <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                <div className="flex-1 flex items-center justify-center sm:justify-start">
                   <div className="flex-shrink-0 flex items-center">
                     <Link to={'/'}>
                       <img
@@ -125,12 +125,12 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   {/* search here */}
                   <div className="relative hidden md:block mr-5 text-black">
                     <div className="flex absolute inset-y-0  left-0 items-center pl-3 pointer-events-none">
-                      <FaSearch className="text-sm" />
+                      <FaSearch className="text-sm search-icon" />
                     </div>
                     <input
                       type="text"
                       id="search-navbar"
-                      className="block p-1 hover:p-1.5  pl-10 duration-1000 hover:px-14  hover:text-white  hover:scale-x-100 mr-1 bg-gray-50 rounded-full border  sm:text-sm hover:bg-accent"
+                      className="block p-1 hover:p-1.5 py-1 hover:py-1 pl-10 duration-1000 hover:px-14 text-white focus:px-14  hover:text-white  hover:scale-x-100 mr-1 rounded-full border search-input sm:text-sm"
                       placeholder="Search..."
                     />
                   </div>

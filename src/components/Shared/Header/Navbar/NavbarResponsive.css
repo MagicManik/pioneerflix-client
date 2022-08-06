@@ -5,3 +5,12 @@
     transition-property: background-color, backdrop-filter, -webkit-backdrop-filter;
     border-bottom: 1px solid #222;
 }
+
+.search-input {
+    background-color: #222;
+}
+
+.search-icon {
+    z-index: 555;
+    color: rgb(212, 24, 33);
+}
