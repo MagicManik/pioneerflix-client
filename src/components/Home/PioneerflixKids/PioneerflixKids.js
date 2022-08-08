@@ -110,7 +110,7 @@ const PioneerflixKids = () => {
             <div className='pb-3 custom-bg'>
 
                 <div className='bg-primary pl-5  video-container-II'>
-                    <h3 className='text-2xl  pt-6'>PIONEERFLIX KIDS</h3>
+                    <h1 className='text-2xl  pt-6'>PIONEERFLIX KIDS</h1>
 
                     <div className='pb-10'>
                         <Slider {...settings}>
@@ -136,7 +136,7 @@ const PioneerflixKids = () => {
                         <div className='text-container-left-2 pb-10'>
                             <h1 className='text-5xl font-bold '>Watch 100+ Exclusive Videos</h1>
                             <br />
-                            <p className=' text-2xl'>Send Exclusive videos on adventures with their favorite characters in a space made just for them—free with your membership.</p>
+                            <p className='text-2xl'>Send Exclusive videos on adventures with their favorite characters in a space made just for them—free with your membership.</p>
                         </div>
 
                         <div className='pb-10'>

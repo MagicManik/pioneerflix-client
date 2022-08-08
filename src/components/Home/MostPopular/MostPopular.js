@@ -117,7 +117,7 @@ const MostPopular = () => {
             <div className='pb-3 custom-bg'>
 
                 <div className='bg-primary pl-5 video-container-II'>
-                    <h3 className='text-2xl pt-6'>PIONEERFLIX MOST POPULAR</h3>
+                    <h1 className='text-2xl pt-6'>MOST POPULAR</h1>
 
                     <div className='pb-10'>
                         <Slider {...settings}>
@@ -147,7 +147,7 @@ const MostPopular = () => {
                         <div className='text-container-left-2 pb-10'>
                             <h1 className='text-5xl font-bold '>Download your shows to watch offline.</h1>
                             <br />
-                            <p className=' text-2xl'>Save your favorites easily and always have something to watch.</p>
+                            <p className='text-2xl'>Save your favorites easily and always have something to watch.</p>
                         </div>
 
                         <div className='pb-10'>

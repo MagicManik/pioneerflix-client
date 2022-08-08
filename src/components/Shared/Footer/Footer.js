@@ -9,7 +9,7 @@ const Footer = () => {
         <footer className='bg-info text-white'>
             <div className="footer-section bg-info">
                 <div className='footer-container'>
-                    <img className='w-8/12 mx-auto pb-3' src={pioneerFlix} alt="" />
+                    <img className='w-7/12 mx-auto pb-3' src={pioneerFlix} alt="" />
                     <p className='text-2xl'>Download Our Mobile App</p>
                     <div className='flex py-5 gap-3'>
                         <a href="https://www.google.com/">

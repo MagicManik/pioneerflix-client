@@ -22,9 +22,7 @@ const Details = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth);
   const [video] = useVideo(id);
-  // const [likes, setLikes] = useComments();
-
-  const [like, setLike] = useState(509);
+  const [likes, setLikes] = useComments();
 
   const [comments] = useComments();
 
@@ -53,25 +51,24 @@ const Details = () => {
 
   // handle like
   const handleLike = () => {
-    setLike(like + 1)
-    // const like = true;
-    // const name = user.displayName;
-    // const email = user.email;
-    // const newLike = { id, like, name, email };
+    const like = 1;
+    const name = user.displayName;
+    const email = user.email;
+    const newLike = { id, like, name, email };
 
-    // fetch("https://infinite-island-65121.herokuapp.com/like", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(newLike),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data.insertedId) {
-    //       alert("Your item successfully added.");
-    //     }
-    //   });
+    fetch("https://infinite-island-65121.herokuapp.com/like", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newLike),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          alert("Your item successfully added.");
+        }
+      });
   };
 
   const popularMovies = [
@@ -155,10 +152,7 @@ const Details = () => {
               <div className="flex items-center ">
                 <div>
 
-                  {like}
-                  {/* {likes.map((like, index) => (
-                    <p>{index + 1}</p>
-                  ))} */}
+                  {likes?.like}
                 </div>
 
                 <button
