@@ -16,6 +16,10 @@ import {
   WhatsappIcon,
   TwitterShareButton,
   TwitterIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  RedditIcon,
+  RedditShareButton
 } from "react-share";
 
 const Details = () => {
@@ -205,8 +209,8 @@ const Details = () => {
 
             {/* ---------------------Share a video------------------ */}
             <label
-              for="my-modal-3"
-              class=" border-2 cursor-pointer btn btn-outline btn-warning border-amber-500 py-2 md:ml-2 ml-3 px-7 md:px-6"
+              for="my-share-modal-3"
+              class=" border-2 cursor-pointer hover:bg-amber-500 border-amber-500 py-2 md:ml-2 ml-3 px-7 md:px-6"
             >
               Share
             </label>
@@ -214,11 +218,11 @@ const Details = () => {
 
             {/* <!------------- Social media Open in a modal ---------------------> */}
 
-            <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+            <input type="checkbox" id="my-share-modal-3" class="modal-toggle" />
             <div class="modal">
               <div class="modal-box bg-black relative">
                 <label
-                  for="my-modal-3"
+                  for="my-share-modal-3"
                   class="btn btn-sm btn-circle absolute right-2 top-2"
                 >
                   ✕
@@ -236,8 +240,12 @@ const Details = () => {
 
                 <TwitterShareButton url={video.videoLink}>
                   {" "}
-                  <TwitterIcon className="rounded-3xl "></TwitterIcon>
+                  <TwitterIcon className="rounded-3xl mr-4"></TwitterIcon>
                 </TwitterShareButton>
+
+                <LinkedinShareButton url={video.videoLink}><LinkedinIcon className="rounded-3xl mr-4"></LinkedinIcon></LinkedinShareButton>
+
+                <RedditShareButton url={video.videoLink}><RedditIcon className="rounded-3xl"></RedditIcon></RedditShareButton>
               </div>
             </div>
             <button className="border-2 border-amber-500 py-3 md:ml-2 ml-4 px-7 md:px-6">
