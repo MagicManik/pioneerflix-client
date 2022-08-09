@@ -1,3 +1,10 @@
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    border: none;
+}
+
 .zoom-div-I {
     transition: .4s;
 }
@@ -103,6 +110,10 @@ h3 {
     }
 
     h3 {
-        font-size: 1.1rem !important;
+        font-size: 2rem !important;
+    }
+
+    p {
+        font-size: 18px !important;
     }
 }

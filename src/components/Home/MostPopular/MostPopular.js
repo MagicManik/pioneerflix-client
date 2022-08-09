@@ -113,47 +113,49 @@ const MostPopular = () => {
 
 
     return (
-        <section className=' text-secondary pb-3'>
+        <section className=' text-secondary'>
+            <div className='pb-3 custom-bg'>
 
-            <div className='bg-primary pl-5  video-container-II'>
-                <h3 className='text-2xl pt-6'>PIONEERFLIX MOST POPULAR</h3>
-
-                <div className='pb-10'>
-                    <Slider {...settings}>
-
-                        {
-                            videos.map(video =>
-
-                                <div key={video._id}>
-                                    <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={video._id}>
-                                        <Link to={`/play/${video._id}`}>
-                                            <img className='popular-movie' src={video.imgLink} alt="" />
-                                        </Link>
-
-
-                                    </div>
-
-                                </div>)
-                        }
-
-                    </Slider>
-                </div >
-                <i className="fa fal fa-angle-double-down"></i>
-
-
-                <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
-
-                    <div className='text-container-left-2 pb-10'>
-                        <h1 className='text-5xl font-bold '>Download your shows to watch offline.</h1>
-                        <br />
-                        <p className=' text-2xl'>Save your favorites easily and always have something to watch.</p>
-                    </div>
+                <div className='bg-primary pl-5 video-container-II'>
+                    <h1 className='text-2xl pt-6'>MOST POPULAR</h1>
 
                     <div className='pb-10'>
-                        <img className='rounded-2xl' src={offlineWatch} alt="" />
+                        <Slider {...settings}>
+
+                            {
+                                videos.map(video =>
+
+                                    <div key={video._id}>
+                                        <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={video._id}>
+                                            <Link to={`/play/${video._id}`}>
+                                                <img className='popular-movie' src={video.imgLink} alt="" />
+                                            </Link>
+
+
+                                        </div>
+
+                                    </div>)
+                            }
+
+                        </Slider>
+                    </div >
+                    <i className="fa fal fa-angle-double-down"></i>
+
+
+                    <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
+
+                        <div className='text-container-left-2 pb-10'>
+                            <h1 className='text-5xl font-bold '>Download your shows to watch offline.</h1>
+                            <br />
+                            <p className='text-2xl'>Save your favorites easily and always have something to watch.</p>
+                        </div>
+
+                        <div className='pb-10'>
+                            <img className='rounded-2xl' src={offlineWatch} alt="" />
+                        </div>
                     </div>
-                </div>
-            </div >
+                </div >
+            </div>
         </section >
     );
 };
