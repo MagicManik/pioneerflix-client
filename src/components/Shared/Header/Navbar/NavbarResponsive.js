@@ -21,6 +21,9 @@ import './NavbarResponsive.css';
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
+
+
+
 const NavbarResponsive = ({ theme, setTheme }) => {
   const [scrollNavbar, setScrollNavbar] = useState(false);
 
@@ -32,6 +35,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
     navigate("/");
 
   };
+
   const handleTheme = (colorTheme) => {
 
     if (colorTheme === 'dark') {
@@ -41,7 +45,6 @@ const NavbarResponsive = ({ theme, setTheme }) => {
       localStorage.setItem('colorTheme', colorTheme)
     }
   }
-
   const changeBackground = () => {
     if (window.scrollY >= 50) {
       setScrollNavbar(true);
@@ -134,12 +137,16 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       placeholder="Search..."
                     />
                   </div>
+
                   <button
                     className=" text-white text-xl"
                     onClick={() => setTheme(!theme)}
                   >
+
                     {theme ? <FaRegMoon onClick={() => handleTheme('white')} /> : <FaSun onClick={() => handleTheme('dark')} />}
+
                   </button>
+
                   <button type="button" className=" text-white mx-2 md:mx-3">
                     <span className="sr-only">View notifications</span>
 

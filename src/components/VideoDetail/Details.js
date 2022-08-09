@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import movie1 from "../../assets/bangla-movie/movie (1).jpg";
 import movie2 from "../../assets/bangla-movie/movie (2).jpg";
 import movie3 from "../../assets/bangla-movie/movie (3).jpg";
 import { FaRegThumbsUp, FaEllipsisH, FaComment } from "react-icons/fa";
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
 import { useParams } from "react-router-dom";
 import useVideo from "../../hooks/useVideo";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -27,13 +28,16 @@ const Details = () => {
   const [like, setLike] = useState(509);
 
   const [comments] = useComments();
-
+  // console.log(id)
   const handleComment = (e) => {
     e.preventDefault();
     const comment = e.target.comment.value;
     const name = user.displayName;
     const newComment = { id, name, comment };
     console.log(newComment)
+
+console.log(video)
+  
 
     fetch("https://infinite-island-65121.herokuapp.com/comment", {
       method: "POST",
@@ -73,6 +77,37 @@ const Details = () => {
     //     }
     //   });
   };
+
+  // for set video id for library section
+ 
+
+useEffect(()=>{
+  const libraryInfo={
+    videoId:id,
+    email:user.email
+    
+}
+
+  fetch('http://localhost:5000/library', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+       
+      },
+      body: JSON.stringify(libraryInfo)
+  })
+  .then(response => response.json())
+  .then(data => {
+    // if(data.acknowledged){
+    //     toast.success(`${updateInfo.name} your profile updated .`)
+    //     setUsers(updateInfo)
+    //     setLoading(false)
+    //     e.reset(); 
+    // }
+    console.log(data)
+  })
+  
+},[])
 
   const popularMovies = [
     {

@@ -32,6 +32,7 @@ const DashboardMainPage = () => {
                     <li><Link to='myVideos' className='uppercase font-bold text-black'>My Videos</Link></li>
                     <li><Link to='makeAdmin' className='uppercase font-bold text-black'>Make Admin</Link></li>
                     <li><Link to='manageVideos' className='uppercase font-bold text-black'>Manage Videos</Link></li>
+                    <li><Link to='library' className='uppercase font-bold text-black'>Library</Link></li>
                 </ul>
 
             </div>

@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import About from "./components/About/About";
 import DashboardMainPage from "./components/Dashboard/DashboardMainPage";
+import Library from "./components/Dashboard/Library";
 import MakeAdmin from "./components/Dashboard/MakeAdmin";
 import ManageVideos from "./components/Dashboard/ManageVideos";
 import MyProfile from "./components/Dashboard/MyProfile";
@@ -29,6 +30,8 @@ function App() {
       setTheme(false)
     }
   },[getTheme])
+
+  
   return (
     <div data-theme={theme ? "dark" : "light"}>
       <NavbarResponsive theme={theme} setTheme={setTheme} />
@@ -43,6 +46,7 @@ function App() {
           <Route path="myVideos" element={<MyVideos></MyVideos>}></Route>
           <Route path="makeAdmin" element={<MakeAdmin></MakeAdmin>}></Route>
           <Route path="manageVideos" element={<ManageVideos></ManageVideos>}></Route>
+          <Route path="library" element={<Library/>}></Route>
         </Route>
         <Route path='/play/:id' element={<Details />} />
 
