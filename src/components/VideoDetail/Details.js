@@ -3,7 +3,6 @@ import movie1 from "../../assets/bangla-movie/movie (1).jpg";
 import movie2 from "../../assets/bangla-movie/movie (2).jpg";
 import movie3 from "../../assets/bangla-movie/movie (3).jpg";
 import { FaRegThumbsUp, FaEllipsisH, FaComment } from "react-icons/fa";
-import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
 import { useParams } from "react-router-dom";
 import useVideo from "../../hooks/useVideo";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -26,7 +25,6 @@ const Details = () => {
   // const [likes, setLikes] = useComments();
 
   const [like, setLike] = useState(509);
-
   const [comments] = useComments();
   // console.log(id)
   const handleComment = (e) => {
@@ -36,7 +34,7 @@ const Details = () => {
     const newComment = { id, name, comment };
     console.log(newComment)
 
-console.log(video)
+
   
 
     fetch("https://infinite-island-65121.herokuapp.com/comment", {
@@ -79,15 +77,17 @@ console.log(video)
   };
 
   // for set video id for library section
- 
+
 
 useEffect(()=>{
+
   const libraryInfo={
     videoId:id,
-    email:user.email
+    email:user?.email,
+    videoLink:video?.videoLink,
+    videoTitle:video?.title
     
 }
-
   fetch('http://localhost:5000/library', {
     method: 'POST',
     headers: {
@@ -107,7 +107,7 @@ useEffect(()=>{
     console.log(data)
   })
   
-},[])
+},[video?.videoLink])
 
   const popularMovies = [
     {
