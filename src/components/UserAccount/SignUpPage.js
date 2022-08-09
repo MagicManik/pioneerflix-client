@@ -26,18 +26,22 @@ const SignUpPage = () => {
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
+        // console.log(name, email, password);
 
         await createUserWithEmailAndPassword(email, password);
 
         await updateProfile({ displayName: name });
         alert('Updated your profile');
 
+        event.target.reset();
+
         navigate('/')
+        
     }
 
     return (
         <div>
-            <div className='loginRoot text-secondary'>
+            <div className='loginRoot text-[#fff]'>
                 <div >
                     <form action="" onSubmit={handleSignUp} className='loginBody'>
                         <h1 className='text-2xl  border-2 uppercase border-none'>Please Sign-Up</h1>

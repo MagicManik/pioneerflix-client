@@ -49,11 +49,11 @@ const LoginPage = () => {
     }
 
     return (
-        <div className='pt-16 bg-primary '>
-            <div className='text-secondary py-14'>
+        <div className='pt-16 bg-[#000000]'>
+            <div className='text-[#fff] py-14'>
                 <div>
                     <form action="" className='loginBody' onSubmit={handleLogin}>
-                        <h1 className='text-2xl  border-2 border-none uppercase'>Please Login</h1>
+                        <h1 className='text-2xl border-2 border-none uppercase'>Please Login</h1>
                         <div className='loginBox '>
                             <input ref={emailRef} type="text" required />
                             <span className=''>your email</span>
