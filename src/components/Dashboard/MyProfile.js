@@ -66,13 +66,12 @@ const MyProfile = () => {
         <div className="container w-full mx-auto p-5 lg:p-10 mb-40">
             <div className="md:flex w-full no-wrap md:-mx-2">
                 {
-                    updatedProfileData.map(pd => <SingleProfilePic
+                    updatedProfileData?.map(pd => <SingleProfilePic
                     key={pd._id}
                     pd={pd}
                     refetch={refetch}
                     ></SingleProfilePic>)
                 }
-                
                 <div className="grid grid-cols-1 w-full">
                     <div className="w-full my-4 h-64  border-t-4 border-[#125f82]">
                         <div className="bg-white p-5 rounded-br-lg rounded-bl-lg shadow-sm rounded-sm">
