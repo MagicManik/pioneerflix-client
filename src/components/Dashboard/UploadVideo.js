@@ -11,7 +11,10 @@ const UploadVideo = () => {
 
     const onSubmit = (data, e) => {
         console.log(data);
-        e.target.reset();
+        const uploadedVideo = {
+            
+        } 
+        // e.target.reset();
 
     };
     return (

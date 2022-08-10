@@ -1,25 +1,64 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
-import { useAuthState, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { toast } from "react-toastify";
 import auth from '../../firebase.init';
+import Loading from '../Shared/Loading/Loading';
 
 const MyProfile = () => {
-    // const [{ email }] = useAuthState(auth);
     const [user] = useAuthState(auth);
     const [isEdit, setIsEdit] = useState(null);
-    const [updateProfile, updating, error] = useUpdateProfile(auth);
-    // console.log(user);
-
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
 
+    const url = `http://localhost:5000/userProfile?email=${user?.email}`
+    const { data, isLoading, refetch } = useQuery(['userProfile'], () =>
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(res => res.json()
+            )
+    )
+
+    if (isLoading) {
+        refetch();
+        <Loading></Loading>
+    }
+    const updatedProfileData = data;
+
     const onSubmit = (data, e) => {
-        // console.log(data);
-        // e.target.reset();
-        
+        const userProfile = {
+            profileName: data.name,
+            gender: data.gender,
+            education: data.education,
+            phone: data.phone,
+            address: data.address,
+            profileImage: data.image,
+            profileEmail: user.email
+        }
+        // console.log(userProfile);
+        const url = `http://localhost:5000/userProfile/${user?.email}`
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userProfile)
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+                toast.success('Your profile updated successfully!!!')
+                e.target.reset();
+                refetch();
+            })
     };
 
     return (
@@ -218,7 +257,7 @@ const MyProfile = () => {
                                     </div>
                                     <div className="w-full md:w-1/2 px-3">
                                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                            Image
+                                            Image URL
                                         </label>
                                         <input
                                             {...register("image")}
@@ -228,7 +267,7 @@ const MyProfile = () => {
                                         />
                                     </div>
                                 </div>
-                                {error && <p className="error">{error?.message}</p>}
+                                {/* {error && <p className="error">{error?.message}</p>} */}
                                 <button
                                     type="submit"
                                     className="text-center block w-full text-primary text-md shadow font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
