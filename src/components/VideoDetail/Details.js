@@ -16,6 +16,10 @@ import {
   WhatsappIcon,
   TwitterShareButton,
   TwitterIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  RedditIcon,
+  RedditShareButton
 } from "react-share";
 import useLikes from "../../hooks/useLikes";
 
@@ -136,7 +140,7 @@ const Details = () => {
   ];
 
   return (
-    <div className="md:px-14 px-3 pt-3 bg-primary text-secondary">
+    <div className="md:px-14 px-3 pt-20 bg-primary text-secondary">
       <div className="justify-center flex ">
         <iframe
           className="rounded-sm h-full md:h-[700px] md:p-1 shadow-2xl border-2 border-zinc-700 "
@@ -226,20 +230,20 @@ const Details = () => {
       <div className="grid  md:grid-cols-6 gap-5  ">
         <div className="md:w-[350px] w-full md:col-start-1  md:col-end-3 ">
           <div>
-            <button className="bg-amber-500 py-3 px-6 ">Add To My List</button>
+            <button className="btn btn-warning py-3 px-6 ">Add To My List</button>
 
 
             {/* ---------------------Share a video------------------ */}
             <label
+
               htmlFor="my-modal-3"
-              className=" border-2 cursor-pointer btn btn-outline btn-warning border-amber-500 py-2 md:ml-2 ml-3 px-7 md:px-6"
+              className=" border-2 cursor-pointer py-2 md:ml-2 ml-3 px-7 md:px-6 btn btn-warning"
             >
               Share
             </label>
 
 
             {/* <!------------- Social media Open in a modal ---------------------> */}
-
             <input type="checkbox" id="my-modal-3" className="modal-toggle" />
             <div className="modal">
               <div className="modal-box bg-black relative">
@@ -249,21 +253,27 @@ const Details = () => {
                 >
                   ✕
                 </label>
-                <h3 className="text-2xl font-bold text-white mb-4">
+                <h4 className="font-b text-lg text-white mb-4 text-center">
                   Share your video on social media
-                </h3>
-                <FacebookShareButton url={video.videoLink}>
-                  <FacebookIcon className="rounded-3xl mr-4"></FacebookIcon>
-                </FacebookShareButton>
+                </h4>
+                <div className="flex justify-center">
+                  <FacebookShareButton url={video.videoLink}>
+                    <FacebookIcon className="rounded-3xl mr-4"></FacebookIcon>
+                  </FacebookShareButton>
 
-                <WhatsappShareButton url={video.videoLink}>
-                  <WhatsappIcon className="rounded-3xl mr-4"></WhatsappIcon>
-                </WhatsappShareButton>
+                  <WhatsappShareButton url={video.videoLink}>
+                    <WhatsappIcon className="rounded-3xl mr-4"></WhatsappIcon>
+                  </WhatsappShareButton>
 
-                <TwitterShareButton url={video.videoLink}>
-                  {" "}
-                  <TwitterIcon className="rounded-3xl "></TwitterIcon>
-                </TwitterShareButton>
+                  <TwitterShareButton url={video.videoLink}>
+                    {" "}
+                    <TwitterIcon className="rounded-3xl mr-4"></TwitterIcon>
+                  </TwitterShareButton>
+
+                  <LinkedinShareButton url={video.videoLink}><LinkedinIcon className="rounded-3xl mr-4"></LinkedinIcon></LinkedinShareButton>
+
+                  <RedditShareButton url={video.videoLink}><RedditIcon className="rounded-3xl"></RedditIcon></RedditShareButton>
+                </div>
               </div>
             </div>
             <button className="border-2 border-amber-500 py-3 md:ml-2 ml-4 px-7 md:px-6">
