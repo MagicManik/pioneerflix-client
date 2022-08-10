@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from "react-toastify";
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
+import SingleProfile from './SingleProfile';
 import SingleProfilePic from './SingleProfilePic';
 
 const MyProfile = () => {
@@ -67,67 +68,22 @@ const MyProfile = () => {
             <div className="md:flex w-full no-wrap md:-mx-2">
                 {
                     updatedProfileData?.map(pd => <SingleProfilePic
-                    key={pd._id}
-                    pd={pd}
-                    refetch={refetch}
+                        key={pd._id}
+                        pd={pd}
+                        refetch={refetch}
                     ></SingleProfilePic>)
                 }
                 <div className="grid grid-cols-1 w-full">
                     <div className="w-full my-4 h-64  border-t-4 border-[#125f82]">
-                        <div className="bg-white p-5 rounded-br-lg rounded-bl-lg shadow-sm rounded-sm">
-                            <div className="text-gray-700">
-                                <div className="text-xs lg:text-md">
-                                    <div className="grid grid-cols-2">
-                                        <div className="py-2 font-semibold">Name</div>
-                                        <div className="py-2">
-                                            {user ? user?.displayName : "- - -"}
-                                        </div>
-                                    </div>
-
-                                    <div className="grid grid-cols-2">
-                                        <div className="py-2 font-semibold">Email.</div>
-                                        <div className="py-2 w-[20ch]">
-                                            {user ? user?.email : "- - -"}
-                                        </div>
-                                    </div>
-                                    <div className="grid grid-cols-2">
-                                        <div className="py-2 font-semibold">Gender</div>
-                                        <div className="py-2">
-                                            {"..................."}
-
-                                        </div>
-                                    </div>
-                                    <div className="grid grid-cols-2">
-                                        <div className="py-2 font-semibold">Contact No.</div>
-                                        <div className="py-2">
-                                            {"..................."}
-
-                                        </div>
-                                    </div>
-                                    <div className="grid grid-cols-2">
-                                        <div className="py-2 font-semibold">Address</div>
-                                        <div className="py-2">
-                                            {"..................."}
-
-                                        </div>
-                                    </div>
-                                    <div className="grid grid-cols-2">
-                                        <div className="py-2 font-semibold">Education</div>
-                                        <div className="py-2">
-                                            {"..................."}
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <label
-                                htmlFor="my-modal-6"
-                                onClick={() => setIsEdit(true)}
-                                className="text-center block w-full text-primary text-md shadow font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
-                            >
-                                Edit Profile
-                            </label>
-                        </div>
+                        {
+                            updatedProfileData?.map(pd => <SingleProfile
+                            key={pd._id}
+                            pd={pd}
+                            refetch={refetch}
+                            setIsEdit={setIsEdit}
+                            ></SingleProfile>)
+                        }
+                        
                     </div>
                     <div className="my-4"></div>
                     <div

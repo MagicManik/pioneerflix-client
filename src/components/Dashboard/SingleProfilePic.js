@@ -23,7 +23,7 @@ const SingleProfilePic = ({ pd }) => {
                 <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">
                     {user ? profileName : user?.displayName}
                 </h1>
-                <h3 className="text-gray-600 text-lg font-semibold">
+                <h3 className="text-gray-600 sm:text-sm font-semibold">
                     {user ? profileEmail : user?.email}
                 </h3>
                 <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
