@@ -25,8 +25,7 @@ const MyProfile = () => {
                 'content-type': 'application/json'
             }
         })
-            .then(res => res.json()
-            )
+        .then(res => res.json())
     )
 
     if (isLoading) {
@@ -77,13 +76,13 @@ const MyProfile = () => {
                     <div className="w-full my-4 h-64  border-t-4 border-[#125f82]">
                         {
                             updatedProfileData?.map(pd => <SingleProfile
-                            key={pd._id}
-                            pd={pd}
-                            refetch={refetch}
-                            setIsEdit={setIsEdit}
+                                key={pd._id}
+                                pd={pd}
+                                refetch={refetch}
+                                setIsEdit={setIsEdit}
                             ></SingleProfile>)
                         }
-                        
+
                     </div>
                     <div className="my-4"></div>
                     <div
