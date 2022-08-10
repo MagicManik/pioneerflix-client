@@ -35,8 +35,6 @@ const Details = () => {
     console.log(newComment)
 
 
-  
-
     fetch("https://infinite-island-65121.herokuapp.com/comment", {
       method: "POST",
       headers: {
@@ -77,37 +75,30 @@ const Details = () => {
   };
 
   // for set video id for library section
-
-
-useEffect(()=>{
-
-  const libraryInfo={
-    videoId:id,
-    email:user?.email,
-    videoLink:video?.videoLink,
-    videoTitle:video?.title
-    
-}
-  fetch('http://localhost:5000/library', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-       
-      },
-      body: JSON.stringify(libraryInfo)
-  })
-  .then(response => response.json())
-  .then(data => {
-    // if(data.acknowledged){
-    //     toast.success(`${updateInfo.name} your profile updated .`)
-    //     setUsers(updateInfo)
-    //     setLoading(false)
-    //     e.reset(); 
-    // }
-    console.log(data)
-  })
+const libraryInfo={
+  videoId:id,
+  email:user?.email,
+  videoLink:video?.videoLink,
+  videoTitle:video?.title
   
-},[video?.videoLink])
+}
+useEffect(()=>{
+if(video?.title){
+    fetch('http://localhost:5000/library', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+         
+        },
+        body: JSON.stringify(libraryInfo)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+    })
+  }  
+},[video?.title])
+
 
   const popularMovies = [
     {
@@ -148,6 +139,7 @@ useEffect(()=>{
   ];
 
   return (
+    
     <div className="md:px-14 px-3 pt-3 bg-primary text-secondary">
       <div className="justify-center flex ">
         <iframe
@@ -241,9 +233,7 @@ useEffect(()=>{
       <div className="grid  md:grid-cols-6 gap-5  ">
         <div className="md:w-[350px] w-full md:col-start-1  md:col-end-3 ">
           <div>
-            <button className="bg-amber-500 py-3 px-6 ">Add To My List</button>
-
-
+            <button className="bg-amber-500 py-3 px-6 ">Add To My List</button>           
             {/* ---------------------Share a video------------------ */}
             <label
               for="my-modal-3"

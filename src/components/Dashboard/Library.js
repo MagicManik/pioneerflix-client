@@ -23,12 +23,16 @@ const Library = () => {
     return (
         <>
 
-    <div className='grid grid-cols-4 gap-5 border-2 border-indigo-600 '>
+    <div className='grid grid-cols-4 gap-5 pr-5  py-14 '>
     {
           vData.map(v=><>
-        <div className='border-2 border-indigo-600 shadow-2xl rounded-sm h-50 shadow-red-600'>
+        <div className='rounded-sm  h-60 bg-black'>
 
-        <iframe width="100%" height="200px" src={v?.videoLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="100%" className='mt-1' height="200px" src={v?.videoLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div className='flex text-white justify-between px-3 items-center'>
+<p className='text-sm'>{v.videoTitle}</p>
+<button className='badge badge-secondary'>Details</button>
+        </div>
         </div>
        
           

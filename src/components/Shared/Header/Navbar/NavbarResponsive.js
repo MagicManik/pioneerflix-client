@@ -46,7 +46,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
     }
   }
   const changeBackground = () => {
-    if (window.scrollY >= 50) {
+    if (window.scrollY >= 80) {
       setScrollNavbar(true);
     } else {
       setScrollNavbar(false);
