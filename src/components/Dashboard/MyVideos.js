@@ -1,13 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-// import movie1 from '../../assets/free-videos/free-video (1).jpg';
-// import movie2 from '../../assets/free-videos/free-video (2).jpg';
-// import movie3 from '../../assets/free-videos/free-video (3).jpg';
-// import movie4 from '../../assets/free-videos/free-video (4).jpg';
-// import movie5 from '../../assets/free-videos/free-video (5).jpg';
-// import movie6 from '../../assets/free-videos/free-video (6).jpg';
-// import movie7 from '../../assets/free-videos/free-video (7).jpg';
 import { FcLike } from 'react-icons/fc';
 import auth from '../../firebase.init';
 
