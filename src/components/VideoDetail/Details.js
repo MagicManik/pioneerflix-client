@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import movie1 from "../../assets/bangla-movie/movie (1).jpg";
 import movie2 from "../../assets/bangla-movie/movie (2).jpg";
 import movie3 from "../../assets/bangla-movie/movie (3).jpg";
@@ -21,21 +21,68 @@ import {
   RedditIcon,
   RedditShareButton
 } from "react-share";
+import useLikes from "../../hooks/useLikes";
 
 const Details = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth);
   const [video] = useVideo(id);
-  const [likes, setLikes] = useComments();
-
+  const [likes] = useLikes();
   const [comments] = useComments();
 
+  let newLike = likes.filter(li => li.id === id);
+
+
+  // like handler || Manik Islam Mahi
+  const handleLike = () => {
+
+    const like = true;
+    const name = user.displayName;
+    const email = user.email;
+    const newLike = { id, like, name, email };
+
+    const likedUser = likes.filter(li => li.id === id && li.email === email);
+
+    if (likedUser.length > 0) {
+      const likedId = likedUser[0]._id;
+
+      const url = `http://localhost:5000/likes/${likedId}`
+
+      fetch(url, {
+        method: 'DELETE'
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.deletedCount > 0) {
+            // alert('Deleted');
+          }
+        })
+    }
+
+    else {
+      fetch("https://infinite-island-65121.herokuapp.com/like", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newLike),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            // alert("Your item successfully added.");
+          }
+        });
+    }
+  };
+
+
+  // Comment Handler || Manik Islam Mahi
   const handleComment = (e) => {
     e.preventDefault();
     const comment = e.target.comment.value;
     const name = user.displayName;
     const newComment = { id, name, comment };
-    console.log(newComment)
 
     fetch("https://infinite-island-65121.herokuapp.com/comment", {
       method: "POST",
@@ -53,28 +100,7 @@ const Details = () => {
       });
   };
 
-  // handle like
-  const handleLike = () => {
-    const like = 1;
-    const name = user.displayName;
-    const email = user.email;
-    const newLike = { id, like, name, email };
-
-    fetch("https://infinite-island-65121.herokuapp.com/like", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newLike),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
-          alert("Your item successfully added.");
-        }
-      });
-  };
-
+  // demo comment || Shihab Uddin
   const popularMovies = [
     {
       _id: 1,
@@ -114,16 +140,16 @@ const Details = () => {
   ];
 
   return (
-    <div className="md:px-14 px-3 pt-3 bg-primary text-secondary">
+    <div className="md:px-14 px-3 pt-20 bg-primary text-secondary">
       <div className="justify-center flex ">
         <iframe
           className="rounded-sm h-full md:h-[700px] md:p-1 shadow-2xl border-2 border-zinc-700 "
           width="100%"
           src={video.videoLink}
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </div>
 
@@ -156,7 +182,7 @@ const Details = () => {
               <div className="flex items-center ">
                 <div>
 
-                  {likes?.like}
+                  <p>{newLike.length}</p>
                 </div>
 
                 <button
@@ -204,48 +230,50 @@ const Details = () => {
       <div className="grid  md:grid-cols-6 gap-5  ">
         <div className="md:w-[350px] w-full md:col-start-1  md:col-end-3 ">
           <div>
-            <button className="bg-amber-500 py-3 px-6 ">Add To My List</button>
+            <button className="btn btn-warning py-3 px-6 ">Add To My List</button>
 
 
             {/* ---------------------Share a video------------------ */}
             <label
-              for="my-share-modal-3"
-              class=" border-2 cursor-pointer hover:bg-amber-500 border-amber-500 py-2 md:ml-2 ml-3 px-7 md:px-6"
+
+              htmlFor="my-modal-3"
+              className=" border-2 cursor-pointer py-2 md:ml-2 ml-3 px-7 md:px-6 btn btn-warning"
             >
               Share
             </label>
 
 
             {/* <!------------- Social media Open in a modal ---------------------> */}
-
-            <input type="checkbox" id="my-share-modal-3" class="modal-toggle" />
-            <div class="modal">
-              <div class="modal-box bg-black relative">
+            <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+            <div className="modal">
+              <div className="modal-box bg-black relative">
                 <label
-                  for="my-share-modal-3"
-                  class="btn btn-sm btn-circle absolute right-2 top-2"
+                  htmlFor="my-modal-3"
+                  className="btn btn-sm btn-circle absolute right-2 top-2"
                 >
                   ✕
                 </label>
-                <h3 class="text-2xl font-bold text-white mb-4">
+                <h4 className="font-b text-lg text-white mb-4 text-center">
                   Share your video on social media
-                </h3>
-                <FacebookShareButton url={video.videoLink}>
-                  <FacebookIcon className="rounded-3xl mr-4"></FacebookIcon>
-                </FacebookShareButton>
+                </h4>
+                <div className="flex justify-center">
+                  <FacebookShareButton url={video.videoLink}>
+                    <FacebookIcon className="rounded-3xl mr-4"></FacebookIcon>
+                  </FacebookShareButton>
 
-                <WhatsappShareButton url={video.videoLink}>
-                  <WhatsappIcon className="rounded-3xl mr-4"></WhatsappIcon>
-                </WhatsappShareButton>
+                  <WhatsappShareButton url={video.videoLink}>
+                    <WhatsappIcon className="rounded-3xl mr-4"></WhatsappIcon>
+                  </WhatsappShareButton>
 
-                <TwitterShareButton url={video.videoLink}>
-                  {" "}
-                  <TwitterIcon className="rounded-3xl mr-4"></TwitterIcon>
-                </TwitterShareButton>
+                  <TwitterShareButton url={video.videoLink}>
+                    {" "}
+                    <TwitterIcon className="rounded-3xl mr-4"></TwitterIcon>
+                  </TwitterShareButton>
 
-                <LinkedinShareButton url={video.videoLink}><LinkedinIcon className="rounded-3xl mr-4"></LinkedinIcon></LinkedinShareButton>
+                  <LinkedinShareButton url={video.videoLink}><LinkedinIcon className="rounded-3xl mr-4"></LinkedinIcon></LinkedinShareButton>
 
-                <RedditShareButton url={video.videoLink}><RedditIcon className="rounded-3xl"></RedditIcon></RedditShareButton>
+                  <RedditShareButton url={video.videoLink}><RedditIcon className="rounded-3xl"></RedditIcon></RedditShareButton>
+                </div>
               </div>
             </div>
             <button className="border-2 border-amber-500 py-3 md:ml-2 ml-4 px-7 md:px-6">
@@ -265,12 +293,12 @@ const Details = () => {
               rows="4"
             ></textarea>{" "}
             <br />
-            <button className="  bg-amber-500 px-7 rounded-sm py-2 mt-2 text-xl">
+            <button className="bg-amber-500 px-7 rounded-sm py-2 mt-2 text-xl">
               Submit
             </button>
           </div>
         </div>
-        <div className="   md:col-start-3 w-full  md:col-end-12 ">
+        <div className="md:col-start-3 w-full  md:col-end-12 ">
           <div>
             <div className=" video-container">
               <h1 className="text-4xl mb-4  font-medium">You May Also Like</h1>
