@@ -74,7 +74,8 @@ const Details = () => {
     //   });
   };
 
-  // for set video id for library section
+
+  // for set video id for library section 
 const libraryInfo={
   videoId:id,
   email:user?.email,
