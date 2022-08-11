@@ -185,30 +185,17 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       <Menu.Items className="origin-top-right absolute z-20 right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-primary ring-1 ring-black ring-opacity-5 focus:outline-none custom-border-II">
                         <Menu.Item>
                           {({ active }) => (
-                            <button
+                            <Link to='/dashboard/profile'
                               className={classNames(
                                 active ? "bg-zinc-800 w-full text-left" : "w-full",
                                 "block px-4 py-2 text-sm text-left"
                               )}
                             >
                               Your Profile
-                            </button>
+                            </Link >
                           )}
                         </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <button
-                              onClick={handleLogOut}
-                              className={classNames(
-                                active ? "bg-zinc-800 w-full text-left" : "w-full",
-                                "block px-4 py-2 text-sm text-left"
-                              )}
-                            >
-                              Sign out
-                            </button>
-                          )}
-                         
-                        </Menu.Item>
+                   
                         <Menu.Item>
                           {({ active }) => (
                             <Link to='watchList'   className={classNames(
@@ -224,6 +211,20 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                               active ? "bg-zinc-800 w-full text-left" : "w-full",
                               "block px-4 py-2 text-sm text-left"
                             )}>Favorite</Link> 
+                          )}
+                         
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <button
+                              onClick={handleLogOut}
+                              className={classNames(
+                                active ? "bg-zinc-800 w-full text-left" : "w-full",
+                                "block px-4 py-2 text-sm text-left"
+                              )}
+                            >
+                              Sign out
+                            </button>
                           )}
                          
                         </Menu.Item>

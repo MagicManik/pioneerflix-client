@@ -42,11 +42,12 @@ function App() {
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>
         <Route path="/dashboard" element={<DashboardMainPage></DashboardMainPage>}>
-          <Route index element={<MyProfile></MyProfile>}></Route>
+          <Route path="profile" index element={<MyProfile></MyProfile>}></Route>
           <Route path="uploadVideo" element={<UploadVideo></UploadVideo>}></Route>
           <Route path="myVideos" element={<MyVideos></MyVideos>}></Route>
           <Route path="makeAdmin" element={<MakeAdmin></MakeAdmin>}></Route>
           <Route path="manageVideos" element={<ManageVideos></ManageVideos>}></Route>
+          {/* <Route  element={<MyProfile/>}></Route> */}
           
         </Route>
         <Route path="watchList" element={<Library/>}></Route>

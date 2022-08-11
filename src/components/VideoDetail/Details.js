@@ -24,6 +24,7 @@ import {
 } from "react-share";
 import useLikes from "../../hooks/useLikes";
 
+
 const Details = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth);
@@ -114,9 +115,11 @@ const libraryInfo={
   email:user?.email,
   videoLink:video?.videoLink,
   videoTitle:video?.title,
-  videoDescription:video?.description
+  // videoDescription:video?.description
   
 }
+// handleAddList
+
 useEffect(()=>{
 if(video?.title){
     fetch('http://localhost:5000/library', {
@@ -134,7 +137,20 @@ if(video?.title){
   }  
 },[video?.title])
 
-
+const handleAddList=()=>{
+  fetch('http://localhost:5000/favorite', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+       
+      },
+      body: JSON.stringify(libraryInfo)
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data)
+  })
+}
 
   const popularMovies = [
     {
@@ -268,7 +284,7 @@ if(video?.title){
         <div className="md:w-[350px] w-full md:col-start-1  md:col-end-3 ">
           <div>
 
-            <button className="btn btn-warning py-3 px-6 ">Add To My List</button>
+            <button onClick={handleAddList} className="btn btn-warning py-3 px-6 ">Add To My List</button>
 
 
 
