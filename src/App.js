@@ -42,21 +42,7 @@ function App() {
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>
-{/* <<<<<<< HEAD
-        <Route path="/dashboard" element={<DashboardMainPage></DashboardMainPage>}>
-          <Route path="profile" index element={<MyProfile></MyProfile>}></Route>
-          <Route path="uploadVideo" element={<UploadVideo></UploadVideo>}></Route>
-          <Route path="myVideos" element={<MyVideos></MyVideos>}></Route>
-          <Route path="makeAdmin" element={<MakeAdmin></MakeAdmin>}></Route>
-          <Route path="manageVideos" element={<ManageVideos></ManageVideos>}></Route>
-          {/* <Route  element={<MyProfile/>}></Route> */}
-          
-        {/* </Route>
-        <Route path="watchList" element={<Library/>}></Route>
-        <Route path="favorite" element={<Favorite/>}></Route>
-        <Route path='/play/:id' element={<Details />} /> */}
 
-{/* ======= */} 
         <Route
           path="/dashboard"
           element={<DashboardMainPage></DashboardMainPage>}
@@ -76,7 +62,7 @@ function App() {
         <Route path="watchList" element={<Library/>}></Route>
         <Route path="favorite" element={<Favorite/>}></Route>
         <Route path="/play/:id" element={<Details />} />
-{/* >>>>>>> ee8e38fcabf8adb99b38792c438ed9e1037b1d05 */}
+
       </Routes>
 
       {/*...................add facebook messenger .................*/}
