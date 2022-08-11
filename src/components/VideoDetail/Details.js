@@ -1,5 +1,4 @@
-
-import React, { useEffect } from "react";
+import React, { useEffect} from "react";
 import movie1 from "../../assets/bangla-movie/movie (1).jpg";
 import movie2 from "../../assets/bangla-movie/movie (2).jpg";
 import movie3 from "../../assets/bangla-movie/movie (3).jpg";
@@ -9,6 +8,7 @@ import useVideo from "../../hooks/useVideo";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import useComments from "../../hooks/useComments";
+import useLikes from "../../hooks/useLikes";
 import "./Details.css";
 import {
   FacebookShareButton,
@@ -22,13 +22,13 @@ import {
   RedditIcon,
   RedditShareButton
 } from "react-share";
-import useLikes from "../../hooks/useLikes";
 
 
 const Details = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth);
   const [video] = useVideo(id);
+
 
   const [likes] = useLikes();
   const [comments] = useComments();
@@ -87,6 +87,7 @@ const Details = () => {
     const comment = e.target.comment.value;
     const name = user.displayName;
     const newComment = { id, name, comment };
+    console.log(newComment)
 
 
     fetch("https://infinite-island-65121.herokuapp.com/comment", {
@@ -104,10 +105,6 @@ const Details = () => {
         }
       });
   };
-
-
-
-
 
   // for set video id for library section 
 const libraryInfo={
@@ -152,6 +149,8 @@ const handleAddList=()=>{
   })
 }
 
+
+
   const popularMovies = [
     {
       _id: 1,
@@ -191,18 +190,16 @@ const handleAddList=()=>{
   ];
 
   return (
-
     <div className="md:px-14 px-3 pt-20 bg-primary text-secondary">
-
       <div className="justify-center flex ">
         <iframe
           className="rounded-sm h-full md:h-[700px] md:p-1 shadow-2xl border-2 border-zinc-700 "
           width="100%"
           src={video.videoLink}
           title="YouTube video player"
-          frameBorder="0"
+          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
+          allowfullscreen
         ></iframe>
       </div>
 
@@ -235,7 +232,7 @@ const handleAddList=()=>{
               <div className="flex items-center ">
                 <div>
 
-                  <p>{newLike.length}</p>
+                  {likes?.like}
                 </div>
 
                 <button
@@ -290,45 +287,44 @@ const handleAddList=()=>{
 
             {/* ---------------------Share a video------------------ */}
             <label
-
-              htmlFor="my-modal-3"
-              className=" border-2 cursor-pointer py-2 md:ml-2 ml-3 px-7 md:px-6 btn btn-warning"
+              for="my-share-modal-3"
+              class=" border-2 cursor-pointer hover:bg-amber-500 border-amber-500 py-2 md:ml-2 ml-3 px-7 md:px-6"
             >
               Share
             </label>
 
 
             {/* <!------------- Social media Open in a modal ---------------------> */}
-            <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-            <div className="modal">
-              <div className="modal-box bg-black relative">
+
+            <input type="checkbox" id="my-share-modal-3" class="modal-toggle" />
+            <div class="modal">
+              <div class="modal-box bg-black relative">
                 <label
-                  htmlFor="my-modal-3"
-                  className="btn btn-sm btn-circle absolute right-2 top-2"
+                  for="my-share-modal-3"
+                  class="btn btn-sm btn-circle absolute right-2 top-2"
                 >
                   ✕
                 </label>
-                <h4 className="font-b text-lg text-white mb-4 text-center">
+                <h3 class="text-2xl font-bold text-white mb-4">
                   Share your video on social media
-                </h4>
-                <div className="flex justify-center">
-                  <FacebookShareButton url={video.videoLink}>
-                    <FacebookIcon className="rounded-3xl mr-4"></FacebookIcon>
-                  </FacebookShareButton>
+                </h3>
+                <FacebookShareButton url={video.videoLink}>
+                  <FacebookIcon className="rounded-3xl mr-4"></FacebookIcon>
+                </FacebookShareButton>
+                
 
-                  <WhatsappShareButton url={video.videoLink}>
-                    <WhatsappIcon className="rounded-3xl mr-4"></WhatsappIcon>
-                  </WhatsappShareButton>
+                <WhatsappShareButton url={video.videoLink}>
+                  <WhatsappIcon className="rounded-3xl mr-4"></WhatsappIcon>
+                </WhatsappShareButton>
 
-                  <TwitterShareButton url={video.videoLink}>
-                    {" "}
-                    <TwitterIcon className="rounded-3xl mr-4"></TwitterIcon>
-                  </TwitterShareButton>
+                <TwitterShareButton url={video.videoLink}>
+                  {" "}
+                  <TwitterIcon className="rounded-3xl mr-4"></TwitterIcon>
+                </TwitterShareButton>
 
-                  <LinkedinShareButton url={video.videoLink}><LinkedinIcon className="rounded-3xl mr-4"></LinkedinIcon></LinkedinShareButton>
+                <LinkedinShareButton url={video.videoLink}><LinkedinIcon className="rounded-3xl mr-4"></LinkedinIcon></LinkedinShareButton>
 
-                  <RedditShareButton url={video.videoLink}><RedditIcon className="rounded-3xl"></RedditIcon></RedditShareButton>
-                </div>
+                <RedditShareButton url={video.videoLink}><RedditIcon className="rounded-3xl"></RedditIcon></RedditShareButton>
               </div>
             </div>
             <button className="border-2 border-amber-500 py-3 md:ml-2 ml-4 px-7 md:px-6">
@@ -348,12 +344,12 @@ const handleAddList=()=>{
               rows="4"
             ></textarea>{" "}
             <br />
-            <button className="bg-amber-500 px-7 rounded-sm py-2 mt-2 text-xl">
+            <button className="  bg-amber-500 px-7 rounded-sm py-2 mt-2 text-xl">
               Submit
             </button>
           </div>
         </div>
-        <div className="md:col-start-3 w-full  md:col-end-12 ">
+        <div className="   md:col-start-3 w-full  md:col-end-12 ">
           <div>
             <div className=" video-container">
               <h1 className="text-4xl mb-4  font-medium">You May Also Like</h1>

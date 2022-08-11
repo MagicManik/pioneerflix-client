@@ -210,7 +210,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                             <Link to='favorite'   className={classNames(
                               active ? "bg-zinc-800 w-full text-left" : "w-full",
                               "block px-4 py-2 text-sm text-left"
-                            )}>Favorite</Link> 
+                            )}>Favorite Videos</Link> 
                           )}
                          
                         </Menu.Item>
