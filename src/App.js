@@ -9,12 +9,15 @@ import MyProfile from "./components/Dashboard/MyProfile";
 import MyVideos from "./components/Dashboard/MyVideos";
 import UploadVideo from "./components/Dashboard/UploadVideo";
 import Home from "./components/Home/Home";
+import Library from "./components/watchList/WatchList";
 import Footer from "./components/Shared/Footer/Footer";
 import NavbarResponsive from "./components/Shared/Header/Navbar/NavbarResponsive";
 import LoginPage from "./components/UserAccount/LoginPage";
 import SignUpPage from "./components/UserAccount/SignUpPage";
 import Details from "./components/VideoDetail/Details";
+import Favorite from "./components/VideoDetail/Favorite";
 import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
+
 
 function App() {
   const [theme, setTheme] = useState(true);
@@ -27,7 +30,10 @@ function App() {
     } else {
       setTheme(false);
     }
-  }, [getTheme]);
+  },[getTheme])
+
+  
+
   return (
     <div data-theme={theme ? "dark" : "light"}>
       <NavbarResponsive theme={theme} setTheme={setTheme} />
@@ -36,11 +42,26 @@ function App() {
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>
+{/* <<<<<<< HEAD
+        <Route path="/dashboard" element={<DashboardMainPage></DashboardMainPage>}>
+          <Route path="profile" index element={<MyProfile></MyProfile>}></Route>
+          <Route path="uploadVideo" element={<UploadVideo></UploadVideo>}></Route>
+          <Route path="myVideos" element={<MyVideos></MyVideos>}></Route>
+          <Route path="makeAdmin" element={<MakeAdmin></MakeAdmin>}></Route>
+          <Route path="manageVideos" element={<ManageVideos></ManageVideos>}></Route>
+          {/* <Route  element={<MyProfile/>}></Route> */}
+          
+        {/* </Route>
+        <Route path="watchList" element={<Library/>}></Route>
+        <Route path="favorite" element={<Favorite/>}></Route>
+        <Route path='/play/:id' element={<Details />} /> */}
+
+{/* ======= */} 
         <Route
           path="/dashboard"
           element={<DashboardMainPage></DashboardMainPage>}
         >
-          <Route index element={<MyProfile></MyProfile>}></Route>
+          <Route path="profile" index element={<MyProfile></MyProfile>}></Route>
           <Route
             path="uploadVideo"
             element={<UploadVideo></UploadVideo>}
@@ -52,7 +73,10 @@ function App() {
             element={<ManageVideos></ManageVideos>}
           ></Route>
         </Route>
+        <Route path="watchList" element={<Library/>}></Route>
+        <Route path="favorite" element={<Favorite/>}></Route>
         <Route path="/play/:id" element={<Details />} />
+{/* >>>>>>> ee8e38fcabf8adb99b38792c438ed9e1037b1d05 */}
       </Routes>
 
       {/*...................add facebook messenger .................*/}
