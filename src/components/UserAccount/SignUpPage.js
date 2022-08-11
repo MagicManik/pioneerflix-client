@@ -1,6 +1,7 @@
 import React from 'react';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
 import './SignUpPage.css';
@@ -27,16 +28,29 @@ const SignUpPage = () => {
         const email = event.target.email.value;
         const password = event.target.password.value;
         // console.log(name, email, password);
-
         await createUserWithEmailAndPassword(email, password);
-
         await updateProfile({ displayName: name });
-        alert('Updated your profile');
+        // alert('Updated your profile');
 
-        event.target.reset();
-
-        navigate('/')
-        
+        const signUpData = {
+            profileEmail: email,
+            profileName: name
+        };
+        const url = 'http://localhost:5000/userSignUp';
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(signUpData)
+        })
+            .then(res => res.json())
+            .then(result => {
+                // console.log(result);
+                toast.success('Register successful !!!')
+                event.target.reset();
+            })
+        navigate('/login');
     }
 
     return (

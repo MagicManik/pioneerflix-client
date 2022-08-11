@@ -1,12 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
-import auth from '../../firebase.init';
 
 const ManageVideos = () => {
-    const [user] = useAuthState(auth);
-
     const url = 'http://localhost:5000/uploadedVideo';
     const { data, refetch } = useQuery(['uploadedVideo'], () =>
         fetch(url, {
