@@ -31,6 +31,10 @@ const SignUpPage = () => {
         signUpError = <p className='text-red-500 text-center'><small>{error?.message}</small></p>
     }
 
+    if(token){
+        navigate('/login');
+    }
+
     const handleSignUp = async event => {
         event.preventDefault();
         const name = event.target.name.value;
@@ -39,15 +43,8 @@ const SignUpPage = () => {
         // console.log(name, email, password);
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
-        // alert('Updated your profile');
-
-        const signUpData = {
-            profileEmail: email,
-            profileName: name
-        };
-        // const url = 'http://localhost:5000/';
-        
-        // navigate('/login');
+        alert('Updated your profile');
+        toast.success('your profile updated')
     }
 
     return (

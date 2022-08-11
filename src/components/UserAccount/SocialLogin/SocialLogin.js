@@ -20,11 +20,11 @@ const SocialLogin = () => {
 
     useEffect(() => {
 
-        if (user || userFB) {
+        if (token) {
             navigate(from, { replace: true });
         }
 
-    }, [user, userFB, navigate, from])
+    }, [token, navigate, from])
 
     if (loading || loadingFB) {
         return <Loading></Loading>
