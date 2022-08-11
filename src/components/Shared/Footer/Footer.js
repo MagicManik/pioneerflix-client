@@ -3,6 +3,7 @@ import playStore from '../../../assets/app-logo/playstore.png';
 import appStore from '../../../assets/app-logo/appstore.png';
 import pioneerFlix from '../../../assets/app-logo/pioneerflix.png';
 import './Footer.css';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -33,7 +34,7 @@ const Footer = () => {
                     <div className='footer-others'>
                         <h5 className='footer-text pb-2'>Others</h5>
                         <p className='footer-text'><a href="https://www.google.com/">Blogs</a></p>
-                        <p className='footer-text'><a href="https://www.google.com/">Crash Course</a></p>
+                        <p className='footer-text'><Link to='/about'>About</Link></p>
                         <p className='footer-text'><a href="https://www.google.com/">Want to be an affiliate</a></p>
                     </div>
                 </div>
