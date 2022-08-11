@@ -49,8 +49,8 @@ const LoginPage = () => {
     }
 
     return (
-        <div>
-            <div className='bg-primary text-secondary py-14'>
+        <div className='pt-16 bg-primary '>
+            <div className='text-secondary py-14'>
                 <div>
                     <form action="" className='loginBody' onSubmit={handleLogin}>
                         <h1 className='text-2xl  border-2 border-none uppercase'>Please Login</h1>

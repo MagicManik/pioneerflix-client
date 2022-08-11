@@ -16,15 +16,17 @@ import {
   WhatsappIcon,
   TwitterShareButton,
   TwitterIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  RedditIcon,
+  RedditShareButton
 } from "react-share";
 
 const Details = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth);
   const [video] = useVideo(id);
-  // const [likes, setLikes] = useComments();
-
-  const [like, setLike] = useState(509);
+  const [likes, setLikes] = useComments();
 
   const [comments] = useComments();
 
@@ -33,6 +35,7 @@ const Details = () => {
     const comment = e.target.comment.value;
     const name = user.displayName;
     const newComment = { id, name, comment };
+    console.log(newComment)
 
     fetch("https://infinite-island-65121.herokuapp.com/comment", {
       method: "POST",
@@ -52,25 +55,24 @@ const Details = () => {
 
   // handle like
   const handleLike = () => {
-    setLike(like + 1)
-    // const like = true;
-    // const name = user.displayName;
-    // const email = user.email;
-    // const newLike = { id, like, name, email };
+    const like = 1;
+    const name = user.displayName;
+    const email = user.email;
+    const newLike = { id, like, name, email };
 
-    // fetch("https://infinite-island-65121.herokuapp.com/like", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(newLike),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data.insertedId) {
-    //       alert("Your item successfully added.");
-    //     }
-    //   });
+    fetch("https://infinite-island-65121.herokuapp.com/like", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newLike),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          alert("Your item successfully added.");
+        }
+      });
   };
 
   const popularMovies = [
@@ -137,12 +139,12 @@ const Details = () => {
           <div>
             <div>
               <h1 className="md:text-5xl text-lg md:font-semibold">
-                Mogoje Mohaproloy
+                {video?.title}
               </h1>
               <hr className="md:mt-6 bg-secondary h-0.5 my-4 md:mb-4" />
 
               <p className="text-sm">( 2022 ) . 0 hr 4 min . Arabic </p>
-              <p className="my-2 text-sm"> Type : Song</p>
+              <p className="my-2 text-sm"> Category : Bangla Movie</p>
               <p>
                 Provident cupiditate voluptatem et in. Quaerat fugiat ut
                 assumenda excepturi exercitationem quasi. In deleniti eaque aut
@@ -154,10 +156,7 @@ const Details = () => {
               <div className="flex items-center ">
                 <div>
 
-                  {like}
-                  {/* {likes.map((like, index) => (
-                    <p>{index + 1}</p>
-                  ))} */}
+                  {likes?.like}
                 </div>
 
                 <button
@@ -210,8 +209,8 @@ const Details = () => {
 
             {/* ---------------------Share a video------------------ */}
             <label
-              for="my-modal-3"
-              class=" border-2 cursor-pointer btn btn-outline btn-warning border-amber-500 py-2 md:ml-2 ml-3 px-7 md:px-6"
+              for="my-share-modal-3"
+              class=" border-2 cursor-pointer hover:bg-amber-500 border-amber-500 py-2 md:ml-2 ml-3 px-7 md:px-6"
             >
               Share
             </label>
@@ -219,11 +218,11 @@ const Details = () => {
 
             {/* <!------------- Social media Open in a modal ---------------------> */}
 
-            <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+            <input type="checkbox" id="my-share-modal-3" class="modal-toggle" />
             <div class="modal">
               <div class="modal-box bg-black relative">
                 <label
-                  for="my-modal-3"
+                  for="my-share-modal-3"
                   class="btn btn-sm btn-circle absolute right-2 top-2"
                 >
                   ✕
@@ -234,6 +233,7 @@ const Details = () => {
                 <FacebookShareButton url={video.videoLink}>
                   <FacebookIcon className="rounded-3xl mr-4"></FacebookIcon>
                 </FacebookShareButton>
+                
 
                 <WhatsappShareButton url={video.videoLink}>
                   <WhatsappIcon className="rounded-3xl mr-4"></WhatsappIcon>
@@ -241,8 +241,12 @@ const Details = () => {
 
                 <TwitterShareButton url={video.videoLink}>
                   {" "}
-                  <TwitterIcon className="rounded-3xl "></TwitterIcon>
+                  <TwitterIcon className="rounded-3xl mr-4"></TwitterIcon>
                 </TwitterShareButton>
+
+                <LinkedinShareButton url={video.videoLink}><LinkedinIcon className="rounded-3xl mr-4"></LinkedinIcon></LinkedinShareButton>
+
+                <RedditShareButton url={video.videoLink}><RedditIcon className="rounded-3xl"></RedditIcon></RedditShareButton>
               </div>
             </div>
             <button className="border-2 border-amber-500 py-3 md:ml-2 ml-4 px-7 md:px-6">
@@ -254,7 +258,7 @@ const Details = () => {
           {/* ---------this is another input field for mobile device ----------- */}
 
           <div className=" block md:hidden my-5">
-            <textarea
+            <textarea onSubmit={handleComment}
               placeholder="Please Write Your Comment"
               className="p-3 w-full text-black border-2 rounded-sm border-zinc-700"
               name=""
