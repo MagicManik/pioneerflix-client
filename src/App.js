@@ -9,6 +9,7 @@ import MyProfile from "./components/Dashboard/MyProfile";
 import MyVideos from "./components/Dashboard/MyVideos";
 import UploadVideo from "./components/Dashboard/UploadVideo";
 import Home from "./components/Home/Home";
+import TvChannel from "./components/Home/TvChannels/TvChannel";
 import Footer from "./components/Shared/Footer/Footer";
 import NavbarResponsive from "./components/Shared/Header/Navbar/NavbarResponsive";
 import LoginPage from "./components/UserAccount/LoginPage";
@@ -45,6 +46,7 @@ function App() {
           <Route path="manageVideos" element={<ManageVideos></ManageVideos>}></Route>
         </Route>
         <Route path='/play/:id' element={<Details />} />
+        <Route path='/channel/:id' element={<TvChannel/>}></Route>
 
       </Routes>
       <Footer></Footer>

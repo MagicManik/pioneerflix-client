@@ -7,13 +7,13 @@ import MostPopular from "./MostPopular/MostPopular";
 import PioneerflixFree from "./PioneerflixFree/PioneerflixFree";
 import PioneerflixKids from "./PioneerflixKids/PioneerflixKids";
 import PioneerplixExclusive from "./PioneerplixExclusive/PioneerplixExclusive";
-// import TvChannels from "./TvChannels/TvChannels";
+import TvChannels from "./TvChannels/TvChannels";
 
 const Home = () => {
   return (
     <main className="z-10">
       <Banner></Banner>
-      {/* <TvChannels></TvChannels> */}
+      <TvChannels></TvChannels>
       <MostPopular></MostPopular>
       <PioneerplixExclusive></PioneerplixExclusive>
       <PioneerflixKids></PioneerflixKids>

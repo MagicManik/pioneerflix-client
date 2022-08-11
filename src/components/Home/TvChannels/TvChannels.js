@@ -1,9 +1,8 @@
 import React from 'react';
-
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { Link } from 'react-router-dom';
 
 import movie1 from '../../../assets/tvchannels/tv-chaneel1.png';
 import movie2 from '../../../assets/tvchannels/tv-chaneel2.png';
@@ -27,8 +26,11 @@ import movie19 from '../../../assets/tvchannels/tv-chaneel19.png';
 import movie20 from '../../../assets/tvchannels/tv-chaneel20.png';
 import tv from '../../../assets/others/tv.png';
 import './TvChannels.css';
+import useChannels from '../../../hooks/useChannels';
 
 const TvChannels = () => {
+
+    const [channels, setChannels] = useChannels()
 
     const popularMovies = [
         {
@@ -36,7 +38,7 @@ const TvChannels = () => {
             name: 'Movie1',
             description: '',
             img: movie1,
-            link: 'https://www.jagobd.com/jamunatv'
+            link: 'https://www.jagobd.com/jamunatv',
         },
         {
             _id: 2,
@@ -44,6 +46,7 @@ const TvChannels = () => {
             description: '',
             img: movie2,
             link: 'https://www.jagobd.com/independent'
+
         },
         {
             _id: 3,
@@ -220,23 +223,35 @@ const TvChannels = () => {
                         {/* <div className='grid lg:grid-cols-8 gap-4 popular-movie-section'> */}
                         <Slider {...settings} className=''>
 
-                            {
+                            {/* {
                                 popularMovies.map(movie =>
 
                                     <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
 
                                         <a href={movie.link} target="_blank"><img className='popular-movie' src={movie.img} alt="" /></a>
                                     </div>)
+                            } */}
+                            {
+                                channels.map(tv =>
+
+                                    <div key={tv._id}>
+                                        <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={tv._id}>
+                                            <Link to={`/channel/${tv._id}`}>
+                                                <img className='popular-movie' src={tv.imgLink} alt="" />
+                                            </Link>
+
+
+                                        </div>
+
+                                    </div>)
                             }
                         </Slider>
                         {/* </div> */}
 
 
-                                
-                        
-
                     </div>
                 </div>
+
 
                 <div className='text-container text-secondary bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
 
