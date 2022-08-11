@@ -33,8 +33,9 @@ const MakeAdmin = () => {
                     </thead>
                     <tbody>
                         {
-                            data?.map(ud => <UserRow
+                            data?.map((ud, index) => <UserRow
                                 key={ud._id}
+                                index={index}
                                 ud={ud}
                                 refetch={refetch}
                             ></UserRow>)
