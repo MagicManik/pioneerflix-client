@@ -14,7 +14,7 @@ import NavbarResponsive from "./components/Shared/Header/Navbar/NavbarResponsive
 import LoginPage from "./components/UserAccount/LoginPage";
 import SignUpPage from "./components/UserAccount/SignUpPage";
 import Details from "./components/VideoDetail/Details";
-
+import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
 
 function App() {
   const [theme, setTheme] = useState(true)
@@ -47,6 +47,10 @@ function App() {
         <Route path='/play/:id' element={<Details />} />
 
       </Routes>
+      <MessengerCustomerChat
+    pageId="<PAGE_ID>"
+    appId="<APP_ID>"
+  />
       <Footer></Footer>
     </div>
   )
