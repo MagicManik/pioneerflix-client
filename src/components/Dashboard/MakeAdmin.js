@@ -1,7 +1,20 @@
 import React from 'react';
 import UserRow from './UserRow';
+import { useQuery } from '@tanstack/react-query';
 
 const MakeAdmin = () => {
+
+    const url = 'http://localhost:5000/allUserData';
+    const { data, refetch } = useQuery(['allUserData'], () =>
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+    )
+
     return (
         <div className="w-11/12 lg:w-full mb-40">
             <div className='w-full flex justify-center mt-0'>
@@ -19,7 +32,13 @@ const MakeAdmin = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <UserRow></UserRow>
+                        {
+                            data?.map(ud => <UserRow
+                                key={ud._id}
+                                ud={ud}
+                                refetch={refetch}
+                            ></UserRow>)
+                        }
                     </tbody>
                 </table>
             </div>
