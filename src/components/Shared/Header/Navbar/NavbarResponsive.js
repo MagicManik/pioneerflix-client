@@ -154,7 +154,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   </button>
 
                   {/* Profile dropdown */}
-                  <Menu as="div" className="ml-3 relative custom-border">
+                  <Menu as="div" className={user ? 'ml-3 relative  custom-border-I' : 'ml-3 relative'}>
                     <div>
                       <Menu.Button className=" flex text-sm">
                         <span className="sr-only">Open user menu</span>
@@ -168,7 +168,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                               alt=""
                             />
                             :
-                            <Link to="/logIn" className='bg-black px-4 py-2 rounded-xl'>LOG IN</Link>
+                            <Link to="/logIn" className='bg-black custom-border-II px-4 login-btn rounded-xl'>LOG IN</Link>
                         }
 
                       </Menu.Button>

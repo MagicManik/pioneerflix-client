@@ -100,7 +100,7 @@ const PioneerflixFree = () => {
         <section className='text-secondary'>
             <div className='pb-3 custom-bg'>
                 <div className='bg-primary pl-5  video-container-II'>
-                    <h3 className='text-2xl  pt-6'>PIONEERFLIX FREE</h3>
+                    <h1 className='text-2xl pt-6'>PIONEERFLIX FREE</h1>
                     <div className='pb-10'>
                         <Slider {...settings}>
 
@@ -125,7 +125,7 @@ const PioneerflixFree = () => {
                         <div className='text-container-left-2 pb-10'>
                             <h1 className='text-5xl font-bold '>Watch 100+ Exclusive Videos</h1>
                             <br />
-                            <p className=' text-2xl'>Download your shows to watch offline.</p>
+                            <p className='text-2xl'>Download your shows to watch offline.</p>
                         </div>
 
                         <div className='pb-10'>
