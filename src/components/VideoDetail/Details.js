@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import movie1 from "../../assets/bangla-movie/movie (1).jpg";
 import movie2 from "../../assets/bangla-movie/movie (2).jpg";
 import movie3 from "../../assets/bangla-movie/movie (3).jpg";
@@ -8,6 +8,7 @@ import useVideo from "../../hooks/useVideo";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import useComments from "../../hooks/useComments";
+import useLikes from "../../hooks/useLikes";
 import "./Details.css";
 import {
   FacebookShareButton,
@@ -22,13 +23,64 @@ import {
   RedditShareButton
 } from "react-share";
 
+
 const Details = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth);
   const [video] = useVideo(id);
-  const [likes, setLikes] = useComments();
 
+
+  const [likes] = useLikes();
   const [comments] = useComments();
+
+  let newLike = likes.filter(li => li.id === id);
+
+
+  // like handler || Manik Islam Mahi
+  const handleLike = () => {
+
+    const like = true;
+    const name = user.displayName;
+    const email = user.email;
+    const newLike = { id, like, name, email };
+
+    const likedUser = likes.filter(li => li.id === id && li.email === email);
+
+    if (likedUser.length > 0) {
+      const likedId = likedUser[0]._id;
+
+      const url = `http://localhost:5000/likes/${likedId}`
+
+      fetch(url, {
+        method: 'DELETE'
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.deletedCount > 0) {
+            // alert('Deleted');
+          }
+        })
+    }
+
+    else {
+      fetch("https://infinite-island-65121.herokuapp.com/like", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newLike),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            alert("Your item successfully added.");
+          }
+        });
+    }
+  };
+
+
+  // Comment Handler || Manik Islam Mahi
 
   const handleComment = (e) => {
     e.preventDefault();
@@ -36,6 +88,7 @@ const Details = () => {
     const name = user.displayName;
     const newComment = { id, name, comment };
     console.log(newComment)
+
 
     fetch("https://infinite-island-65121.herokuapp.com/comment", {
       method: "POST",
@@ -53,27 +106,50 @@ const Details = () => {
       });
   };
 
-  // handle like
-  const handleLike = () => {
-    const like = 1;
-    const name = user.displayName;
-    const email = user.email;
-    const newLike = { id, like, name, email };
+  // for set video id for library section 
+  const libraryInfo = {
+    videoId: id,
+    email: user?.email,
+    videoLink: video?.videoLink,
+    videoTitle: video?.title,
+    // videoDescription:video?.description
 
-    fetch("https://infinite-island-65121.herokuapp.com/like", {
-      method: "POST",
+  }
+  // handleAddList
+
+  useEffect(() => {
+    if (video?.title) {
+      fetch('http://localhost:5000/library', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+
+        },
+        body: JSON.stringify(libraryInfo)
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+        })
+    }
+  }, [video?.title])
+
+  const handleAddList = () => {
+    fetch('http://localhost:5000/favorite', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json'
+
       },
-      body: JSON.stringify(newLike),
+      body: JSON.stringify(libraryInfo)
     })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
-          alert("Your item successfully added.");
-        }
-      });
-  };
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+      })
+  }
+
+
 
   const popularMovies = [
     {
@@ -114,7 +190,7 @@ const Details = () => {
   ];
 
   return (
-    <div className="md:px-14 px-3 pt-3 bg-primary text-secondary">
+    <div className="md:px-14 px-3 pt-20 bg-primary text-secondary">
       <div className="justify-center flex ">
         <iframe
           className="rounded-sm h-full md:h-[700px] md:p-1 shadow-2xl border-2 border-zinc-700 "
@@ -156,7 +232,7 @@ const Details = () => {
               <div className="flex items-center ">
                 <div>
 
-                  {likes?.like}
+                  {newLike.length}
                 </div>
 
                 <button
@@ -204,7 +280,9 @@ const Details = () => {
       <div className="grid  md:grid-cols-6 gap-5  ">
         <div className="md:w-[350px] w-full md:col-start-1  md:col-end-3 ">
           <div>
-            <button className="bg-amber-500 py-3 px-6 ">Add To My List</button>
+
+            <button onClick={handleAddList} className="btn btn-warning py-3 px-6 ">Add To My List</button>
+
 
 
             {/* ---------------------Share a video------------------ */}
@@ -233,6 +311,7 @@ const Details = () => {
                 <FacebookShareButton url={video.videoLink}>
                   <FacebookIcon className="rounded-3xl mr-4"></FacebookIcon>
                 </FacebookShareButton>
+
 
                 <WhatsappShareButton url={video.videoLink}>
                   <WhatsappIcon className="rounded-3xl mr-4"></WhatsappIcon>

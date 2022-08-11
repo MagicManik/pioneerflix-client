@@ -256,8 +256,8 @@ const TvChannels = () => {
                 <div className='text-container text-secondary bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
 
                     <div className='text-container-left'>
-                        <h1 className='text-5xl font-bold '>Enjoy on your TV.</h1>
-                        <p className=' text-2xl'>Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.</p>
+                        <h1 className='text-5xl font-bold '>Watch your TV Channels.</h1>
+                        <p className=' text-2xl'>Watch your favorite channels on PioneerFlix website.</p>
                     </div>
 
                     <div className='our-story-card-animation-container pb-20'>
