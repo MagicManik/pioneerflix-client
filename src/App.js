@@ -14,21 +14,20 @@ import NavbarResponsive from "./components/Shared/Header/Navbar/NavbarResponsive
 import LoginPage from "./components/UserAccount/LoginPage";
 import SignUpPage from "./components/UserAccount/SignUpPage";
 import Details from "./components/VideoDetail/Details";
-
+import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
 
 function App() {
-  const [theme, setTheme] = useState(true)
+  const [theme, setTheme] = useState(true);
 
-  let getTheme=localStorage.getItem('colorTheme')
+  let getTheme = localStorage.getItem("colorTheme");
 
-  useEffect(()=>{
-    if(getTheme ==='dark'){
-      setTheme(true)
+  useEffect(() => {
+    if (getTheme === "dark") {
+      setTheme(true);
+    } else {
+      setTheme(false);
     }
-    else{
-      setTheme(false)
-    }
-  },[getTheme])
+  }, [getTheme]);
   return (
     <div data-theme={theme ? "dark" : "light"}>
       <NavbarResponsive theme={theme} setTheme={setTheme} />
@@ -37,19 +36,30 @@ function App() {
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>
-        <Route path="/dashboard" element={<DashboardMainPage></DashboardMainPage>}>
+        <Route
+          path="/dashboard"
+          element={<DashboardMainPage></DashboardMainPage>}
+        >
           <Route index element={<MyProfile></MyProfile>}></Route>
-          <Route path="uploadVideo" element={<UploadVideo></UploadVideo>}></Route>
+          <Route
+            path="uploadVideo"
+            element={<UploadVideo></UploadVideo>}
+          ></Route>
           <Route path="myVideos" element={<MyVideos></MyVideos>}></Route>
           <Route path="makeAdmin" element={<MakeAdmin></MakeAdmin>}></Route>
-          <Route path="manageVideos" element={<ManageVideos></ManageVideos>}></Route>
+          <Route
+            path="manageVideos"
+            element={<ManageVideos></ManageVideos>}
+          ></Route>
         </Route>
-        <Route path='/play/:id' element={<Details />} />
-
+        <Route path="/play/:id" element={<Details />} />
       </Routes>
+
+      {/*...................add facebook messenger .................*/}
+      <MessengerCustomerChat pageId="110278435120347" appId="592904995642640" />
       <Footer></Footer>
     </div>
-  )
+  );
 }
 
 export default App;
