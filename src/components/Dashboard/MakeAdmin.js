@@ -9,7 +9,7 @@ const MakeAdmin = () => {
         fetch(url, {
             method: 'GET',
             headers: {
-                'content-type': 'application/json'
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
         })
             .then(res => res.json())

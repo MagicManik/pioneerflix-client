@@ -9,19 +9,26 @@ const UserRow = ({ ud, index, refetch }) => {
         fetch(url, {
             method: 'PUT',
             headers: {
-                'content-type': 'application/json'
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
             }
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 403) {
+                    toast.error('Failed to Make an admin');
+                }
+                return res.json()
+            })
             .then(data => {
                 // console.log(data);
-                refetch();
-                toast.success(`${profileName} has successfully become a admin`)
+                if (data.modifiedCount > 0) {
+                    refetch();
+                    toast.success(`Successfully made an admin`);
+                }
             })
     };
 
     const removeAdmin = () => {
-        
+
     };
 
     return (
