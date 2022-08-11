@@ -6,10 +6,10 @@ import useToken from '../../../hooks/useToken';
 import Loading from '../../Shared/Loading/Loading';
 
 const SocialLogin = () => {
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, userG, loading, error] = useSignInWithGoogle(auth);
     const [signInWithFacebook, userFB, loadingFB, errorFB] = useSignInWithFacebook(auth);
 
-    const [token] =useToken(user || userFB);
+    const [token] =useToken(userG || userFB);
 
     let location = useLocation();
     const navigate = useNavigate();

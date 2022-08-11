@@ -10,10 +10,6 @@ import SocialLogin from './SocialLogin/SocialLogin';
 const LoginPage = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
-
-    const navigate = useNavigate();
-    let location = useLocation();
-
     const [
         signInWithEmailAndPassword,
         user,
@@ -21,7 +17,10 @@ const LoginPage = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    const [token] =useToken(user);
+    const [token] = useToken(user);
+
+    const navigate = useNavigate();
+    let location = useLocation();
 
     let from = location.state?.from?.pathname || "/";
 

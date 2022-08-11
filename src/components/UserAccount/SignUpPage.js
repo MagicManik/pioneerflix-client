@@ -32,7 +32,7 @@ const SignUpPage = () => {
     }
 
     if(token){
-        navigate('/login');
+        navigate('/');
     }
 
     const handleSignUp = async event => {
