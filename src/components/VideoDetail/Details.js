@@ -113,7 +113,8 @@ const libraryInfo={
   videoId:id,
   email:user?.email,
   videoLink:video?.videoLink,
-  videoTitle:video?.title
+  videoTitle:video?.title,
+  videoDescription:video?.description
   
 }
 useEffect(()=>{

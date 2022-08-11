@@ -15,6 +15,7 @@ import NavbarResponsive from "./components/Shared/Header/Navbar/NavbarResponsive
 import LoginPage from "./components/UserAccount/LoginPage";
 import SignUpPage from "./components/UserAccount/SignUpPage";
 import Details from "./components/VideoDetail/Details";
+import Favorite from "./components/VideoDetail/Favorite";
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
           
         </Route>
         <Route path="watchList" element={<Library/>}></Route>
+        <Route path="favorite" element={<Favorite/>}></Route>
         <Route path='/play/:id' element={<Details />} />
 
       </Routes>
