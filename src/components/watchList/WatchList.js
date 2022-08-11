@@ -3,7 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 
-const Library = () => {
+const WatchList = () => {
   const [user] = useAuthState(auth);
   const [vData, setVData] = useState([]);
   useEffect(() => {
@@ -14,13 +14,12 @@ const Library = () => {
       });
   }, []);
 
-  console.log(vData);
   return (
     <>
-      <div className="grid grid-cols-3 gap-5 pr-5  py-14 ">
+      <div className="grid md:grid-cols-3 grid-cols-2  lg:grid-cols-4 px-14 gap-5 pr-5 bg-primary  py-20 ">
         {vData.map((v) => (
           <>
-            <div className="rounded-sm  h-64 bg-black">
+            <div className="rounded-sm  h-64  p-2 shadow-sm shadow-white bg-black">
               <iframe
                 width="100%"
                 className="mt-1"
@@ -34,7 +33,7 @@ const Library = () => {
               <div className="flex text-white justify-between p-3 items-center">
                 <p className="text-sm">{v.videoTitle}</p>
                 <Link to={`/play/${v.videoId}`}>
-                  <button className="badge badge-secondary">Details</button>
+                  <button className="badge badge-white">Details</button>
                 </Link>
               </div>
             </div>
@@ -45,4 +44,4 @@ const Library = () => {
   );
 };
 
-export default Library;
+export default WatchList;

@@ -3,13 +3,13 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import About from "./components/About/About";
 import DashboardMainPage from "./components/Dashboard/DashboardMainPage";
-import Library from "./components/Dashboard/Library";
 import MakeAdmin from "./components/Dashboard/MakeAdmin";
 import ManageVideos from "./components/Dashboard/ManageVideos";
 import MyProfile from "./components/Dashboard/MyProfile";
 import MyVideos from "./components/Dashboard/MyVideos";
 import UploadVideo from "./components/Dashboard/UploadVideo";
 import Home from "./components/Home/Home";
+import Library from "./components/watchList/WatchList";
 import Footer from "./components/Shared/Footer/Footer";
 import NavbarResponsive from "./components/Shared/Header/Navbar/NavbarResponsive";
 import LoginPage from "./components/UserAccount/LoginPage";
@@ -46,8 +46,9 @@ function App() {
           <Route path="myVideos" element={<MyVideos></MyVideos>}></Route>
           <Route path="makeAdmin" element={<MakeAdmin></MakeAdmin>}></Route>
           <Route path="manageVideos" element={<ManageVideos></ManageVideos>}></Route>
-          <Route path="library" element={<Library/>}></Route>
+          
         </Route>
+        <Route path="watchList" element={<Library/>}></Route>
         <Route path='/play/:id' element={<Details />} />
 
       </Routes>
