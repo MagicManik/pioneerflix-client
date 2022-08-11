@@ -3,6 +3,7 @@ import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-fireb
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading/Loading';
 import './SignUpPage.css';
 import SocialLogin from './SocialLogin/SocialLogin';
@@ -12,14 +13,22 @@ const SignUpPage = () => {
         createUserWithEmailAndPassword,
         user,
         loading,
+        error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
     const [updateProfile, updating] = useUpdateProfile(auth);
 
+    const [token] = useToken(user);
+
     const navigate = useNavigate();
+    let signUpError;
 
     if (loading || updating) {
         return <Loading></Loading>
+    }
+
+    if(error){
+        signUpError = <p className='text-red-500 text-center'><small>{error?.message}</small></p>
     }
 
     const handleSignUp = async event => {
@@ -36,21 +45,9 @@ const SignUpPage = () => {
             profileEmail: email,
             profileName: name
         };
-        const url = 'http://localhost:5000/userSignUp';
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(signUpData)
-        })
-            .then(res => res.json())
-            .then(result => {
-                // console.log(result);
-                toast.success('Register successful !!!')
-                event.target.reset();
-            })
-        navigate('/login');
+        // const url = 'http://localhost:5000/';
+        
+        // navigate('/login');
     }
 
     return (
@@ -75,6 +72,7 @@ const SignUpPage = () => {
                             <input type="submit" value="SIGNUP" className='button_3' />
                         </div>
                     </form>
+                    {signUpError}
                 </div>
                 <p className='text-xl  text-center mt-2'><small>Already have an account?</small> <Link to="/login" className='text-green-500 text-sm'>Please Login</Link> </p>
 

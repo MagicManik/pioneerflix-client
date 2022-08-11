@@ -2,11 +2,14 @@ import React, { useEffect } from 'react';
 import { useSignInWithGoogle, useSignInWithFacebook } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import useToken from '../../../hooks/useToken';
 import Loading from '../../Shared/Loading/Loading';
 
 const SocialLogin = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const [signInWithFacebook, userFB, loadingFB, errorFB] = useSignInWithFacebook(auth);
+
+    const [token] =useToken(user || userFB);
 
     let location = useLocation();
     const navigate = useNavigate();
