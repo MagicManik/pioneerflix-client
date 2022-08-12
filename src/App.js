@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import About from "./components/About/About";
 import DashboardMainPage from "./components/Dashboard/DashboardMainPage";
@@ -16,7 +16,6 @@ import SignUpPage from "./components/UserAccount/SignUpPage";
 import Details from "./components/VideoDetail/Details";
 
 function App() {
-  const navigate = useNavigate();
   const [theme, setTheme] = useState(true);
 
   let getTheme = localStorage.getItem("colorTheme");
