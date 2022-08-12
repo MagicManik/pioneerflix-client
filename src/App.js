@@ -11,26 +11,32 @@ import MyProfile from "./components/Dashboard/MyProfile";
 import MyVideos from "./components/Dashboard/MyVideos";
 import UploadVideo from "./components/Dashboard/UploadVideo";
 import Home from "./components/Home/Home";
+import TvChannel from "./components/Home/TvChannels/TvChannel";
+import Library from "./components/watchList/WatchList";
 import Footer from "./components/Shared/Footer/Footer";
 import NavbarResponsive from "./components/Shared/Header/Navbar/NavbarResponsive";
 import LoginPage from "./components/UserAccount/LoginPage";
 import SignUpPage from "./components/UserAccount/SignUpPage";
 import Details from "./components/VideoDetail/Details";
+import Favorite from "./components/VideoDetail/Favorite";
+import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
 
 
 function App() {
-  const [theme, setTheme] = useState(true)
+  const [theme, setTheme] = useState(true);
 
-  let getTheme=localStorage.getItem('colorTheme')
+  let getTheme = localStorage.getItem("colorTheme");
 
-  useEffect(()=>{
-    if(getTheme ==='dark'){
-      setTheme(true)
-    }
-    else{
-      setTheme(false)
+  useEffect(() => {
+    if (getTheme === "dark") {
+      setTheme(true);
+    } else {
+      setTheme(false);
     }
   },[getTheme])
+
+  
+
   return (
     <div data-theme={theme ? "dark" : "light"}>
       <NavbarResponsive theme={theme} setTheme={setTheme} />
@@ -39,20 +45,38 @@ function App() {
         <Route path="/about" element={<About></About>}></Route>
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>
-        <Route path="/dashboard" element={<DashboardMainPage></DashboardMainPage>}>
-          <Route index element={<MyProfile></MyProfile>}></Route>
-          <Route path="uploadVideo" element={<UploadVideo></UploadVideo>}></Route>
+
+        <Route
+          path="/dashboard"
+          element={<DashboardMainPage></DashboardMainPage>}
+        >
+          <Route path="" index element={<MyProfile></MyProfile>}></Route>
+          <Route
+            path="uploadVideo"
+            element={<UploadVideo></UploadVideo>}
+          ></Route>
           <Route path="myVideos" element={<MyVideos></MyVideos>}></Route>
           <Route path="makeAdmin" element={<MakeAdmin></MakeAdmin>}></Route>
-          <Route path="manageVideos" element={<ManageVideos></ManageVideos>}></Route>
+          <Route
+            path="manageVideos"
+            element={<ManageVideos></ManageVideos>}
+          ></Route>
         </Route>
         <Route path='/play/:id' element={<Details />} />
+        <Route path='/channel/:id' element={<TvChannel/>}></Route>
+        <Route path="watchList" element={<Library/>}></Route>
+        <Route path="favorite" element={<Favorite/>}></Route>
+        <Route path="/play/:id" element={<Details />} />
+
 
       </Routes>
+
+      {/*...................add facebook messenger .................*/}
+      <MessengerCustomerChat pageId="110278435120347" appId="592904995642640" />
       <Footer></Footer>
       <ToastContainer />
     </div>
-  )
+  );
 }
 
 export default App;

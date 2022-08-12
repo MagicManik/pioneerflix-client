@@ -21,6 +21,9 @@ import './NavbarResponsive.css';
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
+
+
+
 const NavbarResponsive = ({ theme, setTheme }) => {
   const [scrollNavbar, setScrollNavbar] = useState(false);
 
@@ -32,6 +35,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
     localStorage.removeItem('accessToken');
     navigate("/");
   };
+
   const handleTheme = (colorTheme) => {
 
     if (colorTheme === 'dark') {
@@ -41,9 +45,8 @@ const NavbarResponsive = ({ theme, setTheme }) => {
       localStorage.setItem('colorTheme', colorTheme)
     }
   }
-
   const changeBackground = () => {
-    if (window.scrollY >= 50) {
+    if (window.scrollY >= 80) {
       setScrollNavbar(true);
     } else {
       setScrollNavbar(false);
@@ -134,12 +137,16 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       placeholder="Search..."
                     />
                   </div>
+
                   <button
                     className=" text-white text-xl"
                     onClick={() => setTheme(!theme)}
                   >
+
                     {theme ? <FaRegMoon onClick={() => handleTheme('white')} /> : <FaSun onClick={() => handleTheme('dark')} />}
+
                   </button>
+
                   <button type="button" className=" text-white mx-2 md:mx-3">
                     <span className="sr-only">View notifications</span>
 
@@ -178,15 +185,34 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       <Menu.Items className="origin-top-right absolute z-20 right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-primary ring-1 ring-black ring-opacity-5 focus:outline-none custom-border-II">
                         <Menu.Item>
                           {({ active }) => (
-                            <button
+                            <Link to='/dashboard'
                               className={classNames(
                                 active ? "bg-zinc-800 w-full text-left" : "w-full",
                                 "block px-4 py-2 text-sm text-left"
                               )}
                             >
                               Your Profile
-                            </button>
+                            </Link >
                           )}
+                        </Menu.Item>
+                   
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link to='watchList'   className={classNames(
+                              active ? "bg-zinc-800 w-full text-left" : "w-full",
+                              "block px-4 py-2 text-sm text-left"
+                            )}>Watch history</Link> 
+                          )}
+                         
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link to='favorite'   className={classNames(
+                              active ? "bg-zinc-800 w-full text-left" : "w-full",
+                              "block px-4 py-2 text-sm text-left"
+                            )}>Favorite Videos</Link> 
+                          )}
+                         
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
@@ -200,6 +226,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                               Sign out
                             </button>
                           )}
+                         
                         </Menu.Item>
                       </Menu.Items>
                     </Transition>
