@@ -43,8 +43,8 @@ const UploadVideo = () => {
 
     return (
         <div className='mb-20'>
-            <div className='w-full mt-0'>
-                <p className='section-title text-[20px] md:text-[30px]'>Upload your favorite video</p>
+            <div className='w-full mx-auto flex mt-0'>
+                <p className='section-title text-green-500 text-[15px] md:text-[25px]'>Upload your favorite video</p>
             </div>
             <div class="card mx-auto sm:w-[80%] md:w-[50%] bg-base-100 shadow-xl">
                 <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">

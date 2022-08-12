@@ -58,12 +58,12 @@ const ManageVideos = () => {
                                             </div>
                                         </div>
                                         <div>
-                                            <a href={detail?.videoLink} className='text-primary' target="_blank" alt=''>{detail?.videoLink}</a>
+                                            <a href={detail?.videoLink} className='text-black' target="_blank" alt=''>{detail?.videoLink}</a>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <span className='text-primary'>{detail?.uploader}</span>
+                                    <span className='text-black'>{detail?.uploader}</span>
                                 </td>
                                 <td>
                                     <button 

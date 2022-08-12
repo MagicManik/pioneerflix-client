@@ -21,7 +21,7 @@ const MyVideos = () => {
     return (
         <div>
             <div className='w-full flex justify-center mt-0'>
-                <p className='section-title text-[20px] md:text-[30px]'>All of my videos</p>
+                <p className='section-title text-green-500 text-[15px] md:text-[25px]'>All of my videos</p>
             </div>
             <div className='grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 sm:gap-1 gap-4 mb-4'>
                 {
