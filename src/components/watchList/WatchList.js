@@ -7,7 +7,7 @@ const WatchList = () => {
   const [user] = useAuthState(auth);
   const [vData, setVData] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/library/${user?.email}`)
+    fetch(`https://infinite-island-65121.herokuapp.com/library/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setVData(data);

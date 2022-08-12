@@ -3,7 +3,7 @@ import React from 'react';
 import { toast } from 'react-toastify';
 
 const ManageVideos = () => {
-    const url = 'http://localhost:5000/uploadedVideo';
+    const url = 'https://infinite-island-65121.herokuapp.com/uploadedVideo';
     const { data, refetch } = useQuery(['uploadedVideo'], () =>
         fetch(url, {
             method: 'GET',
@@ -15,7 +15,7 @@ const ManageVideos = () => {
     )
     console.log(data);
     const deleteVideo = (id) => {
-        const url = `http://localhost:5000/uploadedVideo/${id}`;
+        const url = `https://infinite-island-65121.herokuapp.com/uploadedVideo/${id}`;
         fetch(url, {
             method: 'DELETE',
             headers: {

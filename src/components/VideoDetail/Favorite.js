@@ -7,7 +7,7 @@ const Favorite = () => {
   const [user] = useAuthState(auth);
   const [fData, setFData] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/favorite/${user?.email}`)
+    fetch(`https://infinite-island-65121.herokuapp.com/favorite/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setFData(data);

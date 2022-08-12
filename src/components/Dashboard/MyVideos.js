@@ -7,7 +7,7 @@ import auth from '../../firebase.init';
 const MyVideos = () => {
     const [user] = useAuthState(auth);
 
-    const url = `http://localhost:5000/userUploadVideo?email=${user?.email}`
+    const url = `https://infinite-island-65121.herokuapp.com/userUploadVideo?email=${user?.email}`
     const { data } = useQuery(['userUploadVideo'], () =>
         fetch(url, {
             method: 'GET',
