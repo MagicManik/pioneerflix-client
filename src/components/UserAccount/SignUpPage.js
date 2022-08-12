@@ -27,11 +27,13 @@ const SignUpPage = () => {
         return <Loading></Loading>
     }
 
+
     if (error) {
         signUpError = <p className='text-red-500 text-center'><small>{error?.message}</small></p>
     }
 
     if (token) {
+
         navigate('/');
     }
 

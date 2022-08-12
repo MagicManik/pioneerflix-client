@@ -4,7 +4,11 @@ import auth from '../../firebase.init';
 
 const SingleProfile = ({ pd, refetch, setIsEdit }) => {
     const [user] = useAuthState(auth);
+
     const { profileEmail, profileName, phone, gender, education, address } = pd;
+
+    // const {profileEmail, profileName, phone, gender, education, address}=pd;
+
 
     return (
         <div className="bg-white p-5 rounded-br-lg rounded-bl-lg shadow-sm rounded-sm">

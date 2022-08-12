@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import "./App.css";
 import About from "./components/About/About";
 import DashboardMainPage from "./components/Dashboard/DashboardMainPage";
@@ -18,7 +20,6 @@ import SignUpPage from "./components/UserAccount/SignUpPage";
 import Details from "./components/VideoDetail/Details";
 import Favorite from "./components/VideoDetail/Favorite";
 import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
-import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 

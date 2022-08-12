@@ -32,8 +32,8 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
   const handleLogOut = () => {
     signOut(auth);
+    localStorage.removeItem('accessToken');
     navigate("/");
-
   };
 
   const handleTheme = (colorTheme) => {

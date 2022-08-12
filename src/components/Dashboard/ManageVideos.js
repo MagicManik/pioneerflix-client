@@ -22,6 +22,13 @@ const ManageVideos = () => {
                 'content-type': 'application/json'
             }
         })
+
+            .then(res => res.json())
+            .then(result => {
+                alert('Are You sure???')
+                toast.success(`${id} is deleted`)
+                refetch()
+            })
             .then(res => res.json())
             .then(result => {
                 alert('Are You sure???')
@@ -62,6 +69,7 @@ const ManageVideos = () => {
                                         </div>
                                     </div>
                                 </td>
+
                                 <td>
                                     <span className='text-black'>{detail?.uploader}</span>
                                 </td>
