@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
 const useChannels = () => {
-    const [channels, setChannels]=useState([]);
+    const [channels, setChannels] = useState([]);
 
-    useEffect(()=>{
+    useEffect(() => {
         fetch('http://localhost:5000/channels')
-        .then(res=>res.json())
-        .then(data=>setChannels(data))
-    },[])
+            .then(res => res.json())
+            .then(data => setChannels(data))
+    }, [])
     return [channels, setChannels]
 };
 

@@ -57,13 +57,13 @@ const Details = () => {
         .then(res => res.json())
         .then(data => {
           if (data.deletedCount > 0) {
-            // alert('Deleted');
+            alert('Deleted');
           }
         })
     }
 
     else {
-      fetch("https://infinite-island-65121.herokuapp.com/like", {
+      fetch("http://localhost:5000/like", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +90,7 @@ const Details = () => {
     console.log(newComment)
 
 
-    fetch("https://infinite-island-65121.herokuapp.com/comment", {
+    fetch("http://localhost:5000/comment", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

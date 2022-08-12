@@ -5,6 +5,11 @@
     border: none;
 }
 
+.line- {
+    height: 1px;
+    background-color: #222;
+}
+
 .zoom-div-I {
     transition: .4s;
 }

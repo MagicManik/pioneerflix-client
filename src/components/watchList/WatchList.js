@@ -17,7 +17,7 @@ const WatchList = () => {
   return (
     <>
       <div className="grid md:grid-cols-3 grid-cols-2  lg:grid-cols-4 px-14 gap-5 pr-5 bg-primary  py-20 ">
-        {vData.map((v,index) => (
+        {vData.map((v, index) => (
           <>
             <div key={index} className="rounded-sm  h-64  p-2 shadow-sm shadow-white bg-black">
               <iframe

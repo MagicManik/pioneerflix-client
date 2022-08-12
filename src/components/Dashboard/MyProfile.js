@@ -1,116 +1,88 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
-import { useAuthState, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { toast } from "react-toastify";
 import auth from '../../firebase.init';
+import Loading from '../Shared/Loading/Loading';
+import SingleProfile from './SingleProfile';
+import SingleProfilePic from './SingleProfilePic';
 
 const MyProfile = () => {
-    // const [{ email }] = useAuthState(auth);
     const [user] = useAuthState(auth);
     const [isEdit, setIsEdit] = useState(null);
-    const [updateProfile, updating, error] = useUpdateProfile(auth);
-    // console.log(user);
-
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
 
+    const url = `http://localhost:5000/userProfile?email=${user?.email}`
+    const { data, isLoading, refetch } = useQuery(['userProfile'], () =>
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(res => res.json())
+    )
+
+    if (isLoading) {
+        refetch();
+        <Loading></Loading>
+    }
+    const updatedProfileData = data;
+
     const onSubmit = (data, e) => {
-        // console.log(data);
-        // e.target.reset();
-        
+        const userProfile = {
+            profileName: data.name,
+            gender: data.gender,
+            education: data.education,
+            phone: data.phone,
+            address: data.address,
+            profileImage: data.image,
+            profileEmail: user.email
+        }
+        // console.log(userProfile);
+        const url = `http://localhost:5000/userProfile/${user?.email}`
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userProfile)
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+                toast.success('Your profile updated successfully!!!')
+                e.target.reset();
+                refetch();
+            })
     };
 
     return (
         <div className="container w-full mx-auto p-5 lg:p-10 mb-40">
             <div className="md:flex w-full no-wrap md:-mx-2">
-                <div className="w-full lg:w-1/3 md:mx-2 lg:mt-1 p-3">
-                    <div className="bg-white p-5 rounded-br-lg rounded-bl-lg border-t-4 border-[#125f82]">
-                        <div className="image overflow-hidden">
-                            <img
-                                className="h-auto w-full mx-auto"
-                                src={`${user
-                                    ? user?.photoURL
-                                    : "https://i.ibb.co/T1D3tqN/images.png"
-                                    }`}
-                                alt=""
-                            />
-                        </div>
-                        <h1 className="text-gray-900 font-bold text-xl leading-8 my-1">
-                            {user ? user?.displayName : "- - -"}
-                        </h1>
-                        <h3 className="text-gray-600 text-lg font-semibold">
-                            {user ? user?.email : "- - -"}
-                        </h3>
-                        <ul className="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
-                            <li className="flex items-center py-3">
-                                <span>Role</span>
-                                <span className="ml-auto">
-                                    <span className="bg-[#125f82] py-1 px-2 rounded text-white text-sm">
-                                        {user && "User"}
-                                    </span>
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                {
+                    updatedProfileData?.map(pd => <SingleProfilePic
+                        key={pd._id}
+                        pd={pd}
+                        refetch={refetch}
+                    ></SingleProfilePic>)
+                }
                 <div className="grid grid-cols-1 w-full">
                     <div className="w-full my-4 h-64  border-t-4 border-[#125f82]">
-                        <div className="bg-white p-5 rounded-br-lg rounded-bl-lg shadow-sm rounded-sm">
-                            <div className="text-gray-700">
-                                <div className="text-xs lg:text-md">
-                                    <div className="grid grid-cols-2">
-                                        <div className="py-2 font-semibold">Name</div>
-                                        <div className="py-2">
-                                            {user ? user?.displayName : "- - -"}
-                                        </div>
-                                    </div>
+                        {
+                            updatedProfileData?.map(pd => <SingleProfile
+                                key={pd._id}
+                                pd={pd}
+                                refetch={refetch}
+                                setIsEdit={setIsEdit}
+                            ></SingleProfile>)
+                        }
 
-                                    <div className="grid grid-cols-2">
-                                        <div className="py-2 font-semibold">Email.</div>
-                                        <div className="py-2 w-[20ch]">
-                                            {user ? user?.email : "- - -"}
-                                        </div>
-                                    </div>
-                                    <div className="grid grid-cols-2">
-                                        <div className="py-2 font-semibold">Gender</div>
-                                        <div className="py-2">
-                                            {"..................."}
-
-                                        </div>
-                                    </div>
-                                    <div className="grid grid-cols-2">
-                                        <div className="py-2 font-semibold">Contact No.</div>
-                                        <div className="py-2">
-                                            {"..................."}
-
-                                        </div>
-                                    </div>
-                                    <div className="grid grid-cols-2">
-                                        <div className="py-2 font-semibold">Address</div>
-                                        <div className="py-2">
-                                            {"..................."}
-
-                                        </div>
-                                    </div>
-                                    <div className="grid grid-cols-2">
-                                        <div className="py-2 font-semibold">Education</div>
-                                        <div className="py-2">
-                                            {"..................."}
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <label
-                                htmlFor="my-modal-6"
-                                onClick={() => setIsEdit(true)}
-                                className="text-center block w-full text-primary text-md shadow font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
-                            >
-                                Edit Profile
-                            </label>
-                        </div>
                     </div>
                     <div className="my-4"></div>
                     <div
@@ -218,7 +190,7 @@ const MyProfile = () => {
                                     </div>
                                     <div className="w-full md:w-1/2 px-3">
                                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                            Image
+                                            Image URL
                                         </label>
                                         <input
                                             {...register("image")}
@@ -228,7 +200,7 @@ const MyProfile = () => {
                                         />
                                     </div>
                                 </div>
-                                {error && <p className="error">{error?.message}</p>}
+                                {/* {error && <p className="error">{error?.message}</p>} */}
                                 <button
                                     type="submit"
                                     className="text-center block w-full text-primary text-md shadow font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
