@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import "./App.css";
 import About from "./components/About/About";
 import DashboardMainPage from "./components/Dashboard/DashboardMainPage";
@@ -48,7 +50,7 @@ function App() {
           path="/dashboard"
           element={<DashboardMainPage></DashboardMainPage>}
         >
-          <Route path="profile" index element={<MyProfile></MyProfile>}></Route>
+          <Route path="" index element={<MyProfile></MyProfile>}></Route>
           <Route
             path="uploadVideo"
             element={<UploadVideo></UploadVideo>}
@@ -72,6 +74,7 @@ function App() {
       {/*...................add facebook messenger .................*/}
       <MessengerCustomerChat pageId="110278435120347" appId="592904995642640" />
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 }
