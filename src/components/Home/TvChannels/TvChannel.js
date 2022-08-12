@@ -50,7 +50,7 @@ const TvChannel = () => {
 
     return (
         <div className="">
-            <div className="justify-center flex  ">
+            <div className="justify-center flex">
                 <iframe
                     className="rounded-sm h-full md:h-[700px] md:p-1 shadow-2xl border-2 border-zinc-700 "
                     width="100%"
@@ -61,11 +61,11 @@ const TvChannel = () => {
                     allowfullscreen
                 ></iframe>
             </div>
-            <section className='bg-secondary'>
+            <section className='bg-secondary ' >
             <div className='pb-3 custom-bg'>
-                <div className='bg-primary video-section'>
+                <div className='bg-primary video-section py-14'>
                     <div className='bg-primary lg:px-20 sm:px-4 video-container'>
-                        <h1 className='text-2xl text-secondary pt-6'>TV CHANNELS</h1>
+                        <h1 className='text-2xl text-secondary py-6'>TV CHANNELS</h1>
                         {/* <div className='grid lg:grid-cols-8 gap-4 popular-movie-section'> */}
                         <Slider {...settings} className=''>
 
@@ -83,7 +83,7 @@ const TvChannel = () => {
                                     <div key={tv._id}>
                                         <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={tv._id}>
                                             <Link to={`/channel/${tv._id}`}>
-                                                <img className='popular-movie' src={tv.imgLink} alt="" />
+                                                <img className='popular-movie bg-white p-6'  src={tv.imgLink} alt="" />
                                             </Link>
 
 
