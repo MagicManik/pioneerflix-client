@@ -27,7 +27,9 @@ import './TvChannels.css';
 
 const TvChannels = () => {
 
-    const popularMovies = [
+   
+            // link: 'https://jagobd.com/madinalive'
+        const popularMovies = [
         {
             _id: 1,
             name: 'Movie1',
@@ -166,7 +168,6 @@ const TvChannels = () => {
             name: 'Movie20',
             description: '',
             img: movie20,
-            link: 'https://jagobd.com/madinalive'
         },
     ];
 
@@ -207,12 +208,13 @@ const TvChannels = () => {
     };
 
     return (
-        <section className='bg-secondary'>
-            <div className='pb-3 custom-bg'>
-                <div className='bg-primary video-section'>
+        <section className='bg-secondary '>
+            <div className='pb-3  custom-bg'>
+           
+
+            <div className='bg-primary video-section'>
                     <div className='bg-primary lg:px-20 sm:px-4 video-container'>
                         <h1 className='text-2xl text-secondary pt-6'>TV CHANNELS</h1>
-                        {/* <div className='grid lg:grid-cols-8 gap-4 popular-movie-section'> */}
                         <Slider {...settings} className=''>
 
                             {
@@ -224,12 +226,11 @@ const TvChannels = () => {
                                     </div>)
                             }
                         </Slider>
-                        {/* </div> */}
 
                     </div>
                 </div>
 
-                <div className='text-container text-secondary bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
+                <div className='text-container text-secondary pt-52 bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
 
                     <div className='text-container-left'>
                         <h1 className='text-5xl font-bold '>Watch your TV Channels.</h1>
