@@ -1,8 +1,12 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { FiUpload } from 'react-icons/fi';
+import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
 const UploadVideo = () => {
+    const [user] = useAuthState(auth);
     const {
         register,
         handleSubmit,
@@ -10,14 +14,37 @@ const UploadVideo = () => {
     } = useForm();
 
     const onSubmit = (data, e) => {
-        console.log(data);
-        e.target.reset();
-
+        const userUploadVideo = {
+            title: data.title,
+            description: data.description,
+            category: data.category,
+            videoLink: data.videoLink,
+            duration: data.duration,
+            imgLink: data.imgLink,
+            uploader: user.email
+        }
+        // console.log(userUploadVideo);
+        const url = 'https://infinite-island-65121.herokuapp.com/userUploadVideo'
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userUploadVideo)
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+                alert('Thanks for uploading')
+                toast.success('Successfully your video uploaded!!!')
+                e.target.reset();
+            })
     };
+
     return (
         <div className='mb-20'>
-            <div className='w-full mt-0'>
-                <p className='section-title text-[20px] md:text-[30px]'>Upload your favorite video</p>
+            <div className='w-full mx-auto flex mt-0'>
+                <p className='section-title text-green-500 text-[15px] md:text-[25px]'>Upload your favorite video</p>
             </div>
             <div class="card mx-auto sm:w-[80%] md:w-[50%] bg-base-100 shadow-xl">
                 <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
@@ -93,7 +120,7 @@ const UploadVideo = () => {
                         <div className="flex  gap-5 -mx-3 mb-6">
                             <div className="w-full md:w-1/2 px-3">
                                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                Duration
+                                    Duration
                                 </label>
                                 <input
                                     {...register("duration")}

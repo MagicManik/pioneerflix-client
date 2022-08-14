@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import movie1 from "../../assets/bangla-movie/movie (1).jpg";
 import movie2 from "../../assets/bangla-movie/movie (2).jpg";
 import movie3 from "../../assets/bangla-movie/movie (3).jpg";
@@ -28,8 +28,9 @@ const Details = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth);
   const [video] = useVideo(id);
+  const {videoLink,imgLink,title}=video
 
-
+console.log(video)
   const [likes] = useLikes();
   const [comments] = useComments();
 
@@ -49,7 +50,7 @@ const Details = () => {
     if (likedUser.length > 0) {
       const likedId = likedUser[0]._id;
 
-      const url = `http://localhost:5000/likes/${likedId}`
+      const url = `https://infinite-island-65121.herokuapp.com/likes/${likedId}`
 
       fetch(url, {
         method: 'DELETE'
@@ -57,7 +58,7 @@ const Details = () => {
         .then(res => res.json())
         .then(data => {
           if (data.deletedCount > 0) {
-            // alert('Deleted');
+            alert('Deleted');
           }
         })
     }
@@ -73,7 +74,7 @@ const Details = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.insertedId) {
-            // alert("Your item successfully added.");
+            alert("Your item successfully added.");
           }
         });
     }
@@ -107,47 +108,47 @@ const Details = () => {
   };
 
   // for set video id for library section 
-const libraryInfo={
-  videoId:id,
-  email:user?.email,
-  videoLink:video?.videoLink,
-  videoTitle:video?.title,
-  // videoDescription:video?.description
-  
-}
-// handleAddList
+  const libraryInfo = {
+    videoId: id,
+    email: user?.email,
+    videoLink: videoLink,
+    videoTitle: title,
+    // videoDescription:description
 
-useEffect(()=>{
-if(video?.title){
-    fetch('http://localhost:5000/library', {
-      method: 'POST',
-      headers: {
+  }
+  // handleAddList
+
+  useEffect(() => {
+    if (title) {
+      fetch('https://infinite-island-65121.herokuapp.com/library', {
+        method: 'POST',
+        headers: {
           'Content-Type': 'application/json'
-         
+
         },
         body: JSON.stringify(libraryInfo)
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-    })
-  }  
-},[video?.title])
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+        })
+    }
+  }, [title])
 
-const handleAddList=()=>{
-  fetch('http://localhost:5000/favorite', {
-    method: 'POST',
-    headers: {
+  const handleAddList = () => {
+    fetch('https://infinite-island-65121.herokuapp.com/favorite', {
+      method: 'POST',
+      headers: {
         'Content-Type': 'application/json'
-       
+
       },
       body: JSON.stringify(libraryInfo)
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log(data)
-  })
-}
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+      })
+  }
 
 
 
@@ -195,18 +196,20 @@ const handleAddList=()=>{
         <iframe
           className="rounded-sm h-full md:h-[700px] md:p-1 shadow-2xl border-2 border-zinc-700 "
           width="100%"
-          src={video.videoLink}
+          src={videoLink}
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
       </div>
-
+<div className="text-6xl text-white">
+  <p>this isi start</p>
+</div>
       <div className="grid  md:grid-cols-6  py-8">
         <div className=" col-start-1 md:col-end-3 col-end-7 flex md:justify-start justify-center items-center w-full">
           <img
-            src={video.imgLink}
+            src={imgLink}
             className="md:w-[350px] md:h-[500px] h-3/5  border-[1px] border-white "
             alt=""
           />
@@ -215,7 +218,7 @@ const handleAddList=()=>{
           <div>
             <div>
               <h1 className="md:text-5xl text-lg md:font-semibold">
-                {video?.title}
+                {title}
               </h1>
               <hr className="md:mt-6 bg-secondary h-0.5 my-4 md:mb-4" />
 
@@ -232,7 +235,7 @@ const handleAddList=()=>{
               <div className="flex items-center ">
                 <div>
 
-                  {likes?.like}
+                  {newLike.length}
                 </div>
 
                 <button
@@ -308,23 +311,23 @@ const handleAddList=()=>{
                 <h3 class="text-2xl font-bold text-white mb-4">
                   Share your video on social media
                 </h3>
-                <FacebookShareButton url={video.videoLink}>
+                <FacebookShareButton url={videoLink}>
                   <FacebookIcon className="rounded-3xl mr-4"></FacebookIcon>
                 </FacebookShareButton>
-                
 
-                <WhatsappShareButton url={video.videoLink}>
+
+                <WhatsappShareButton url={videoLink}>
                   <WhatsappIcon className="rounded-3xl mr-4"></WhatsappIcon>
                 </WhatsappShareButton>
 
-                <TwitterShareButton url={video.videoLink}>
+                <TwitterShareButton url={videoLink}>
                   {" "}
                   <TwitterIcon className="rounded-3xl mr-4"></TwitterIcon>
                 </TwitterShareButton>
 
-                <LinkedinShareButton url={video.videoLink}><LinkedinIcon className="rounded-3xl mr-4"></LinkedinIcon></LinkedinShareButton>
+                <LinkedinShareButton url={videoLink}><LinkedinIcon className="rounded-3xl mr-4"></LinkedinIcon></LinkedinShareButton>
 
-                <RedditShareButton url={video.videoLink}><RedditIcon className="rounded-3xl"></RedditIcon></RedditShareButton>
+                <RedditShareButton url={videoLink}><RedditIcon className="rounded-3xl"></RedditIcon></RedditShareButton>
               </div>
             </div>
             <button className="border-2 border-amber-500 py-3 md:ml-2 ml-4 px-7 md:px-6">
