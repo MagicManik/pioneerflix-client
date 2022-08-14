@@ -23,6 +23,7 @@ import {
   RedditIcon,
   RedditShareButton
 } from "react-share";
+import { useState } from "react";
 
 
 const Details = () => {
@@ -32,10 +33,11 @@ const Details = () => {
   const {videoLink,imgLink,title,category}=video
   const [likes] = useLikes();
   const [comments] = useComments();
+  const[value,setValue]=useState('')
 
   let newLike = likes.filter(li => li.id === id);
 
-
+// console.log(user)
   // like handler || Manik Islam Mahi
   const handleLike = () => {
 
@@ -189,6 +191,7 @@ const Details = () => {
     },
   ];
 
+  // console.log(value)
   return (
     <div className="md:px-14 px-3 pt-20 bg-primary text-secondary">
       <div className="justify-center flex ">
@@ -222,6 +225,23 @@ const Details = () => {
 
   </div>
   <hr className="h-[0.5px] my-3 bg-white"/>
+  {/* comment section */}
+<div className="flex items-center">
+<img className="w-14 h-14 rounded-full mt-2 p-1" src={user?.photoURL} alt="" />
+<div className="w-full   ml-2">
+  <form>   
+    <div class="relative">
+        <input type="text" onChange={(t)=>setValue((t.target.value))} class="block p-3 pl-5   focus:outline-none w-full text-sm   bg-primary border-b-2 border-white rounded-sm border " placeholder="Add a comment…" required />
+        
+        {/* <button type="submit" class="text-white absolute right-28 bottom-1  font-medium rounded-lg text-sm px-4 py-2 bg-amber-500">Cancel</button> */}
+         <button type="submit" class={`text-white absolute right-2.5 bottom-1 bg-amber-800 font-medium rounded-lg text-sm px-4 py-2 ${value ? 'disabled' : ""}`}> Comment</button>
+  
+    </div>
+    <hr className="h-[0.5px]   bg-white"/>
+</form>
+</div>
+
+</div>
 </div>
 
 
