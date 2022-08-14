@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import movie1 from "../../assets/bangla-movie/movie (1).jpg";
 import movie2 from "../../assets/bangla-movie/movie (2).jpg";
 import movie3 from "../../assets/bangla-movie/movie (3).jpg";
-import { FaRegThumbsUp, FaEllipsisH, FaComment } from "react-icons/fa";
+import { FaRegThumbsUp, FaEllipsisH, FaComment ,FaShareAlt,FaPlus} from "react-icons/fa";
+import { AiFillLike,AiFillDislike } from "react-icons/ai";
 import { useParams } from "react-router-dom";
 import useVideo from "../../hooks/useVideo";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -28,9 +29,7 @@ const Details = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth);
   const [video] = useVideo(id);
-  const {videoLink,imgLink,title}=video
-
-console.log(video)
+  const {videoLink,imgLink,title,category}=video
   const [likes] = useLikes();
   const [comments] = useComments();
 
@@ -203,9 +202,33 @@ console.log(video)
           allowfullscreen
         ></iframe>
       </div>
-<div className="text-6xl text-white">
-  <p>this isi start</p>
+
+
+
+
+
+<div className="py-5 text-white">
+  <div className="flex justify-between items-center">
+    <div>
+      <i className="text-blue-500 text-sm">#{category} #Pioneerflix</i>
+      <p className="text-3xl pt-1 font-semibold">{title}</p>
+    </div>
+    <div className="grid grid-cols-3 ">
+      <span><AiFillLike className="text-2xl"/></span>
+      {/* <span><AiFillDislike className="text-2xl"/></span> */}
+      <span className="flex  items-center mr-3"><FaPlus className="mr-2 text-xl"/> My List</span>
+      <span className="flex  items-center"><FaShareAlt className="mr-2 text-xl"/> Share</span>
+    </div>
+
+  </div>
+  <hr className="h-[0.5px] my-3 bg-white"/>
 </div>
+
+
+
+
+
+
       <div className="grid  md:grid-cols-6  py-8">
         <div className=" col-start-1 md:col-end-3 col-end-7 flex md:justify-start justify-center items-center w-full">
           <img
