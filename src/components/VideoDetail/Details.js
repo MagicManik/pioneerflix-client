@@ -188,7 +188,7 @@ const Details = () => {
       <div className="md:px-14 px-3 pt-20 bg-primary text-secondary">
         <div className="justify-center flex ">
           <iframe
-            className="rounded-sm h-full md:h-[700px] md:p-1 shadow-2xl border-2 border-zinc-700 "
+            className="rounded-sm h-full md:h-[700px] md:p-1 shadow-sm border-2 border-zinc-700 "
             width="100%"
             src={videoLink}
             title="YouTube video player"
@@ -214,7 +214,7 @@ const Details = () => {
                 <AiTwotoneStar />
               </div>
             </div>
-            <div className="grid grid-cols-3 md:ml-0 ml-5  md:mt-0 mt-5">
+            <div className="grid grid-cols-3 text-secondary md:ml-0 ml-5  md:mt-0 mt-5">
               {/* Like */}
               <div className="flex items-center ">
                 <div>{newLike.length}</div>
@@ -271,7 +271,7 @@ const Details = () => {
         </div>
 
         <div className="my-8">
-          <h1 className="text-4xl mb-4  font-medium">You May Also Like</h1>
+          <h1 className="text-4xl mb-6 font-medium">You May Also Like</h1>
           <div className="grid sm:grid-cols-2  md:grid-cols-6 gap-5  ">
                 {popularMovies.map((movie) => (
                   <div className="zoom-div" key={movie._id}>

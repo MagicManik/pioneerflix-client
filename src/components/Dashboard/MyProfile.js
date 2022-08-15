@@ -199,6 +199,17 @@ const MyProfile = () => {
                                             placeholder="Your Image Link"
                                         />
                                     </div>
+                                    {/* <div className="w-full md:w-1/2 px-3">
+                                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                                            Image URL
+                                        </label>
+                                        <input
+                                            {...register("image")}
+                                            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                                            type="text"
+                                            placeholder="Your Image Link"
+                                        />
+                                    </div> */}
                                 </div>
                                 {/* {error && <p className="error">{error?.message}</p>} */}
                                 <button
