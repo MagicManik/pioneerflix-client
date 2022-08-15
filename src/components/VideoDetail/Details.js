@@ -3,14 +3,11 @@ import movie1 from "../../assets/bangla-movie/movie (1).jpg";
 import movie2 from "../../assets/bangla-movie/movie (2).jpg";
 import movie3 from "../../assets/bangla-movie/movie (3).jpg";
 import {
-  FaRegThumbsUp,
-  FaEllipsisH,
-  FaComment,
   FaShareAlt,
   FaPlus,
   FaRegStar,
 } from "react-icons/fa";
-import { AiFillLike, AiFillDislike, AiTwotoneStar } from "react-icons/ai";
+import { AiFillLike, AiTwotoneStar } from "react-icons/ai";
 import { useParams } from "react-router-dom";
 import useVideo from "../../hooks/useVideo";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -30,7 +27,6 @@ import {
   RedditIcon,
   RedditShareButton,
 } from "react-share";
-import { useState } from "react";
 
 const Details = () => {
   const { id } = useParams();
@@ -38,11 +34,10 @@ const Details = () => {
   const [video] = useVideo(id);
   const [likes] = useLikes();
   const [comments] = useComments();
-  // const [value, setValue] = useState("");
 
   let newLike = likes.filter((li) => li.id === id);
   const { videoLink, imgLink, title, category, description, duration } = video;
-  // console.log(user)
+
   // like handler || Manik Islam Mahi
   const handleLike = () => {
     const like = true;
@@ -84,7 +79,6 @@ const Details = () => {
   };
 
   // Comment Handler || Manik Islam Mahi
-  // console.log(user)
   const handleComment = (e) => {
     e.preventDefault();
     const comment = e.target.comment.value;
@@ -168,9 +162,27 @@ const Details = () => {
       description: "",
       img: movie3,
     },
+    {
+      _id: 4,
+      name: "Movie 3",
+      description: "",
+      img: movie3,
+    },
+    {
+      _id: 5,
+      name: "Movie 3",
+      description: "",
+      img: movie3,
+    },
+    {
+      _id: 6,
+      name: "Movie 3",
+      description: "",
+      img: movie3,
+    }
   ];
 
-  // console.log(comments)
+
   return (
     <>
       <div className="md:px-14 px-3 pt-20 bg-primary text-secondary">
@@ -187,7 +199,7 @@ const Details = () => {
         </div>
 
         <div className="py-5 text-white">
-          <div className="flex justify-between items-center">
+          <div className="md:flex justify-between items-center">
             <div>
               <i className="text-blue-500 text-sm">Ratting</i>
               <div className="flex text-amber-600">
@@ -202,9 +214,8 @@ const Details = () => {
                 <AiTwotoneStar />
               </div>
             </div>
-            <div className="grid grid-cols-3 ">
-              {/* <button onClick={handleLike}><AiFillLike className="text-2xl"/></button> */}
-              {/* Linke */}
+            <div className="grid grid-cols-3 md:ml-0 ml-5  md:mt-0 mt-5">
+              {/* Like */}
               <div className="flex items-center ">
                 <div>{newLike.length}</div>
 
@@ -227,21 +238,19 @@ const Details = () => {
               >
                 <FaShareAlt className="mr-2 text-xl" /> Share
               </label>
-              {/* <span className="flex  items-center"><FaShareAlt className="mr-2 text-xl"/> Share</span> */}
             </div>
           </div>
-          <hr className="h-[0.5px] my-3 bg-white" />
+          <hr className="h-[0.5px] my-3 bg-secondary " />
         </div>
-
-        <div className="grid  md:grid-cols-6  py-8">
+        <div className="md:grid  md:grid-cols-6  md:py-8 ">
           <div className=" col-start-1 md:col-end-3 col-end-7 flex md:justify-start justify-center items-center w-full">
             <img
               src={imgLink}
-              className="md:w-[250px] md:h-[400px] h-3/5  border-[1px] border-white "
+              className="md:w-[250px] md:h-[350px] h-3/5 hidden md:block  border-[1px] border-white "
               alt=""
             />
           </div>
-          <div className=" md:mt-5 md:col-start-3 col-start-7 col-end-12 md:ml-[-120px] ml-5 ">
+          <div className=" md:mt-5 md:col-start-3 col-start-7 col-end-12 md:ml-[-150px]  ">
             <div>
               <div>
                 <i className="text-blue-500 text-sm">
@@ -253,72 +262,28 @@ const Details = () => {
                 <hr className="md:mt-6 bg-secondary h-0.5 my-4 md:mb-4" />
 
                 <p className="text-sm">( 2022 ) . {duration} . Serial </p>
-                <p className="my-2 text-sm"> Category : {category}</p>
-                <p>{description}</p>
+                <p className="my-2 "> Category : {category}</p>
+                <p className="text-sm">{description}</p>
                 <hr className="md:mt-6 bg-secondary h-0.5 my-3 md:mb-4" />
-
-                {/* Linke
-              <div className="flex items-center ">
-                <div>{newLike.length}</div>
-
-                <button
-                  onClick={handleLike}
-                  className="btn btn-circle bg-transparent ml-3 custom-like-btn hover:bg-transparent"
-                >
-                  <FaRegThumbsUp className="text-amber-500" />
-                </button>
-              </div> */}
-
-                {/* show comments */}
-                {/* <article className="pt-5">
-                {comments.map((comment) => (
-                  <div key={comment._id}>
-                    <p>{comment.id === id && comment.name}</p>
-                    <p>{comment.id === id && comment.comment}</p>
-                  </div>
-                ))}
-              </article> */}
-
-                {/* comment filed */}
-                {/* <div className="mt-5 hidden md:block">
-                <form onSubmit={handleComment}>
-                  <textarea
-                    placeholder="Please Write Your Comment"
-                    className="p-3 text-black border-2 rounded-sm border-zinc-700"
-                    name="comment"
-                    id=""
-                    cols="65"
-                    rows="4"
-                  ></textarea>{" "}
-                  <br />
-                  <input
-                    className="  bg-amber-500 px-7 rounded-sm py-2 mt-2 text-xl"
-                    type="submit"
-                    value="Submit"
-                  />
-                </form>
-              </div> */}
               </div>
             </div>
           </div>
         </div>
 
-        <div>
+        <div className="my-8">
           <h1 className="text-4xl mb-4  font-medium">You May Also Like</h1>
-          <div className="grid  md:grid-cols-6 gap-5  ">
-            <div className=" video-container">
-              <div className="grid grid-cols-3 gap-2 md:gap-4 ">
+          <div className="grid sm:grid-cols-2  md:grid-cols-6 gap-5  ">
                 {popularMovies.map((movie) => (
                   <div className="zoom-div" key={movie._id}>
                     <img
-                      className="md:w-[300px] md:h-[400px]  border-[1px] border-white "
+                      className="md:w-[250px] md:h-[300px]  border-[1px] border-white "
                       src={movie.img}
                       alt=""
                     />
                   </div>
                 ))}
-              </div>
-            </div>
+             
+         
           </div>
         </div>
         {/* comment section */}
@@ -346,34 +311,22 @@ const Details = () => {
                   Comment
                 </button>
               </div>
-              <hr className="h-[0.5px]   bg-white" />
+              <hr className="h-[0.5px]   bg-secondary " />
             </form>
           </div>
         </div>
-
-        {/* show comments */}
-        {/* <article className="pt-5">
-                {comments.map((comment) => (
-                  <div key={comment._id}>
-                    <p>{comment.id === id && comment.name}</p>
-                    <p>{comment.id === id && comment.comment}</p>
-                  </div>
-                ))}
-              </article> */}
-
-        {/* <hr className="mt-6 bg-secondary h-0.5 md:mb-4 " /> */}
         <div className=" md:py-10  pt-5 gap-5">
           {comments.map((comment) => (
             <>
               <div key={comment._id}>
-                <div className="flex  items-center text-xl font-semibold">
+                <div className="flex mt-3 items-center text-xl font-semibold">
                   {" "}
                   <img
                     className="w-10 h-10 rounded-full p-1"
                     src={comment?.img}
                     alt=""
                   />
-                  <p>{comment.id === id && comment.name}</p>
+                  <p className="ml-2 text-amber-400">{comment.id === id && comment.name}</p>
                 </div>
                 <p className="ml-10 text-sm">
                   {comment.id === id && comment.comment}
