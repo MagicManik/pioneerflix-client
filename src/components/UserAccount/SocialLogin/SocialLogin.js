@@ -9,7 +9,7 @@ const SocialLogin = () => {
     const [signInWithGoogle, userG, loading, error] = useSignInWithGoogle(auth);
     const [signInWithFacebook, userFB, loadingFB, errorFB] = useSignInWithFacebook(auth);
 
-    const [token] =useToken(userG || userFB);
+    const [token] = useToken(userG || userFB);
 
     let location = useLocation();
     const navigate = useNavigate();

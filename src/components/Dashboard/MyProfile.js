@@ -17,7 +17,7 @@ const MyProfile = () => {
         formState: { errors },
     } = useForm();
 
-    const url = `http://localhost:5000/userProfile?email=${user?.email}`
+    const url = `https://infinite-island-65121.herokuapp.com/userProfile?email=${user?.email}`
     const { data, isLoading, refetch } = useQuery(['userProfile'], () =>
         fetch(url, {
             method: 'GET',
@@ -25,7 +25,7 @@ const MyProfile = () => {
                 'content-type': 'application/json'
             }
         })
-        .then(res => res.json())
+            .then(res => res.json())
     )
 
     if (isLoading) {
@@ -45,7 +45,7 @@ const MyProfile = () => {
             profileEmail: user.email
         }
         // console.log(userProfile);
-        const url = `http://localhost:5000/userProfile/${user?.email}`
+        const url = `https://infinite-island-65121.herokuapp.com/userProfile/${user?.email}`
         fetch(url, {
             method: 'PUT',
             headers: {

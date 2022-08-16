@@ -20,6 +20,7 @@ import SignUpPage from "./components/UserAccount/SignUpPage";
 import Details from "./components/VideoDetail/Details";
 import Favorite from "./components/VideoDetail/Favorite";
 import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
@@ -33,9 +34,9 @@ function App() {
     } else {
       setTheme(false);
     }
-  },[getTheme])
+  }, [getTheme])
 
-  
+
 
   return (
     <div data-theme={theme ? "dark" : "light"}>
@@ -62,10 +63,12 @@ function App() {
             element={<ManageVideos></ManageVideos>}
           ></Route>
         </Route>
+
+
         <Route path='/play/:id' element={<Details />} />
-        <Route path='/channel/:id' element={<TvChannel/>}></Route>
-        <Route path="watchList" element={<Library/>}></Route>
-        <Route path="favorite" element={<Favorite/>}></Route>
+        <Route path='/channel/:id' element={<TvChannel />}></Route>
+        <Route path="watchList" element={<Library />}></Route>
+        <Route path="favorite" element={<Favorite />}></Route>
         <Route path="/play/:id" element={<Details />} />
 
 

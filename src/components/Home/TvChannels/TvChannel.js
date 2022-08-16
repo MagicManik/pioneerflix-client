@@ -6,8 +6,9 @@ const TvChannel = () => {
     const { id } = useParams();
     const [channel, setChannel] = useChannel(id);
     return (
-        <div className="">
-            <div className="justify-center flex  ">
+        <div className="pt-16 bg-black">
+            <hr className='line-' />
+            <div className="justify-center flex pt-4 ">
                 <iframe
                     className="rounded-sm h-full md:h-[700px] md:p-1 shadow-2xl border-2 border-zinc-700 "
                     width="100%"
@@ -18,7 +19,7 @@ const TvChannel = () => {
                     allowfullscreen
                 ></iframe>
             </div>
-            
+
         </div>
     );
 };

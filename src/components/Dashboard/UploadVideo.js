@@ -24,7 +24,7 @@ const UploadVideo = () => {
             uploader: user.email
         }
         // console.log(userUploadVideo);
-        const url = 'http://localhost:5000/userUploadVideo'
+        const url = 'https://infinite-island-65121.herokuapp.com/userUploadVideo'
         fetch(url, {
             method: 'POST',
             headers: {

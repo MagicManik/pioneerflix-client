@@ -195,24 +195,24 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                             </Link >
                           )}
                         </Menu.Item>
-                   
+
                         <Menu.Item>
                           {({ active }) => (
-                            <Link to='watchList'   className={classNames(
+                            <Link to='watchList' className={classNames(
                               active ? "bg-zinc-800 w-full text-left" : "w-full",
                               "block px-4 py-2 text-sm text-left"
-                            )}>Watch history</Link> 
+                            )}>Watch history</Link>
                           )}
-                         
+
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <Link to='favorite'   className={classNames(
+                            <Link to='favorite' className={classNames(
                               active ? "bg-zinc-800 w-full text-left" : "w-full",
                               "block px-4 py-2 text-sm text-left"
-                            )}>Favorite Videos</Link> 
+                            )}>Favorite Videos</Link>
                           )}
-                         
+
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
@@ -226,7 +226,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                               Sign out
                             </button>
                           )}
-                         
+
                         </Menu.Item>
                       </Menu.Items>
                     </Transition>

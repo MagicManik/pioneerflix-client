@@ -7,7 +7,7 @@ import auth from '../../firebase.init';
 const MyVideos = () => {
     const [user] = useAuthState(auth);
 
-    const url = `http://localhost:5000/userUploadVideo?email=${user?.email}`
+    const url = `https://infinite-island-65121.herokuapp.com/userUploadVideo?email=${user?.email}`
     const { data } = useQuery(['userUploadVideo'], () =>
         fetch(url, {
             method: 'GET',
@@ -33,7 +33,7 @@ const MyVideos = () => {
                             <div>
                                 <p className='test-xs md:text-xs lg:text-xs text-white'><span className='font-bold text-green-500 pl-2'>Description: </span>{movie?.description}</p>
                                 <p><FcLike className='my-2 ml-2 inline-block' />1.8M <span className='text-sm'> ({movie?.duration}min)</span></p>
-                                
+
                             </div>
                         </div>
                     )

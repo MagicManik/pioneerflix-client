@@ -27,14 +27,3 @@
 .section-title:hover::after {
     transform: scaleX(1);
 }
-
-/* @media screen and (max-width: 764px) {
-    .section-title {
-        font-size: 20px;
-    }
-}
-@media screen and (min-width: 765px) {
-    .section-title {
-        font-size: 30px;
-    }
-} */

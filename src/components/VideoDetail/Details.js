@@ -49,7 +49,7 @@ const Details = () => {
     if (likedUser.length > 0) {
       const likedId = likedUser[0]._id;
 
-      const url = `http://localhost:5000/likes/${likedId}`
+      const url = `https://infinite-island-65121.herokuapp.com/likes/${likedId}`
 
       fetch(url, {
         method: 'DELETE'
@@ -57,7 +57,7 @@ const Details = () => {
         .then(res => res.json())
         .then(data => {
           if (data.deletedCount > 0) {
-            // alert('Deleted');
+            alert('Deleted');
           }
         })
     }
@@ -119,7 +119,7 @@ const Details = () => {
 
   useEffect(() => {
     if (video?.title) {
-      fetch('http://localhost:5000/library', {
+      fetch('https://infinite-island-65121.herokuapp.com/library', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -135,7 +135,7 @@ const Details = () => {
   }, [video?.title])
 
   const handleAddList = () => {
-    fetch('http://localhost:5000/favorite', {
+    fetch('https://infinite-island-65121.herokuapp.com/favorite', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

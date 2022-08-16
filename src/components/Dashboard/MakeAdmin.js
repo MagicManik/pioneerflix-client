@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const MakeAdmin = () => {
 
-    const url = 'http://localhost:5000/allUserData';
+    const url = 'https://infinite-island-65121.herokuapp.com/allUserData';
     const { data, refetch } = useQuery(['allUserData'], () =>
         fetch(url, {
             method: 'GET',
@@ -18,7 +18,7 @@ const MakeAdmin = () => {
     return (
         <div className="w-11/12 lg:w-full mb-40">
             <div className='w-full flex justify-center mt-0'>
-                <p  className='section-title text-green-500 text-[15px] md:text-[20px]'>Make admin</p>
+                <p className='section-title text-green-500 text-[15px] md:text-[20px]'>Make admin</p>
             </div>
             <div class="overflow-x-scroll">
                 <table class="table w-full">

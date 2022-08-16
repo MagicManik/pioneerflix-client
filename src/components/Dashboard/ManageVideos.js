@@ -3,7 +3,7 @@ import React from 'react';
 import { toast } from 'react-toastify';
 
 const ManageVideos = () => {
-    const url = 'http://localhost:5000/uploadedVideo';
+    const url = 'https://infinite-island-65121.herokuapp.com/uploadedVideo';
     const { data, refetch } = useQuery(['uploadedVideo'], () =>
         fetch(url, {
             method: 'GET',
@@ -15,19 +15,26 @@ const ManageVideos = () => {
     )
     console.log(data);
     const deleteVideo = (id) => {
-        const url = `http://localhost:5000/uploadedVideo/${id}`;
+        const url = `https://infinite-island-65121.herokuapp.com/uploadedVideo/${id}`;
         fetch(url, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
             }
         })
-        .then(res=> res.json())
-        .then(result => {
-            alert('Are You sure???')
-            toast.success(`${id} is deleted`)
-            refetch()
-        })
+
+            .then(res => res.json())
+            .then(result => {
+                alert('Are You sure???')
+                toast.success(`${id} is deleted`)
+                refetch()
+            })
+            .then(res => res.json())
+            .then(result => {
+                alert('Are You sure???')
+                toast.success(`${id} is deleted`)
+                refetch()
+            })
     }
 
     return (
@@ -62,18 +69,19 @@ const ManageVideos = () => {
                                         </div>
                                     </div>
                                 </td>
+
                                 <td>
                                     <span className='text-black'>{detail?.uploader}</span>
                                 </td>
                                 <td>
-                                    <button 
-                                    className="btn btn-success btn-xs"
+                                    <button
+                                        className="btn btn-success btn-xs"
                                     >Final Upload</button>
                                 </td>
                                 <th>
-                                    <button 
-                                    className="btn btn-error btn-xs"
-                                    onClick={()=>deleteVideo(detail._id)}
+                                    <button
+                                        className="btn btn-error btn-xs"
+                                        onClick={() => deleteVideo(detail._id)}
                                     >Delete</button>
                                 </th>
                             </tr>)
