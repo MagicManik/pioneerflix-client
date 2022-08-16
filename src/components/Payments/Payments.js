@@ -97,9 +97,9 @@ const Payments = () => {
     // previous bg-[#f0ebe3]
     // bg-gradient-to-r from-[#ff0055] to-[#f68a23]/
     return (
-        <div className="bg-primary pt-28">
-            <div>
-                <h1 className='mx-auto text-center
+        <div className="bg-black pt-16">
+            <div className='bg-primary'>
+                <h1 className='mx-auto text-center pt-8
                  text-2xl pb-3 font-bold text-secondary'>CHOOSE A PLAN AND</h1>
                 <p className='mx-auto text-center
                  text-xl pb-3 font-bold mb-4 text-secondary'>ENJOY ALL PIONEERFLIX PREMIUM CONTENTS</p>
@@ -112,7 +112,7 @@ const Payments = () => {
                                 {
                                     a?.description?.map((d, index) =>
                                         <ul key={index}>
-                                            <li className='inline-flex post-des'><AiOutlinePlusCircle className='text-green-500 pt-2 text-xl' /> <span>{d}</span></li>
+                                            <li className='inline-flex font-semibold post-des'><AiOutlinePlusCircle className='text-green-500 pt-2 text-xl' /> <span>{d}</span></li>
                                         </ul>
                                     )
                                 }
