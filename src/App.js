@@ -21,6 +21,7 @@ import Details from "./components/VideoDetail/Details";
 import Favorite from "./components/VideoDetail/Favorite";
 import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
 import 'react-toastify/dist/ReactToastify.css';
+import Payments from "./components/Payments/Payments";
 
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
         <Route path="watchList" element={<Library />}></Route>
         <Route path="favorite" element={<Favorite />}></Route>
         <Route path="/play/:id" element={<Details />} />
+        <Route path="/solvePay" element={<Payments />} />
 
 
       </Routes>
