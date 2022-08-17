@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 // import { Link } from 'react-router-dom';
 import './Payments.css';
@@ -9,6 +10,7 @@ const Payments = () => {
     const myElement = useRef()
     const currentDate = new Date();
     const [user] = useAuthState(auth);
+    const navigate = useNavigate();
 
     const handleHover = (e) => {
         const x = e.pageX - myElement.current.offsetLeft
@@ -118,6 +120,7 @@ const Payments = () => {
             .then(res=>res.json())
             .then(data=>{
                 console.log(data);
+                navigate('/paymentPage')
             })
         }
     }
