@@ -131,7 +131,7 @@ const Payments = () => {
     // bg-gradient-to-r from-[#ff0055] to-[#f68a23]/
     return (
         <div className="bg-black pt-16">
-            <div className='bg-primary'>
+            <div className='bg-primary pb-8'>
                 <h1 className='mx-auto text-center pt-8
                  text-2xl pb-3 font-bold text-secondary'>CHOOSE A PLAN AND</h1>
                 <p className='mx-auto text-center
