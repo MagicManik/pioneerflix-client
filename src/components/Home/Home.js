@@ -1,4 +1,5 @@
 import React from "react";
+
 import AskAnswer from "./AskAnswer/AskAnswer";
 
 import Banner from "./Banner";
@@ -19,6 +20,7 @@ const Home = () => {
       <PioneerflixKids></PioneerflixKids>
       <PioneerflixFree></PioneerflixFree>
       <AskAnswer></AskAnswer>
+  
     </main>
   );
 };

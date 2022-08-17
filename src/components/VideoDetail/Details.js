@@ -259,12 +259,12 @@ const Details = () => {
                 <h1 className="md:text-5xl text-lg md:font-semibold">
                   {title}
                 </h1>
-                <hr className="md:mt-6 bg-secondary h-0.5 my-4 md:mb-4" />
+                <hr className="md:mt-6 bg-secondary h-[0.5px] my-4 md:mb-4" />
 
                 <p className="text-sm">( 2022 ) . {duration} . Serial </p>
                 <p className="my-2 "> Category : {category}</p>
                 <p className="text-sm">{description}</p>
-                <hr className="md:mt-6 bg-secondary h-0.5 my-3 md:mb-4" />
+                <hr className="md:mt-6 bg-secondary h-[0.5px] my-3 md:mb-4" />
               </div>
             </div>
           </div>

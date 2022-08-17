@@ -33,11 +33,16 @@ const MyProfile = () => {
         <Loading></Loading>
     }
     const updatedProfileData = data;
-    const updateProfile=e=>{
-        e.preventDefault();
+
+
+
+// start update 
+
+const onSubmit = (data, e) => {
         //upload image in imagebb
         const imgStorageKey = "d92a7867dc5f803eaff37ac866069fb5";
         const image = e.target.photo.files[0];
+        // console.log(image)
         const formData = new FormData();
         formData.append("image", image);
         const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`; 
@@ -51,29 +56,32 @@ const MyProfile = () => {
                 if(result.success){
                     const image=result.data.url;
                 const updateInfo={
-                        email:e.target.email.value,
-                        name:e.target.name.value,
-                        link:e.target.link.value,
-                        number:e.target.number.value,
-                        img:image
+                    profileName: data.name,
+                    gender: data.gender,
+                    education: data.education,
+                    phone: data.phone,
+                    address: data.address,
+                    profileImage: image,
+                    profileEmail: user.email,
                     }
-                    const url=`https://frozen-badlands-14934.herokuapp.com/updateUser/${user?.email}`
-                    // const url=`http://localhost:5000/updateUser/${user?.email}`
+                    // const url = `http://localhost:5000/userProfile/${user?.email}`
+                    const url = `https://infinite-island-65121.herokuapp.com/userProfile/${user?.email}`
                     fetch(url, {
-                        method: 'POST',
+                        method: 'PUT',
                         headers: {
-                            'Content-Type': 'application/json'
-                           
-                          },
-                          body: JSON.stringify(updateInfo)
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(updateInfo)
                     })
-                    .then(response => response.json())
-                    .then(data => {
-                        if(data.acknowledged){
-                            toast.success(`${updateInfo.name} your profile updated .`)
-                            e.reset(); 
-                        }
-                    })
+                        .then(res => res.json())
+                        .then(result => {
+                            // console.log(result);
+                            toast.success('Your profile updated successfully!!!')
+                            e.target.reset();
+                            refetch();
+                        })
+
+                    console.log(updateInfo)
                 }
                 else{
                     toast.error('Please give your photo .')
@@ -82,83 +90,6 @@ const MyProfile = () => {
     }
     
 
-    const onSubmit = (data, e) => {
-        const imgStorageKey = "d92a7867dc5f803eaff37ac866069fb5";
-        const image = e.target.photo.files[0];
-        const formData = new FormData();
-        formData.append("image", image);
-
-
-        fetch(`https://api.imgbb.com/1/upload?key=${imgStorageKey}`, {
-            method: "POST",
-            body: formData, 
-          })
-            .then((res) => res.json())
-            .then((result) => {
-                // if img upload success then upload data in data base 
-                if(result.success){
-                    const image=result.data.url;
-                const userProfile={
-                    profileName: data.name,
-                    gender: data.gender,
-                    education: data.education,
-                    phone: data.phone,
-                    address: data.address,
-                    profileImage: image,
-                    profileEmail: user.email,
-            }
-        console.log(userProfile)
-            const url = `http://localhost:5000/userProfile/${user?.email}`
-            // const url = `https://infinite-island-65121.herokuapp.com/userProfile/${user?.email}`
-            fetch(url, {
-                method: 'PUT',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(userProfile)
-            })
-                .then(res => res.json())
-                .then(result => {
-                    console.log(result);
-                    toast.success('Your profile updated successfully!!!')
-                    e.target.reset();
-                    refetch();
-                })
-        }
-    
-        else{
-            toast.error('Please give your photo .')
-        }})
-
-     
-    };
-    // const onSubmit = (data, e) => {
-    //     const userProfile = {
-    //         profileName: data.name,
-    //         gender: data.gender,
-    //         education: data.education,
-    //         phone: data.phone,
-    //         address: data.address,
-    //         profileImage: data.image,
-    //         profileEmail: user.email
-    //     }
-    //     // console.log(userProfile);
-    //     const url = `https://infinite-island-65121.herokuapp.com/userProfile/${user?.email}`
-    //     fetch(url, {
-    //         method: 'PUT',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(userProfile)
-    //     })
-    //         .then(res => res.json())
-    //         .then(result => {
-    //             console.log(result);
-    //             toast.success('Your profile updated successfully!!!')
-    //             e.target.reset();
-    //             refetch();
-    //         })
-    // };
 
     return (
         <div className="container w-full mx-auto p-5 lg:p-10 mb-40">
@@ -288,7 +219,7 @@ const MyProfile = () => {
                                     </div>
                                     <div className="w-full md:w-1/2 px-3">
                                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                            Image URL
+                                            Image
                                         </label>
                                         <input
                                             {...register("image")}

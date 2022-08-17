@@ -71,7 +71,6 @@ function App() {
         <Route path="favorite" element={<Favorite />}></Route>
         <Route path="/play/:id" element={<Details />} />
 
-
       </Routes>
 
       {/*...................add facebook messenger .................*/}
