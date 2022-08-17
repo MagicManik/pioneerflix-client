@@ -3,6 +3,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import PaymentPage from './PaymentPage';
 // import { Link } from 'react-router-dom';
 import './Payments.css';
 
@@ -120,7 +121,7 @@ const Payments = () => {
             .then(res=>res.json())
             .then(data=>{
                 console.log(data);
-                navigate('/paymentPage')
+                navigate('/paymentPage');
             })
         }
     }
