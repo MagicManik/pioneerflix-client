@@ -1,10 +1,15 @@
 import React, { useRef } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
+// import { Link } from 'react-router-dom';
 import './Payments.css';
 
 const Payments = () => {
     const myElement = useRef()
+    const currentDate = new Date();
+    const [user] = useAuthState(auth);
+
     const handleHover = (e) => {
         const x = e.pageX - myElement.current.offsetLeft
         const y = e.pageY - myElement.current.offsetTop
@@ -39,7 +44,7 @@ const Payments = () => {
 
     const paymentApi = [
         {
-            id: 1,
+            package: 1,
             month: 'One month',
             taka: 10,
             ref: myElement,
@@ -52,7 +57,7 @@ const Payments = () => {
             ]
         },
         {
-            id: 2,
+            package: 2,
             month: 'Three month',
             taka: 20,
             ref: myElement2,
@@ -65,7 +70,7 @@ const Payments = () => {
             ]
         },
         {
-            id: 3,
+            package: 3,
             month: 'Half Yearly',
             taka: 40,
             ref: myElement3,
@@ -78,7 +83,7 @@ const Payments = () => {
             ]
         },
         {
-            id: 4,
+            package: 4,
             month: 'One Year',
             taka: 60,
             ref: myElement4,
@@ -92,6 +97,18 @@ const Payments = () => {
         }
     ];
 
+    const bookingButton = (a) => {
+        const userBooking = {
+            package: a?.package,
+            month: a?.month,
+            taka: a?.taka,
+            userEmail: user?.email,
+            userName: user?.displayName,
+            bookingTime: currentDate
+        }
+        console.log(userBooking);
+    }
+
     // #ff0055 #f68a23
     // #73074d
     // previous bg-[#f0ebe3]
@@ -103,11 +120,11 @@ const Payments = () => {
                  text-2xl pb-3 font-bold text-secondary'>CHOOSE A PLAN AND</h1>
                 <p className='mx-auto text-center
                  text-xl pb-3 font-bold mb-4 text-secondary'>ENJOY ALL PIONEERFLIX PREMIUM CONTENTS</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 overflow-hidden pb-6 sm:w-[60%] mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 overflow-hidden sm:w-[60%] mx-auto">
                     {
                         paymentApi?.map(a =>
-                            <div key={a.id} className={`flex flex-col relative rounded-2xl p-10 bg-gradient-to-r from-purple-500 to-pink-500 mx-2 shadow-lg gap-4 post post-2 post-3 post-4 overflow-hidden`} ref={a?.ref} onMouseMove={a?.onMouseMove}>
-                                <h1 className='text-2xl text-center font-bold my-0 py-0 leading-none post-title'>{a?.month}</h1>
+                            <div key={a.package} className={`flex flex-col relative rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 mx-2 shadow-lg gap-4 post post-2 post-3 post-4 overflow-hidden`} ref={a?.ref} onMouseMove={a?.onMouseMove}>
+                                <h1 className='text-2xl text-center font-bold pt-2 leading-none post-title'>{a?.month}</h1>
                                 <p className="post-des text-center font-bold my-0 py-0">USD-<span className='text-xl'>{a.taka}$</span></p>
                                 {
                                     a?.description?.map((d, index) =>
@@ -116,7 +133,11 @@ const Payments = () => {
                                         </ul>
                                     )
                                 }
-                                <Link to='' className='subscribe-btn w-[80%] text-center text-xl font-semibold mx-auto'>Subscribe Now</Link>
+                                <button 
+                                className='subscribe-btn w-[80%] text-center text-xl font-semibold mx-auto mb-2'
+                                onClick={()=>bookingButton(a)}
+                                >
+                                Subscribe Now</button>
                             </div>
                         )
                     }
