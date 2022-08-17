@@ -27,7 +27,7 @@ const PaymentPage = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
-    console.log(userBookingData);
+    // console.log(userBookingData);
 
     return (
         <div className="bg-black pt-16">
@@ -49,7 +49,7 @@ const PaymentPage = () => {
                     <div className={`bg-accent rounded-2xl mx-2 shadow-lg my-auto`}>
                         <div className="card-body">
                             <Elements stripe={stripePromise}>
-                                <CheckoutForm />
+                                <CheckoutForm userBookingData={userBookingData} refetch={refetch} />
                             </Elements>
                         </div>
                     </div>
