@@ -106,7 +106,20 @@ const Payments = () => {
             userName: user?.displayName,
             bookingTime: currentDate
         }
-        console.log(userBooking);
+        if(user){
+            const url = `http://localhost:5000/userBooking/${user?.email}`;
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(userBooking)
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                console.log(data);
+            })
+        }
     }
 
     // #ff0055 #f68a23
