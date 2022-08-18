@@ -21,6 +21,7 @@ import Details from "./components/VideoDetail/Details";
 import Favorite from "./components/VideoDetail/Favorite";
 import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
 import 'react-toastify/dist/ReactToastify.css';
+import { Suspense } from "react";
 
 
 
@@ -42,6 +43,7 @@ function App() {
   return (
     <div data-theme={theme ? "dark" : "light"}>
       <NavbarResponsive theme={theme} setTheme={setTheme} />
+      <Suspense fallback={null}>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/about" element={<About></About>}></Route>
@@ -74,6 +76,7 @@ function App() {
 
 
       </Routes>
+      </Suspense>
 
       {/*...................add facebook messenger .................*/}
       
