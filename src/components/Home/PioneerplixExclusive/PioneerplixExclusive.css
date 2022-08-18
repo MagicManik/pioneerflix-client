@@ -1,22 +1,19 @@
-.text-container-left-2 {
-    padding-right: 50px;
+.video-container-II {
+    padding: 0 5rem;
 }
 
-.text-container-left-2 p {
-    padding-top: 16px;
+.video-container-2-m {
+    padding: 0 5rem;
 }
 
-.text-container-left-2 h1 {
-    line-height: 3.6rem;
-}
 
 @media screen and (max-width: 576px) {
-    .text-container-left-2 {
-        padding: 16px 16px 0 16px;
+    .video-container-II {
+        padding: 0 0 0 1.8rem;
     }
 
-    .text-container-left-2 p {
-        padding-top: 16px;
-        padding-bottom: 0px;
+    .video-div {
+        margin-right: 0;
+        padding-right: 10px;
     }
 }

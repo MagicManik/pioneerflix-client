@@ -1,0 +1,101 @@
+[
+    {
+      "id": 1,
+      "title": "Jamuna TV",
+      "category": "Television",
+      "imgLink": "https://i.ibb.co/g47pP2m/tv-chaneel1.png",
+      "channelLink": "https://www.youtube.com/embed/ORxX7AS4-Zg"
+    },
+    {
+      "id": 2,
+      "title": "GTV",
+      "category": "Television",
+      "imgLink": "https://i.ibb.co/b5mDKRP/gtv.png",
+      "channelLink": "https://www.youtube.com/embed/vSHelsYpvkc"
+    },
+    {
+      "id": 3,
+      "title": "Channel i",
+      "category": "Television",
+      "imgLink": "https://i.ibb.co/TkfsN74/tv-chaneel5.png",
+      "channelLink": "https://www.youtube.com/embed/eI06K155Bfk"
+    },
+    {
+      "id": 4,
+      "title": "DBC",
+      "category": "Television",
+      "imgLink": "https://i.ibb.co/NN1nfXJ/tv-chaneel10.png",
+      "channelLink": "https://www.youtube.com/embed/dDQFjUF4_9c"
+    },
+    {
+      "id": 5,
+      "title": "Channel 24",
+      "category": "Television",
+      "imgLink": "https://i.ibb.co/VJ3yr5Q/tv-chaneel12.png",
+      "channelLink": "https://www.youtube.com/embed/3jJ80MuOxqo"
+    },
+    {
+      "id": 6,
+      "title": "ATN",
+      "category": "Television",
+      "imgLink": "https://i.ibb.co/fCmGNDM/tv-chaneel7.png",
+      "channelLink": "https://www.youtube.com/embed/XZpyQTwsSQA"
+    },
+    {
+      "id": 7,
+      "title": "BanglaVision",
+      "category": "Television",
+      "imgLink": "https://i.ibb.co/Dgcr75t/tv-chaneel8.png",
+      "channelLink": "https://www.youtube.com/embed/_oAV2oF5DU8"
+    },
+    {
+      "id": 8,
+      "title": "NTV",
+      "category": "Television",
+      "imgLink": "https://i.ibb.co/nRdmfhw/ntv.png",
+      "channelLink": "https://www.youtube.com/embed/3a-zvq9I_8E"
+    },
+    {
+      "id": 9,
+      "title": "RTV",
+      "category": "Television",
+      "imgLink": "https://i.ibb.co/sJFkJXy/tv-chaneel6.png",
+      "channelLink": "https://www.youtube.com/embed/monK--r-6Nk"
+    },
+    {
+      "id": 10,
+      "title": "ARY NEWS",
+      "category": "Television",
+      "imgLink": "https://i.ibb.co/QKY5PLm/ARY-NEWS.png",
+      "channelLink": "https://www.youtube.com/embed/38IEolI8f-w"
+    },
+    {
+      "id": 11,
+      "title": "Republic TV",
+      "category": "Television",
+      "imgLink": "https://i.ibb.co/m6PF58Z/REPUBLIC.png",
+      "channelLink": "https://www.youtube.com/embed/kO20zoPWCrw"
+    },
+    {
+      "id": 12,
+      "title": "Somoy TV",
+      "category": "Television",
+      "imgLink": "https://i.ibb.co/Zcy7wML/tv-chaneel9.png",
+      "channelLink": "https://www.youtube.com/embed/ORxX7AS4-Zg"
+    },
+    {
+      "id": 13,
+      "title": "Al Jazeera",
+      "category": "Television",
+      "imgLink": "https://i.ibb.co/z298k2C/alzareera.png",
+      "channelLink": "https://www.youtube.com/embed/F-POY4Q0QSI"
+    },
+    {
+      "id": 14,
+      "title": "ABC News",
+      "category": "Television",
+      "imgLink": "https://i.ibb.co/VV6KMwt/ABC.png",
+      "channelLink": "https://www.youtube.com/embed/w_Ma8oQLmSM"
+    }
+    
+  ]
