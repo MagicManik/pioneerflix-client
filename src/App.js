@@ -22,6 +22,8 @@ import Favorite from "./components/VideoDetail/Favorite";
 import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
 import 'react-toastify/dist/ReactToastify.css';
 import SearchResults from "./components/Shared/SearchResults/SearchResults";
+import PaymentPage from "./components/Payments/PaymentPage";
+import Payments from "./components/Payments/Payments";
 
 
 function App() {
@@ -51,6 +53,8 @@ function App() {
         <Route path="/result/:id" element={<SearchResults></SearchResults>}></Route>
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>
+        <Route path="/solvePay" element={<Payments />} />
+        <Route path="/paymentPage" element={<PaymentPage />} />
 
         <Route
           path="/dashboard"

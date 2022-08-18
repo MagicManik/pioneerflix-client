@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import movie1 from "../../assets/bangla-movie/movie (1).jpg";
-import movie2 from "../../assets/bangla-movie/movie (2).jpg";
-import movie3 from "../../assets/bangla-movie/movie (3).jpg";
-import { FaShareAlt, FaPlus, FaRegStar, } from "react-icons/fa";
-import { AiFillLike, AiTwotoneStar, AiOutlinePlus } from "react-icons/ai";
+import React, { useEffect, useState } from "react";
+// import movie1 from "../../assets/bangla-movie/movie (1).jpg";
+// import movie2 from "../../assets/bangla-movie/movie (2).jpg";
+// import movie3 from "../../assets/bangla-movie/movie (3).jpg";
+import { FaShareAlt, FaStar, } from "react-icons/fa";
+import { AiOutlinePlus } from "react-icons/ai";
 import { BiLike } from "react-icons/bi";
 import { useParams } from "react-router-dom";
 import useVideo from "../../hooks/useVideo";
@@ -20,10 +20,38 @@ const Details = () => {
   const [video] = useVideo(id);
   const [likes] = useLikes();
   const [comments] = useComments();
+  const [rating, setRating] = useState(null)
+  const [hover, setHover] = useState(null);
+
+  // console.log(rating);
 
   let newLike = likes.filter((li) => li.id === id);
   const { videoLink, imgLink, title, category, description, duration } = video;
 
+  // Handle Review || Manik Islam Mahi
+  const handleReview = (star) => {
+    setRating(star);
+    // const name = user.displayName;
+    // const email = user.email;
+
+    // const review = { id, star, name, email };
+
+    // console.log(review);
+
+    // const url = `http://localhost:5000/reviews/${email}`
+
+    // fetch(url, {
+    //   method: 'PUT',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(review)
+    // })
+    //   .then(res => res.json())
+    //   .then(result => {
+    //     console.log(result);
+    //   })
+  }
 
   // like handler || Manik Islam Mahi
   const handleLike = () => {
@@ -91,7 +119,7 @@ const Details = () => {
   };
 
 
-  // Handle Review || Manik Islam Mahi
+
 
 
 
@@ -212,8 +240,24 @@ const Details = () => {
           <div className="md:flex justify-between items-center">
 
 
-            <div>
+            <div className="flex">
+              {[...Array(5)].map((start, i) => {
+                const ratingValue = i + 1;
+                return (
+                  <label key={i}>
 
+                    <input type="radio" className="hidden" name="rating" value={ratingValue} onClick={() => handleReview(ratingValue)} />
+
+                    <FaStar className="ml-2" color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'} size={20}
+                      onMouseEnter={() => setHover(ratingValue)}
+                      onMouseLeave={() => setHover(null)}
+                    >
+
+                    </FaStar>
+
+                  </label>
+                )
+              })}
             </div>
 
 
@@ -234,8 +278,8 @@ const Details = () => {
                 <AiOutlinePlus className="mr-2 text-xl" /> My List
               </button>
               <label
-                for="my-share-modal-3"
-                class="flex  cursor-pointer ml-5 items-center"
+                htmlFor="my-share-modal-3"
+                className="flex  cursor-pointer ml-5 items-center"
                 title="Share"
               >
                 <FaShareAlt className="mr-2 text-xl" /> Share
@@ -299,17 +343,17 @@ const Details = () => {
           />
           <div className="w-full   ml-2">
             <form onSubmit={handleComment}>
-              <div class="relative">
+              <div className="relative">
                 <input
                   type="text"
                   name="comment"
-                  class="block p-3 pl-5   focus:outline-none w-full text-sm   bg-primary border-b-2 border-white rounded-sm border "
+                  className="block p-3 pl-5   focus:outline-none w-full text-sm   bg-primary border-b-2 border-white rounded-sm border "
                   placeholder="Add a comment…"
                   required
                 />
                 <button
                   type="submit"
-                  class="text-white absolute right-2.5 disabled bottom-1 bg-amber-800 font-medium rounded-lg text-sm px-4 py-2"
+                  className="text-white absolute right-2.5 disabled bottom-1 bg-amber-800 font-medium rounded-lg text-sm px-4 py-2"
                 >
                   {" "}
                   Comment
@@ -343,16 +387,16 @@ const Details = () => {
 
       {/* <!------------- Social media Open in a modal ---------------------> */}
 
-      <input type="checkbox" id="my-share-modal-3" class="modal-toggle" />
-      <div class="modal">
-        <div class="modal-box bg-black relative">
+      <input type="checkbox" id="my-share-modal-3" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box bg-black relative">
           <label
-            for="my-share-modal-3"
-            class="btn btn-sm btn-circle absolute right-2 top-2"
+            htmlFor="my-share-modal-3"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
-          <h3 class="text-2xl font-bold text-white mb-4">
+          <h3 className="text-2xl font-bold text-white mb-4">
             Share your video on social media
           </h3>
 

@@ -4,7 +4,7 @@ import useChannel from '../../../hooks/useChannel';
 
 const TvChannel = () => {
     const { id } = useParams();
-    const [channel, setChannel] = useChannel(id);
+    const [channel] = useChannel(id);
     return (
         <div className="pt-16 bg-black">
             <hr className='line-' />
