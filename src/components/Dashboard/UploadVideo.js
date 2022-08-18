@@ -4,9 +4,12 @@ import { useForm } from 'react-hook-form';
 import { FiUpload } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import useAdmin from '../../hooks/useAdmin';
 
 const UploadVideo = () => {
     const [user] = useAuthState(auth);
+    const [admin] = useAdmin(user);
+
     const {
         register,
         handleSubmit,
@@ -24,21 +27,42 @@ const UploadVideo = () => {
             uploader: user.email
         }
         // console.log(userUploadVideo);
-        const url = 'https://infinite-island-65121.herokuapp.com/userUploadVideo'
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(userUploadVideo)
-        })
-            .then(res => res.json())
-            .then(result => {
-                // console.log(result);
-                alert('Thanks for uploading')
-                toast.success('Successfully your video uploaded!!!')
-                e.target.reset();
+        if (admin) {
+            const url = 'http://localhost:5000/adminUploadVideo';
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(userUploadVideo)
             })
+                .then(res => res.json())
+                .then(result => {
+                    console.log(result);
+                    alert('Thanks for uploading')
+                    toast.success('Successfully your video uploaded!!!')
+                    e.target.reset();
+                })
+        }
+        else {
+            const url = 'https://infinite-island-65121.herokuapp.com/userUploadVideo';
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(userUploadVideo)
+            })
+                .then(res => res.json())
+                .then(result => {
+                    console.log(result);
+                    alert('Thanks for uploading')
+                    toast.success('Successfully your video uploaded!!!')
+                    e.target.reset();
+                })
+        }
+
+
     };
 
     return (
@@ -46,7 +70,7 @@ const UploadVideo = () => {
             <div className='w-full mx-auto flex mt-0'>
                 <p className='section-title text-green-500 text-[15px] md:text-[25px]'>Upload your favorite video</p>
             </div>
-            <div className="card mx-auto sm:w-[80%] md:w-[50%] bg-base-100 shadow-xl">
+            <div class="card mx-auto sm:w-[80%] md:w-[50%] bg-base-100 shadow-xl">
                 <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
                     <span className="text-green-500 inline-block">
                         <FiUpload className='inline-block mr-1' />
