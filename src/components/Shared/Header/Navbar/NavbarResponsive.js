@@ -316,9 +316,9 @@ const NavbarResponsive = ({ theme, setTheme }) => {
               }  
             </ul>
             <iframe width="100%" height="100%" className="rounded-sm hidden md:block" src="https://www.youtube.com/embed/sxSa0MItDkg?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-           
+            <div className="">
             <FaTimes onClick={()=>setMega(!mega)} className="absolute top-2 right-2 text-secondary text-2xl"/>
-          
+            </div>
         
         </div>
         

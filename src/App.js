@@ -31,6 +31,8 @@ import Popular from "./components/Shared/Header/MegaMenu.js/Popular";
 import Clips from "./components/Shared/Header/MegaMenu.js/Clips";
 import Episodes from "./components/Shared/Header/MegaMenu.js/Episodes";
 import UpComing from "./components/Shared/Header/MegaMenu.js/UpComing";
+import SearchResults from "./components/Shared/SearchResults/SearchResults";
+
 
 
 function App() {
@@ -44,9 +46,7 @@ function App() {
     } else {
       setTheme(false);
     }
-  }, [getTheme])
-
-
+  }, [getTheme]);
 
   return (
     <div data-theme={theme ? "dark" : "light"}>
@@ -55,6 +55,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/about" element={<About></About>}></Route>
+        <Route path='/play/:id' element={<Details />} />
+        <Route path='/channel/:id' element={<TvChannel />}></Route>
+        <Route path="watchList" element={<Library />}></Route>
+        <Route path="favorite" element={<Favorite />}></Route>
+        <Route path="/play/:id" element={<Details />} />
+        <Route path="/result/:id" element={<SearchResults></SearchResults>}></Route>
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>
 
@@ -76,11 +82,7 @@ function App() {
         </Route>
 
 
-        <Route path='/play/:id' element={<Details />} />
-        <Route path='/channel/:id' element={<TvChannel />}></Route>
-        <Route path="watchList" element={<Library />}></Route>
-        <Route path="favorite" element={<Favorite />}></Route>
-        <Route path="/play/:id" element={<Details />} />
+
 
         <Route path='/comedy' element={<Comedy/>}/>
         <Route path='/bangla' element={<Bangla/>}/>
@@ -97,8 +99,8 @@ function App() {
       </Routes>
 
       {/*...................add facebook messenger .................*/}
-      <MessengerCustomerChat pageId="110278435120347" appId="592904995642640" />
-      
+
+      <MessengerCustomerChat pageId="105173368974353" appId="5776339365732896" />
       <Footer></Footer>
       <ToastContainer />
     </div>

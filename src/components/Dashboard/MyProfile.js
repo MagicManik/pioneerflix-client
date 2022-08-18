@@ -7,6 +7,7 @@ import auth from '../../firebase.init';
 import Loading from '../Shared/Loading/Loading';
 import SingleProfile from './SingleProfile';
 import SingleProfilePic from './SingleProfilePic';
+import './MyProfile.css';
 
 const MyProfile = () => {
     const [user] = useAuthState(auth);
@@ -47,6 +48,7 @@ const onSubmit = (data, e) => {
         formData.append("image", image);
         const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`; 
         fetch(url, {
+<<<<<<< HEAD
             method: "POST",
             body: formData, 
           })
@@ -86,6 +88,20 @@ const onSubmit = (data, e) => {
                 else{
                     toast.error('Please give your photo .')
                 }
+=======
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userProfile)
+        })
+            .then(res => res.json())
+            .then(result => {
+                // console.log(result);
+                toast.success('Your profile updated successfully!!!')
+                e.target.reset();
+                refetch();
+>>>>>>> 47d9241e57f4f2b136812a500f5bc556e6f82a8e
             })
     }
     
@@ -101,8 +117,8 @@ const onSubmit = (data, e) => {
                         refetch={refetch}
                     ></SingleProfilePic>)
                 }
-                <div className="grid grid-cols-1 w-full">
-                    <div className="w-full my-4 h-64  border-t-4 border-[#125f82]">
+                <div className="grid grid-cols-1 w-11/12 pr-9">
+                    <div className="w-full h-64  border-t-4 border-[#125f82]">
                         {
                             updatedProfileData?.map(pd => <SingleProfile
                                 key={pd._id}
@@ -113,6 +129,8 @@ const onSubmit = (data, e) => {
                         }
 
                     </div>
+
+
                     <div className="my-4"></div>
                     <div
                         className={`${isEdit ? "block" : "hidden"} bg-white w-full border-t-4 border-[#125f82] mx-auto p-5 my-5 mt-16 rounded-br-lg rounded-bl-lg shadow-sm rounded-sm relative`}
@@ -162,7 +180,7 @@ const onSubmit = (data, e) => {
                                             placeholder="Your Name"
                                         />
                                         {errors?.name && (
-                                            <p className="error">{errors.name.message}</p>
+                                            <p className="error">{errors?.name?.message}</p>
                                         )}
                                     </div>
                                     <div className="w-full md:w-1/2 px-3">

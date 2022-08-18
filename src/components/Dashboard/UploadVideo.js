@@ -34,7 +34,7 @@ const UploadVideo = () => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result);
+                // console.log(result);
                 alert('Thanks for uploading')
                 toast.success('Successfully your video uploaded!!!')
                 e.target.reset();

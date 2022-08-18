@@ -4,17 +4,21 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
 import tv from '../../../assets/others/tv.png';
-import './TvChannels.css';
 import useChannels from '../../../hooks/useChannels';
+import './TvChannels.css';
 
 const TvChannels = () => {
     const [channels, setChannels] = useChannels()
+<<<<<<< HEAD
+=======
+
+>>>>>>> 47d9241e57f4f2b136812a500f5bc556e6f82a8e
     var settings = {
         dots: false,
         infinite: false,
         speed: 500,
-        slidesToShow: 8,
-        slidesToScroll: 8,
+        slidesToShow: 9,
+        slidesToScroll: 9,
         initialSlide: 0,
         responsive: [
             {
@@ -29,8 +33,8 @@ const TvChannels = () => {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
+                    slidesToShow: 6,
+                    slidesToScroll: 6,
                     initialSlide: 2
                 }
             },
@@ -47,6 +51,7 @@ const TvChannels = () => {
 
 
     return (
+<<<<<<< HEAD
         <section className='bg-secondary '>
             <div className='pb-3  custom-bg'>
            
@@ -54,32 +59,31 @@ const TvChannels = () => {
             <div className='bg-primary video-section'>
                     <div className='bg-primary lg:px-20 sm:px-4 video-container'>
                         <h1 className='text-2xl text-secondary pt-6'>TV CHANNELS</h1>
+=======
+        <section className='bg-secondary wraper'>
+            <div className='pb-3 custom-bg'>
+
+                <div className='bg-primary video-section lg:hidden md:block'>
+                    <div className='bg-primary lg:px-20 sm:px-4 video-container'>
+                        <h1 className='text-2xl text-secondary pt-6'>TV CHANNELS</h1>
+
+>>>>>>> 47d9241e57f4f2b136812a500f5bc556e6f82a8e
                         <Slider {...settings} className=''>
-
-                            {/* {
-                                popularMovies.map(movie =>
-
-                                    <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
-
-                                        <a href={movie.link} target="_blank"><img className='popular-movie' src={movie.img} alt="" /></a>
-                                    </div>)
-                            } */}
                             {
                                 channels.map(tv =>
-
                                     <div key={tv._id}>
                                         <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={tv._id}>
                                             <Link to={`/channel/${tv._id}`}>
                                                 <img className='popular-movie' src={tv.imgLink} alt="" />
                                             </Link>
-
-
                                         </div>
-
                                     </div>)
                             }
                         </Slider>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 47d9241e57f4f2b136812a500f5bc556e6f82a8e
 
                     </div>
                 </div>
