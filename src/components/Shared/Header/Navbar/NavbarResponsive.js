@@ -20,19 +20,19 @@ import pioneerFlix from '../../../../assets/app-logo/pioneerflix.png';
 import './NavbarResponsive.css';
 
 const megaMenuR1 = [
-  { name: 'Comedy', href: '/',id:'293oc02c' },
-  { name: 'Drama', href: '/', id:'2aod030vkd' },
-  { name: 'Thriller', href: '/', id:'8aod030vk' },
-  { name: 'Bangla', href: '/', id:'6aod30kd' },
-  { name: 'Latest', href: '/', id:'6aod3014kd' },
-  { name: 'Series', href: '/', id:'6a5od3014kd' },
+  { name: 'Comedy', href: '/comedy',id:'293oc02c' },
+  { name: 'Drama', href: '/drama', id:'2aod030vkd' },
+  { name: 'Thriller', href: '/thriller', id:'8aod030vk' },
+  { name: 'Bangla', href: '/bangla', id:'6aod30kd' },
+  { name: 'Latest', href: '/latest', id:'6aod3014kd' },
+  { name: 'Series', href: '/series', id:'6a5od3014kd' },
 ]
 const megaMenuR2 = [
-  { name: 'Live Games', href: '/',id:'293oc02c' },
-  { name: 'Most Popular', href: '/', id:'2aod030vkd' },
-  { name: 'Clips', href: '/', id:'8aod030vk' },
-  { name: 'National Award Winning', href: '/', id:'6aod30kd' },
-  { name: 'Upcomming', href: '/', id:'6ao2d30kd' },
+  { name: 'Live Games', href: '/games',id:'293oc02c' },
+  { name: 'Most Popular', href: '/popular', id:'2aod030vkd' },
+  { name: 'Clips', href: '/clips', id:'8aod030vk' },
+  { name: ' Episodes', href: '/episodes', id:'6aod30kd' },
+  { name: 'Upcoming', href: '/upComing', id:'6ao2d30kd' },
 ]
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -131,7 +131,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       >
                         Movies
                       </CustomLink>
-                      <button onClick={()=>setMega(!mega)} className=" text-white  flex  items-end  hover:text-white">Company {mega ? <FaCaretUp className="ml-1 text-xl"/> :<FaCaretDown className="ml-1 text-xl" />}</button>
+                      <button onClick={()=>setMega(!mega)} className=" text-white  flex  items-end  hover:text-white">Categories {mega ? <FaCaretUp className="ml-1 text-xl"/> :<FaCaretDown className="ml-1 text-xl" />}</button>
 
          {user && (
                         <CustomLink
@@ -296,11 +296,11 @@ const NavbarResponsive = ({ theme, setTheme }) => {
       <hr />
 
      { mega&& <div  className="absolute bg-primary border-2 border-indigo-600 top-16 left-56 w-[40%] rounded z-30">
-        <div className="grid py-5 px-4 relative mx-auto text-secondary max-w-screen-xl text-sm md:grid-cols-3 md:px-10">
+        <div className="grid py-5 px-4 relative mx-auto text-secondary max-w-screen-xl text-base md:grid-cols-3 md:px-10">
             <ul className="hidden relative space-y-3 md:mb-0 md:block">
               {
                 megaMenuR1.map(m=>   <li key={m.id}>
-                  <Link to={m.href} onClick={()=>setMega(!mega)} className="hover:underline hover:text-blue-600 ">
+                  <Link to={m.href} onClick={()=>setMega(!mega)} className="duration-200 hover:text-lg  hover:text-blue-600 ">
                     {m.name}
                   </Link>
               </li>)
@@ -309,7 +309,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
             <ul className="mb-4 space-y-3 md:mb-0">
             {
                 megaMenuR2.map(m=>   <li key={m.id}>
-                  <Link to={m.href} onClick={()=>setMega(!mega)} className="hover:underline hover:text-blue-600 ">
+                  <Link to={m.href} onClick={()=>setMega(!mega)} className="duration-200 hover:text-lg  hover:text-blue-600 ">
                     {m.name}
                   </Link>
               </li>)
