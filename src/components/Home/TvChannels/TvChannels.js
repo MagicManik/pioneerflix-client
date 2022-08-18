@@ -8,11 +8,7 @@ import useChannels from '../../../hooks/useChannels';
 import './TvChannels.css';
 
 const TvChannels = () => {
-    const [channels, setChannels] = useChannels()
-<<<<<<< HEAD
-=======
-
->>>>>>> 47d9241e57f4f2b136812a500f5bc556e6f82a8e
+    const [channels] = useChannels()
     var settings = {
         dots: false,
         infinite: false,
@@ -51,23 +47,13 @@ const TvChannels = () => {
 
 
     return (
-<<<<<<< HEAD
-        <section className='bg-secondary '>
-            <div className='pb-3  custom-bg'>
-           
 
-            <div className='bg-primary video-section'>
-                    <div className='bg-primary lg:px-20 sm:px-4 video-container'>
-                        <h1 className='text-2xl text-secondary pt-6'>TV CHANNELS</h1>
-=======
         <section className='bg-secondary wraper'>
             <div className='pb-3 custom-bg'>
 
                 <div className='bg-primary video-section lg:hidden md:block'>
                     <div className='bg-primary lg:px-20 sm:px-4 video-container'>
                         <h1 className='text-2xl text-secondary pt-6'>TV CHANNELS</h1>
-
->>>>>>> 47d9241e57f4f2b136812a500f5bc556e6f82a8e
                         <Slider {...settings} className=''>
                             {
                                 channels.map(tv =>
@@ -80,10 +66,6 @@ const TvChannels = () => {
                                     </div>)
                             }
                         </Slider>
-<<<<<<< HEAD
-
-=======
->>>>>>> 47d9241e57f4f2b136812a500f5bc556e6f82a8e
 
                     </div>
                 </div>

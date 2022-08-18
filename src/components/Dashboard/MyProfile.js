@@ -48,7 +48,6 @@ const onSubmit = (data, e) => {
         formData.append("image", image);
         const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`; 
         fetch(url, {
-<<<<<<< HEAD
             method: "POST",
             body: formData, 
           })
@@ -83,25 +82,11 @@ const onSubmit = (data, e) => {
                             refetch();
                         })
 
-                    console.log(updateInfo)
+                    // console.log(updateInfo)
                 }
                 else{
                     toast.error('Please give your photo .')
                 }
-=======
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(userProfile)
-        })
-            .then(res => res.json())
-            .then(result => {
-                // console.log(result);
-                toast.success('Your profile updated successfully!!!')
-                e.target.reset();
-                refetch();
->>>>>>> 47d9241e57f4f2b136812a500f5bc556e6f82a8e
             })
     }
     
