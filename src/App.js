@@ -16,6 +16,7 @@ import SignUpPage from "./components/UserAccount/SignUpPage";
 import Details from "./components/VideoDetail/Details";
 import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
 
+
 function App() {
   const [theme, setTheme] = useState(true);
 
@@ -56,7 +57,9 @@ function App() {
       </Routes>
 
       {/*...................add facebook messenger .................*/}
+      
       <MessengerCustomerChat pageId="110278435120347" appId="592904995642640" />
+      
       <Footer></Footer>
     </div>
   );

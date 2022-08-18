@@ -9,7 +9,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import useComments from "../../hooks/useComments";
 import "./Details.css";
-import {
+import { 
   FacebookShareButton,
   FacebookIcon,
   WhatsappShareButton,
