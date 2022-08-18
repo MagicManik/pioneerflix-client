@@ -233,7 +233,7 @@ const Details = () => {
               </button>
               <label
                 for="my-share-modal-3"
-                class="flex  cursor-pointer ml-5 items-center"
+                className="flex  cursor-pointer ml-5 items-center"
                 title="Share"
               >
                 <FaShareAlt className="mr-2 text-xl" /> Share
@@ -295,17 +295,17 @@ const Details = () => {
           />
           <div className="w-full   ml-2">
             <form onSubmit={handleComment}>
-              <div class="relative">
+              <div className="relative">
                 <input
                   type="text"
                   name="comment"
-                  class="block p-3 pl-5   focus:outline-none w-full text-sm   bg-primary border-b-2 border-white rounded-sm border "
+                  className="block p-3 pl-5   focus:outline-none w-full text-sm   bg-primary border-b-2 border-white rounded-sm border "
                   placeholder="Add a comment…"
                   required
                 />
                 <button
                   type="submit"
-                  class="text-white absolute right-2.5 disabled bottom-1 bg-amber-800 font-medium rounded-lg text-sm px-4 py-2"
+                  className="text-white absolute right-2.5 disabled bottom-1 bg-amber-800 font-medium rounded-lg text-sm px-4 py-2"
                 >
                   {" "}
                   Comment
@@ -339,16 +339,16 @@ const Details = () => {
 
       {/* <!------------- Social media Open in a modal ---------------------> */}
 
-      <input type="checkbox" id="my-share-modal-3" class="modal-toggle" />
-      <div class="modal">
-        <div class="modal-box bg-black relative">
+      <input type="checkbox" id="my-share-modal-3" className="modal-toggle" />
+      <div className="modal">
+        <div className="modal-box bg-black relative">
           <label
             for="my-share-modal-3"
-            class="btn btn-sm btn-circle absolute right-2 top-2"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
-          <h3 class="text-2xl font-bold text-white mb-4">
+          <h3 className="text-2xl font-bold text-white mb-4">
             Share your video on social media
           </h3>
           <FacebookShareButton url={videoLink}>

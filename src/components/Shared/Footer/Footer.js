@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer className='bg-info text-white'>
+        <footer className='bg-info z-10 text-white'>
             <div className="footer-section bg-info">
                 <div className='footer-container'>
                     <img className='w-7/12 mx-auto pb-3' src={pioneerFlix} alt="" />

@@ -46,7 +46,7 @@ const UploadVideo = () => {
             <div className='w-full mx-auto flex mt-0'>
                 <p className='section-title text-green-500 text-[15px] md:text-[25px]'>Upload your favorite video</p>
             </div>
-            <div class="card mx-auto sm:w-[80%] md:w-[50%] bg-base-100 shadow-xl">
+            <div className="card mx-auto sm:w-[80%] md:w-[50%] bg-base-100 shadow-xl">
                 <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
                     <span className="text-green-500 inline-block">
                         <FiUpload className='inline-block mr-1' />

@@ -6,7 +6,9 @@ import {
   FaRegBell,
   FaRegMoon,
   FaSun,
+  FaCaretDown,
   FaSearch,
+  FaCaretUp
 } from "react-icons/fa";
 import auth from "../../../../firebase.init";
 import CustomLink from "../../customLink/CustomLink";
@@ -17,7 +19,21 @@ import { signOut } from 'firebase/auth';
 import pioneerFlix from '../../../../assets/app-logo/pioneerflix.png';
 import './NavbarResponsive.css';
 
-
+const megaMenuR1 = [
+  { name: 'Comedy', href: '/',id:'293oc02c' },
+  { name: 'Drama', href: '/', id:'2aod030vkd' },
+  { name: 'Thriller', href: '/', id:'8aod030vk' },
+  { name: 'Bangla', href: '/', id:'6aod30kd' },
+  { name: 'Latest', href: '/', id:'6aod3014kd' },
+  { name: 'Series', href: '/', id:'6a5od3014kd' },
+]
+const megaMenuR2 = [
+  { name: 'Live Games', href: '/',id:'293oc02c' },
+  { name: 'Most Popular', href: '/', id:'2aod030vkd' },
+  { name: 'Clips', href: '/', id:'8aod030vk' },
+  { name: 'National Award Winning', href: '/', id:'6aod30kd' },
+  { name: 'Upcomming', href: '/', id:'6ao2d30kd' },
+]
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -26,6 +42,7 @@ function classNames(...classes) {
 
 const NavbarResponsive = ({ theme, setTheme }) => {
   const [scrollNavbar, setScrollNavbar] = useState(false);
+  const [mega,setMega]=useState(false)
 
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
@@ -48,6 +65,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
   const changeBackground = () => {
     if (window.scrollY >= 80) {
       setScrollNavbar(true);
+      setMega(false)
     } else {
       setScrollNavbar(false);
     }
@@ -55,7 +73,8 @@ const NavbarResponsive = ({ theme, setTheme }) => {
   window.addEventListener("scroll", changeBackground);
   return (
     <>
-      <Disclosure as="nav" className={scrollNavbar ? "sticky header-scrolling top-0 left-0 z-20 border-0" : "border-0 absolute left-0 right-0 z-20 bg-transparent"}>
+    <div className={scrollNavbar ? "sticky header-scrolling top-0  left-0 z-20 border-0" : "border-0 absolute left-0 right-0 z-20 bg-transparent"}>
+      <Disclosure as="nav">
         {({ open }) => (
           <>
             <div className="max-w-8xl mx-auto px-2 sm:px-6 lg:px-14 ">
@@ -112,7 +131,9 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       >
                         Movies
                       </CustomLink>
-                      {user && (
+                      <button onClick={()=>setMega(!mega)} className=" text-white  flex  items-end  hover:text-white">Company {mega ? <FaCaretUp className="ml-1 text-xl"/> :<FaCaretDown className="ml-1 text-xl" />}</button>
+
+         {user && (
                         <CustomLink
                           to="/dashboard"
                           className=" text-white  hover:text-white"
@@ -248,69 +269,16 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   TV Shows
                 </CustomLink>
                 <CustomLink
+                id="mega-menu-full-image-dropdown"
                   to="/movies"
                   className=" text-white  hover:text-white"
                 >
                   Movies
 
 
+                  </CustomLink>
 
-                  <div id="mega-menu-full-image-dropdown" class="mt-1 bg-white border-gray-200 shadow-sm border-y dark:bg-gray-800 dark:border-gray-600">
-        <div class="grid py-5 px-4 mx-auto max-w-screen-xl text-sm text-gray-500 dark:text-gray-400 md:grid-cols-3 md:px-6">
-            <ul class="hidden mb-4 space-y-4 md:mb-0 md:block" aria-labelledby="mega-menu-full-image-button">
-                <li>
-                    <a href="#" class="hover:underline hover:text-blue-600 dark:hover:text-blue-500">
-                        Online Stores
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="hover:underline hover:text-blue-600 dark:hover:text-blue-500">
-                        Segmentation
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="hover:underline hover:text-blue-600 dark:hover:text-blue-500">
-                        Marketing CRM
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="hover:underline hover:text-blue-600 dark:hover:text-blue-500">
-                        Online Stores
-                    </a>
-                </li>
-            </ul>
-            <ul class="mb-4 space-y-4 md:mb-0">
-                <li>
-                    <a href="#" class="hover:underline hover:text-blue-600 dark:hover:text-blue-500">
-                        Our Blog
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="hover:underline hover:text-blue-600 dark:hover:text-blue-500">
-                        Terms & Conditions
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="hover:underline hover:text-blue-600 dark:hover:text-blue-500">
-                        License
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="hover:underline hover:text-blue-600 dark:hover:text-blue-500">
-                        Resources
-                    </a>
-                </li>
-            </ul>
-            <a href="#" class="p-8 text-left bg-local bg-gray-500 bg-center bg-no-repeat bg-cover rounded-lg bg-blend-multiply hover:bg-blend-soft-light dark:hover:bg-blend-darken" style="background-image: url(/docs/images/dashboard-overview.png)">
-                <p class="mb-5 max-w-xl font-extrabold tracking-tight leading-tight text-white">Preview the new Flowbite dashboard navigation.</p>
-                <button type="button" class="inline-flex items-center px-2.5 py-1.5 text-xs font-medium text-center text-white border border-white rounded-lg hover:bg-white hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-700">
-                    Get started
-                    <svg class="ml-1 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                </button>
-            </a>
-        </div>
-    </div>
-                </CustomLink>
+             
                 {user && (
                   <CustomLink
                     to="/dashboard"
@@ -326,6 +294,34 @@ const NavbarResponsive = ({ theme, setTheme }) => {
         )}
       </Disclosure>
       <hr />
+
+     { mega&& <div  className="absolute bg-primary border-2 border-indigo-600 top-16 left-56 w-[40%] rounded z-30">
+        <div className="grid py-5 px-4 relative mx-auto text-secondary max-w-screen-xl text-sm md:grid-cols-3 md:px-10">
+            <ul className="hidden relative space-y-3 md:mb-0 md:block">
+              {
+                megaMenuR1.map(m=>   <li key={m.id}>
+                  <Link to={m.href} onClick={()=>setMega(!mega)} className="hover:underline hover:text-blue-600 ">
+                    {m.name}
+                  </Link>
+              </li>)
+              }   
+            </ul>
+            <ul className="mb-4 space-y-3 md:mb-0">
+            {
+                megaMenuR2.map(m=>   <li key={m.id}>
+                  <Link to={m.href} onClick={()=>setMega(!mega)} className="hover:underline hover:text-blue-600 ">
+                    {m.name}
+                  </Link>
+              </li>)
+              }  
+            </ul>
+            <iframe width="100%" height="100%" className="rounded-sm" src="https://www.youtube.com/embed/sxSa0MItDkg?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            
+            <FaTimes onClick={()=>setMega(!mega)} className="absolute top-2 right-2 text-secondary text-2xl"/>
+        </div>
+        
+    </div> }
+    </div>
     </>
   );
 };

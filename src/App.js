@@ -21,6 +21,7 @@ import Details from "./components/VideoDetail/Details";
 import Favorite from "./components/VideoDetail/Favorite";
 import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
 import 'react-toastify/dist/ReactToastify.css';
+import Test from "./components/Shared/Header/Navbar/Test";
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
   return (
     <div data-theme={theme ? "dark" : "light"}>
       <NavbarResponsive theme={theme} setTheme={setTheme} />
+      {/* <Test/> */}
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/about" element={<About></About>}></Route>
@@ -75,6 +77,7 @@ function App() {
 
       {/*...................add facebook messenger .................*/}
       <MessengerCustomerChat pageId="110278435120347" appId="592904995642640" />
+      {/* <Test/> */}
       <Footer></Footer>
       <ToastContainer />
     </div>
