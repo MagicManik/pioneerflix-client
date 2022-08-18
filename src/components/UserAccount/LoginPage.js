@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading/Loading';
 import './LoginPage.css';
 import SocialLogin from './SocialLogin/SocialLogin';
@@ -9,10 +10,6 @@ import SocialLogin from './SocialLogin/SocialLogin';
 const LoginPage = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
-
-    const navigate = useNavigate();
-    let location = useLocation();
-
     const [
         signInWithEmailAndPassword,
         user,
@@ -20,17 +17,22 @@ const LoginPage = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [token] = useToken(user);
+
+    const navigate = useNavigate();
+    let location = useLocation();
+
     let from = location.state?.from?.pathname || "/";
 
     let errorMessage;
 
     useEffect(() => {
 
-        if (user) {
+        if (token) {
             navigate(from, { replace: true });
         }
 
-    }, [user, navigate, from])
+    }, [token, navigate, from])
 
     if (loading) {
         return <Loading></Loading>
@@ -49,11 +51,11 @@ const LoginPage = () => {
     }
 
     return (
-        <div className='pt-16 bg-primary '>
-            <div className='text-secondary py-14'>
+        <div className='pt-16 bg-[#000000]'>
+            <div className='text-[#fff] py-14'>
                 <div>
                     <form action="" className='loginBody' onSubmit={handleLogin}>
-                        <h1 className='text-2xl  border-2 border-none uppercase'>Please Login</h1>
+                        <h1 className='text-2xl border-2 border-none uppercase'>Please Login</h1>
                         <div className='loginBox '>
                             <input ref={emailRef} type="text" required />
                             <span className=''>your email</span>

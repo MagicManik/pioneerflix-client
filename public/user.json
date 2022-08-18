@@ -1,0 +1,102 @@
+[
+    {
+      "_id": "62efaff3c6c3da02a7071223",
+      "picture": "http://placehold.it/32x32",
+      "address": "955 Strong Place",
+      "edu": "Rajshahi University",
+      "name": "Franco Duncan",
+      "gender": "male",
+      "email": "francoduncan@eclipsent.com",
+      "phone": "+1 (814) 409-3373",
+      "about": "Elit do nisi sunt in id magna. Sunt aliquip adipisicing aliquip aliqua. Enim duis velit in fugiat nostrud ea. Ea commodo cillum veniam mollit ad aute. Quis sint qui enim mollit ad ullamco esse pariatur reprehenderit esse. Adipisicing sint quis ullamco ipsum duis consectetur.\r\n",
+      "tags": [
+        "culpa",
+        "aliquip",
+        "esse",
+        "Lorem",
+        "fugiat",
+        "ipsum",
+        "ad"
+      ]
+    },
+    {
+      "_id": "62efaff304f84afe9c85eaa4",
+      "picture": "http://placehold.it/32x32",
+      "address": "314 Lawrence Street",
+      "edu": "Rajshahi University",
+      "name": "Joyce Harper",
+      "gender": "male",
+      "email": "joyceharper@eclipsent.com",
+      "phone": "+1 (995) 473-3108",
+      "about": "Proident ea sunt veniam culpa enim occaecat laborum exercitation. Consequat fugiat ut qui deserunt qui voluptate do velit velit minim officia. Nulla non est ut velit pariatur eiusmod qui velit.\r\n",
+      "tags": [
+        "ex",
+        "ea",
+        "consectetur",
+        "nulla",
+        "sunt",
+        "laborum",
+        "id"
+      ]
+    },
+    {
+      "_id": "62efaff31642a7f09ec31d2f",
+      "picture": "http://placehold.it/32x32",
+      "address": "189 Commercial Street",
+      "edu": "Rajshahi University",
+      "name": "Marissa Chaney",
+      "gender": "female",
+      "email": "marissachaney@eclipsent.com",
+      "phone": "+1 (874) 468-2676",
+      "about": "Laborum labore qui commodo dolor ad duis nostrud irure. Occaecat esse eu exercitation enim nulla enim laboris veniam elit enim veniam. Tempor ullamco ipsum aliquip cupidatat fugiat incididunt. Fugiat excepteur aute est do nulla.\r\n",
+      "tags": [
+        "in",
+        "ipsum",
+        "nostrud",
+        "nulla",
+        "dolore",
+        "id",
+        "consequat"
+      ]
+    },
+    {
+      "_id": "62efaff3485593be2411da51",
+      "picture": "http://placehold.it/32x32",
+      "address": "483 Highland Avenue",
+      "edu": "Rajshahi University",
+      "name": "Barron Walton",
+      "gender": "male",
+      "email": "barronwalton@eclipsent.com",
+      "phone": "+1 (999) 444-3239",
+      "about": "Ex anim officia in ex ut cillum. Anim reprehenderit ipsum qui enim cupidatat et incididunt nostrud velit ipsum id culpa dolor. Reprehenderit mollit minim cillum ut duis occaecat. In dolore laborum esse ullamco ipsum quis id dolor proident ex laborum nulla. Esse nostrud cupidatat non in sit et.\r\n",
+      "tags": [
+        "et",
+        "eiusmod",
+        "in",
+        "sit",
+        "qui",
+        "ad",
+        "laborum"
+      ]
+    },
+    {
+      "_id": "62efaff38dc14b0b24d4c356",
+      "picture": "http://placehold.it/32x32",
+      "address": "759 Clarendon Road",
+      "edu": "Rajshahi University",
+      "name": "Belinda Prince",
+      "gender": "female",
+      "email": "belindaprince@eclipsent.com",
+      "phone": "+1 (861) 488-3814",
+      "about": "Magna sint pariatur incididunt velit sit eu sit do. Lorem enim esse fugiat irure qui do. Veniam dolor consequat labore fugiat deserunt. Aliquip aute minim deserunt aliqua ipsum irure occaecat proident dolore in nisi labore.\r\n",
+      "tags": [
+        "laboris",
+        "reprehenderit",
+        "Lorem",
+        "incididunt",
+        "elit",
+        "Lorem",
+        "eu"
+      ]
+    }
+  ]

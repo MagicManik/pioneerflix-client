@@ -18,8 +18,8 @@ module.exports = {
       },
       {
         light: {
-         
-          primary: "#ffffff",
+
+          primary: "#f5f5f7",
           secondary: "#000",
           // accent: "#404040",
           accent: "#1c4662",
