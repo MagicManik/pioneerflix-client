@@ -13,7 +13,7 @@ const ManageVideos = () => {
         })
             .then(res => res.json())
     )
-    console.log(data);
+    // console.log(data);
     const deleteVideo = (id) => {
         const url = `https://infinite-island-65121.herokuapp.com/uploadedVideo/${id}`;
         fetch(url, {

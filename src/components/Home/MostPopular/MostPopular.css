@@ -1,3 +1,7 @@
+.video-container-II {
+    padding-left: 1.8rem;
+}
+
 .popular-movie {
     width: 100%;
     border-radius: 10px;
@@ -5,14 +9,14 @@
 
 /* Watch offline css */
 .text-container-right {
-    padding-right: 20px;
+    padding-right: 0;
 }
 
 .text-container-right p {
     padding-top: 16px;
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 639px) {
     .video-section {
         padding: 0 16px;
     }
@@ -28,14 +32,19 @@
 }
 
 /* watch offline media query */
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 639px) {
 
     .text-container-right {
-        padding: 16px;
+        padding: 0 16px 16px 16px;
     }
 
     .text-container-right p {
         padding-top: 16px;
         padding-bottom: 20px;
+    }
+
+    .custom-bg> {
+        display: block;
+        margin: 0 auto;
     }
 }
