@@ -1,31 +1,39 @@
 import { React, Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import {
-  FaAlignJustify,
-  FaTimes,
-  FaRegBell,
-  FaRegMoon,
-  FaSun,
-  FaSearch,
-} from "react-icons/fa";
+import { FaAlignJustify, FaTimes, FaRegBell, FaRegMoon, FaSun, FaSearch, } from "react-icons/fa";
 import auth from "../../../../firebase.init";
 import CustomLink from "../../customLink/CustomLink";
-
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, unstable_HistoryRouter, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import pioneerFlix from '../../../../assets/app-logo/pioneerflix.png';
 import './NavbarResponsive.css';
+import useVideos from "../../../../hooks/useVideos";
 
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-
-
 const NavbarResponsive = ({ theme, setTheme }) => {
+  const [videos] = useVideos();
+  const [searchResult, setSearchResult] = useState(videos);
   const [scrollNavbar, setScrollNavbar] = useState(false);
+
+
+  // console.log(result)
+
+  const navigateResultPage = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const searchedValue = e.target.search.value;
+    navigateResultPage(`result/${searchedValue}`);
+
+  }
+
+
+
 
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
@@ -53,16 +61,18 @@ const NavbarResponsive = ({ theme, setTheme }) => {
     }
   };
   window.addEventListener("scroll", changeBackground);
+
+
   return (
     <>
-      <Disclosure as="nav" className={scrollNavbar ? "sticky header-scrolling top-0 left-0 z-20 border-0" : "border-0 absolute left-0 right-0 z-20 bg-transparent"}>
+      <Disclosure as="nav" className={scrollNavbar ? "sticky header-scrolling top-0 left-0 z-20 border-0" : "border-0 absolute left-0 right-0 z-20 header-scrolling-mobile bg-transparent"}>
         {({ open }) => (
           <>
             <div className="max-w-8xl mx-auto px-2 sm:px-6 lg:px-14 ">
               <div className="relative flex items-center justify-between h-16">
-                <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                <div className="absolute inset-y-0 left-0 flex items-center sm:hidden toggle-mobile-menu">
                   {/* Mobile menu button*/}
-                  <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                  <Disclosure.Button className="inline-flex hamburger-mobile-menu items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     <span className="sr-only">Open main menu</span>
                     {open ? (
                       <FaTimes className="block h-6 w-6" aria-hidden="true" />
@@ -112,30 +122,26 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       >
                         Movies
                       </CustomLink>
-                      {user && (
-                        <CustomLink
-                          to="/dashboard"
-                          className=" text-white  hover:text-white"
-                        >
-                          {" "}
-                          Dashboard
-                        </CustomLink>
-                      )}
                     </div>
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+
+
                   {/* search here */}
                   <div className="relative hidden md:block mr-5 text-black">
                     <div className="flex absolute inset-y-0  left-0 items-center pl-3 pointer-events-none">
                       <FaSearch className="text-sm search-icon" />
                     </div>
-                    <input
-                      type="text"
-                      id="search-navbar"
-                      className="block p-1 hover:p-1.5 py-1 hover:py-1 pl-10 duration-1000 hover:px-14 text-white focus:px-14  hover:text-white  hover:scale-x-100 mr-1 rounded-full border search-input sm:text-sm"
-                      placeholder="Search..."
-                    />
+                    <form onSubmit={handleSearch}>
+                      <input
+                        type="text"
+                        id="search-navbar"
+                        name="search"
+                        className="block p-1 hover:p-1.5 py-1 hover:py-1 pl-10 duration-1000 hover:px-14 text-white focus:px-14  hover:text-white  hover:scale-x-100 mr-1 rounded-full border search-input sm:text-sm"
+                        placeholder="Search..."
+                      />
+                    </form>
                   </div>
 
                   <button
@@ -143,18 +149,18 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     onClick={() => setTheme(!theme)}
                   >
 
-                    {theme ? <FaRegMoon onClick={() => handleTheme('white')} /> : <FaSun onClick={() => handleTheme('dark')} />}
+                    {theme ? <FaSun onClick={() => handleTheme('white')} /> : <FaRegMoon className="h-5 w-5" onClick={() => handleTheme('dark')} />}
 
                   </button>
 
                   <button type="button" className=" text-white mx-2 md:mx-3">
                     <span className="sr-only">View notifications</span>
 
-                    <FaRegBell className="h-6 w-6" aria-hidden="true" />
+                    <FaRegBell className="h-5 w-5" aria-hidden="true" />
                   </button>
 
                   {/* Profile dropdown */}
-                  <Menu as="div" className={user ? 'ml-3 relative  custom-border-I' : 'ml-3 relative'}>
+                  <Menu as="div" className={user ? 'relative  custom-border-I' : 'ml-3 relative'}>
                     <div>
                       <Menu.Button className=" flex text-sm">
                         <span className="sr-only">Open user menu</span>
@@ -182,16 +188,34 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="origin-top-right absolute z-20 right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-primary ring-1 ring-black ring-opacity-5 focus:outline-none custom-border-II">
+                      <Menu.Items className="origin-top-right absolute z-20 right-0 mt-2 w-60 rounded-[12px] shadow-lg custom-bg ring-1 ring-black ring-opacity-5 focus:outline-none py-4">
+                        {/* custom-border-II */}
+                        <Menu.Item>
+                          {({ active }) => (
+                            <img className="block w-4/12 mx-auto rounded-full" src={user?.photoURL} alt="" />
+                          )}
+                        </Menu.Item>
+
+                        <Menu.Item>
+                          {({ active }) => (
+                            <p className=" font-bold pt-3 text-center">{user?.displayName}</p>
+                          )}
+                        </Menu.Item>
+
+                        <Menu.Item>
+                          {({ active }) => (
+                            <p className="user-email text-center">{user?.email}</p>
+                          )}
+                        </Menu.Item>
+
                         <Menu.Item>
                           {({ active }) => (
                             <Link to='/dashboard'
                               className={classNames(
-                                active ? "bg-zinc-800 w-full text-left" : "w-full",
-                                "block px-4 py-2 text-sm text-left"
+                                active ? "my-profile-btn" : "my-profile-btn"
                               )}
                             >
-                              Your Profile
+                              My Profile
                             </Link >
                           )}
                         </Menu.Item>
@@ -201,7 +225,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                             <Link to='watchList' className={classNames(
                               active ? "bg-zinc-800 w-full text-left" : "w-full",
                               "block px-4 py-2 text-sm text-left"
-                            )}>Watch history</Link>
+                            )}><i class="fa fas fa-history mr-2"></i>Watch history</Link>
                           )}
 
                         </Menu.Item>
@@ -210,10 +234,19 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                             <Link to='favorite' className={classNames(
                               active ? "bg-zinc-800 w-full text-left" : "w-full",
                               "block px-4 py-2 text-sm text-left"
-                            )}>Favorite Videos</Link>
+                            )}><i class="fa fal fa-video mr-2"></i>Favorite Videos</Link>
                           )}
-
                         </Menu.Item>
+
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link to='favorite' className={classNames(
+                              active ? "bg-zinc-800 w-full text-left" : "w-full",
+                              "block px-4 py-2 text-sm text-left"
+                            )}><i class="fa fal fa-film mr-2"></i>My Videos</Link>
+                          )}
+                        </Menu.Item>
+
                         <Menu.Item>
                           {({ active }) => (
                             <button
@@ -223,7 +256,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                                 "block px-4 py-2 text-sm text-left"
                               )}
                             >
-                              Sign out
+                              <i class="fa fas fa-sign-out-alt mr-2"></i>Sign out
                             </button>
                           )}
 
@@ -253,15 +286,6 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                 >
                   Movies
                 </CustomLink>
-                {user && (
-                  <CustomLink
-                    to="/dashboard"
-                    className=" text-white my-3 hover:text-white"
-                  >
-                    {" "}
-                    Dashboard
-                  </CustomLink>
-                )}
               </div>
             </Disclosure.Panel>
           </>

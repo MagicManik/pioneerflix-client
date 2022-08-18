@@ -21,6 +21,7 @@ import Details from "./components/VideoDetail/Details";
 import Favorite from "./components/VideoDetail/Favorite";
 import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
 import 'react-toastify/dist/ReactToastify.css';
+import SearchResults from "./components/Shared/SearchResults/SearchResults";
 
 
 function App() {
@@ -34,9 +35,7 @@ function App() {
     } else {
       setTheme(false);
     }
-  }, [getTheme])
-
-
+  }, [getTheme]);
 
   return (
     <div data-theme={theme ? "dark" : "light"}>
@@ -44,6 +43,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/about" element={<About></About>}></Route>
+        <Route path='/play/:id' element={<Details />} />
+        <Route path='/channel/:id' element={<TvChannel />}></Route>
+        <Route path="watchList" element={<Library />}></Route>
+        <Route path="favorite" element={<Favorite />}></Route>
+        <Route path="/play/:id" element={<Details />} />
+        <Route path="/result/:id" element={<SearchResults></SearchResults>}></Route>
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>
 
@@ -65,17 +70,13 @@ function App() {
         </Route>
 
 
-        <Route path='/play/:id' element={<Details />} />
-        <Route path='/channel/:id' element={<TvChannel />}></Route>
-        <Route path="watchList" element={<Library />}></Route>
-        <Route path="favorite" element={<Favorite />}></Route>
-        <Route path="/play/:id" element={<Details />} />
+
 
 
       </Routes>
 
       {/*...................add facebook messenger .................*/}
-      <MessengerCustomerChat pageId="110278435120347" appId="592904995642640" />
+      <MessengerCustomerChat pageId="105173368974353" appId="5776339365732896" />
       <Footer></Footer>
       <ToastContainer />
     </div>
