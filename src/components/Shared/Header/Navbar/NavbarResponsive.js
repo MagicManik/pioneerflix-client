@@ -278,7 +278,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
                   </CustomLink>
 
-             
+                  <button onClick={()=>setMega(!mega)} className=" text-white  flex  items-end  hover:text-white">Categories {mega ? <FaCaretUp className="ml-1 text-xl"/> :<FaCaretDown className="ml-1 text-xl" />}</button>
                 {user && (
                   <CustomLink
                     to="/dashboard"
@@ -295,9 +295,9 @@ const NavbarResponsive = ({ theme, setTheme }) => {
       </Disclosure>
       <hr />
 
-     { mega&& <div  className="absolute bg-primary border-2 border-indigo-600 top-16 left-56 w-[40%] rounded z-30">
-        <div className="grid py-5 px-4 relative mx-auto text-secondary max-w-screen-xl text-base md:grid-cols-3 md:px-10">
-            <ul className="hidden relative space-y-3 md:mb-0 md:block">
+     { mega&& <div  className="absolute bg-[#222] border-2 border-indigo-600 md:top-16 md:left-56 w-[90%] md:w-[40%] rounded z-30">
+        <div className="grid py-5 px-4 relative mx-auto text-secondary max-w-screen-xl text-base grid-cols-2 md:grid-cols-3 md:px-10">
+            <ul className=" relative space-y-3 md:mb-0 md:block">
               {
                 megaMenuR1.map(m=>   <li key={m.id}>
                   <Link to={m.href} onClick={()=>setMega(!mega)} className="duration-200 hover:text-lg  hover:text-blue-600 ">
@@ -315,9 +315,11 @@ const NavbarResponsive = ({ theme, setTheme }) => {
               </li>)
               }  
             </ul>
-            <iframe width="100%" height="100%" className="rounded-sm" src="https://www.youtube.com/embed/sxSa0MItDkg?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            
+            <iframe width="100%" height="100%" className="rounded-sm hidden md:block" src="https://www.youtube.com/embed/sxSa0MItDkg?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+           
             <FaTimes onClick={()=>setMega(!mega)} className="absolute top-2 right-2 text-secondary text-2xl"/>
+          
+        
         </div>
         
     </div> }
