@@ -5,9 +5,12 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import useVideos from '../../../hooks/useVideos';
+import { useTranslation } from 'react-i18next';
 import './MostPopular.css';
 
 const MostPopular = () => {
+
+    const { t } = useTranslation(["home"]);
 
     const [videos, setVideos] = useVideos();
 
@@ -55,7 +58,7 @@ const MostPopular = () => {
             <div className='pb-3 custom-bg'>
 
                 <div className='bg-primary pl-5 video-container-II'>
-                    <h1 className='text-2xl pt-6'>POPULAR MOVIES</h1>
+                    <h1 className='text-2xl pt-6'>{t("POPULARMOVIES")}</h1>
 
                     <div className='pb-10'>
                         <Slider {...settings}>
@@ -78,30 +81,21 @@ const MostPopular = () => {
                         </Slider>
                     </div >
                     <i className="fa fal fa-angle-double-down"></i>
-                </div >
 
-                <div className='text-container text-secondary bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
 
-                    <div className='text-container-right'>
-                        <h1 className='text-5xl font-bold '>Enjoy Most Popular Movies All Times.</h1>
-                        <p className=' text-2xl'>Watch movies, be happy, and smile from the bottom of your heart.</p>
-                    </div>
+                    <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
 
-                    <div className='our-story-card-animation-container pb-16'>
-                        <img className='tv-img rounded-xl ' src={offlineWatch} alt="" />
-
-                        <div className='our-story-card-animation' data-uia="our-story-card-animation">
-
-                            <video className='our-story-card-video'
-
-                                data-uia="our-story-card-video" autoPlay playsInline muted loop>
-                                <source src='https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-0819.m4v' type='video/mp4' />
-
-                            </video>
+                        <div className='text-container-left-2 pb-10'>
+                            <h1 className='text-5xl font-bold '>{t("EnjoyMostPopularMoviesAllTimes")}</h1>
+                            <br />
+                            <p className='text-2xl'>{t("Watchmovies,behappy,andsmilefromthebottomofyourheart")}</p>
                         </div>
 
+                        <div className='pb-10'>
+                            <img className='rounded-2xl' src={offlineWatch} alt="" />
+                        </div>
                     </div>
-                </div>
+                </div >
             </div>
         </section >
     );

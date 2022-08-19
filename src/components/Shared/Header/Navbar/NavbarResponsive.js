@@ -1,15 +1,24 @@
-import { React, Fragment, useState } from "react";
+import { React, Fragment, useState, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { FaAlignJustify, FaTimes, FaRegBell, FaRegMoon, FaSun, FaSearch, } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+import {
+  FaAlignJustify,
+  FaTimes,
+  FaRegBell,
+  FaRegMoon,
+  FaSun,
+  FaSearch,
+  FaGlobe,
+} from "react-icons/fa";
 import auth from "../../../../firebase.init";
 import CustomLink from "../../customLink/CustomLink";
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, unstable_HistoryRouter, useNavigate } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
-import pioneerFlix from '../../../../assets/app-logo/pioneerflix.png';
-import './NavbarResponsive.css';
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import pioneerFlix from "../../../../assets/app-logo/pioneerflix.png";
+import "./NavbarResponsive.css";
 import useVideos from "../../../../hooks/useVideos";
-
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -32,27 +41,35 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
   }
 
-
-
-
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
   const handleLogOut = () => {
     signOut(auth);
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem("accessToken");
     navigate("/");
   };
 
-  const handleTheme = (colorTheme) => {
+  //<-------------multiple Language ----------->
+  const { i18n, t } = useTranslation(["navbar"]);
+  useEffect(() => {
+    if (localStorage.getItem("i18nextLng")?.length > 2) {
+      i18next.changeLanguage("en");
+    }
+  }, []);
 
-    if (colorTheme === 'dark') {
-      localStorage.setItem('colorTheme', colorTheme)
+  const handleLanguageChange = (e) => {
+    i18n.changeLanguage(e.target.value);
+    console.log("object");
+  };
+
+  const handleTheme = (colorTheme) => {
+    if (colorTheme === "dark") {
+      localStorage.setItem("colorTheme", colorTheme);
+    } else {
+      localStorage.setItem("colorTheme", colorTheme);
     }
-    else {
-      localStorage.setItem('colorTheme', colorTheme)
-    }
-  }
+  };
   const changeBackground = () => {
     if (window.scrollY >= 80) {
       setScrollNavbar(true);
@@ -65,7 +82,14 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
   return (
     <>
-      <Disclosure as="nav" className={scrollNavbar ? "sticky header-scrolling top-0 left-0 z-20 border-0" : "border-0 absolute left-0 right-0 z-20 header-scrolling-mobile bg-transparent"}>
+      <Disclosure
+        as="nav"
+        className={
+          scrollNavbar
+            ? "sticky header-scrolling top-0 left-0 z-20 border-0"
+            : "border-0 absolute left-0 right-0 z-20 bg-transparent"
+        }
+      >
         {({ open }) => (
           <>
             <div className="max-w-8xl mx-auto px-2 sm:px-6 lg:px-14 ">
@@ -86,14 +110,14 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                 </div>
                 <div className="flex-1 flex items-center justify-center sm:justify-start">
                   <div className="flex-shrink-0 flex items-center">
-                    <Link to={'/'}>
+                    <Link to={"/"}>
                       <img
                         className="block lg:hidden h-8 w-auto"
                         src={pioneerFlix}
                         alt="Workflow"
                       />
                     </Link>
-                    <Link to={'/'}>
+                    <Link to={"/"}>
                       <img
                         className="hidden lg:block h-12 pt-2 w-auto"
                         src={pioneerFlix}
@@ -102,26 +126,60 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     </Link>
                   </div>
                   <div className="hidden sm:block sm:ml-6">
-                    <div className="flex space-x-4">
+                    <div className="flex space-x-4 w-[450px]">
                       <CustomLink
                         to="/"
                         className=" text-white  hover:text-white"
                       >
                         {" "}
-                        Home
+                        {t("Home")}
                       </CustomLink>
                       <CustomLink
                         to="/tv"
                         className=" text-white  hover:text-white"
                       >
-                        TV Shows
+                        {t("TVShows")}
                       </CustomLink>
                       <CustomLink
                         to="/movies"
                         className=" text-white  hover:text-white"
                       >
-                        Movies
+                        {t("Movies")}
                       </CustomLink>
+                      {user && (
+                        <CustomLink
+                          to="/dashboard"
+                          className=" text-white  hover:text-white"
+                        >
+                          {" "}
+                          {t("Dashboard")}
+                        </CustomLink>
+                      )}
+
+                      {/* Select your Language */}
+                      <select
+                        className="border-none bg-black px-4 py-0 decoration-white"
+                        onChange={handleLanguageChange}
+                        value={localStorage.getItem("i18nextLng")}
+                      >
+                        <option value="en">English</option>
+                        <option value="bn">বাংলা</option>
+                        <option value="bn">አማርኛ</option>
+                        <option value="bn">हिन्दी</option>
+                        <option value="bn">Հայերեն</option>
+                        <option value="bn">العربية</option>
+                        <option value="bn">Башҡорт</option>
+                        <option value="bn">Беларуская</option>
+                        <option value="bn">Нохчийн</option>
+                        <option value="bn">Чăваш</option>
+                        <option value="bn">ᐃᓄᒃᑎᑐᑦ</option>
+                        <option value="bn">ქართული</option>
+                        <option value="bn">ქართული</option>
+                        <option value="bn">Gĩkũyũ</option>
+                        <option value="bn">Қазақша</option>
+                        <option value="bn">Kuanyama</option>
+                        <option value="bn">Kazakh</option>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -148,9 +206,11 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     className=" text-white text-xl"
                     onClick={() => setTheme(!theme)}
                   >
-
-                    {theme ? <FaSun onClick={() => handleTheme('white')} /> : <FaRegMoon className="h-5 w-5" onClick={() => handleTheme('dark')} />}
-
+                    {theme ? (
+                      <FaRegMoon onClick={() => handleTheme("white")} />
+                    ) : (
+                      <FaSun onClick={() => handleTheme("dark")} />
+                    )}
                   </button>
 
                   <button type="button" className=" text-white mx-2 md:mx-3">
@@ -160,23 +220,30 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   </button>
 
                   {/* Profile dropdown */}
-                  <Menu as="div" className={user ? 'relative  custom-border-I' : 'ml-3 relative'}>
+                  <Menu
+                    as="div"
+                    className={
+                      user ? "ml-3 relative  custom-border-I" : "ml-3 relative"
+                    }
+                  >
                     <div>
                       <Menu.Button className=" flex text-sm">
                         <span className="sr-only">Open user menu</span>
 
-                        {
-                          user
-                            ?
-                            <img
-                              className="h-9 w-9 rounded-full"
-                              src={user?.photoURL}
-                              alt=""
-                            />
-                            :
-                            <Link to="/logIn" className='bg-black custom-border-II px-4 login-btn rounded-xl'>LOG IN</Link>
-                        }
-
+                        {user ? (
+                          <img
+                            className="h-9 w-9 rounded-full"
+                            src={user?.photoURL}
+                            alt=""
+                          />
+                        ) : (
+                          <Link
+                            to="/logIn"
+                            className="bg-black custom-border-II px-4 login-btn rounded-xl"
+                          >
+                            {t("LOG IN")}
+                          </Link>
+                        )}
                       </Menu.Button>
                     </div>
                     <Transition
@@ -210,31 +277,48 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
                         <Menu.Item>
                           {({ active }) => (
-                            <Link to='/dashboard'
+                            <Link
+                              to="/dashboard"
                               className={classNames(
-                                active ? "my-profile-btn" : "my-profile-btn"
+                                active
+                                  ? "bg-zinc-800 w-full text-left"
+                                  : "w-full",
+                                "block px-4 py-2 text-sm text-left"
                               )}
                             >
-                              My Profile
-                            </Link >
+                              Your Profile
+                            </Link>
                           )}
                         </Menu.Item>
 
                         <Menu.Item>
                           {({ active }) => (
-                            <Link to='watchList' className={classNames(
-                              active ? "bg-zinc-800 w-full text-left" : "w-full",
-                              "block px-4 py-2 text-sm text-left"
-                            )}><i class="fa fas fa-history mr-2"></i>Watch history</Link>
+                            <Link
+                              to="watchList"
+                              className={classNames(
+                                active
+                                  ? "bg-zinc-800 w-full text-left"
+                                  : "w-full",
+                                "block px-4 py-2 text-sm text-left"
+                              )}
+                            >
+                              Watch history
+                            </Link>
                           )}
-
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <Link to='favorite' className={classNames(
-                              active ? "bg-zinc-800 w-full text-left" : "w-full",
-                              "block px-4 py-2 text-sm text-left"
-                            )}><i class="fa fal fa-video mr-2"></i>Favorite Videos</Link>
+                            <Link
+                              to="favorite"
+                              className={classNames(
+                                active
+                                  ? "bg-zinc-800 w-full text-left"
+                                  : "w-full",
+                                "block px-4 py-2 text-sm text-left"
+                              )}
+                            >
+                              Favorite Videos
+                            </Link>
                           )}
                         </Menu.Item>
 
@@ -252,14 +336,15 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                             <button
                               onClick={handleLogOut}
                               className={classNames(
-                                active ? "bg-zinc-800 w-full text-left" : "w-full",
+                                active
+                                  ? "bg-zinc-800 w-full text-left"
+                                  : "w-full",
                                 "block px-4 py-2 text-sm text-left"
                               )}
                             >
                               <i class="fa fas fa-sign-out-alt mr-2"></i>Sign out
                             </button>
                           )}
-
                         </Menu.Item>
                       </Menu.Items>
                     </Transition>
@@ -274,10 +359,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   {" "}
                   Home
                 </CustomLink>
-                <CustomLink
-                  to="/tv"
-                  className=" text-white  hover:text-white"
-                >
+                <CustomLink to="/tv" className=" text-white  hover:text-white">
                   TV Shows
                 </CustomLink>
                 <CustomLink
