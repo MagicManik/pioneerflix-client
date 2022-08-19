@@ -135,9 +135,9 @@ const PioneerflixKids = () => {
                 <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
 
                     <div className='text-container-left-2 pb-10'>
-                        <h1 className='text-5xl font-bold '>Find Your Kid's Collections</h1>
+                        <h1 className='text-5xl font-bold '>{t("Find Your Kid's Collections")}</h1>
                         <br />
-                        <p className=' text-2xl'>Send interactive movies with their favorite characters on fantasy in a realm designed specifically for children— With a Membership!</p>
+                        <p className=' text-2xl'>{t("Send interactive movies with their favorite characters on fantasy in a realm designed specifically for children— With a Membership!")}</p>
                     </div>
 
                     <div className='pb-10'>

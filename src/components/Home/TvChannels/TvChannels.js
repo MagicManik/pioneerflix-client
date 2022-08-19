@@ -262,8 +262,8 @@ const TvChannels = () => {
                 <div className='text-container text-secondary bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
 
                     <div className='text-container-left'>
-                        <h1 className='text-5xl font-bold '>Watch your TV Channels.</h1>
-                        <p className=' text-2xl'>Watch your favorite channels on PioneerFlix website.</p>
+                        <h1 className='text-5xl font-bold '>{t("WatchyourTVChannels")}</h1>
+                        <p className=' text-2xl'>{t("WatchyourfavoritechannelsonPioneerFlixwebsite")}</p>
                     </div>
 
                     <div className='our-story-card-animation-container pb-20'>
