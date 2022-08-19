@@ -127,9 +127,9 @@ const PioneerflixFree = () => {
                     <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
 
                         <div className='text-container-left-2 pb-10'>
-                            <h1 className='text-5xl font-bold '>Have fun to watch with your web series.</h1>
+                            <h1 className='text-5xl font-bold '>{t("Have fun to watch with your web series")}</h1>
                             <br />
-                            <p className='text-2xl'>Simply save Your favorite show on your watch list and entertaining to watch.</p>
+                            <p className='text-2xl'>{t("Simply save Your favorite show on your watch list and entertaining to watch")}</p>
                         </div>
 
                         <div className='pb-10'>
