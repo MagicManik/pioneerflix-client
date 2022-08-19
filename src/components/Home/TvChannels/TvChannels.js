@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
+import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 import movie1 from '../../../assets/tvchannels/tv-chaneel1.png';
 import movie2 from '../../../assets/tvchannels/tv-chaneel2.png';
@@ -29,6 +31,10 @@ import './TvChannels.css';
 import useChannels from '../../../hooks/useChannels';
 
 const TvChannels = () => {
+
+      //<-------------multiple Language ----------->
+  const {  t } = useTranslation(["home"]);
+ 
 
     const [channels, setChannels] = useChannels()
 
@@ -219,7 +225,7 @@ const TvChannels = () => {
             <div className='pb-3 custom-bg'>
                 <div className='bg-primary video-section'>
                     <div className='bg-primary lg:px-20 sm:px-4 video-container'>
-                        <h1 className='text-2xl text-secondary pt-6'>TV CHANNELS</h1>
+                        <h1 className='text-2xl text-secondary pt-6'>{t("TVCHANNELS")}</h1>
                         {/* <div className='grid lg:grid-cols-8 gap-4 popular-movie-section'> */}
                         <Slider {...settings} className=''>
 

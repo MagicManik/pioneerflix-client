@@ -13,7 +13,6 @@ import {
 } from "react-icons/fa";
 import auth from "../../../../firebase.init";
 import CustomLink from "../../customLink/CustomLink";
-
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
@@ -36,7 +35,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
     navigate("/");
   };
 
-  //<------------- for Language----------->
+  //<-------------multiple Language ----------->
   const { i18n, t } = useTranslation(["navbar"]);
   useEffect(() => {
     if (localStorage.getItem("i18nextLng")?.length > 2) {
@@ -142,11 +141,11 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
                       {/* Select your Language */}
                       <select
-                        className="border-none bg-black"
+                        className="border-none bg-black w-18 decoration-white"
                         onChange={handleLanguageChange}
                         value={localStorage.getItem("i18nextLng")}
                       >
-                        <option value="en">english</option>
+                        <option value="en">English</option>
                         <option value="bn">বাংলা</option>
                       </select>
                     </div>
@@ -205,7 +204,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                             to="/logIn"
                             className="bg-black custom-border-II px-4 login-btn rounded-xl"
                           >
-                            LOG IN
+                            {t("LOG IN")}
                           </Link>
                         )}
                       </Menu.Button>
