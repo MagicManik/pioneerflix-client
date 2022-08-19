@@ -12,7 +12,7 @@ import "./Banner.css";
 const Banner = () => {
 
   const [channels] = useChannels();
-  const getTheme = localStorage.getItem("colorTheme");
+  // const getTheme = localStorage.getItem("colorTheme");
 
 
   var settings = {
@@ -110,16 +110,16 @@ const Banner = () => {
       {/* Tv Channels for large device */}
       <div className="absolute hidden md:block bottom-0 w-full left-0 video-section">
         <h1 className="lg:px-16 text-2xl text-secondary">TV CHANNELS</h1>
-        <div className=" lg:px-16 tv-channels-container mx-2 rounded-full sm:px-4 video-container">
+        <div className=" lg:px-16 bg-primary sm:px-4 video-container">
           <div className=' popular-movie-section'>
             <Slider {...settings} className=''>
               {
                 channels.map(tv =>
 
                   <div key={tv._id}>
-                    <div className={getTheme === 'white' ? 'zoom-div-I pb-2 pl-2 pt-6 video-div' : 'zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div'} key={tv._id}>
+                    <div className={'zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div'} key={tv._id}>
                       <Link to={`/channel/${tv._id}`}>
-                        <img className='popular-movie-img  rounded-full ' src={tv.imgLink} alt="" />
+                        <img className='popular-movie-img rounded-lg' src={tv.imgLink} alt="" />
                       </Link>
                     </div>
                   </div>)
