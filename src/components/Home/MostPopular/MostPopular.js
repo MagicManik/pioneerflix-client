@@ -1,18 +1,12 @@
 import React from 'react';
-import movie1 from '../../../assets/bangla-movie/movie (1).jpg';
-import movie2 from '../../../assets/bangla-movie/movie (2).jpg';
-import movie3 from '../../../assets/bangla-movie/movie (3).jpg';
-import movie4 from '../../../assets/bangla-movie/movie (4).jpg';
-import movie5 from '../../../assets/bangla-movie/movie (5).jpg';
-import movie6 from '../../../assets/bangla-movie/movie (6).jpg';
 import offlineWatch from '../../../assets/others/watch-off.jpg';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
-import './MostPopular.css';
 import useVideos from '../../../hooks/useVideos';
 import { useTranslation } from 'react-i18next';
+import './MostPopular.css';
 
 const MostPopular = () => {
 
@@ -20,63 +14,7 @@ const MostPopular = () => {
 
     const [videos, setVideos] = useVideos();
 
-    const popularMovies = [
-        {
-            _id: 1,
-            name: 'Movie 1',
-            description: '',
-            img: movie1
-        },
-        {
-            _id: 2,
-            name: 'Movie 2',
-            description: '',
-            img: movie2
-        },
-        {
-            _id: 3,
-            name: 'Movie 3',
-            description: '',
-            img: movie3
-        },
-        {
-            _id: 4,
-            name: 'Movie 4',
-            description: '',
-            img: movie4
-        },
-        {
-            _id: 5,
-            name: 'Movie 5',
-            description: '',
-            img: movie5
-        },
-        {
-            _id: 6,
-            name: 'Movie 6',
-            description: '',
-            img: movie6
-        },
-        {
-            _id: 6,
-            name: 'Movie 6',
-            description: '',
-            img: movie6
-        },
-        {
-            _id: 6,
-            name: 'Movie 6',
-            description: '',
-            img: movie6
-        },
-        {
-            _id: 6,
-            name: 'Movie 6',
-            description: '',
-            img: movie6
-        }
-    ];
-
+    // console.log(videos);
 
     var settings = {
         dots: false,

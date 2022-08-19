@@ -121,8 +121,6 @@ const PioneerflixFree = () => {
 
                         </Slider>
                     </div>
-                    <i className="fa fal fa-angle-double-down"></i>
-
 
                     <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
 

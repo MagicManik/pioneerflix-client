@@ -108,7 +108,7 @@ const PioneerflixKids = () => {
 
     return (
 
-        <section className='text-secondary pb-3'>
+        <section className='custom-bg pb-3'>
 
             <div className='bg-primary pl-5  video-container-II'>
                 <h3 className='text-2xl  pt-6'>{t("KIDSCOLLECTIONS")}</h3>

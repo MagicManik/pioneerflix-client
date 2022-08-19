@@ -26,9 +26,9 @@ const WatchList = () => {
                 height="200px"
                 src={v?.videoLink}
                 title="YouTube video player"
-                frameborder="0"
+                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
+                allowFullScreen
               ></iframe>
               <div className="flex text-white justify-between p-3 items-center">
                 <p className="text-sm">{v.videoTitle}</p>
