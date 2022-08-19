@@ -12,8 +12,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const PioneerflixKids = () => {
+    const { t } = useTranslation(["home"])
 
     const popularMovies = [
         {
@@ -109,7 +111,7 @@ const PioneerflixKids = () => {
         <section className='text-secondary pb-3'>
 
             <div className='bg-primary pl-5  video-container-II'>
-                <h3 className='text-2xl  pt-6'>KIDS COLLECTIONS</h3>
+                <h3 className='text-2xl  pt-6'>{t("KIDSCOLLECTIONS")}</h3>
 
                 <div className='pb-10'>
                     <Slider {...settings}>

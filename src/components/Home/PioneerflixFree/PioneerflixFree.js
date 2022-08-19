@@ -12,8 +12,12 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import './PioneerflixFree.css';
+import { useTranslation } from "react-i18next";
+import i18next from "i18next"; 
 
 const PioneerflixFree = () => {
+
+    const { t } =useTranslation(["home"])
 
     const popularMovies = [
         {
@@ -100,7 +104,7 @@ const PioneerflixFree = () => {
         <section className='text-secondary'>
             <div className='pb-3 custom-bg'>
                 <div className='bg-primary pl-5  video-container-II'>
-                    <h1 className='text-2xl pt-6'>POPULAR WEB SERIES</h1>
+                    <h1 className='text-2xl pt-6'>{t("POPULARWEBSERIES")}</h1>
                     <div className='pb-10'>
                         <Slider {...settings}>
 
