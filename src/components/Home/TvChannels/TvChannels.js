@@ -5,27 +5,6 @@ import Slider from "react-slick";
 import { Link } from 'react-router-dom';
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
-
-import movie1 from '../../../assets/tvchannels/tv-chaneel1.png';
-import movie2 from '../../../assets/tvchannels/tv-chaneel2.png';
-import movie3 from '../../../assets/tvchannels/tv-chaneel3.png';
-import movie4 from '../../../assets/tvchannels/tv-chaneel4.png';
-import movie5 from '../../../assets/tvchannels/tv-chaneel5.png';
-import movie6 from '../../../assets/tvchannels/tv-chaneel6.png';
-import movie7 from '../../../assets/tvchannels/tv-chaneel7.png';
-import movie8 from '../../../assets/tvchannels/tv-chaneel8.png';
-import movie9 from '../../../assets/tvchannels/tv-chaneel9.png';
-import movie10 from '../../../assets/tvchannels/tv-chaneel10.png';
-import movie11 from '../../../assets/tvchannels/tv-chaneel11.png';
-import movie12 from '../../../assets/tvchannels/tv-chaneel12.png';
-import movie13 from '../../../assets/tvchannels/tv-chaneel13.png';
-import movie14 from '../../../assets/tvchannels/tv-chaneel14.png';
-import movie15 from '../../../assets/tvchannels/tv-chaneel15.png';
-import movie16 from '../../../assets/tvchannels/tv-chaneel16.png';
-import movie17 from '../../../assets/tvchannels/tv-chaneel17.png';
-import movie18 from '../../../assets/tvchannels/tv-chaneel18.png';
-import movie19 from '../../../assets/tvchannels/tv-chaneel19.png';
-import movie20 from '../../../assets/tvchannels/tv-chaneel20.png';
 import tv from '../../../assets/others/tv.png';
 import useChannels from '../../../hooks/useChannels';
 import './TvChannels.css';
@@ -83,8 +62,6 @@ const TvChannels = () => {
                     <div className='bg-primary lg:px-20 sm:px-4 video-container'>
                         <h1 className='text-2xl text-secondary pt-6'>{t("TVCHANNELS")}</h1>
                         {/* <div className='grid lg:grid-cols-8 gap-4 popular-movie-section'> */}
-                        <h1 className='text-2xl text-secondary pt-6'>TV CHANNELS</h1>
-
                         <Slider {...settings} className=''>
                             {
                                 channels.map(tv =>

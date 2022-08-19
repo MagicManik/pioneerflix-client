@@ -126,7 +126,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     </Link>
                   </div>
                   <div className="hidden sm:block sm:ml-6">
-                    <div className="flex space-x-4">
+                    <div className="flex space-x-4 w-[450px]">
                       <CustomLink
                         to="/"
                         className=" text-white  hover:text-white"
@@ -158,12 +158,27 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
                       {/* Select your Language */}
                       <select
-                        className="border-none bg-black w-18 decoration-white"
+                        className="border-none bg-black px-4 py-0 decoration-white"
                         onChange={handleLanguageChange}
                         value={localStorage.getItem("i18nextLng")}
                       >
                         <option value="en">English</option>
                         <option value="bn">বাংলা</option>
+                        <option value="bn">አማርኛ</option>
+                        <option value="bn">हिन्दी</option>
+                        <option value="bn">Հայերեն</option>
+                        <option value="bn">العربية</option>
+                        <option value="bn">Башҡорт</option>
+                        <option value="bn">Беларуская</option>
+                        <option value="bn">Нохчийн</option>
+                        <option value="bn">Чăваш</option>
+                        <option value="bn">ᐃᓄᒃᑎᑐᑦ</option>
+                        <option value="bn">ქართული</option>
+                        <option value="bn">ქართული</option>
+                        <option value="bn">Gĩkũyũ</option>
+                        <option value="bn">Қазақша</option>
+                        <option value="bn">Kuanyama</option>
+                        <option value="bn">Kazakh</option>
                       </select>
                     </div>
                   </div>
