@@ -12,12 +12,12 @@ import {
 } from "react-icons/fa";
 import auth from "../../../../firebase.init";
 import CustomLink from "../../customLink/CustomLink";
-
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import pioneerFlix from '../../../../assets/app-logo/pioneerflix.png';
 import './NavbarResponsive.css';
+import useVideos from "../../../../hooks/useVideos";
 
 const megaMenuR1 = [
   { name: 'Comedy', href: '/comedy',id:'293oc02c' },
@@ -41,9 +41,19 @@ function classNames(...classes) {
 
 
 const NavbarResponsive = ({ theme, setTheme }) => {
+  const [videos] = useVideos();
   const [scrollNavbar, setScrollNavbar] = useState(false);
   const [mega,setMega]=useState(false)
 
+  const navigateResultPage = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const searchedValue = e.target.search.value;
+    navigateResultPage(`result/${searchedValue}`);
+
+  }
+  
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
@@ -132,16 +142,6 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         Movies
                       </CustomLink>
                       <button onClick={()=>setMega(!mega)} className=" text-white  flex  items-end  hover:text-white">Categories {mega ? <FaCaretUp className="ml-1 text-xl"/> :<FaCaretDown className="ml-1 text-xl" />}</button>
-
-         {user && (
-                        <CustomLink
-                          to="/dashboard"
-                          className=" text-white  hover:text-white"
-                        >
-                          {" "}
-                          Dashboard
-                        </CustomLink>
-                      )}
                     </div>
                   </div>
                 </div>
@@ -151,12 +151,15 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     <div className="flex absolute inset-y-0  left-0 items-center pl-3 pointer-events-none">
                       <FaSearch className="text-sm search-icon" />
                     </div>
-                    <input
-                      type="text"
-                      id="search-navbar"
-                      className="block p-1 hover:p-1.5 py-1 hover:py-1 pl-10 duration-1000 hover:px-14 text-white focus:px-14  hover:text-white  hover:scale-x-100 mr-1 rounded-full border search-input sm:text-sm"
-                      placeholder="Search..."
-                    />
+                    <form onSubmit={handleSearch}>
+                      <input
+                        type="text"
+                        id="search-navbar"
+                        name="search"
+                        className="block p-1 hover:p-1.5 py-1 hover:py-1 pl-10 duration-1000 hover:px-14 text-white focus:px-14  hover:text-white  hover:scale-x-100 mr-1 rounded-full border search-input sm:text-sm"
+                        placeholder="Search..."
+                      />
+                    </form>
                   </div>
 
                   <button
@@ -204,25 +207,41 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <Menu.Items className="origin-top-right absolute z-20 right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-primary ring-1 ring-black ring-opacity-5 focus:outline-none custom-border-II">
-                        <Menu.Item>
+                            {/* custom-border-II */}
+                            <Menu.Item>
                           {({ active }) => (
-                            <Link to='/dashboard'
-                              className={classNames(
-                                active ? "bg-zinc-800 w-full text-left" : "w-full",
-                                "block px-4 py-2 text-sm text-left"
-                              )}
-                            >
-                              Your Profile
-                            </Link >
+                            <img className="block w-4/12 mx-auto rounded-full" src={user?.photoURL} alt="" />
                           )}
                         </Menu.Item>
 
                         <Menu.Item>
                           {({ active }) => (
+                            <p className=" font-bold pt-3 text-center">{user?.displayName}</p>
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
+                            <p className="user-email text-center">{user?.email}</p>
+                          )}
+                        </Menu.Item>
+                        
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link to='/dashboard'
+                              className={classNames(
+                                active ? "my-profile-btn" : "my-profile-btn"
+                              )}
+                            >
+                              My Profile
+                            </Link >
+                          )}
+                        </Menu.Item>
+                        <Menu.Item>
+                          {({ active }) => (
                             <Link to='watchList' className={classNames(
                               active ? "bg-zinc-800 w-full text-left" : "w-full",
                               "block px-4 py-2 text-sm text-left"
-                            )}>Watch history</Link>
+                            )}><i class="fa fas fa-history mr-2"></i>Watch history</Link>
                           )}
 
                         </Menu.Item>
@@ -231,9 +250,17 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                             <Link to='favorite' className={classNames(
                               active ? "bg-zinc-800 w-full text-left" : "w-full",
                               "block px-4 py-2 text-sm text-left"
-                            )}>Favorite Videos</Link>
+                            )}><i class="fa fal fa-video mr-2"></i>Favorite Videos</Link>
                           )}
+                        </Menu.Item>
 
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link to='favorite' className={classNames(
+                              active ? "bg-zinc-800 w-full text-left" : "w-full",
+                              "block px-4 py-2 text-sm text-left"
+                            )}><i class="fa fal fa-film mr-2"></i>My Videos</Link>
+                          )}
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
@@ -244,7 +271,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                                 "block px-4 py-2 text-sm text-left"
                               )}
                             >
-                              Sign out
+                              <i class="fa fas fa-sign-out-alt mr-2"></i>Sign out
                             </button>
                           )}
 
