@@ -1,6 +1,7 @@
-import { React, Fragment, useState } from "react";
+import { React, Fragment, useState, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 import {
   FaAlignJustify,
   FaTimes,
@@ -36,7 +37,17 @@ const NavbarResponsive = ({ theme, setTheme }) => {
   };
 
   //<------------- for Language----------->
-  const { t } =useTranslation(["navbar"])
+  const { i18n, t } = useTranslation(["navbar"]);
+  useEffect(() => {
+    if (localStorage.getItem("i18nextLng")?.length > 2) {
+      i18next.changeLanguage("en");
+    }
+  }, []);
+
+  const handleLanguageChange = (e) => {
+    i18n.changeLanguage(e.target.value);
+    console.log("object");
+  };
 
   const handleTheme = (colorTheme) => {
     if (colorTheme === "dark") {
@@ -119,25 +130,6 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       >
                         {t("Movies")}
                       </CustomLink>
-
-                      {/* Select your Language */}
-                      <div class="dropdown mt-1">
-                        <label tabindex="0" class="">
-                          <FaGlobe className="hover:cursor-pointer"></FaGlobe>
-                        </label>
-                        <ul
-                          tabindex="0"
-                          class="dropdown-content menu p-2 shadow bg-zinc-400 rounded-box w-52"
-                        >
-                          <li>
-                            <a className="text-black">English</a>
-                          </li>
-                          <li>
-                            <a className="text-black">Bangla</a>
-                          </li>
-                        </ul>
-                      </div>
-
                       {user && (
                         <CustomLink
                           to="/dashboard"
@@ -147,6 +139,16 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                           {t("Dashboard")}
                         </CustomLink>
                       )}
+
+                      {/* Select your Language */}
+                      <select
+                        className="border-none bg-black"
+                        onChange={handleLanguageChange}
+                        value={localStorage.getItem("i18nextLng")}
+                      >
+                        <option value="en">english</option>
+                        <option value="bn">বাংলা</option>
+                      </select>
                     </div>
                   </div>
                 </div>

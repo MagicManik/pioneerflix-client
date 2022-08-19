@@ -14,10 +14,7 @@ i18n.use(Backend).use(LanguageDetector).use(initReactI18next).init({
     interpolation:{
         escapeValue: false,
         formatSeparator:",",
-    },
-    react:{
-        wait :true,
-    },
+    }
 })
 
 export default i18n;
