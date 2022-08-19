@@ -19,9 +19,7 @@ i18n
       escapeValue: false,
       formatSeparator: ",",
     },
-    react: {
-      wait: true,
-    },
+    
   });
 
 export default i18n;
