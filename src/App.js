@@ -44,6 +44,7 @@ function App() {
   return (
     <div data-theme={theme ? "dark" : "light"}>
       <NavbarResponsive theme={theme} setTheme={setTheme} />
+      <Suspense fallback={null} >
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/about" element={<About></About>}></Route>
@@ -76,6 +77,7 @@ function App() {
 
 
       </Routes>
+      </Suspense>
 
       {/*...................add facebook messenger .................*/}
       
