@@ -161,7 +161,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       />
                     </form>
                   </div>
-
+            
                   <button
                     className=" text-white text-xl"
                     onClick={() => setTheme(!theme)}
@@ -176,7 +176,8 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
                     <FaRegBell className="h-6 w-6" aria-hidden="true" />
                   </button>
-
+                  {/* subscribe now pc version */}
+                  <Link to='/solvePay' className=" text-white text-lg bg-red-600 px-3 py-1 rounded-lg hidden md:block hover:text-white">Subscribe</Link>
                   {/* Profile dropdown */}
                   <Menu as="div" className={user ? 'ml-3 relative  custom-border-I' : 'ml-3 relative'}>
                     <div>
@@ -304,7 +305,8 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
 
                   </CustomLink>
-
+ {/* subscribe now phone version */}
+ <Link to='/solvePay' className=" text-white text-lg hover:text-white">Subscribe</Link>
                   <button onClick={()=>setMega(!mega)} className=" text-white  flex  items-end  hover:text-white">Categories {mega ? <FaCaretUp className="ml-1 text-xl"/> :<FaCaretDown className="ml-1 text-xl" />}</button>
                 {user && (
                   <CustomLink
