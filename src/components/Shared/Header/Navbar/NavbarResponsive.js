@@ -1,6 +1,7 @@
 import { React, Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { FaAlignJustify, FaTimes, FaRegBell, FaRegMoon, FaSun, FaCaretDown, FaSearch, FaCaretUp } from "react-icons/fa";
+import { FaAlignJustify, FaTimes, FaRegBell, FaRegMoon, FaCaretDown, FaSearch, FaCaretUp } from "react-icons/fa";
+import { MdLightMode } from "react-icons/md";
 import auth from "../../../../firebase.init";
 import CustomLink from "../../customLink/CustomLink";
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -157,7 +158,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       onClick={() => setTheme(!theme)}
                     >
 
-                      {theme ? <FaRegMoon onClick={() => handleTheme('white')} /> : <FaSun onClick={() => handleTheme('dark')} />}
+                      {theme ? <FaRegMoon onClick={() => handleTheme('white')} /> : <MdLightMode onClick={() => handleTheme('dark')} />}
 
                     </button>
 

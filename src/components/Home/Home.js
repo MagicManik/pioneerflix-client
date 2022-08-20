@@ -13,8 +13,8 @@ const Home = () => {
 
   const style = {
     background: "#e6020c",
-    right: '90px',
-    bottom: '30px',
+    right: '35px',
+    bottom: '90px',
     borderRadius: "50%"
   }
 
