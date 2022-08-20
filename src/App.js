@@ -24,6 +24,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import SearchResults from "./components/Shared/SearchResults/SearchResults";
 import PaymentPage from "./components/Payments/PaymentPage";
 import Payments from "./components/Payments/Payments";
+import TvShows from "./components/TvShows/TvShows";
+import Movies from "./components/Movies/Movies";
 
 
 function App() {
@@ -55,6 +57,8 @@ function App() {
         <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>
         <Route path="/solvePay" element={<Payments />} />
         <Route path="/paymentPage" element={<PaymentPage />} />
+        <Route path="/tv" element={<TvShows></TvShows>}></Route>
+        <Route path="/movies" element={<Movies></Movies>}></Route>
 
         <Route
           path="/dashboard"
@@ -80,7 +84,9 @@ function App() {
       </Routes>
 
       {/*...................add facebook messenger .................*/}
-      <MessengerCustomerChat pageId="105173368974353" appId="5776339365732896" />
+      <MessengerCustomerChat pageId="105173368974353" appId="3382482022037618" />
+
+      {/* <MessengerCustomerChat pageId="110278435120347" appId="592904995642640" /> */}
       <Footer></Footer>
       <ToastContainer />
     </div>

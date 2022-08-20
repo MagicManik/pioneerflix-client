@@ -11,7 +11,7 @@ const SingleProfilePic = ({ pd }) => {
             <div className="bg-primary p-5 rounded-br-lg rounded-bl-lg border-t-4 border-[#125f82]">
                 <div className="image overflow-hidden">
                     <img
-                        className="h-[140px] w-full mx-auto rounded-badge"
+                        className="w-full mx-auto rounded-badge"
                         src={`${user
                             ? profileImage
                             : user?.photoURL

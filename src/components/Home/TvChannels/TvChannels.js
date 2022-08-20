@@ -9,7 +9,7 @@ import './TvChannels.css';
 
 const TvChannels = () => {
 
-    const [channels, setChannels] = useChannels()
+    const [channels] = useChannels()
 
     var settings = {
         dots: false,

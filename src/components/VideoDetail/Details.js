@@ -38,7 +38,7 @@ const Details = () => {
 
     // console.log(review);
 
-    // const url = `http://localhost:5000/reviews/${email}`
+    // const url = `https://infinite-island-65121.herokuapp.com/reviews/${email}`
 
     // fetch(url, {
     //   method: 'PUT',
