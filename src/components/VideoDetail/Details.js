@@ -31,26 +31,26 @@ const Details = () => {
   // Handle Review || Manik Islam Mahi
   const handleReview = (star) => {
     setRating(star);
-    // const name = user.displayName;
-    // const email = user.email;
+    const name = user.displayName;
+    const email = user.email;
 
-    // const review = { id, star, name, email };
+    const rating = { id, star, name, email };
 
     // console.log(review);
 
-    // const url = `https://infinite-island-65121.herokuapp.com/reviews/${email}`
+    const url = `http://localhost:5000/rating/${email}`
 
-    // fetch(url, {
-    //   method: 'PUT',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(review)
-    // })
-    //   .then(res => res.json())
-    //   .then(result => {
-    //     console.log(result);
-    //   })
+    fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(rating)
+    })
+      .then(res => res.json())
+      .then(result => {
+        console.log(result);
+      })
   }
 
   // like handler || Manik Islam Mahi
