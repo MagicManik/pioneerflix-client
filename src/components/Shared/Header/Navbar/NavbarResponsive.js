@@ -9,6 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import pioneerFlix from '../../../../assets/app-logo/pioneerflix.png';
 import './NavbarResponsive.css';
+import Notification from "./Notification";
 // import useVideos from "../../../../hooks/useVideos";
 
 const megaMenuR1 = [
@@ -162,11 +163,12 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
                     </button>
 
-                    <button type="button" className=" text-white mx-2 md:mx-3">
+                    {/* <button type="button" className=" text-white mx-2 md:mx-3">
                       <span className="sr-only">View notifications</span>
 
                       <FaRegBell className="h-6 w-6" aria-hidden="true" />
-                    </button>
+                    </button> */}
+                    <Notification/>
                     {/* subscribe now pc version */}
                     <Link to='/solvePay' className=" text-white text-lg bg-[#d41821] hover:bg-[#ff1622] px-4 mx-3 py-1 rounded-lg hidden md:block hover:text-white">Subscribe</Link>
                     {/* Profile dropdown */}
