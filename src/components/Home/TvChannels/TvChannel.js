@@ -51,8 +51,8 @@ const TvChannel = () => {
     return (
         <div className="pt-16 bg-black">
             <hr className='line-' />
-            <div className="justify-center flex pt-4 ">
 
+            <div className="justify-center flex pt-4 ">
                 <iframe
                     width="95%"
                     className="mt-1"
@@ -63,38 +63,15 @@ const TvChannel = () => {
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                 ></iframe>
-
-
-
-                {/* <iframe
-                    width="100%"
-                    src={channel.channelLink}
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                >
-                </iframe> */}
-
-
-
             </div>
+
             <section className='bg-secondary ' >
                 <div className='pb-3 custom-bg'>
                     <div className='bg-primary video-section py-14'>
                         <div className='bg-primary lg:px-20 sm:px-4 video-container'>
                             <h1 className='text-2xl text-secondary bt-6'>You can see more...</h1>
-                            {/* <div className='grid lg:grid-cols-8 gap-4 popular-movie-section'> */}
                             <Slider {...settings} className=''>
 
-                                {/* {
-                                popularMovies.map(movie =>
-
-                                    <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
-
-                                        <a href={movie.link} target="_blank"><img className='popular-movie' src={movie.img} alt="" /></a>
-                                    </div>)
-                            } */}
                                 {
                                     channels.map(tv =>
 
@@ -110,15 +87,11 @@ const TvChannel = () => {
                                         </div>)
                                 }
                             </Slider>
-                            {/* </div> */}
 
                             <h1 className='text-2xl text-secondary text-right bt-6'>You can see more...</h1>
                         </div>
 
                     </div>
-
-
-
                 </div>
             </section>
         </div>
