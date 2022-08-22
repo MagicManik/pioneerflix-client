@@ -24,7 +24,8 @@ const UploadVideo = () => {
             videoLink: data.videoLink,
             duration: data.duration,
             imgLink: data.imgLink,
-            uploader: user.email
+            adminName: user.displayName,
+            adminImg:user.photoURL
         }
         // console.log(userUploadVideo);
         if (admin) {
