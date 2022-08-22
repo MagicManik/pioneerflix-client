@@ -1,79 +1,17 @@
 import React from 'react';
-import movie1 from '../../../assets/bangla-movie/movie (1).jpg';
-import movie2 from '../../../assets/bangla-movie/movie (2).jpg';
-import movie3 from '../../../assets/bangla-movie/movie (3).jpg';
-import movie4 from '../../../assets/bangla-movie/movie (4).jpg';
-import movie5 from '../../../assets/bangla-movie/movie (5).jpg';
-import movie6 from '../../../assets/bangla-movie/movie (6).jpg';
 import offlineWatch from '../../../assets/others/watch-off.jpg';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
-import './MostPopular.css';
 import useVideos from '../../../hooks/useVideos';
+import './MostPopular.css';
 
 const MostPopular = () => {
 
     const [videos, setVideos] = useVideos();
 
-    const popularMovies = [
-        {
-            _id: 1,
-            name: 'Movie 1',
-            description: '',
-            img: movie1
-        },
-        {
-            _id: 2,
-            name: 'Movie 2',
-            description: '',
-            img: movie2
-        },
-        {
-            _id: 3,
-            name: 'Movie 3',
-            description: '',
-            img: movie3
-        },
-        {
-            _id: 4,
-            name: 'Movie 4',
-            description: '',
-            img: movie4
-        },
-        {
-            _id: 5,
-            name: 'Movie 5',
-            description: '',
-            img: movie5
-        },
-        {
-            _id: 6,
-            name: 'Movie 6',
-            description: '',
-            img: movie6
-        },
-        {
-            _id: 6,
-            name: 'Movie 6',
-            description: '',
-            img: movie6
-        },
-        {
-            _id: 6,
-            name: 'Movie 6',
-            description: '',
-            img: movie6
-        },
-        {
-            _id: 6,
-            name: 'Movie 6',
-            description: '',
-            img: movie6
-        }
-    ];
-
+    // console.log(videos);
 
     var settings = {
         dots: false,
@@ -140,21 +78,30 @@ const MostPopular = () => {
                         </Slider>
                     </div >
                     <i className="fa fal fa-angle-double-down"></i>
-
-
-                    <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
-
-                        <div className='text-container-left-2 pb-10'>
-                            <h1 className='text-5xl font-bold '>Enjoy Most Popular Movies All Times.</h1>
-                            <br />
-                            <p className='text-2xl'>Watch movies, be happy, and smile from the bottom of your heart.</p>
-                        </div>
-
-                        <div className='pb-10'>
-                            <img className='rounded-2xl' src={offlineWatch} alt="" />
-                        </div>
-                    </div>
                 </div >
+
+                <div className='text-container text-secondary bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
+
+                    <div className='text-container-right'>
+                        <h1 className='text-5xl font-bold '>Enjoy Most Popular Movies All Times.</h1>
+                        <p className=' text-2xl'>Watch movies, be happy, and smile from the bottom of your heart.</p>
+                    </div>
+
+                    <div className='our-story-card-animation-container pb-16'>
+                        <img className='tv-img rounded-xl ' src={offlineWatch} alt="" />
+
+                        <div className='our-story-card-animation' data-uia="our-story-card-animation">
+
+                            <video className='our-story-card-video'
+
+                                data-uia="our-story-card-video" autoPlay playsInline muted loop>
+                                <source src='https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-0819.m4v' type='video/mp4' />
+
+                            </video>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </section >
     );

@@ -20,8 +20,8 @@ const MakeAdmin = () => {
             <div className='w-full flex justify-center mt-0'>
                 <p className='section-title text-green-500 text-[15px] md:text-[20px]'>Make admin</p>
             </div>
-            <div class="overflow-x-scroll">
-                <table class="table w-full">
+            <div className="overflow-x-scroll">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             <th className='bg-gray-300 text-[#125f82]'>Index</th>

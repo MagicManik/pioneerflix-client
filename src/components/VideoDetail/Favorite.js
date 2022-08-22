@@ -12,9 +12,9 @@ const Favorite = () => {
       .then((data) => {
         setFData(data);
       });
-  }, []);
+  }, [user.email]);
 
-  console.log(fData)
+  // console.log(fData)
   return (
     <>
       <div className='px-20 grid  py-14 bg-primary'>
@@ -27,9 +27,9 @@ const Favorite = () => {
                 height="150px"
                 src={f?.videoLink}
                 title="YouTube video player"
-                frameborder="0"
+                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
+                allowFullScreen
               ></iframe>
               <div className='ml-5'>
                 <p>{f.videoTitle}</p>

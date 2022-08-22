@@ -4,9 +4,12 @@ import { useForm } from 'react-hook-form';
 import { FiUpload } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import useAdmin from '../../hooks/useAdmin';
 
 const UploadVideo = () => {
     const [user] = useAuthState(auth);
+    const [admin] = useAdmin(user);
+
     const {
         register,
         handleSubmit,
@@ -24,21 +27,42 @@ const UploadVideo = () => {
             uploader: user.email
         }
         // console.log(userUploadVideo);
-        const url = 'https://infinite-island-65121.herokuapp.com/userUploadVideo'
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(userUploadVideo)
-        })
-            .then(res => res.json())
-            .then(result => {
-                console.log(result);
-                alert('Thanks for uploading')
-                toast.success('Successfully your video uploaded!!!')
-                e.target.reset();
+        if (admin) {
+            const url = 'https://infinite-island-65121.herokuapp.com/adminUploadVideo';
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(userUploadVideo)
             })
+                .then(res => res.json())
+                .then(result => {
+                    console.log(result);
+                    alert('Thanks for uploading')
+                    toast.success('Successfully your video uploaded!!!')
+                    e.target.reset();
+                })
+        }
+        else {
+            const url = 'https://infinite-island-65121.herokuapp.com/userUploadVideo';
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(userUploadVideo)
+            })
+                .then(res => res.json())
+                .then(result => {
+                    console.log(result);
+                    alert('Thanks for uploading')
+                    toast.success('Successfully your video uploaded!!!')
+                    e.target.reset();
+                })
+        }
+
+
     };
 
     return (

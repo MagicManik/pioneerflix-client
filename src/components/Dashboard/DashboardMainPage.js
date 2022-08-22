@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import auth from '../../firebase.init';
 import useAdmin from '../../hooks/useAdmin';
 import './DashboardMainPage.css';
@@ -9,6 +9,43 @@ const DashboardMainPage = () => {
     const [user] = useAuthState(auth);
     // console.log(user.displayName);
     const [admin] = useAdmin(user)
+    const { pathname } = useLocation();
+
+    var settings = {
+        dots: false,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 8,
+        slidesToScroll: 8,
+        initialSlide: 0,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 6,
+                    slidesToScroll: 6,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
+                    slidesToShow: 4.2,
+                    slidesToScroll: 4
+                }
+            }
+        ]
+    };
 
     return (
         <section className='pt-16 bg-black'>
@@ -32,10 +69,10 @@ const DashboardMainPage = () => {
                         {/* <!-- Sidebar content here --> */}
 
                         <li><Link to='' className='uppercase font-bold text-secondary'>My Profile</Link></li>
-                        <li><Link to='uploadVideo' className='uppercase font-bold text-secondary'>Upload video</Link></li>
-                        <li><Link to='myVideos' className='uppercase font-bold text-secondary'>My Videos</Link></li>
-                        {admin && <li><Link to='makeAdmin' className='uppercase font-bold text-secondary'>Make Admin</Link></li>}
-                        {admin && <li><Link to='manageVideos' className='uppercase font-bold text-secondary'>Manage Videos</Link></li>}
+                        <li><Link to='uploadVideo' className={`uppercase font-bold text-secondary ${pathname.includes('/dashboard/uploadVideo') && 'bg-[#1f67f7]'}`}>Upload video</Link></li>
+                        <li><Link to='myVideos' className={`uppercase font-bold text-secondary ${pathname.includes('/dashboard/myVideos') && 'bg-[#1f67f7]'}`}>My Videos</Link></li>
+                        {admin && <li><Link to='makeAdmin' className={`uppercase font-bold text-secondary ${pathname.includes('/dashboard/makeAdmin') && 'bg-[#1f67f7]'}`}>Make Admin</Link></li>}
+                        {admin && <li><Link to='manageVideos' className={`uppercase font-bold text-secondary ${pathname.includes('/dashboard/manageVideos') && 'bg-[#1f67f7]'}`}>Manage Videos</Link></li>}
                     </ul>
 
                 </div>
