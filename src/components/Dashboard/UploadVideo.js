@@ -42,6 +42,7 @@ const UploadVideo = () => {
                     console.log(result);
                     alert('Thanks for uploading')
                     toast.success('Successfully your video uploaded!!!')
+                    localStorage.setItem("notificationMode", true);
                     e.target.reset();
                 })
         }
@@ -59,6 +60,7 @@ const UploadVideo = () => {
                     console.log(result);
                     alert('Thanks for uploading')
                     toast.success('Successfully your video uploaded!!!')
+                    localStorage.setItem("notificationMode", true);
                     e.target.reset();
                 })
         }
