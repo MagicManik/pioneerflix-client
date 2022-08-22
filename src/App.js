@@ -26,6 +26,7 @@ import PaymentPage from "./components/Payments/PaymentPage";
 import Payments from "./components/Payments/Payments";
 import TvShows from "./components/TvShows/TvShows";
 import Movies from "./components/Movies/Movies";
+import UploadedVideo from "./components/Shared/Header/Uploaded/UploadedVideo";
 
 
 function App() {
@@ -71,6 +72,7 @@ function App() {
           ></Route>
           <Route path="myVideos" element={<MyVideos></MyVideos>}></Route>
           <Route path="makeAdmin" element={<MakeAdmin></MakeAdmin>}></Route>
+
           <Route
             path="manageVideos"
             element={<ManageVideos></ManageVideos>}
@@ -80,7 +82,7 @@ function App() {
 
 
 
-
+<Route path='/uploadedVideo/:uId' element={<UploadedVideo/>}/>
       </Routes>
 
       {/*...................add facebook messenger .................*/}
