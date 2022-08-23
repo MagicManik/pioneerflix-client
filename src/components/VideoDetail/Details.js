@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import movie1 from "../../assets/bangla-movie/movie (1).jpg";
-import movie2 from "../../assets/bangla-movie/movie (2).jpg";
-import movie3 from "../../assets/bangla-movie/movie (3).jpg";
 import { FaShareAlt, FaStar, } from "react-icons/fa";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiLike } from "react-icons/bi";
@@ -12,7 +9,7 @@ import auth from "../../firebase.init";
 import useComments from "../../hooks/useComments";
 import useLikes from "../../hooks/useLikes";
 import "./Details.css";
-import { FacebookShareButton, FacebookIcon, WhatsappShareButton, WhatsappIcon, TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon, RedditIcon, RedditShareButton, } from "react-share";
+import { FacebookShareButton, FacebookIcon, WhatsappShareButton, WhatsappIcon, TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon, RedditIcon, RedditShareButton } from "react-share";
 import { BsFillEmojiSmileFill } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
 import useRatings from "../../hooks/useRatings";
@@ -226,48 +223,6 @@ const Details = () => {
       }
     ]
   };
-
-
-
-  const popularMovies = [
-    {
-      _id: 1,
-      name: "Movie 1",
-      description: "",
-      img: movie1,
-    },
-    {
-      _id: 2,
-      name: "Movie 2",
-      description: "",
-      img: movie2,
-    },
-    {
-      _id: 3,
-      name: "Movie 3",
-      description: "",
-      img: movie3,
-    },
-    {
-      _id: 4,
-      name: "Movie 3",
-      description: "",
-      img: movie3,
-    },
-    {
-      _id: 5,
-      name: "Movie 3",
-      description: "",
-      img: movie3,
-    },
-    {
-      _id: 6,
-      name: "Movie 3",
-      description: "",
-      img: movie3,
-    }
-  ];
-
 
   return (
     <>
