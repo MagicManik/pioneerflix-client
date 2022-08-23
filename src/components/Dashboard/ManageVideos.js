@@ -19,7 +19,7 @@ const ManageVideos = () => {
     return (
         <div className=''>
             <div className="overflow-x-auto px-4 w-full">
-                <table className="table w-full snap-none">
+                <table className="table w-full">
                     {/* <!-- head --> */}
                     <thead>
                         <tr>

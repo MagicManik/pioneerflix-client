@@ -14,18 +14,16 @@ const DeleteUiVideos = () => {
         })
             .then(res => res.json())
     );
-    console.log(data);
 
     return (
-        <div className="overflow-x-auto p-4 w-full">
-            <table className="table w-full snap-none">
+        <div className="overflow-x-auto px-4 pt-6 w-full">
+            <table className="table w-full">
                 {/* <!-- head --> */}
                 <thead>
                     <tr>
                         <th className='bg-gray-300 text-[#125f82]'>Index</th>
                         <th className='bg-gray-300 text-[#125f82]'>Video</th>
                         <th className='bg-gray-300 text-[#125f82]'>Title</th>
-                        <th className='bg-gray-300 text-[#125f82]'>Uploader</th>
                         <th className='bg-gray-300 text-[#125f82]'>Remove</th>
                     </tr>
                 </thead>
@@ -45,7 +43,6 @@ const DeleteUiVideos = () => {
                         <th className='bg-gray-300 text-[#125f82]'>Index</th>
                         <th className='bg-gray-300 text-[#125f82]'>Video</th>
                         <th className='bg-gray-300 text-[#125f82]'>Title</th>
-                        <th className='bg-gray-300 text-[#125f82]'>Uploader</th>
                         <th className='bg-gray-300 text-[#125f82]'>Remove</th>
                     </tr>
                 </tfoot>
