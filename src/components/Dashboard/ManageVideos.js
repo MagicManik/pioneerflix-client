@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import DeleteUiVideos from './DeleteUiVideos';
 import ManageVideosRow from './ManageVideosRow';
 
 const ManageVideos = () => {
@@ -52,7 +53,7 @@ const ManageVideos = () => {
 
                 </table>
             </div>
-            
+            <DeleteUiVideos />
         </div>
     );
 };
