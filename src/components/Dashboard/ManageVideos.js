@@ -14,7 +14,7 @@ const ManageVideos = () => {
             .then(res => res.json())
     )
     // console.log(data);
-    
+
     return (
         <div className=''>
             <div className="overflow-x-auto px-4 w-full">
@@ -32,10 +32,10 @@ const ManageVideos = () => {
                     <tbody>
                         {
                             data?.map((detail, index) => <ManageVideosRow
-                            key={detail._id}
-                            detail={detail}
-                            index={index}
-                            refetch={refetch}
+                                key={detail._id}
+                                detail={detail}
+                                index={index}
+                                refetch={refetch}
                             ></ManageVideosRow>)
                         }
                     </tbody>
@@ -52,6 +52,7 @@ const ManageVideos = () => {
 
                 </table>
             </div>
+            
         </div>
     );
 };
