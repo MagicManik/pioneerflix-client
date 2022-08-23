@@ -1,4 +1,5 @@
 import React from "react";
+import ScrollToTop from "react-scroll-to-top";
 import AskAnswer from "./AskAnswer/AskAnswer";
 import Banner from "./Banner";
 import MostPopular from "./MostPopular/MostPopular";
@@ -6,7 +7,6 @@ import PioneerflixFree from "./PioneerflixFree/PioneerflixFree";
 import PioneerflixKids from "./PioneerflixKids/PioneerflixKids";
 import PioneerplixExclusive from "./PioneerplixExclusive/PioneerplixExclusive";
 import TvChannels from "./TvChannels/TvChannels";
-import ScrollToTop from "react-scroll-to-top";
 import "./Home.css";
 
 const Home = () => {
@@ -27,6 +27,7 @@ const Home = () => {
       <PioneerflixKids></PioneerflixKids>
       <PioneerflixFree></PioneerflixFree>
       <AskAnswer></AskAnswer>
+
 
       <ScrollToTop
         smooth

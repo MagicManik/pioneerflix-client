@@ -24,9 +24,11 @@ const UploadVideo = () => {
             videoLink: data.videoLink,
             duration: data.duration,
             imgLink: data.imgLink,
-            uploader: user.email
+            uploader: user.email,
+            adminName: user?.displayName,
+            adminImg: user?.photoURL
         }
-        // console.log(userUploadVideo);
+        
         if (admin) {
             const url = 'https://infinite-island-65121.herokuapp.com/adminUploadVideo';
             fetch(url, {
@@ -38,7 +40,6 @@ const UploadVideo = () => {
             })
                 .then(res => res.json())
                 .then(result => {
-                    console.log(result);
                     alert('Thanks for uploading')
                     toast.success('Successfully your video uploaded!!!')
                     e.target.reset();
@@ -55,14 +56,11 @@ const UploadVideo = () => {
             })
                 .then(res => res.json())
                 .then(result => {
-                    console.log(result);
                     alert('Thanks for uploading')
                     toast.success('Successfully your video uploaded!!!')
                     e.target.reset();
                 })
         }
-
-
     };
 
     return (
@@ -121,11 +119,26 @@ const UploadVideo = () => {
                                     <option value=""></option>
                                     <option value="Drama">Drama</option>
                                     <option value="Bangla Movie">Bangla Movie</option>
+                                    <option value="Bangla Movie">Bangla Song</option>
                                     <option value="Hindi Movie">Hindi Movie</option>
+                                    <option value="Hindi Movie">Hindi Song</option>
                                     <option value="English Movie">English Movie</option>
-                                    <option value="Funny Video">Funny Video</option>
+                                    <option value="English Movie">English Song</option>
+                                    <option value="Funny Video">Comedy</option>
                                     <option value="Educational">Educational</option>
                                     <option value="Kids Video">Kids Video</option>
+                                    <option value="Kids Video">Live Games</option>
+                                    <option value="Kids Video">Most Popular</option>
+                                    <option value="Kids Video">Music</option>
+                                    <option value="Kids Video">Thriller</option>
+                                    <option value="Kids Video">Detective</option>
+                                    <option value="Kids Video">Latest</option>
+                                    <option value="Kids Video">Clips</option>
+                                    <option value="Kids Video">Series</option>
+                                    <option value="Kids Video">Free</option>
+                                    <option value="Kids Video">National Award Winning</option>
+                                    <option value="Kids Video">Just Added</option>
+                                    <option value="Kids Video">Upcoming</option>
                                 </select>
                             </div>
                             <div className="w-full my-2">
