@@ -14,7 +14,6 @@ const DeleteUiVideoRow = ({ detail, index, refetch }) => {
 
             .then(res => res.json())
             .then(result => {
-                console.log(result);
                 toast.success(`${id} is deleted from UI`)
                 refetch()
             })

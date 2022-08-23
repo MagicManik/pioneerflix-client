@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const ManageVideosRow = ({ detail, index, refetch }) => {
-    // console.log(detail);
     const [user] = useAuthState(auth);
 
     const finalUploadVideo = (id) => {
@@ -32,7 +31,6 @@ const ManageVideosRow = ({ detail, index, refetch }) => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result);
                 toast.success(`Successfully the video uploaded in UI`)
 
                 const url = `http://localhost:5000/uploadedVideo/${id}`;

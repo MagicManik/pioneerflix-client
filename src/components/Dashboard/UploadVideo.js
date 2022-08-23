@@ -28,7 +28,7 @@ const UploadVideo = () => {
             adminName: user?.displayName,
             adminImg: user?.photoURL
         }
-        // console.log(userUploadVideo);
+        
         if (admin) {
             const url = 'https://infinite-island-65121.herokuapp.com/adminUploadVideo';
             fetch(url, {
@@ -40,7 +40,6 @@ const UploadVideo = () => {
             })
                 .then(res => res.json())
                 .then(result => {
-                    console.log(result);
                     alert('Thanks for uploading')
                     toast.success('Successfully your video uploaded!!!')
                     e.target.reset();
@@ -57,7 +56,6 @@ const UploadVideo = () => {
             })
                 .then(res => res.json())
                 .then(result => {
-                    console.log(result);
                     alert('Thanks for uploading')
                     toast.success('Successfully your video uploaded!!!')
                     e.target.reset();
