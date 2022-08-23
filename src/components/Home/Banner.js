@@ -12,8 +12,6 @@ import "./Banner.css";
 const Banner = () => {
 
   const [channels] = useChannels();
-  // const getTheme = localStorage.getItem("colorTheme");
-
 
   var settings = {
     dots: false,
@@ -109,7 +107,7 @@ const Banner = () => {
 
       {/* Tv Channels for large device */}
       <div className="absolute hidden md:block bottom-0 w-full left-0 video-section">
-        <h1 className="lg:px-16 text-2xl text-secondary">TV CHANNELS</h1>
+        <h1 className="lg:px-16 text-2xl text-white">TV CHANNELS</h1>
         <div className=" lg:px-16 bg-primary sm:px-4 video-container">
           <div className=' popular-movie-section'>
             <Slider {...settings} className=''>

@@ -1,6 +1,7 @@
 import { React, Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { FaAlignJustify, FaTimes, FaRegBell, FaRegMoon, FaSun, FaCaretDown, FaSearch, FaCaretUp } from "react-icons/fa";
+import { FaAlignJustify, FaTimes, FaRegBell, FaRegMoon, FaCaretDown, FaSearch, FaCaretUp } from "react-icons/fa";
+import { MdLightMode } from "react-icons/md";
 import auth from "../../../../firebase.init";
 import CustomLink from "../../customLink/CustomLink";
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -157,7 +158,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       onClick={() => setTheme(!theme)}
                     >
 
-                      {theme ? <FaRegMoon onClick={() => handleTheme('white')} /> : <FaSun onClick={() => handleTheme('dark')} />}
+                      {theme ? <FaRegMoon onClick={() => handleTheme('white')} /> : <MdLightMode onClick={() => handleTheme('dark')} />}
 
                     </button>
 
@@ -199,7 +200,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                       >
-                        <Menu.Items className="origin-top-right absolute z-20 right-0 mt-2 w-60 rounded-[12px] shadow-lg custom-bg ring-1 ring-black ring-opacity-5 focus:outline-none py-4">
+                        <Menu.Items className="origin-top-right w-[255px] absolute z-20 right-0 mt-2 rounded-[12px] shadow-lg custom-bg ring-1 ring-black ring-opacity-5 focus:outline-none py-4">
                           {/* custom-border-II */}
                           <Menu.Item>
                             {({ active }) => (
