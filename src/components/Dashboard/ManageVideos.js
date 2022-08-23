@@ -16,8 +16,8 @@ const ManageVideos = () => {
     // console.log(data);
     
     return (
-        <div>
-            <div className="overflow-x-auto w-full">
+        <div className=''>
+            <div className="overflow-x-auto px-4 w-full">
                 <table className="table w-full">
                     {/* <!-- head --> */}
                     <thead>

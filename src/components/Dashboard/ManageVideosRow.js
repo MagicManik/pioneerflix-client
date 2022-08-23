@@ -1,8 +1,54 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
 const ManageVideosRow = ({ detail, index, refetch }) => {
     // console.log(detail);
+    const [user] = useAuthState(auth);
+
+    const finalUploadVideo = (id) => {
+        const video = {
+            id: id,
+            title: detail?.title,
+            description: detail?.description,
+            category: detail?.category,
+            videoLink: detail?.videoLink,
+            duration: detail?.duration,
+            imgLink: detail?.imgLink,
+            finalUploader: user?.email,
+            uploader: detail?.uploader,
+            adminName: detail?.displayName,
+            adminImg: detail?.photoURL
+        }
+
+        const url = `http://localhost:5000/finalUploadByAdmin`
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(video)
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+                toast.success(`Successfully the video uploaded in UI`)
+
+                const url = `http://localhost:5000/uploadedVideo/${id}`;
+                fetch(url, {
+                    method: 'DELETE',
+                    headers: {
+                        'content-type': 'application/json'
+                    }
+                })
+
+                    .then(res => res.json())
+                    .then(result => {
+                        refetch()
+                    })
+            })
+    }
 
     const deleteVideo = (id) => {
         const url = `https://infinite-island-65121.herokuapp.com/uploadedVideo/${id}`;
@@ -13,12 +59,6 @@ const ManageVideosRow = ({ detail, index, refetch }) => {
             }
         })
 
-            .then(res => res.json())
-            .then(result => {
-                alert('Are You sure???')
-                toast.success(`${id} is deleted`)
-                refetch()
-            })
             .then(res => res.json())
             .then(result => {
                 alert('Are You sure???')
@@ -51,6 +91,7 @@ const ManageVideosRow = ({ detail, index, refetch }) => {
             <td>
                 <button
                     className="btn btn-success btn-xs"
+                    onClick={() => finalUploadVideo(detail._id)}
                 >Final Upload</button>
             </td>
             <th>
