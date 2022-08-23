@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiLike } from "react-icons/bi";
-import { FaShareAlt } from "react-icons/fa";
+import { FaShareAlt,FaRegPlayCircle} from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import useUploadedVideo from "../../../../hooks/useUploadedVideo";
 
@@ -17,16 +17,15 @@ const UploadedVideo = () => {
       setVideo(remaining);
     }
   }, [videos, uId]);
-  console.log(videos)
 
   return (
-    <div className="py-16 px-24 bg-primary">
+    <div className="py-16 px-5 md:px-24 bg-primary">
       <div className="w-full flex justify-center items-center">
         <iframe
           width="95%"
-          className="mt-1"
-          height="500px"
-          src={video.videoLink}
+          className="mt-1 md:h-[500px]"
+          
+          src={video?.videoLink}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -34,13 +33,14 @@ const UploadedVideo = () => {
         ></iframe>
       </div>
 
-      
-      <div className="md:flex justify-between px-10 py-3 items-center">
+      <div className="md:flex justify-between text-secondary px-2 md:px-10 py-3 items-center">
         <div className="">
-          <p className="text-2xl font-bold">{video.title}</p>
-          <p className="text-sm">2022 . { video.category } . {video.duration} Min</p>
+          <p className="text-2xl font-bold">{video?.title}</p>
+          <p className="text-sm">
+            2022 . {video?.category} . {video?.duration} Min
+          </p>
         </div>
-        <div className="grid grid-cols-3 ">
+        <div className="grid md:my-0 my-3 grid-cols-3 ">
           <div className="flex items-center ">
             <button title="Like here">
               <BiLike className="text-2xl  mr-2" />
@@ -59,23 +59,31 @@ const UploadedVideo = () => {
           </label>
         </div>
       </div>
-<p className="px-10">{video.description}</p>
+      <p className="px-2 md:px-10 text-secondary">{video?.description}</p>
 
-
-<div className="my-10">
-
-
-    {
-videos?.map(v=>
-    <div className="my-5">
-<img src={v?.imgLink} className="h-20 w-24" alt="" />
-
-
-    </div>
-    )
-
-    }
-</div>
+      {videos?.length && (
+        <div className="pt-10 px-2 md:px-10">
+          {videos?.map((v) => (
+            <div
+              onClick={() => setVideo(v)}
+              className="my-5  bg-[#222] p-3 flex justify-between md:justify-start rounded-md cursor-pointer items-center"
+            >
+              <img src={v?.imgLink} className="h-24 w-28 " alt="" />
+              <div className="ml-5 md:ml-10">
+                <div className="md:flex  items-center">
+                  <p className="text-2xl font-bold">{v?.title}</p>
+                  <p className="text-xs ml-1 ">( {v?.duration} Min )</p>
+                </div>
+                <p className="hidden md:block">{v?.description}</p>
+                
+              </div>
+              <FaRegPlayCircle className="md:hidden text-2xl"/>
+              
+            </div>
+          ))}
+        
+        </div>
+      )}
     </div>
   );
 };

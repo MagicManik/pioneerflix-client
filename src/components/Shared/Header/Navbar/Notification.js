@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { FaRegBell } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useUploadedVideo from "../../../../hooks/useUploadedVideo";
@@ -6,26 +7,33 @@ import useUploadedVideo from "../../../../hooks/useUploadedVideo";
 const Notification = () => {
   const [videos] = useUploadedVideo();
   const [notification, setNotification] = useState(false);
+  const [showN,setShowN]=useState()
   let getNotificationMode = localStorage.getItem("notificationMode");
+
 
   const handleNotification = () => {
     setNotification(!notification);
-    localStorage.setItem("notificationMode", false);
-    // console.log('ok')
+    setShowN(false)
+    localStorage.setItem("notificationMode", "false");
   };
-// console.log(notification)
-// console.log(videos)
+useEffect(()=>{
+  if(getNotificationMode==='true'){
+    setShowN(true)
+  }
+  else{
+    setShowN(false)
+  }
+},[getNotificationMode])
+// console.log(showN)
   return (
     <>
       <div className="relative">
         <button type="button" className=" text-white mx-2 md:mx-3">
           <span className="sr-only">View notifications</span>
           <div class="indicator">
-            {getNotificationMode ? (
-              <span class="indicator-item badge ">0</span>
-            ) : (
-              <span class="indicator-item badge ">{videos.length}</span>
-            )}
+            {showN ? (<span class="indicator-item badge ">{videos.length}</span> ):
+             ( <span class="indicator-item badge ">0</span>
+            ) }
             <FaRegBell
               onClick={handleNotification}
               className="h-6 w-6"
@@ -33,8 +41,11 @@ const Notification = () => {
             />
           </div>
         </button>
+        {/* {
+          getNotificationMode ? <p>this is true</p> : <p>this is false</p>
+        } */}
         {notification && (
-          <div className="bg-amber-500 mx-h-80  w-80 absolute rounded-sm top-10 left-[-150px]">
+          <div className="bg-[#222] text-white max-h-80 overflow-auto  w-80 absolute rounded-sm top-10 left-[-200px]">
             {videos?.map((v) => (
               <>
                 <div
@@ -43,17 +54,18 @@ const Notification = () => {
                 >
                   <img
                     src={v?.adminImg}
-                    className="h-14 w-14 rounded-full"
+                    className="h-12 w-12 rounded-full"
                     alt=""
                   />
                   <Link to={`/uploadedVideo/${v?._id}`}>
                     <div
-                     onClick={()=>setNotification(false)} className="text-black ml-3">
+                     onClick={()=>setNotification(false)} className=" ml-3">
                       <p className="text-lg font-semibold">{v?.adminName}</p>
                       <p className="text-sm">{v?.title}</p>
                     </div>
                   </Link>
                 </div>
+                <hr className="h-[.5px]  bg-black mx-3" />
               </>
             ))}
           </div>
