@@ -11,7 +11,9 @@ const Notification = () => {
   const handleNotification = () => {
     setNotification(!notification);
     localStorage.setItem("notificationMode", false);
+    // console.log('ok')
   };
+// console.log(notification)
 // console.log(videos)
   return (
     <>
@@ -32,7 +34,7 @@ const Notification = () => {
           </div>
         </button>
         {notification && (
-          <div className="bg-amber-500 mx-h-80 w-80 absolute rounded-sm top-10 left-[-150px]">
+          <div className="bg-amber-500 mx-h-80  w-80 absolute rounded-sm top-10 left-[-150px]">
             {videos?.map((v) => (
               <>
                 <div
