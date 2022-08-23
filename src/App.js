@@ -26,6 +26,7 @@ import PaymentPage from "./components/Payments/PaymentPage";
 import Payments from "./components/Payments/Payments";
 import TvShows from "./components/TvShows/TvShows";
 import Movies from "./components/Movies/Movies";
+import RequireAuth from "./components/UserAccount/RequireAuth";
 
 
 function App() {
@@ -47,7 +48,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/about" element={<About></About>}></Route>
-        <Route path='/play/:id' element={<Details />} />
+        <Route path='/play/:id'
+          element={
+            <RequireAuth>
+              <Details />
+            </RequireAuth>
+          }
+        />
         <Route path='/channel/:id' element={<TvChannel />}></Route>
         <Route path="watchList" element={<Library />}></Route>
         <Route path="favorite" element={<Favorite />}></Route>
