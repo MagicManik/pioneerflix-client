@@ -62,7 +62,7 @@ const TvChannels = () => {
                                     <div key={tv._id}>
                                         <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={tv._id}>
                                             <Link to={`/channel/${tv._id}`}>
-                                                <img className='popular-movie' src={tv.imgLink} alt="" />
+                                                <img className='popular-movie bg-white p-6' src={tv.imgLink} alt="" />
                                             </Link>
                                         </div>
                                     </div>)
