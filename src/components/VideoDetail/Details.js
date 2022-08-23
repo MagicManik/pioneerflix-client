@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-// import movie1 from "../../assets/bangla-movie/movie (1).jpg";
-// import movie2 from "../../assets/bangla-movie/movie (2).jpg";
-// import movie3 from "../../assets/bangla-movie/movie (3).jpg";
+import movie1 from "../../assets/bangla-movie/movie (1).jpg";
+import movie2 from "../../assets/bangla-movie/movie (2).jpg";
+import movie3 from "../../assets/bangla-movie/movie (3).jpg";
 import { FaShareAlt, FaStar, } from "react-icons/fa";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiLike } from "react-icons/bi";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useVideo from "../../hooks/useVideo";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
@@ -13,8 +13,13 @@ import useComments from "../../hooks/useComments";
 import useLikes from "../../hooks/useLikes";
 import "./Details.css";
 import { FacebookShareButton, FacebookIcon, WhatsappShareButton, WhatsappIcon, TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon, RedditIcon, RedditShareButton, } from "react-share";
+import { BsFillEmojiSmileFill } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
 import useRatings from "../../hooks/useRatings";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import useVideos from "../../hooks/useVideos";
 
 const Details = () => {
   const { id } = useParams();
@@ -182,45 +187,86 @@ const Details = () => {
   };
 
 
+  const [videos] = useVideos();
 
-  // const popularMovies = [
-  //   {
-  //     _id: 1,
-  //     name: "Movie 1",
-  //     description: "",
-  //     img: movie1,
-  //   },
-  //   {
-  //     _id: 2,
-  //     name: "Movie 2",
-  //     description: "",
-  //     img: movie2,
-  //   },
-  //   {
-  //     _id: 3,
-  //     name: "Movie 3",
-  //     description: "",
-  //     img: movie3,
-  //   },
-  //   {
-  //     _id: 4,
-  //     name: "Movie 3",
-  //     description: "",
-  //     img: movie3,
-  //   },
-  //   {
-  //     _id: 5,
-  //     name: "Movie 3",
-  //     description: "",
-  //     img: movie3,
-  //   },
-  //   {
-  //     _id: 6,
-  //     name: "Movie 3",
-  //     description: "",
-  //     img: movie3,
-  //   }
-  // ];
+  console.log(videos)
+
+  var settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 8.5,
+    slidesToScroll: 8,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 6,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 6,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          arrows: false,
+          slidesToShow: 4.2,
+          slidesToScroll: 4
+        }
+      }
+    ]
+  };
+
+
+
+  const popularMovies = [
+    {
+      _id: 1,
+      name: "Movie 1",
+      description: "",
+      img: movie1,
+    },
+    {
+      _id: 2,
+      name: "Movie 2",
+      description: "",
+      img: movie2,
+    },
+    {
+      _id: 3,
+      name: "Movie 3",
+      description: "",
+      img: movie3,
+    },
+    {
+      _id: 4,
+      name: "Movie 3",
+      description: "",
+      img: movie3,
+    },
+    {
+      _id: 5,
+      name: "Movie 3",
+      description: "",
+      img: movie3,
+    },
+    {
+      _id: 6,
+      name: "Movie 3",
+      description: "",
+      img: movie3,
+    }
+  ];
 
 
   return (
@@ -304,6 +350,7 @@ const Details = () => {
 
           <hr className="h-[0.5px] my-3 bg-[#222] " />
 
+
           {/* Video details */}
         </div>
         <div className="md:grid flex items-center  md:grid-cols-6  md:py-8 ">
@@ -314,24 +361,24 @@ const Details = () => {
               alt=""
             />
           </div>
-          <div className=" md:mt-5 md:col-start-3 col-start-7 col-end-12 md:ml-[-100px]">
+          <div className=" md:mt-5 md:col-start-3 col-start-7 col-end-12 md:ml-[-130px]">
             <div>
               <div>
                 <i className="text-blue-500 text-sm">
                   #{category} #Pioneerflix
                 </i>
-                <h1 className="md:text-5xl text-lg md:font-semibold">
+                <h1 className="md:text-5xl text-[#ff9501] text-lg md:font-semibold">
                   {title}
                 </h1>
-                <span className="block mt-2">Average Rating : {averageRating}</span>
 
-                <hr className="md:mt-6 bg-[#222] h-0.5 my-4 md:mb-4" />
+                <hr className="md:mt-6 bg-[#222] h-[1px] my-3 md:mb-4" />
 
                 <p className="text-sm">( 2022 ) . {duration} . Serial </p>
                 <p className="my-2 "> Category : {category}</p>
+                <span className="block my-2">Average Rating : {averageRating}</span>
                 <p className="text-sm">{description}</p>
 
-                <hr className="md:mt-6 bg-[#222] h-0.5 my-3 md:mb-4" />
+                <hr className="md:mt-6 bg-[#222] h-[1px] my-3 md:mb-4" />
 
               </div>
             </div>
@@ -340,22 +387,28 @@ const Details = () => {
 
 
         {/* Search Related Video */}
-        {/* <div className="my-8">
-          <h1 className="text-4xl mb-4  font-medium">You May Also Like</h1>
-          <div className="grid sm:grid-cols-2  md:grid-cols-6 gap-5  ">
-            {popularMovies.map((movie) => (
-              <div className="zoom-div" key={movie._id}>
-                <img
-                  className="md:w-[250px] md:h-[300px]  border-[1px] border-white "
-                  src={movie.img}
-                  alt=""
-                />
-              </div>
-            ))}
+        <div className="mt-5 mb-20">
+          <h3 className="text-[#ff9501]">You may also like...</h3>
+          <Slider {...settings}>
+
+            {
+              videos.map(video =>
+
+                <div key={video._id}>
+                  <div className='zoom-div-I pb-2 pl-0 pt-6 pr-3 video-div' key={video._id}>
+                    <Link to={`/play/${video._id}`}>
+                      <img className='popular-movie' src={video.imgLink} alt="" />
+                    </Link>
 
 
-          </div>
-        </div> */}
+                  </div>
+
+                </div>)
+            }
+
+          </Slider>
+        </div>
+
 
 
 
@@ -370,26 +423,26 @@ const Details = () => {
             /> : <AiOutlineUser className="commenter-img-icon" />
           }
 
-          <div className="w-full   ml-2">
+          <div className="w-full ml-2">
             <form onSubmit={handleComment}>
               <div className="relative">
                 <input
                   autocomplete="off"
                   type="text"
                   name="comment"
-                  className="block p-3 pl-5   focus:outline-none w-full text-sm   bg-primary border-b-2 border-white rounded-sm border "
+                  className="block comment-line p-3 pl-5 focus:outline-none w-full text-sm   bg-primary rounded-sm pr-40"
                   placeholder="Add a comment…"
                   required
                 />
                 <button
                   type="submit"
-                  className="text-white absolute right-2.5 disabled bottom-1 bg-red-600 font-medium rounded-lg text-sm px-4 py-2"
+                  className="btn bg-[#ff9501] hover:bg-[#e98903] text-[#f5f5f7] absolute right-2.5 disabled bottom-1 font-medium rounded-lg text-sm px-6"
                 >
                   {" "}
                   Comment
                 </button>
               </div>
-              <hr className="h-[0.5px]   bg-secondary " />
+              <hr className="h-[0.5px] bg-slate-900  " />
             </form>
           </div>
         </div>
@@ -398,7 +451,17 @@ const Details = () => {
         <div className=" md:py-5 pt-5 gap-5">
           {commentDisplay?.map((comment) => (
             <div className="flex pb-5" key={comment._id}>
-              <img className="w-10 h-10 rounded-full mr-3" src={comment.img} alt="" />
+
+              {
+                user?.photoURL ? <img
+                  className="mt-1 w-10 h-10 rounded-full mr-3"
+                  src={user.photoURL}
+                  alt=""
+                /> : <AiOutlineUser className="commenter-img-icon w-10 h-10 rounded-full mr-3" />
+              }
+
+              {/* <img className="w-10 h-10 rounded-full mr-3" src={comment.img} alt="" /> */}
+
               <div className="rounded-2xl pb-2 border-[2px #222] ">
                 <p className="text-amber-400">{comment.id === id && comment.name}</p>
                 <span className="text-sm">
@@ -421,30 +484,31 @@ const Details = () => {
           >
             ✕
           </label>
-          <h3 className="text-2xl font-bold text-white mb-4">
-            Share your video on social media
-          </h3>
+          <span className="text-white items-center justify-center flex mb-4">
+            Share your favorite video on social media <BsFillEmojiSmileFill className="ml-1" />
+          </span>
+          <div className="flex justify-center">
+            <FacebookShareButton url={videoLink}>
+              <FacebookIcon className="rounded-3xl mr-4"></FacebookIcon>
+            </FacebookShareButton>
 
-          <FacebookShareButton url={videoLink}>
-            <FacebookIcon className="rounded-3xl mr-4"></FacebookIcon>
-          </FacebookShareButton>
+            <WhatsappShareButton url={videoLink}>
+              <WhatsappIcon className="rounded-3xl mr-4"></WhatsappIcon>
+            </WhatsappShareButton>
 
-          <WhatsappShareButton url={videoLink}>
-            <WhatsappIcon className="rounded-3xl mr-4"></WhatsappIcon>
-          </WhatsappShareButton>
+            <TwitterShareButton url={videoLink}>
+              {" "}
+              <TwitterIcon className="rounded-3xl mr-4"></TwitterIcon>
+            </TwitterShareButton>
 
-          <TwitterShareButton url={videoLink}>
-            {" "}
-            <TwitterIcon className="rounded-3xl mr-4"></TwitterIcon>
-          </TwitterShareButton>
+            <LinkedinShareButton url={videoLink}>
+              <LinkedinIcon className="rounded-3xl mr-4"></LinkedinIcon>
+            </LinkedinShareButton>
 
-          <LinkedinShareButton url={videoLink}>
-            <LinkedinIcon className="rounded-3xl mr-4"></LinkedinIcon>
-          </LinkedinShareButton>
-
-          <RedditShareButton url={videoLink}>
-            <RedditIcon className="rounded-3xl"></RedditIcon>
-          </RedditShareButton>
+            <RedditShareButton url={videoLink}>
+              <RedditIcon className="rounded-3xl"></RedditIcon>
+            </RedditShareButton>
+          </div>
         </div>
       </div>
     </>
