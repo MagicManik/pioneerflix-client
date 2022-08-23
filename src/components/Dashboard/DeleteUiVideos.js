@@ -17,6 +17,7 @@ const DeleteUiVideos = () => {
 
     return (
         <div className="overflow-x-auto px-4 pt-6 w-full">
+            <p className='text-xl text-green-500 font-bold'>Total videos in UI {data?.length}</p>
             <table className="table w-full">
                 {/* <!-- head --> */}
                 <thead>
