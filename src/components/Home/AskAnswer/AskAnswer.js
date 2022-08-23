@@ -6,7 +6,7 @@ const AskAnswer = () => {
         <div className='pb-3 custom-bg'>
             <div className='bg-primary w-full pb-24'>
 
-                <h1 className='text-center py-12'>Frequently Asked Questions</h1>
+                <h1 className='text-center text-secondary py-12'>Frequently Asked Questions</h1>
                 <div className=' lg:px-48'>
                     <div tabIndex="0" className="collapse collapse-arrow border accordiaon-bg">
                         <div className="collapse-title text-2xl font-bold">

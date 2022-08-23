@@ -84,11 +84,11 @@ const MostPopular = () => {
 
                     <div className='text-container-right'>
                         <h1 className='text-5xl font-bold '>Enjoy Most Popular Movies All Times.</h1>
-                        <p className=' text-2xl'>Watch movies, be happy, and smile from the bottom of your heart.</p>
+                        <p className=' text-2xl pr-3'>Watch movies, be happy, and smile from the bottom of your heart.</p>
                     </div>
 
                     <div className='our-story-card-animation-container pb-16'>
-                        <img className='tv-img rounded-xl ' src={offlineWatch} alt="" />
+                        <img className='tv-img' src={offlineWatch} alt="" />
 
                         <div className='our-story-card-animation' data-uia="our-story-card-animation">
 

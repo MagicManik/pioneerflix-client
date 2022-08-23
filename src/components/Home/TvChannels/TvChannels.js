@@ -49,8 +49,8 @@ const TvChannels = () => {
 
 
     return (
-        <section className='bg-secondary wraper'>
-            <div className='pb-3 custom-bg'>
+        <section className='bg-primary'>
+            <div className='pb-3 wraper custom-bg'>
 
                 <div className='bg-primary video-section lg:hidden md:block'>
                     <div className='bg-primary lg:px-20 sm:px-4 video-container'>
@@ -60,7 +60,7 @@ const TvChannels = () => {
                             {
                                 channels.map(tv =>
                                     <div key={tv._id}>
-                                        <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={tv._id}>
+                                        <div className='zoom-div-I pb-2 pl-2 pt-6 pr-0 video-div' key={tv._id}>
                                             <Link to={`/channel/${tv._id}`}>
                                                 <img className='popular-movie' src={tv.imgLink} alt="" />
                                             </Link>

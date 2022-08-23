@@ -162,7 +162,7 @@ const PioneerplixExclusive = () => {
                         <div className='text-container-left-2 pb-10'>
                             <h1 className='text-5xl font-bold '>Watch And Enjoy More Exclusive Videos</h1>
                             <br />
-                            <p className='text-2xl'>Keep touch on your exclusive videos with your enjoyment —free with your membership !</p>
+                            <p className='text-2xl'>Keep touch on your exclusive videos with your enjoyment —free with your membership!</p>
                         </div>
 
                         <div className='pb-10'>
