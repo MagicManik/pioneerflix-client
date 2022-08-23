@@ -12,8 +12,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const PioneerflixKids = () => {
+    const { t } = useTranslation(["home"])
 
     const popularMovies = [
         {
@@ -107,8 +109,13 @@ const PioneerflixKids = () => {
     return (
 
 
+<<<<<<< HEAD
         <section className='text-secondary'>
             <div className='pb-3 custom-bg'>
+=======
+            <div className='bg-primary pl-5  video-container-II'>
+                <h3 className='text-2xl  pt-6'>{t("KIDSCOLLECTIONS")}</h3>
+>>>>>>> 08a0083c21233b403587d66ba1de2c38854e3800
 
                 <div className='bg-primary pl-5  video-container-II'>
                     <h1 className='text-2xl pt-6'>EXCLUSIVE MOVIES</h1>
@@ -123,7 +130,24 @@ const PioneerflixKids = () => {
                                     </div>)
                             }
 
+<<<<<<< HEAD
                         </Slider>
+=======
+                                </div>)
+                        }
+
+                    </Slider>
+                </div>
+                <i className="fa fal fa-angle-double-down"></i>
+
+
+                <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
+
+                    <div className='text-container-left-2 pb-10'>
+                        <h1 className='text-5xl font-bold '>{t("Find Your Kid's Collections")}</h1>
+                        <br />
+                        <p className=' text-2xl'>{t("Send interactive movies with their favorite characters on fantasy in a realm designed specifically for children— With a Membership!")}</p>
+>>>>>>> 08a0083c21233b403587d66ba1de2c38854e3800
                     </div>
                     <i className="fa fal fa-angle-double-down"></i>
 

@@ -21,6 +21,8 @@ import Details from "./components/VideoDetail/Details";
 import Favorite from "./components/VideoDetail/Favorite";
 import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
 import 'react-toastify/dist/ReactToastify.css';
+import { Suspense } from "react";
+import Loading from "./components/Shared/Loading/Loading";
 import SearchResults from "./components/Shared/SearchResults/SearchResults";
 import PaymentPage from "./components/Payments/PaymentPage";
 import Payments from "./components/Payments/Payments";
@@ -44,6 +46,7 @@ function App() {
   return (
     <div data-theme={theme ? "dark" : "light"}>
       <NavbarResponsive theme={theme} setTheme={setTheme} />
+      <Suspense fallback={null} >
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/about" element={<About></About>}></Route>
@@ -76,17 +79,20 @@ function App() {
             element={<ManageVideos></ManageVideos>}
           ></Route>
         </Route>
-
-
-
-
-
       </Routes>
+      </Suspense>
 
       {/*...................add facebook messenger .................*/}
+<<<<<<< HEAD
       <MessengerCustomerChat pageId="105173368974353" appId="3382482022037618" />
 
       {/* <MessengerCustomerChat pageId="110278435120347" appId="592904995642640" /> */}
+=======
+      
+      {/* <MessengerCustomerChat pageId="110278435120347" appId="592904995642640" /> */}
+      
+      <MessengerCustomerChat pageId="105173368974353" appId="5776339365732896" />
+>>>>>>> 08a0083c21233b403587d66ba1de2c38854e3800
       <Footer></Footer>
       <ToastContainer />
     </div>

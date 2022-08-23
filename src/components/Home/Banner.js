@@ -6,10 +6,13 @@ import banner2 from "../../assets/banner/banner (13).jpg";
 import banner3 from "../../assets/banner/banner (14).jpg";
 import banner4 from "../../assets/banner/banner (15).jpg";
 import useChannels from "../../hooks/useChannels";
+import { useTranslation } from "react-i18next";
 
 import "./Banner.css";
 
 const Banner = () => {
+
+  const { t } =useTranslation(["home"])
 
   const [channels] = useChannels();
 
@@ -107,8 +110,13 @@ const Banner = () => {
 
       {/* Tv Channels for large device */}
       <div className="absolute hidden md:block bottom-0 w-full left-0 video-section">
+<<<<<<< HEAD
         <h1 className="lg:px-16 text-2xl text-white">TV CHANNELS</h1>
         <div className=" lg:px-16 bg-primary sm:px-4 video-container">
+=======
+        <h1 className="lg:px-16 text-2xl text-secondary">{t("TVCHANNELS")}</h1>
+        <div className=" tv-channels-container mx-2 rounded-full sm:px-4 video-container">
+>>>>>>> 08a0083c21233b403587d66ba1de2c38854e3800
           <div className=' popular-movie-section'>
             <Slider {...settings} className=''>
               {
