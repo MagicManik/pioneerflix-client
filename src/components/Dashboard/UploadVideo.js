@@ -61,8 +61,6 @@ const UploadVideo = () => {
                     e.target.reset();
                 })
         }
-
-
     };
 
     return (
