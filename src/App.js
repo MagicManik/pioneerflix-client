@@ -26,12 +26,9 @@ import PaymentPage from "./components/Payments/PaymentPage";
 import Payments from "./components/Payments/Payments";
 import TvShows from "./components/TvShows/TvShows";
 import Movies from "./components/Movies/Movies";
-<<<<<<< HEAD
 import { Suspense } from "react";
 import Loading from "./components/Shared/Loading/Loading";
-=======
 import RequireAuth from "./components/UserAccount/RequireAuth";
->>>>>>> 3d5755b69cb0eba9708e28db02d500ee4530043c
 
 
 function App() {
