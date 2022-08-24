@@ -80,7 +80,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
   };
 
   //<-------------multiple Language ----------->
-  const { i18n, t } = useTranslation(["navbar","profile"]);
+  const { i18n, t } = useTranslation(["profile"]);
   useEffect(() => {
     if (localStorage.getItem("i18nextLng")?.length > 2) {
       i18next.changeLanguage("en");
@@ -317,7 +317,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                                   active ? "my-profile-btn" : "my-profile-btn"
                                 )}
                               >
-                                My Profile
+                                {t("My Profile")}
                               </Link>
                             )}
                           </Menu.Item>
@@ -333,8 +333,8 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                                   "block px-4 py-2 text-sm text-left"
                                 )}
                               >
-                                <i class="fa fas fa-history mr-2"></i>Watch
-                                history
+                                <i class="fa fas fa-history mr-2"></i>
+                                {t("Watch history")}
                               </Link>
                             )}
                           </Menu.Item>
@@ -349,8 +349,8 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                                   "block px-4 py-2 text-sm text-left"
                                 )}
                               >
-                                <i class="fa fal fa-video mr-2"></i>Favorite
-                                Videos
+                                <i class="fa fal fa-video mr-2"></i>
+                                {t("Favorite Videos")}
                               </Link>
                             )}
                           </Menu.Item>
@@ -366,7 +366,8 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                                   "block px-4 py-2 text-sm text-left"
                                 )}
                               >
-                                <i class="fa fal fa-film mr-2"></i>My Videos
+                                <i class="fa fal fa-film mr-2"></i>
+                                {t("My Videos")}
                               </Link>
                             )}
                           </Menu.Item>
@@ -382,8 +383,8 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                                   "block px-4 py-2 text-sm text-left"
                                 )}
                               >
-                                <i class="fa fas fa-sign-out-alt mr-2"></i>Sign
-                                out
+                                <i class="fa fas fa-sign-out-alt mr-2"></i>
+                                {t("LOG OUT")}
                               </button>
                             )}
                           </Menu.Item>

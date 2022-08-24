@@ -14,7 +14,7 @@ i18n
     },
     fallbackLng: "en",
     debug: false,
-    ns: ["common", "home", "profile", "navbar"],
+    ns: ["home","profile", "dashboard"],
     interpolation: {
       escapeValue: false,
       formatSeparator: ",",
