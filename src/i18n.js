@@ -14,7 +14,7 @@ i18n
     },
     fallbackLng: "en",
     debug: false,
-    ns: ["home","profile", "dashboard"],
+    ns: ["home","profile", "dashboard","askedQuestions"],
     interpolation: {
       escapeValue: false,
       formatSeparator: ",",
