@@ -9,7 +9,6 @@ import './MostPopular.css';
 import { useTranslation } from 'react-i18next';
 
 const MostPopular = () => {
-
     const [videos, setVideos] = useVideos();
     const { t } =useTranslation(["home"])
 
@@ -20,8 +19,6 @@ const MostPopular = () => {
 
 
     // console.log(mostPopularVideos);
-
-    // console.log(videos);
 
     var settings = {
         dots: false,

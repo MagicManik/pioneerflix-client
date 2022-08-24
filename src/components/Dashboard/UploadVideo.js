@@ -120,28 +120,31 @@ const UploadVideo = () => {
                                     placeholder="Category"
                                 >
                                     <option value=""></option>
-                                    <option value="Drama">Drama</option>
                                     <option value="Bangla Movie">Bangla Movie</option>
-                                    <option value="Bangla Movie">Bangla Song</option>
                                     <option value="Hindi Movie">Hindi Movie</option>
-                                    <option value="Hindi Movie">Hindi Song</option>
+                                    <option value="Hindi Movie">South Indian Movie</option>
                                     <option value="English Movie">English Movie</option>
+                                    <option value="Kids Video">Exclusive Movies</option>
+                                    <option value="Kids Video">Kids Video</option>
+                                    <option value="Kids Video">Most Popular</option>
+                                    <option value="Kids Video">Popular Movies</option>
+                                    <option value="Kids Video">Popular Web Series</option>
+                                    <option value="Bangla Movie">Bangla Song</option>
+                                    <option value="Hindi Movie">Hindi Song</option>
                                     <option value="English Movie">English Song</option>
                                     <option value="Funny Video">Comedy</option>
                                     <option value="Educational">Educational</option>
-                                    <option value="Kids Video">Kids Video</option>
                                     <option value="Kids Video">Live Games</option>
-                                    <option value="Kids Video">Most Popular</option>
                                     <option value="Kids Video">Music</option>
                                     <option value="Kids Video">Thriller</option>
                                     <option value="Kids Video">Detective</option>
                                     <option value="Kids Video">Latest</option>
                                     <option value="Kids Video">Clips</option>
-                                    <option value="Kids Video">Series</option>
                                     <option value="Kids Video">Free</option>
                                     <option value="Kids Video">National Award Winning</option>
                                     <option value="Kids Video">Just Added</option>
                                     <option value="Kids Video">Upcoming</option>
+                                    <option value="Drama">Drama</option>
                                 </select>
                             </div>
                             <div className="w-full my-2">
