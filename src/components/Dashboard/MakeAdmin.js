@@ -1,8 +1,11 @@
 import React from 'react';
 import UserRow from './UserRow';
 import { useQuery } from '@tanstack/react-query';
+import { useTranslation } from 'react-i18next';
 
 const MakeAdmin = () => {
+
+    const {t} =useTranslation(["dashboard"])
 
     const url = 'https://infinite-island-65121.herokuapp.com/allUserData';
     const { data, refetch } = useQuery(['allUserData'], () =>
@@ -18,7 +21,7 @@ const MakeAdmin = () => {
     return (
         <div className="w-11/12 lg:w-full mb-40">
             <div className='w-full flex justify-center mt-0'>
-                <p className='section-title text-green-500 text-[15px] md:text-[20px]'>Make admin</p>
+                <p className='section-title text-green-500 text-[15px] md:text-[20px]'>{t("Make admin")}</p>
             </div>
             <div className="overflow-x-scroll">
                 <table className="table w-full">

@@ -27,6 +27,10 @@ import Payments from "./components/Payments/Payments";
 import TvShows from "./components/TvShows/TvShows";
 import Movies from "./components/Movies/Movies";
 import UploadedVideo from "./components/Shared/Header/Uploaded/UploadedVideo";
+import { Suspense } from "react";
+import Loading from "./components/Shared/Loading/Loading";
+import RequireAuth from "./components/UserAccount/RequireAuth";
+
 
 
 function App() {
@@ -45,10 +49,17 @@ function App() {
   return (
     <div data-theme={theme ? "dark" : "light"}>
       <NavbarResponsive theme={theme} setTheme={setTheme} />
-      <Routes>
+     <Suspense fallback={<Loading></Loading>}>
+     <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/about" element={<About></About>}></Route>
-        <Route path='/play/:id' element={<Details />} />
+        <Route path='/play/:id'
+          element={
+            <RequireAuth>
+              <Details />
+            </RequireAuth>
+          }
+        />
         <Route path='/channel/:id' element={<TvChannel />}></Route>
         <Route path="watchList" element={<Library />}></Route>
         <Route path="favorite" element={<Favorite />}></Route>
@@ -79,16 +90,12 @@ function App() {
           ></Route>
         </Route>
 
-
-
-
-<Route path='/uploadedVideo/:uId' element={<UploadedVideo/>}/>
+      <Route path='/uploadedVideo/:uId' element={<UploadedVideo/>}/>
       </Routes>
+     </Suspense>
 
       {/*...................add facebook messenger .................*/}
       <MessengerCustomerChat pageId="105173368974353" appId="3382482022037618" />
-
-      {/* <MessengerCustomerChat pageId="110278435120347" appId="592904995642640" /> */}
       <Footer></Footer>
       <ToastContainer />
     </div>
