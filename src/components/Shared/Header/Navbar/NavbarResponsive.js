@@ -9,7 +9,6 @@ import {
   FaSearch,
   FaCaretUp,
 } from "react-icons/fa";
-import { RiTranslate } from "react-icons/ri";
 import { MdLightMode } from "react-icons/md";
 import auth from "../../../../firebase.init";
 import CustomLink from "../../customLink/CustomLink";

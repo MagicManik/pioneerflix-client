@@ -1,3 +1,30 @@
-.custom-like-btn svg {
-    font-size: 26px;
+.like-btn {
+    margin-right: 10px;
+    background-color: rgba(34, 34, 34, 0.479);
+}
+
+.like-btn:hover {
+    background-color: rgba(34, 34, 34, 0.479);
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.like-btn svg {
+    font-size: 25px;
+    transition: .3s;
+}
+
+.liked-btn>svg>path {
+    fill: #ff9501;
+}
+
+.like-btn:hover svg {
+    font-size: 22px;
+}
+
+.commenter-img-icon {
+    padding: 5px;
+    font-size: 46px;
+    border: 2px solid white;
+    border-radius: 50%;
 }
