@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { FiUpload } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
@@ -9,6 +10,8 @@ import useAdmin from '../../hooks/useAdmin';
 const UploadVideo = () => {
     const [user] = useAuthState(auth);
     const [admin] = useAdmin(user);
+
+    const { t } =useTranslation(["dashboard"])
 
     const {
         register,
@@ -66,7 +69,7 @@ const UploadVideo = () => {
     return (
         <div className='mb-20'>
             <div className='w-full mx-auto flex mt-0'>
-                <p className='section-title text-green-500 text-[15px] md:text-[25px]'>Upload your favorite video</p>
+                <p className='section-title text-green-500 text-[15px] md:text-[25px]'>{t("Upload your favorite video")}</p>
             </div>
             <div class="card mx-auto sm:w-[80%] md:w-[50%] bg-base-100 shadow-xl">
                 <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">

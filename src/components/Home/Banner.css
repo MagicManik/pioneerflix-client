@@ -7,10 +7,26 @@
     height: 100%;
 }
 
-.tv-channels-container {
-    backdrop-filter: saturate(180%) blur(20px);
-    background-color: rgba(0, 0, 0, 0.596);
-    transition: background-color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
-    transition-property: background-color, backdrop-filter, -webkit-backdrop-filter;
-    border-bottom: 1px solid #222;
+
+
+.tv-chanels-container-dark {
+    background: #000;
+    background: -moz-linear-gradient(90 deg - 0deg, #000 0, rgba(255, 255, 255, 0) 100%);
+    background: -webkit-linear-gradient(90 deg - 0deg, #000 0, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(0deg, #000 0, rgba(255, 255, 255, 0) 100%);
+    backdrop-filter: blur(2px);
+    background: linear-gradient(0deg, #000 0, rgba(255, 255, 255, 0) 100%);
+    backdrop-filter: blur(3px);
+    height: 200px;
+}
+
+.tv-chanels-container {
+    background: #fff;
+    background: -moz-linear-gradient(90 deg - 0deg, #fff 0, rgba(255, 255, 255, 0) 100%);
+    background: -webkit-linear-gradient(90 deg - 0deg, #fff 0, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(0deg, #fff 0, rgba(255, 255, 222, 0) 100%);
+    backdrop-filter: blur(2px);
+    background: linear-gradient(0deg, #fff 0, rgba(255, 255, 222, 0) 100%);
+    backdrop-filter: blur(2px);
+    height: 200px;
 }

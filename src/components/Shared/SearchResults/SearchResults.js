@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Slider from 'react-slick';
 import useVideos from '../../../hooks/useVideos';
+import './SearchResults.css';
 
 const SearchResults = () => {
     const [videos] = useVideos();
@@ -51,32 +52,60 @@ const SearchResults = () => {
     };
 
     return (
-        <div className='pt-16 bg-black'>
-            <div className='bg-primary pl-5 video-container-II'>
-                <h1 className='text-2xl pt-6'>Your Search result {resultLength}</h1>
+        <div className='bg-[#212121]'>
 
-                <div className='pb-10'>
-                    <Slider {...settings}>
+            <div className='search-section'>
 
-                        {
-                            result.map(video =>
+                <div className='search-menu-bar pl-6 pt-16'>
+                    <p>Hello</p>
+                    <p>Hello</p>
+                    <p>Hello</p>
+                    <p>Hello</p>
+                    <p>Hello</p>
+                    <p>Hello</p>
+                    <p>Hello</p>
+                    <p>Hello</p>
+                    <p>Hello</p>
+                    <p>Hello</p>
+                    <p>Hello</p>
+                    <p>Hello</p>
+                    <p>Hello</p>
+                    <p>Hello</p>
+                    <p>Hello</p>
+                    <p>Hello</p>
+                    <p>Hello</p>
+                    <p>Hello</p>
+                </div>
 
-                                <div key={video._id}>
-                                    <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={video._id}>
-                                        <Link to={`/play/${video._id}`}>
-                                            <img className='popular-movie' src={video.imgLink} alt="" />
-                                        </Link>
+                <div>
+                    {
+                        result.map(video =>
+                            <div className='search-container py-5'>
+                                <div className='search-video pl-6'>
+                                    {/* <img src={video.videoLink} alt="" /> */}
+                                    <Link to={`/play/${video._id}`}>
+                                        <iframe
+                                            width="100%"
+                                            className="mt-1"
+                                            height="300px"
+                                            src={video.videoLink}
+                                            title="YouTube video player"
+                                            frameBorder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowFullScreen
+                                        ></iframe>
+                                    </Link>
 
-
-                                    </div>
-
-                                </div>)
-                        }
-
-                    </Slider>
-                </div >
-                <i className="fa fal fa-angle-double-down"></i>
-            </div >
+                                </div>
+                                <div className='search-video-details pl-4 pt-10'>
+                                    <h3>Lorem ipsum dolor sit amet consecteture</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores aperiam laboriosam similique, sint delectus porro accusamus dolor consequatur voluptatibus velit pariatur laborum eveniet ut necessitatibus ad obcaecati animi ea quis.</p>
+                                </div>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
         </div>
     );
 };
