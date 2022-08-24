@@ -7,7 +7,7 @@ import useUploadedVideo from "../../../../hooks/useUploadedVideo";
 const Notification = () => {
   const [videos] = useUploadedVideo();
   const [notification, setNotification] = useState(false);
-  const [showN,setShowN]=useState()
+  const [showN,setShowN]=useState(true)
   let getNotificationMode = localStorage.getItem("notificationMode");
 
 
@@ -20,9 +20,9 @@ useEffect(()=>{
   if(getNotificationMode==='true'){
     setShowN(true)
   }
-  else{
-    setShowN(false)
-  }
+  // else{
+  //   setShowN(false)
+  // }
 },[getNotificationMode])
 // console.log(showN)
   return (
