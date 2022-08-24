@@ -19,6 +19,7 @@ import pioneerFlix from "../../../../assets/app-logo/pioneerflix.png";
 import "./NavbarResponsive.css";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
+import VoiceSearch from "../../SearchResults/VoiceSearch";
 // import useVideos from "../../../../hooks/useVideos";
 
 const megaMenuR1 = [
@@ -217,7 +218,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         />
                       </form>
                     </div>
-
+                    <VoiceSearch></VoiceSearch>
                     <button
                       className=" text-white text-xl"
                       onClick={() => setTheme(!theme)}
@@ -398,7 +399,6 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                 <div className="px-2 pt-2 pb-3 space-y-1">
                   <CustomLink to="/" className=" text-white  hover:text-white">
                     {" "}
-
                     {/* ........for multiple language......... */}
                     {t("Home")}
                   </CustomLink>
