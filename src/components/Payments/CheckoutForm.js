@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const CheckoutForm = ({ userBookingData }) => {
     const stripe = useStripe();
@@ -10,6 +11,11 @@ const CheckoutForm = ({ userBookingData }) => {
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState('');
+
+    const navigate = useNavigate();
+    let location = useLocation();
+
+    let from = location.state?.from?.pathname || "/";
 
     const price = userBookingData[0]?.taka;
     const userEmail = userBookingData[0]?.userEmail;
@@ -96,6 +102,7 @@ const CheckoutForm = ({ userBookingData }) => {
             .then(data=>{
                 setProcessing(false);
                 console.log(data);
+                navigate(from, { replace: true });
             })
         }
         event.target.reset();

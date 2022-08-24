@@ -15,12 +15,14 @@ const usePaidUser = user => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    setPaidUser(data.paid)
+                    setPaidUser(data)
                     setPaidLoading(false)
                 })
         }
 
     }, [user])
+
+    return [paidUser, paidLoading]
 
 };
 

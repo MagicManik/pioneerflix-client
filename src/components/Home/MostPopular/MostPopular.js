@@ -8,10 +8,7 @@ import useVideos from '../../../hooks/useVideos';
 import './MostPopular.css';
 
 const MostPopular = () => {
-
     const [videos, setVideos] = useVideos();
-
-    // console.log(videos);
 
     var settings = {
         dots: false,
