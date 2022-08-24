@@ -22,12 +22,6 @@ const useAdmin = user => {
                     setAdminLoading(false);
                 })
 
-                .then(res => res.json())
-                .then(data => {
-                    setAdmin(data.admin);
-                    setAdminLoading(false);
-                })
-
         }
     }, [user])
 

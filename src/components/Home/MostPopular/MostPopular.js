@@ -12,6 +12,14 @@ const MostPopular = () => {
     const [videos, setVideos] = useVideos();
 
     // console.log(videos);
+    // category: "Bangla Movie"
+
+    const mostPopularVideos = videos.filter(video => video.category === "Bangla Movie");
+
+
+    // console.log(mostPopularVideos);
+
+    // console.log(videos);
 
     var settings = {
         dots: false,
@@ -61,7 +69,7 @@ const MostPopular = () => {
                         <Slider {...settings}>
 
                             {
-                                videos.map(video =>
+                                mostPopularVideos.map(video =>
 
                                     <div key={video._id}>
                                         <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={video._id}>

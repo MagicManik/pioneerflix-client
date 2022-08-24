@@ -11,42 +11,6 @@ const DashboardMainPage = () => {
     const [admin] = useAdmin(user)
     const { pathname } = useLocation();
 
-    var settings = {
-        dots: false,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 8,
-        slidesToScroll: 8,
-        initialSlide: 0,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 6,
-                    slidesToScroll: 6,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    arrows: false,
-                    slidesToShow: 4.2,
-                    slidesToScroll: 4
-                }
-            }
-        ]
-    };
-
     return (
         <section className='pt-16 bg-black'>
             <div className="drawer drawer-mobile pt-2 bg-primary">

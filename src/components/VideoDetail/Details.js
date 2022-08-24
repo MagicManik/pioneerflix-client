@@ -29,6 +29,7 @@ const Details = () => {
   const [ratings] = useRatings(id, rating);
 
   const { videoLink, imgLink, title, category, description, duration } = video;
+  const [videos] = useVideos();
 
 
   // TOTAL LIKE____
@@ -45,9 +46,11 @@ const Details = () => {
 
   // RATINGS____
   const totalRating = ratings?.reduce((a, b) => a + b.star, 0);
-  const averageRating = totalRating / ratings?.length;
+  const averageRating = (totalRating / ratings?.length).toFixed(1);
   const userStar = ratings?.filter(rating => rating?.email === user?.email);
   let displayStar = (userStar?.[0]?.star);
+
+  // console.log(displayStar)
 
 
   // handler like || Manik Islam Mahi
@@ -138,7 +141,7 @@ const Details = () => {
     })
       .then(res => res.json())
       .then(result => {
-        console.log(result);
+        // console.log(result);
       })
   };
 
@@ -179,14 +182,12 @@ const Details = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
       });
   };
 
 
-  const [videos] = useVideos();
-
-  console.log(videos)
+  // console.log(videos)
 
   var settings = {
     dots: false,
@@ -382,7 +383,7 @@ const Details = () => {
             <form onSubmit={handleComment}>
               <div className="relative">
                 <input
-                  autocomplete="off"
+                  autoComplete="off"
                   type="text"
                   name="comment"
                   className="block comment-line p-3 pl-5 focus:outline-none w-full text-sm   bg-primary rounded-sm pr-40"
@@ -391,7 +392,7 @@ const Details = () => {
                 />
                 <button
                   type="submit"
-                  className="btn bg-[#ff9501] hover:bg-[#e98903] text-[#f5f5f7] absolute right-2.5 disabled bottom-1 font-medium rounded-lg text-sm px-6"
+                  className="btn bg-[#ff9501] hover:bg-[#d37c02] text-[#f5f5f7] absolute right-2.5 disabled bottom-1 font-medium rounded-lg text-sm px-6"
                 >
                   {" "}
                   Comment
