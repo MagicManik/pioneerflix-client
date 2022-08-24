@@ -113,7 +113,7 @@ const PioneerflixKids = () => {
             <div className='pb-3 custom-bg'>
 
                 <div className='bg-primary pl-5  video-container-II'>
-                    <h1 className='text-2xl pt-6'>EXCLUSIVE MOVIES</h1>
+                    <h1 className='text-2xl pt-6'>{t("KIDSCOLLECTIONS")}</h1>
                     <div className='pb-24'>
                         <Slider {...settings}>
 
