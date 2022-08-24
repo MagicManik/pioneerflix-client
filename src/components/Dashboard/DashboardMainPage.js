@@ -10,10 +10,8 @@ const DashboardMainPage = () => {
 
     const { t } = useTranslation(["dashboard"])
     const [user] = useAuthState(auth);
-    // console.log(user.displayName);
-    const [admin] = useAdmin(user);
+    const [admin] = useAdmin(user)
     const { pathname } = useLocation();
-
 
     return (
         <section className="pt-16 bg-black">

@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const CheckoutForm = ({ userBookingData }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
     const [success, setSuccess] = useState('');
+    const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState('');
+
+    const navigate = useNavigate();
+    let location = useLocation();
+
+    let from = location.state?.from?.pathname || "/";
 
     const price = userBookingData[0]?.taka;
     const userEmail = userBookingData[0]?.userEmail;
     const userName = userBookingData[0]?.userName;
-    // console.log(price);
+    const id = userBookingData[0]?._id;
+    // console.log(id);
 
     useEffect(() => {
         fetch('https://infinite-island-65121.herokuapp.com/create-payment-intent', {
@@ -50,6 +58,7 @@ const CheckoutForm = ({ userBookingData }) => {
 
         setCardError(error?.message || '');
         setSuccess('');
+        setProcessing(true);
 
         // confirm card payment
         const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
@@ -67,11 +76,34 @@ const CheckoutForm = ({ userBookingData }) => {
 
         if (intentError) {
             setCardError(intentError?.message)
+            setProcessing(false);
         }
         else {
             setCardError('')
             setTransactionId(paymentIntent?.id)
             setSuccess('Congrats! Your payment is complemented.')
+            
+            // store payment on database
+            const payment = {
+                id: id,
+                transactionId: paymentIntent?.id
+            }
+            const url = `http://localhost:5000/booking/${id}`;
+            console.log(url);
+            console.log(payment);
+            fetch(url, {
+                method: 'PATCH',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(payment)
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                setProcessing(false);
+                console.log(data);
+                navigate(from, { replace: true });
+            })
         }
         event.target.reset();
     }

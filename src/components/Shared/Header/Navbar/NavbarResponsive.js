@@ -19,7 +19,7 @@ import pioneerFlix from "../../../../assets/app-logo/pioneerflix.png";
 import "./NavbarResponsive.css";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
-// import useVideos from "../../../../hooks/useVideos";
+// import VoiceSearch from "../../SearchResults/VoiceSearch";
 
 const megaMenuR1 = [
   { name: "Comedy", href: "/comedy", id: "293oc02c" },
@@ -218,6 +218,8 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       </form>
                     </div>
 
+                    {/* Voice Search Component */}
+                    {/* <VoiceSearch></VoiceSearch> */}
                     <button
                       className=" text-white text-xl"
                       onClick={() => setTheme(!theme)}
@@ -398,7 +400,6 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                 <div className="px-2 pt-2 pb-3 space-y-1">
                   <CustomLink to="/" className=" text-white  hover:text-white">
                     {" "}
-
                     {/* ........for multiple language......... */}
                     {t("Home")}
                   </CustomLink>
@@ -417,10 +418,34 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     {/* ........for multiple language......... */}
                     {t("Movies")}
                   </CustomLink>
+                  <select
+                    className="border-none text-center bg-[#222] py-0 decoration-white rounded-2xl"
+                    onChange={handleLanguageChange}
+                    value={localStorage.getItem("i18nextLng")}
+                  >
+                    <option value="en">English</option>
+                    <option value="bn">বাংলা</option>
+                    <option value="amharic">አማርኛ</option>
+                    <option value="hindi">हिन्दी</option>
+                    <option value="armenian">Հայերեն</option>
+                    <option value="arabic">العربية</option>
+                    <option value="russian">Russian</option>
+                    <option value="ukraine">Ukraine</option>
+                    <option value="bn">Нохчийн</option>
+                    <option value="bn">Чăваш</option>
+                    <option value="bn">ᐃᓄᒃᑎᑐᑦ</option>
+                    <option value="bn">ქართული</option>
+                    <option value="bn">ქართული</option>
+                    <option value="bn">Gĩkũyũ</option>
+                    <option value="bn">Қазақша</option>
+                    <option value="bn">Kuanyama</option>
+                    <option value="bn">Kazakh</option>
+                  </select>
+
                   {/* subscribe now phone version */}
                   <Link
                     to="/solvePay"
-                    className=" text-white text-lg hover:text-white"
+                    className=" text-white block text-lg hover:text-white"
                   >
                     {t("Subscribe")}
                   </Link>

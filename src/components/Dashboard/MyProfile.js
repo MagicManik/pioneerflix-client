@@ -57,8 +57,7 @@ const MyProfile = () => {
                         number: e.target.number.value,
                         img: image
                     }
-                    const url = `https://frozen-badlands-14934.herokuapp.com/updateUser/${user?.email}`
-                    // const url=`https://infinite-island-65121.herokuapp.com/updateUser/${user?.email}`
+                    const url = `https://frozen-badlands-14934.herokuapp.com/updateUser/${user?.email}`;
                     fetch(url, {
                         method: 'POST',
                         headers: {
@@ -108,8 +107,7 @@ const MyProfile = () => {
                         profileEmail: user.email,
                     }
                     console.log(userProfile)
-                    const url = `https://infinite-island-65121.herokuapp.com/userProfile/${user?.email}`
-                    // const url = `https://infinite-island-65121.herokuapp.com/userProfile/${user?.email}`
+                    const url = `https://infinite-island-65121.herokuapp.com/userProfile/${user?.email}`;
                     fetch(url, {
                         method: 'PUT',
                         headers: {
@@ -130,36 +128,7 @@ const MyProfile = () => {
                     toast.error('Please give your photo .')
                 }
             })
-
-
     };
-    // const onSubmit = (data, e) => {
-    //     const userProfile = {
-    //         profileName: data.name,
-    //         gender: data.gender,
-    //         education: data.education,
-    //         phone: data.phone,
-    //         address: data.address,
-    //         profileImage: data.image,
-    //         profileEmail: user.email
-    //     }
-    //     // console.log(userProfile);
-    //     const url = `https://infinite-island-65121.herokuapp.com/userProfile/${user?.email}`
-    //     fetch(url, {
-    //         method: 'PUT',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(userProfile)
-    //     })
-    //         .then(res => res.json())
-    //         .then(result => {
-    //             console.log(result);
-    //             toast.success('Your profile updated successfully!!!')
-    //             e.target.reset();
-    //             refetch();
-    //         })
-    // };
 
     return (
         <div className="container w-full mx-auto p-5 lg:p-10 mb-40">
@@ -227,7 +196,6 @@ const MyProfile = () => {
                                                     message: "Minimum Four Characters",
                                                 },
                                             })}
-                                            // defaultValue={user ? user?.displayName : "---"}
                                             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                             placeholder="Your Name"
                                         />
@@ -243,7 +211,6 @@ const MyProfile = () => {
                                             {...register("gender")}
                                             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                             type="text"
-                                            // defaultValue={user && ""}
                                             placeholder="Gender"
                                         >
                                             <option value="Male">Male</option>
@@ -299,19 +266,7 @@ const MyProfile = () => {
                                             placeholder="Your Image Link"
                                         />
                                     </div>
-                                    {/* <div className="w-full md:w-1/2 px-3">
-                                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                                            Image URL
-                                        </label>
-                                        <input
-                                            {...register("image")}
-                                            className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                            type="text"
-                                            placeholder="Your Image Link"
-                                        />
-                                    </div> */}
                                 </div>
-                                {/* {error && <p className="error">{error?.message}</p>} */}
                                 <button
                                     type="submit"
                                     className="text-center block w-full text-primary text-md shadow font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
