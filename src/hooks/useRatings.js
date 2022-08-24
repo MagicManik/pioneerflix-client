@@ -6,7 +6,7 @@ const useRatings = (id, rating) => {
     const [ratings, setRatings] = useState();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/ratings/${id}`)
+        fetch(`https://infinite-island-65121.herokuapp.com/ratings/${id}`)
             .then(res => res.json())
             .then(data => setRatings(data));
     }, [id, rating])

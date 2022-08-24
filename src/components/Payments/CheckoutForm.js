@@ -82,13 +82,13 @@ const CheckoutForm = ({ userBookingData }) => {
             setCardError('')
             setTransactionId(paymentIntent?.id)
             setSuccess('Congrats! Your payment is complemented.')
-            
+
             // store payment on database
             const payment = {
                 id: id,
                 transactionId: paymentIntent?.id
             }
-            const url = `http://localhost:5000/booking/${id}`;
+            const url = `https://infinite-island-65121.herokuapp.com/booking/${id}`;
             console.log(url);
             console.log(payment);
             fetch(url, {
@@ -98,12 +98,12 @@ const CheckoutForm = ({ userBookingData }) => {
                 },
                 body: JSON.stringify(payment)
             })
-            .then(res=>res.json())
-            .then(data=>{
-                setProcessing(false);
-                console.log(data);
-                navigate(from, { replace: true });
-            })
+                .then(res => res.json())
+                .then(data => {
+                    setProcessing(false);
+                    console.log(data);
+                    navigate(from, { replace: true });
+                })
         }
         event.target.reset();
     }
