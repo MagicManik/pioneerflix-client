@@ -19,8 +19,8 @@ import pioneerFlix from "../../../../assets/app-logo/pioneerflix.png";
 import "./NavbarResponsive.css";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
-import VoiceSearch from "../../SearchResults/VoiceSearch";
-// import useVideos from "../../../../hooks/useVideos";
+// import VoiceSearch from "../../SearchResults/VoiceSearch";
+
 
 const megaMenuR1 = [
   { name: "Comedy", href: "/comedy", id: "293oc02c" },
@@ -218,7 +218,9 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         />
                       </form>
                     </div>
-                    <VoiceSearch></VoiceSearch>
+
+                    {/* Voice Search Component */}
+                    {/* <VoiceSearch></VoiceSearch> */}
                     <button
                       className=" text-white text-xl"
                       onClick={() => setTheme(!theme)}
