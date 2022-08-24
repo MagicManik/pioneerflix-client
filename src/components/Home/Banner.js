@@ -6,11 +6,13 @@ import banner2 from "../../assets/banner/banner (13).jpg";
 import banner3 from "../../assets/banner/banner (14).jpg";
 import banner4 from "../../assets/banner/banner (15).jpg";
 import useChannels from "../../hooks/useChannels";
+import { useTranslation } from "react-i18next";
 
 import "./Banner.css";
 
 const Banner = () => {
 
+  const { t } = useTranslation(["home"])
   const [channels] = useChannels();
 
   let getTheme = localStorage.getItem("colorTheme");
@@ -112,8 +114,9 @@ const Banner = () => {
 
       {/* Tv Channels for large device */}
       <div className={getTheme === 'white' ? 'absolute tv-chanels-container-dark hidden md:block bottom-0 w-full left-0 video-section' : 'absolute tv-chanels-container hidden md:block bottom-0 w-full left-0 video-section'}>
-        <h1 className="lg:px-16 text-2xl text-white">TV CHANNELS</h1>
+        <h1 className="lg:px-16 text-2xl text-white">{t("TVCHANNELS")}</h1>
         <div className=" lg:px-16 sm:px-4 video-container">
+
           <div className=' popular-movie-section'>
             <Slider {...settings} className=''>
               {

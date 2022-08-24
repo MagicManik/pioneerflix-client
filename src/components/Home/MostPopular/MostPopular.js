@@ -6,10 +6,12 @@ import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import useVideos from '../../../hooks/useVideos';
 import './MostPopular.css';
+import { useTranslation } from 'react-i18next';
 
 const MostPopular = () => {
 
     const [videos, setVideos] = useVideos();
+    const { t } =useTranslation(["home"])
 
     // console.log(videos);
     // category: "Bangla Movie"
@@ -63,7 +65,7 @@ const MostPopular = () => {
             <div className='pb-3 custom-bg'>
 
                 <div className='bg-primary pl-5 video-container-II'>
-                    <h1 className='text-2xl pt-6'>POPULAR MOVIES</h1>
+                    <h1 className='text-2xl pt-6'>{t("POPULARMOVIES")}</h1>
 
                     <div className='pb-10'>
                         <Slider {...settings}>
@@ -91,8 +93,8 @@ const MostPopular = () => {
                 <div className='text-container text-secondary bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
 
                     <div className='text-container-right'>
-                        <h1 className='text-5xl font-bold '>Enjoy Most Popular Movies All Times.</h1>
-                        <p className=' text-2xl pr-3'>Watch movies, be happy, and smile from the bottom of your heart.</p>
+                        <h1 className='text-5xl font-bold m'>{t("EnjoyMostPopularMoviesAllTimes")}</h1>
+                        <p className=' text-2xl pr-3'>{t("Watchmovies,behappy,andsmilefromthebottomofyourheart")}</p>
                     </div>
 
                     <div className='our-story-card-animation-container pb-16'>

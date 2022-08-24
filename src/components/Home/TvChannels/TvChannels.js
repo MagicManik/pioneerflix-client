@@ -6,12 +6,16 @@ import { Link } from 'react-router-dom';
 import tv from '../../../assets/others/tv.png';
 import useChannels from '../../../hooks/useChannels';
 import './TvChannels.css';
+import { useTranslation } from 'react-i18next';
 
 const TvChannels = () => {
+
 
     const [channels] = useChannels();
 
     const getTheme = localStorage.getItem("colorTheme");
+
+    const { t } = useTranslation(["home"])
 
     var settings = {
         dots: false,
@@ -54,9 +58,13 @@ const TvChannels = () => {
         <section className='bg-primary'>
             <div className='pb-3 wraper custom-bg'>
 
+
                 <div className='bg-white video-section pb-5 lg:hidden md:block'>
                     <div className='bg-white lg:px-20 sm:px-4 video-container'>
                         <h1 className='text-1xl text-secondary py-3'>TV CHANNELS</h1>
+
+                        <h1 className='text-2xl text-secondary pt-6'>{t("TVCHANNELS")}</h1>
+
                         <Slider {...settings} className=''>
                             {
                                 channels.map(tv =>
@@ -79,8 +87,8 @@ const TvChannels = () => {
                 <div className={getTheme === 'white' ? 'text-container text-secondary bg-black grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1' : 'text-container text-secondary bg-white grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'}>
 
                     <div className='text-container-left'>
-                        <h1 className='text-5xl font-bold '>Watch your TV Channels.</h1>
-                        <p className=' text-2xl'>Watch your favorite channels on PioneerFlix website.</p>
+                        <h1 className='text-5xl font-bold '>{t("WatchyourTVChannels")}</h1>
+                        <p className=' text-2xl'>{t("WatchyourfavoritechannelsonPioneerFlixwebsite")}</p>
                     </div>
 
                     <div className='our-story-card-animation-container pb-20'>
