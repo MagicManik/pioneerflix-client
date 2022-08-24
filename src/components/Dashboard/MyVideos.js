@@ -1,11 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
+import { t } from 'i18next';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useTranslation } from 'react-i18next';
 import { FcLike } from 'react-icons/fc';
 import auth from '../../firebase.init';
 
 const MyVideos = () => {
     const [user] = useAuthState(auth);
+    const {t} =useTranslation("dashboard")
 
     const url = `https://infinite-island-65121.herokuapp.com/userUploadVideo?email=${user?.email}`
     const { data } = useQuery(['userUploadVideo'], () =>
@@ -21,7 +24,7 @@ const MyVideos = () => {
     return (
         <div>
             <div className='w-full flex justify-center mt-0'>
-                <p className='section-title text-green-500 text-[15px] md:text-[25px]'>All of my videos</p>
+                <p className='section-title text-green-500 text-[15px] md:text-[25px]'>{t("All of my videos")}</p>
             </div>
             <div className='grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 sm:gap-1 gap-4 mb-4'>
                 {
