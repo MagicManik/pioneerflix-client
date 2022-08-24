@@ -59,8 +59,8 @@ const DashboardMainPage = () => {
 
           <div className="w-full flex justify-center mt-4">
             <p className="section-title text-green-500 text-[20px] md:text-[25px]">
-              Hi, <span className="text-[#e6020c]">{user?.displayName}</span>{" "}
-              Welcome to Dashboard
+              {t("Hello")}, <span className="text-[#e6020c]">{user?.displayName}</span>{" "}
+              {t("Welcome to Dashboard")}
             </p>
           </div>
           <Outlet />
