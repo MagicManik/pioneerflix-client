@@ -12,8 +12,11 @@ import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import './PioneerflixFree.css';
+import { useTranslation } from 'react-i18next';
 
 const PioneerflixFree = () => {
+
+    const {t} = useTranslation(["home"])
 
     const popularMovies = [
         {
@@ -100,7 +103,7 @@ const PioneerflixFree = () => {
         <section className='text-secondary'>
             <div className='pb-3 custom-bg'>
                 <div className='bg-primary pl-5  video-container-II'>
-                    <h1 className='text-2xl pt-6'>POPULAR WEB SERIES</h1>
+                    <h1 className='text-2xl pt-6'>{t("POPULARWEBSERIES")}</h1>
                     <div className='pb-10'>
                         <Slider {...settings}>
 
@@ -121,9 +124,9 @@ const PioneerflixFree = () => {
                     <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
 
                         <div className='text-container-left-2 pb-10'>
-                            <h1 className='text-5xl font-bold '>Have fun to watch with your web series.</h1>
+                            <h1 className='text-5xl font-bold '>{t("Have fun to watch with your web series")}</h1>
                             <br />
-                            <p className='text-2xl'>Simply save Your favorite show on your watch list and entertaining to watch.</p>
+                            <p className='text-2xl'>{t("Simply save Your favorite show on your watch list and entertaining to watch")}</p>
                         </div>
 
                         <div className='pb-10'>
