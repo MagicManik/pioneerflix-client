@@ -7,7 +7,7 @@ const usePaidUser = user => {
     useEffect(() => {
         const email = user?.email;
         if (email) {
-            fetch(`http://localhost:5000/paidUser/${email}`, {
+            fetch(`https://infinite-island-65121.herokuapp.com/paidUser/${email}`, {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json'
