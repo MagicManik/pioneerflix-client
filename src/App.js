@@ -91,8 +91,6 @@ function App() {
 
       {/*...................add facebook messenger .................*/}
       <MessengerCustomerChat pageId="105173368974353" appId="3382482022037618" />
-
-      {/* <MessengerCustomerChat pageId="110278435120347" appId="592904995642640" /> */}
       <Footer></Footer>
       <ToastContainer />
     </div>
