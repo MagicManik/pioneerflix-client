@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { FiUpload } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
@@ -9,6 +10,8 @@ import useAdmin from '../../hooks/useAdmin';
 const UploadVideo = () => {
     const [user] = useAuthState(auth);
     const [admin] = useAdmin(user);
+
+    const { t } =useTranslation(["dashboard"])
 
     const {
         register,
@@ -24,9 +27,11 @@ const UploadVideo = () => {
             videoLink: data.videoLink,
             duration: data.duration,
             imgLink: data.imgLink,
-            uploader: user.email
+            uploader: user.email,
+            adminName: user?.displayName,
+            adminImg: user?.photoURL
         }
-        // console.log(userUploadVideo);
+        
         if (admin) {
             const url = 'https://infinite-island-65121.herokuapp.com/adminUploadVideo';
             fetch(url, {
@@ -38,7 +43,6 @@ const UploadVideo = () => {
             })
                 .then(res => res.json())
                 .then(result => {
-                    console.log(result);
                     alert('Thanks for uploading')
                     toast.success('Successfully your video uploaded!!!')
                     e.target.reset();
@@ -55,20 +59,17 @@ const UploadVideo = () => {
             })
                 .then(res => res.json())
                 .then(result => {
-                    console.log(result);
                     alert('Thanks for uploading')
                     toast.success('Successfully your video uploaded!!!')
                     e.target.reset();
                 })
         }
-
-
     };
 
     return (
         <div className='mb-20'>
             <div className='w-full mx-auto flex mt-0'>
-                <p className='section-title text-green-500 text-[15px] md:text-[25px]'>Upload your favorite video</p>
+                <p className='section-title text-green-500 text-[15px] md:text-[25px]'>{t("Upload your favorite video")}</p>
             </div>
             <div class="card mx-auto sm:w-[80%] md:w-[50%] bg-base-100 shadow-xl">
                 <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
@@ -119,13 +120,31 @@ const UploadVideo = () => {
                                     placeholder="Category"
                                 >
                                     <option value=""></option>
-                                    <option value="Drama">Drama</option>
                                     <option value="Bangla Movie">Bangla Movie</option>
                                     <option value="Hindi Movie">Hindi Movie</option>
+                                    <option value="Hindi Movie">South Indian Movie</option>
                                     <option value="English Movie">English Movie</option>
-                                    <option value="Funny Video">Funny Video</option>
-                                    <option value="Educational">Educational</option>
+                                    <option value="Kids Video">Exclusive Movies</option>
                                     <option value="Kids Video">Kids Video</option>
+                                    <option value="Kids Video">Most Popular</option>
+                                    <option value="Kids Video">Popular Movies</option>
+                                    <option value="Kids Video">Popular Web Series</option>
+                                    <option value="Bangla Movie">Bangla Song</option>
+                                    <option value="Hindi Movie">Hindi Song</option>
+                                    <option value="English Movie">English Song</option>
+                                    <option value="Funny Video">Comedy</option>
+                                    <option value="Educational">Educational</option>
+                                    <option value="Kids Video">Live Games</option>
+                                    <option value="Kids Video">Music</option>
+                                    <option value="Kids Video">Thriller</option>
+                                    <option value="Kids Video">Detective</option>
+                                    <option value="Kids Video">Latest</option>
+                                    <option value="Kids Video">Clips</option>
+                                    <option value="Kids Video">Free</option>
+                                    <option value="Kids Video">National Award Winning</option>
+                                    <option value="Kids Video">Just Added</option>
+                                    <option value="Kids Video">Upcoming</option>
+                                    <option value="Drama">Drama</option>
                                 </select>
                             </div>
                             <div className="w-full my-2">
