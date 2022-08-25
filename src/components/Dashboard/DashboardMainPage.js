@@ -5,6 +5,8 @@ import auth from "../../firebase.init";
 import useAdmin from "../../hooks/useAdmin";
 import "./DashboardMainPage.css";
 import { useTranslation } from "react-i18next";
+import { FiMonitor } from "react-icons/fi";
+import { FaBackward } from "react-icons/fa";
 
 const DashboardMainPage = () => {
 
@@ -16,19 +18,12 @@ const DashboardMainPage = () => {
     return (
         <section className="pt-16 bg-black">
             <div className="drawer drawer-mobile pt-2 bg-primary">
-                <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+                <input id="sidebar-dashboard" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                     {/* <!-- Page content here --> */}
-
-                    <div className="w-full flex justify-center mt-4">
-                        <p className="section-title text-green-500 text-[20px] md:text-[25px]">
-                            {t("Hello")}, <span className="text-[#e6020c]">{user?.displayName}</span>{" "}
-                            {t("Welcome to Dashboard")}
-                        </p>
-                    </div>
                     <Outlet />
                     <label
-                        for="my-drawer-2"
+                        for="sidebar-dashboard"
                         className="btn btn-secondary drawer-button lg:hidden"
                     >
                         <svg
@@ -46,13 +41,15 @@ const DashboardMainPage = () => {
                         </svg>
                     </label>
                 </div>
-                <div className="drawer-side">
-                    <label for="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 overflow-y-auto w-60 text-base-content">
-                        {/* <!-- Sidebar content here --> */}
+                <div className="drawer drawer-side ">
+                    <label for="sidebar-dashboard" className="drawer-overlay"></label>
 
+                    <ul className="menu p-4 overflow-y-auto sm:w-52 w-2/3 bg-primary">
+                        {/* <!-- Sidebar content here --> */}
+                        <FiMonitor className="text-blue-600 text-4xl w-full justify-center" />
+                        <p className="uppercase font-bold mb-2 text-blue-600 text-xl text-center">Dashboard</p>
                         <li>
-                            <Link to="" className="uppercase font-bold text-secondary">
+                            <Link to="" className="uppercase font-bold text-secondary focus:bg-[#1f67f7]">
                                 {t("My Profile")}
                             </Link>
                         </li>
@@ -97,6 +94,12 @@ const DashboardMainPage = () => {
                                 </Link>
                             </li>
                         )}
+                        <label
+                            for="sidebar-dashboard"
+                            className="drawer-button mt-6 flex justify-end lg:hidden border"
+                        >
+                            <FaBackward className="text-3xl text-secondary justify-end" />
+                        </label>
                     </ul>
                 </div>
             </div>
