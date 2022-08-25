@@ -26,6 +26,7 @@ import PaymentPage from "./components/Payments/PaymentPage";
 import Payments from "./components/Payments/Payments";
 import TvShows from "./components/TvShows/TvShows";
 import Movies from "./components/Movies/Movies";
+import UploadedVideo from "./components/Shared/Header/Uploaded/UploadedVideo";
 import { Suspense } from "react";
 import Loading from "./components/Shared/Loading/Loading";
 import RequireAuth from "./components/UserAccount/RequireAuth";
@@ -85,8 +86,10 @@ function App() {
               element={<ManageVideos></ManageVideos>}
             ></Route>
           </Route>
+          <Route path='/uploadedVideo/:uId' element={<UploadedVideo />} />
         </Routes>
       </Suspense>
+
 
       {/*...................add facebook messenger .................*/}
       <MessengerCustomerChat pageId="105173368974353" appId="3382482022037618" />

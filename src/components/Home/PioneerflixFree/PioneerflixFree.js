@@ -112,7 +112,7 @@ const PioneerflixFree = () => {
 
                             <div key={movie._id}>
 
-                                <Link to={`/channel/${movie._id}`}>
+                                <Link to={`/play/${movie._id}`}>
                                     <div className="bg-white mr-2 lg:mr-5 shadow py-2 lg:py-3 px-2 lg:px-3 rounded-2xl">
                                         <img className='zoom-div-I block mx-auto rounded-lg' src={movie.img} alt="" />
                                     </div>

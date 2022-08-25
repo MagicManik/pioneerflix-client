@@ -2,13 +2,6 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
-import movie1 from '../../../assets/free-videos/free-video (1).jpg';
-import movie2 from '../../../assets/free-videos/free-video (2).jpg';
-import movie3 from '../../../assets/free-videos/free-video (3).jpg';
-import movie4 from '../../../assets/free-videos/free-video (4).jpg';
-import movie5 from '../../../assets/free-videos/free-video (5).jpg';
-import movie6 from '../../../assets/free-videos/free-video (6).jpg';
-import movie7 from '../../../assets/free-videos/free-video (7).jpg';
 import freeVideo from '../../../assets/others/free-video.jpg';
 import useVideos from '../../../hooks/useVideos';
 
@@ -16,64 +9,19 @@ const PopularWebSeries = () => {
 
     const [videos] = useVideos();
 
-    // const kidsVideos = videos?.filter(video => video.category === 'Kids Movie');
-    console.log(videos)
+    const kidsVideos = videos?.filter(video => video.category === 'Kids Movie');
+    // console.log(videos)
 
     const { t } = useTranslation(["home"])
 
     let getTheme = localStorage.getItem("colorTheme");
 
-    const popularMovies = [
-        {
-            _id: 1,
-            name: 'Movie 1',
-            description: '',
-            img: movie1
-        },
-        {
-            _id: 2,
-            name: 'Movie 2',
-            description: '',
-            img: movie2
-        },
-        {
-            _id: 3,
-            name: 'Movie 3',
-            description: '',
-            img: movie3
-        },
-        {
-            _id: 4,
-            name: 'Movie 4',
-            description: '',
-            img: movie4
-        },
-        {
-            _id: 5,
-            name: 'Movie 5',
-            description: '',
-            img: movie5
-        },
-        {
-            _id: 6,
-            name: 'Movie 6',
-            description: '',
-            img: movie6
-        },
-        {
-            _id: 7,
-            name: 'Movie 7',
-            description: '',
-            img: movie7
-        }
-    ];
-
     var settings = {
         dots: false,
         infinite: false,
         speed: 500,
-        slidesToShow: 6,
-        slidesToScroll: 6,
+        slidesToShow: 4,
+        slidesToScroll: 4,
         initialSlide: 0,
         responsive: [
             {
@@ -112,13 +60,13 @@ const PopularWebSeries = () => {
                 <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3" : "text-black text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3"}>{t("POPULARWEBSERIES")}</h1>
                 <Slider {...settings} className=''>
                     {
-                        popularMovies.map(movie =>
+                        kidsVideos.map(movie =>
 
                             <div key={movie._id}>
 
-                                <Link to={`/channel/${movie._id}`}>
+                                <Link to={`/play/${movie._id}`}>
                                     <div className="bg-white mr-2 lg:mr-5 shadow py-2 lg:py-3 px-2 lg:px-3 rounded-2xl">
-                                        <img className='zoom-div-I block mx-auto rounded-lg' src={movie.img} alt="" />
+                                        <img className='zoom-div-I block mx-auto rounded-lg' src={movie.imgLink} alt="" />
                                     </div>
                                 </Link>
 

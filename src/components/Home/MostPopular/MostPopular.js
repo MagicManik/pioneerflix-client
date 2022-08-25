@@ -60,13 +60,13 @@ const MostPopular = () => {
                 <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-0" : "text-black text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-0"}>{t("POPULARMOVIES")}</h1>
                 <Slider {...settings} className=''>
                     {
-                        mostPopularVideos.map(tv =>
+                        mostPopularVideos.map(movie =>
 
-                            <div key={tv._id}>
+                            <div key={movie._id}>
 
-                                <Link to={`/channel/${tv._id}`}>
+                                <Link to={`/play/${movie._id}`}>
                                     <div className="bg-white mr-2 lg:mr-5 shadow py-2 lg:py-3 px-2 lg:px-3 rounded-2xl">
-                                        <img className='zoom-div-I block mx-auto rounded-lg' src={tv.imgLink} alt="" />
+                                        <img className='zoom-div-I block mx-auto rounded-lg' src={movie.imgLink} alt="" />
                                     </div>
                                 </Link>
 
