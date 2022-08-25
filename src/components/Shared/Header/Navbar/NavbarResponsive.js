@@ -81,7 +81,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
   };
 
   //<-------------multiple Language ----------->
-  const { i18n, t } = useTranslation(["profile"]);
+  const { i18n, t } = useTranslation(["profile"], [""]);
   useEffect(() => {
     if (localStorage.getItem("i18nextLng")?.length > 2) {
       i18next.changeLanguage("en");
@@ -185,11 +185,11 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                           <option value="en">English</option>
                           <option value="bn">বাংলা</option>
                           <option value="amharic">አማርኛ</option>
-                          <option value="hindi">हिन्दी</option>
-                          <option value="armenian">Հայերեն</option>
                           <option value="arabic">العربية</option>
+                          <option value="hindi">हिन्दी</option>
                           <option value="russian">Russian</option>
                           <option value="ukraine">Ukraine</option>
+                          <option value="armenian">Հայերեն</option>
                           <option value="bn">Нохчийн</option>
                           <option value="bn">Чăваш</option>
                           <option value="bn">ᐃᓄᒃᑎᑐᑦ</option>

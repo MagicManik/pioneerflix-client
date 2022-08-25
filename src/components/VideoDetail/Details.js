@@ -118,12 +118,6 @@ const Details = () => {
       });
   };
 
-
-
-
-
-
-
   // Handle Review || Shihab Uddin
   const libraryInfo = {
     videoId: id,
