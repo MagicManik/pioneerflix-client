@@ -26,9 +26,11 @@ import PaymentPage from "./components/Payments/PaymentPage";
 import Payments from "./components/Payments/Payments";
 import TvShows from "./components/TvShows/TvShows";
 import Movies from "./components/Movies/Movies";
+import UploadedVideo from "./components/Shared/Header/Uploaded/UploadedVideo";
 import { Suspense } from "react";
 import Loading from "./components/Shared/Loading/Loading";
 import RequireAuth from "./components/UserAccount/RequireAuth";
+
 
 
 function App() {
@@ -80,11 +82,14 @@ function App() {
           ></Route>
           <Route path="myVideos" element={<MyVideos></MyVideos>}></Route>
           <Route path="makeAdmin" element={<MakeAdmin></MakeAdmin>}></Route>
+
           <Route
             path="manageVideos"
             element={<ManageVideos></ManageVideos>}
           ></Route>
         </Route>
+
+      <Route path='/uploadedVideo/:uId' element={<UploadedVideo/>}/>
       </Routes>
      </Suspense>
 

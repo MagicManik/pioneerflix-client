@@ -32,7 +32,7 @@ const ManageVideosRow = ({ detail, index, refetch }) => {
             .then(res => res.json())
             .then(result => {
                 toast.success(`Successfully the video uploaded in UI`)
-
+                localStorage.setItem("notificationMode", "true");
                 const url = `https://infinite-island-65121.herokuapp.com/uploadedVideo/${id}`;
                 fetch(url, {
                     method: 'DELETE',
