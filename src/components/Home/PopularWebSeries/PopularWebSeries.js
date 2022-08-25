@@ -1,4 +1,7 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import Slider from 'react-slick';
 import movie1 from '../../../assets/free-videos/free-video (1).jpg';
 import movie2 from '../../../assets/free-videos/free-video (2).jpg';
 import movie3 from '../../../assets/free-videos/free-video (3).jpg';
@@ -7,14 +10,14 @@ import movie5 from '../../../assets/free-videos/free-video (5).jpg';
 import movie6 from '../../../assets/free-videos/free-video (6).jpg';
 import movie7 from '../../../assets/free-videos/free-video (7).jpg';
 import freeVideo from '../../../assets/others/free-video.jpg';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { Link } from 'react-router-dom';
-import Slider from "react-slick";
-import './PioneerflixFree.css';
-import { useTranslation } from 'react-i18next';
+import useVideos from '../../../hooks/useVideos';
 
-const PioneerflixFree = () => {
+const PopularWebSeries = () => {
+
+    const [videos] = useVideos();
+
+    // const kidsVideos = videos?.filter(video => video.category === 'Kids Movie');
+    console.log(videos)
 
     const { t } = useTranslation(["home"])
 
@@ -102,10 +105,11 @@ const PioneerflixFree = () => {
     };
 
     return (
+
         <section className='bg-primary section-border'>
 
             <div className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
-                <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3" : "text-black text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3"}>Pioneerflix Free</h1>
+                <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3" : "text-black text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3"}>{t("POPULARWEBSERIES")}</h1>
                 <Slider {...settings} className=''>
                     {
                         popularMovies.map(movie =>
@@ -128,7 +132,7 @@ const PioneerflixFree = () => {
                     <div className={getTheme === 'white' ? 'text-container text-secondary bg-black grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-secondary bg-white grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
                         <div className='text-container-left'>
-                            <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading'>Pioneerflix Free</h1>
+                            <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading'>{t("Have fun to watch with your web series")}</h1>
                             <p className='pt-2 lg:pt-2 lg:text-3xl'>{t("Simply save Your favorite show on your watch list and entertaining to watch")}</p>
                         </div>
 
@@ -143,4 +147,4 @@ const PioneerflixFree = () => {
     );
 };
 
-export default PioneerflixFree;
+export default PopularWebSeries;
