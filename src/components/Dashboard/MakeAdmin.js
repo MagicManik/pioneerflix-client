@@ -19,10 +19,7 @@ const MakeAdmin = () => {
     )
 
     return (
-        <div className="w-11/12 lg:w-full mb-40">
-            <div className='w-full flex justify-center mt-0'>
-                <p className='section-title text-green-500 text-[15px] md:text-[20px]'>{t("Make admin")}</p>
-            </div>
+        <div className="w-11/12 lg:w-full mt-12 mb-40 pr-2 pl-2">
             <div className="overflow-x-scroll">
                 <table className="table w-full">
                     <thead>

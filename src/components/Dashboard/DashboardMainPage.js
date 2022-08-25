@@ -12,6 +12,7 @@ import { HiCloudUpload } from 'react-icons/hi';
 import { AiOutlineMonitor } from 'react-icons/ai';
 import { RiAdminLine } from 'react-icons/ri';
 import { MdOutlineManageAccounts } from 'react-icons/md';
+import DbCardMainPage from "./DbCardMainPage";
 
 
 const DashboardMainPage = () => {
@@ -27,6 +28,7 @@ const DashboardMainPage = () => {
                 <input id="sidebar-dashboard" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                     {/* <!-- Page content here --> */}
+                    <DbCardMainPage />
                     <Outlet />
                     <label
                         for="sidebar-dashboard"
