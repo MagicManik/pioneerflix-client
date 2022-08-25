@@ -3,7 +3,6 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import {
   FaAlignJustify,
   FaTimes,
-  FaRegBell,
   FaRegMoon,
   FaCaretDown,
   FaSearch,
@@ -19,7 +18,10 @@ import pioneerFlix from "../../../../assets/app-logo/pioneerflix.png";
 import "./NavbarResponsive.css";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
+import Notification from "./Notification";
+// import useVideos from "../../../../hooks/useVideos";
 // import VoiceSearch from "../../SearchResults/VoiceSearch";
+
 
 const megaMenuR1 = [
   { name: "Comedy", href: "/comedy", id: "293oc02c" },
@@ -230,13 +232,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         <MdLightMode onClick={() => handleTheme("dark")} />
                       )}
                     </button>
-
-                    <button type="button" className=" text-white mx-2 md:mx-3">
-                      <span className="sr-only">View notifications</span>
-
-                      <FaRegBell className="h-6 w-6" aria-hidden="true" />
-                    </button>
-                    {/* subscribe now pc version */}
+                    <Notification/>
                     <Link
                       to="/solvePay"
                       className=" text-white text-lg bg-[#d41821] hover:bg-[#ff1622] px-4 mx-3 py-1 rounded-lg hidden md:block hover:text-white"
