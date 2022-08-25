@@ -68,7 +68,7 @@ const UploadedVideo = () => {
               onClick={() => setVideo(v)}
               className="my-5  bg-[#222] p-3 flex justify-between md:justify-start rounded-md cursor-pointer items-center"
             >
-              <img src={v?.imgLink} className="h-[100px] w-[100px] " alt="" />
+              <img src={v?.imgLink}  className="h-[100px] w-[100px] " alt="" />
               <div className="ml-5 md:ml-10">
                 <div className="md:flex  items-center">
                   <p className="text-2xl font-bold">{v?.title}</p>

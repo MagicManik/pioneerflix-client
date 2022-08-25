@@ -16,25 +16,23 @@ const Notification = () => {
     setShowN(false)
     localStorage.setItem("notificationMode", "false");
   };
-  console.log(showN)
 useEffect(()=>{
   if(getNotificationMode==='true'){
     setShowN(true)
   }
-  else{
+  else if(getNotificationMode==='false'){
     setShowN(false)
   }
 },[getNotificationMode])
-// console.log(showN)
   return (
     <>
       <div className="relative">
         <button type="button" className=" text-white mx-2 md:mx-3">
           <span className="sr-only">View notifications</span>
           <div class="indicator">
-            {showN ? (<span class="indicator-item badge ">{videos.length}</span> ):
-             ( <span class="indicator-item badge ">0</span>
-            ) }
+            {showN ? (<span class="indicator-item badge ">{videos.length}</span> ) :( <span class="indicator-item badge ">0</span>
+            )
+              }
             <FaRegBell
               onClick={handleNotification}
               className="h-6 w-6"
@@ -42,9 +40,6 @@ useEffect(()=>{
             />
           </div>
         </button>
-        {/* {
-          getNotificationMode ? <p>this is true</p> : <p>this is false</p>
-        } */}
         {notification && (
           <div className="bg-[#222] text-white max-h-80 overflow-auto  w-80 absolute rounded-sm top-10 left-[-200px]">
             {videos?.map((v) => (
