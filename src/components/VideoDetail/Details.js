@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import movie1 from "../../assets/bangla-movie/movie (1).jpg";
-// import movie2 from "../../assets/bangla-movie/movie (2).jpg";
-// import movie3 from "../../assets/bangla-movie/movie (3).jpg";
 import { FaShareAlt, FaStar } from "react-icons/fa";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiLike } from "react-icons/bi";
