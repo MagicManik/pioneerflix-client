@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import movie1 from "../../assets/bangla-movie/movie (1).jpg";
 // import movie2 from "../../assets/bangla-movie/movie (2).jpg";
 // import movie3 from "../../assets/bangla-movie/movie (3).jpg";
-import { FaShareAlt, FaStar, } from "react-icons/fa";
+import { FaShareAlt, FaStar } from "react-icons/fa";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiLike } from "react-icons/bi";
 import { useParams } from "react-router-dom";
@@ -12,8 +12,20 @@ import auth from "../../firebase.init";
 import useComments from "../../hooks/useComments";
 import useLikes from "../../hooks/useLikes";
 import "./Details.css";
-import { toast } from 'react-toastify';
-import { FacebookShareButton, FacebookIcon, WhatsappShareButton, WhatsappIcon, TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon, RedditIcon, RedditShareButton, } from "react-share";
+import { toast } from "react-toastify";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  RedditIcon,
+  RedditShareButton,
+} from "react-share";
+import useWatchHistory from "../../hooks/useWatchHistory";
 
 const Details = () => {
   const { id } = useParams();
@@ -21,9 +33,9 @@ const Details = () => {
   const [video] = useVideo(id);
   const [likes] = useLikes();
   const [comments] = useComments();
-  const [rating, setRating] = useState(null)
+  const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
-  const [list,setList]=useState(true)
+  const [list, setList] = useState(true);
 
   let newLike = likes.filter((li) => li.id === id);
   const { videoLink, imgLink, title, category, description, duration } = video;
@@ -51,7 +63,7 @@ const Details = () => {
     //   .then(result => {
     //     console.log(result);
     //   })
-  }
+  };
 
   // like handler || Manik Islam Mahi
   const handleLike = () => {
@@ -118,11 +130,7 @@ const Details = () => {
       });
   };
 
-
-
-
-
-
+  const [watchVideo] = useWatchHistory(user?.email);
 
   // Handle Review || Shihab Uddin
   const libraryInfo = {
@@ -133,23 +141,25 @@ const Details = () => {
     // videoDescription:description
   };
 
-
   useEffect(() => {
     if (title) {
-      // fetch("https://infinite-island-65121.herokuapp.com/library", {
-      fetch("http://localhost:5000/library", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(libraryInfo),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          // console.log(data);
-        });
+      const remaining = watchVideo?.filter((v) => v?.videoId === id);
+      if (remaining?.length === 0) {
+        // fetch("https://infinite-island-65121.herokuapp.com/library", {
+        fetch("http://localhost:5000/library", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(libraryInfo),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // console.log(data);
+          });
+      }
     }
-  }, [title]);
+  }, [title,watchVideo]);
 
   const handleAddList = () => {
     fetch("https://infinite-island-65121.herokuapp.com/favorite", {
@@ -161,17 +171,15 @@ const Details = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        toast.success('Video is added successfully !!!!')
-        setList(false)
+        toast.success("Video is added successfully !!!!");
+        setList(false);
       });
   };
-
 
   return (
     <>
       <div className="md:px-14 px-3 pt-16 bg-primary text-secondary">
         <div className="justify-center flex ">
-
           <iframe
             width="95%"
             className="mt-1"
@@ -184,33 +192,35 @@ const Details = () => {
           ></iframe>
         </div>
 
-
-
         {/* ________________ Review Section _____________ */}
         <div className="py-5 text-white">
           <div className="md:flex justify-between items-center">
-
-
             <div className="flex">
               {[...Array(5)].map((start, i) => {
                 const ratingValue = i + 1;
                 return (
                   <label key={i}>
+                    <input
+                      type="radio"
+                      className="hidden"
+                      name="rating"
+                      value={ratingValue}
+                      onClick={() => handleReview(ratingValue)}
+                    />
 
-                    <input type="radio" className="hidden" name="rating" value={ratingValue} onClick={() => handleReview(ratingValue)} />
-
-                    <FaStar className="ml-2" color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'} size={20}
+                    <FaStar
+                      className="ml-2"
+                      color={
+                        ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"
+                      }
+                      size={20}
                       onMouseEnter={() => setHover(ratingValue)}
                       onMouseLeave={() => setHover(null)}
-                    >
-
-                    </FaStar>
-
+                    ></FaStar>
                   </label>
-                )
+                );
               })}
             </div>
-
 
             {/* Like section */}
             <div className="grid grid-cols-3 md:ml-0 ml-5  md:mt-0 mt-5">
@@ -221,21 +231,23 @@ const Details = () => {
                 <div>{newLike.length}</div>
               </div>
               {/* <span><AiFillDislike className="text-2xl"/></span> */}
-           { list ?  <button
-                onClick={handleAddList}
-                className="flex    items-center mr-3"
-                title="Add your list" 
-              >
-                <AiOutlinePlus className="mr-2 text-xl" /> My List
-              </button> :
-            <button
-            className="flex    items-center mr-3"
-            title="This video was already  added" 
-            disabled
-          >
-            <AiOutlinePlus className="mr-2 text-xl" /> My List
-          </button>  
-            }
+              {list ? (
+                <button
+                  onClick={handleAddList}
+                  className="flex    items-center mr-3"
+                  title="Add your list"
+                >
+                  <AiOutlinePlus className="mr-2 text-xl" /> My List
+                </button>
+              ) : (
+                <button
+                  className="flex    items-center mr-3"
+                  title="This video was already  added"
+                  disabled
+                >
+                  <AiOutlinePlus className="mr-2 text-xl" /> My List
+                </button>
+              )}
               <label
                 htmlFor="my-share-modal-3"
                 className="flex  cursor-pointer ml-5 items-center"
@@ -274,7 +286,6 @@ const Details = () => {
             </div>
           </div>
         </div>
-
 
         {/* Search Related Video */}
         {/* <div className="my-8">
@@ -333,7 +344,9 @@ const Details = () => {
                     src={comment?.img}
                     alt=""
                   />
-                  <p className="ml-2 text-amber-400">{comment.id === id && comment.name}</p>
+                  <p className="ml-2 text-amber-400">
+                    {comment.id === id && comment.name}
+                  </p>
                 </div>
                 <p className="ml-10 text-sm">
                   {comment.id === id && comment.comment}
