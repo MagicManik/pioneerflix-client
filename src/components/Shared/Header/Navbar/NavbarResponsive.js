@@ -228,14 +228,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         <MdLightMode onClick={() => handleTheme("dark")} />
                       )}
                     </button>
-
-                    {/* <button type="button" className=" text-white mx-2 md:mx-3">
-                      <span className="sr-only">View notifications</span>
-
-                      <FaRegBell className="h-6 w-6" aria-hidden="true" />
-                    </button> */}
                     <Notification/>
-                    {/* subscribe now pc version */}
                     <Link
                       to="/solvePay"
                       className=" text-white text-lg bg-[#d41821] hover:bg-[#ff1622] px-4 mx-3 py-1 rounded-lg hidden md:block hover:text-white"

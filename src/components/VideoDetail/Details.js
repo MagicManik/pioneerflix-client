@@ -12,6 +12,7 @@ import auth from "../../firebase.init";
 import useComments from "../../hooks/useComments";
 import useLikes from "../../hooks/useLikes";
 import "./Details.css";
+import { toast } from 'react-toastify';
 import { FacebookShareButton, FacebookIcon, WhatsappShareButton, WhatsappIcon, TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon, RedditIcon, RedditShareButton, } from "react-share";
 
 const Details = () => {
@@ -22,8 +23,7 @@ const Details = () => {
   const [comments] = useComments();
   const [rating, setRating] = useState(null)
   const [hover, setHover] = useState(null);
-
-  // console.log(rating);
+  const [list,setList]=useState(true)
 
   let newLike = likes.filter((li) => li.id === id);
   const { videoLink, imgLink, title, category, description, duration } = video;
@@ -136,7 +136,8 @@ const Details = () => {
 
   useEffect(() => {
     if (title) {
-      fetch("https://infinite-island-65121.herokuapp.com/library", {
+      // fetch("https://infinite-island-65121.herokuapp.com/library", {
+      fetch("http://localhost:5000/library", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -160,50 +161,10 @@ const Details = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        toast.success('Video is added successfully !!!!')
+        setList(false)
       });
   };
-
-
-
-  // const popularMovies = [
-  //   {
-  //     _id: 1,
-  //     name: "Movie 1",
-  //     description: "",
-  //     img: movie1,
-  //   },
-  //   {
-  //     _id: 2,
-  //     name: "Movie 2",
-  //     description: "",
-  //     img: movie2,
-  //   },
-  //   {
-  //     _id: 3,
-  //     name: "Movie 3",
-  //     description: "",
-  //     img: movie3,
-  //   },
-  //   {
-  //     _id: 4,
-  //     name: "Movie 3",
-  //     description: "",
-  //     img: movie3,
-  //   },
-  //   {
-  //     _id: 5,
-  //     name: "Movie 3",
-  //     description: "",
-  //     img: movie3,
-  //   },
-  //   {
-  //     _id: 6,
-  //     name: "Movie 3",
-  //     description: "",
-  //     img: movie3,
-  //   }
-  // ];
 
 
   return (
@@ -260,13 +221,21 @@ const Details = () => {
                 <div>{newLike.length}</div>
               </div>
               {/* <span><AiFillDislike className="text-2xl"/></span> */}
-              <button
+           { list ?  <button
                 onClick={handleAddList}
-                className="flex  items-center mr-3"
-                title="Add your list"
+                className="flex    items-center mr-3"
+                title="Add your list" 
               >
                 <AiOutlinePlus className="mr-2 text-xl" /> My List
-              </button>
+              </button> :
+            <button
+            className="flex    items-center mr-3"
+            title="This video was already  added" 
+            disabled
+          >
+            <AiOutlinePlus className="mr-2 text-xl" /> My List
+          </button>  
+            }
               <label
                 htmlFor="my-share-modal-3"
                 className="flex  cursor-pointer ml-5 items-center"
