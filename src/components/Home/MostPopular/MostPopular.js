@@ -9,11 +9,16 @@ import './MostPopular.css';
 import { useTranslation } from 'react-i18next';
 
 const MostPopular = () => {
-
     const [videos, setVideos] = useVideos();
     const { t } =useTranslation(["home"])
 
     // console.log(videos);
+    // category: "Bangla Movie"
+
+    const mostPopularVideos = videos.filter(video => video.category === "Bangla Movie");
+
+
+    // console.log(mostPopularVideos);
 
     var settings = {
         dots: false,
@@ -63,7 +68,7 @@ const MostPopular = () => {
                         <Slider {...settings}>
 
                             {
-                                videos.map(video =>
+                                mostPopularVideos.map(video =>
 
                                     <div key={video._id}>
                                         <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={video._id}>

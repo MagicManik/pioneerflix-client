@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const DeleteUiVideoRow = ({ detail, index, refetch }) => {
 
     const deleteUiVideo = (id) => {
-        const url = `http://localhost:5000/uiVideo/${id}`;
+        const url = `https://infinite-island-65121.herokuapp.com/uiVideo/${id}`;
         fetch(url, {
             method: 'DELETE',
             headers: {

@@ -53,6 +53,9 @@ function App() {
      <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/about" element={<About></About>}></Route>
+        <Route path='/channel/:id' element={<TvChannel />}></Route>
+        <Route path="watchList" element={<Library />}></Route>
+        <Route path="favorite" element={<Favorite />}></Route>
         <Route path='/play/:id'
           element={
             <RequireAuth>
@@ -60,10 +63,6 @@ function App() {
             </RequireAuth>
           }
         />
-        <Route path='/channel/:id' element={<TvChannel />}></Route>
-        <Route path="watchList" element={<Library />}></Route>
-        <Route path="favorite" element={<Favorite />}></Route>
-        <Route path="/play/:id" element={<Details />} />
         <Route path="/result/:id" element={<SearchResults></SearchResults>}></Route>
         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>

@@ -1,0 +1,15 @@
+.search-section {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.search-container {
+    display: grid;
+    grid-template-columns: 2.2fr 3fr;
+    background-color: #181818;
+    margin-top: 60px;
+}
+
+.search-items {
+    display: flex;
+}

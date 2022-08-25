@@ -33,7 +33,6 @@ const MyProfile = () => {
         <Loading></Loading>
     }
     const updatedProfileData = data;
-
     const onSubmit = (data, e) => {
         const imgStorageKey = "d92a7867dc5f803eaff37ac866069fb5";
         const image = e.target.photo.files[0];
@@ -59,7 +58,6 @@ const MyProfile = () => {
                         profileImage: image,
                         profileEmail: user.email,
                     }
-                    console.log(userProfile)
                     const url = `https://infinite-island-65121.herokuapp.com/userProfile/${user?.email}`
                     fetch(url, {
                         method: 'PUT',
@@ -81,8 +79,6 @@ const MyProfile = () => {
                     toast.error('Please give your photo .')
                 }
             })
-
-
     };
     return (
         <div className="container w-full mx-auto p-5 lg:p-10 mb-40">
@@ -150,7 +146,6 @@ const MyProfile = () => {
                                                     message: "Minimum Four Characters",
                                                 },
                                             })}
-                                            // defaultValue={user ? user?.displayName : "---"}
                                             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                             placeholder="Your Name"
                                         />
@@ -166,7 +161,6 @@ const MyProfile = () => {
                                             {...register("gender")}
                                             className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                             type="text"
-                                            // defaultValue={user && ""}
                                             placeholder="Gender"
                                         >
                                             <option value="Male">Male</option>
@@ -237,6 +231,4 @@ const MyProfile = () => {
         </div>
     );
 };
-
 export default MyProfile;
-
