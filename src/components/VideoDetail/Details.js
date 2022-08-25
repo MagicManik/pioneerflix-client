@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import movie1 from "../../assets/bangla-movie/movie (1).jpg";
-// import movie2 from "../../assets/bangla-movie/movie (2).jpg";
-// import movie3 from "../../assets/bangla-movie/movie (3).jpg";
 import { FaShareAlt, FaStar, } from "react-icons/fa";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiLike } from "react-icons/bi";
@@ -14,6 +11,7 @@ import useLikes from "../../hooks/useLikes";
 import "./Details.css";
 import { toast } from 'react-toastify';
 import { FacebookShareButton, FacebookIcon, WhatsappShareButton, WhatsappIcon, TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon, RedditIcon, RedditShareButton, } from "react-share";
+
 
 const Details = () => {
   const { id } = useParams();
@@ -31,26 +29,6 @@ const Details = () => {
   // Handle Review || Manik Islam Mahi
   const handleReview = (star) => {
     setRating(star);
-    // const name = user.displayName;
-    // const email = user.email;
-
-    // const review = { id, star, name, email };
-
-    // console.log(review);
-
-    // const url = `https://infinite-island-65121.herokuapp.com/reviews/${email}`
-
-    // fetch(url, {
-    //   method: 'PUT',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(review)
-    // })
-    //   .then(res => res.json())
-    //   .then(result => {
-    //     console.log(result);
-    //   })
   }
 
   // like handler || Manik Islam Mahi
@@ -165,6 +143,7 @@ const Details = () => {
     <>
       <div className="md:px-14 px-3 pt-16 bg-primary text-secondary">
         <div className="justify-center flex ">
+
 
           <iframe
             width="95%"
