@@ -7,13 +7,14 @@ const SingleProfilePic = ({ pd }) => {
     const { profileEmail, profileName, profileImage, role } = pd;
 
     return (
-        <div className="w-full lg:w-1/3 md:mx-2 lg:mt-1 p-3">
-            <div className="bg-primary p-5 rounded-br-lg rounded-bl-lg border-t-4 border-[#125f82]">
-                <div className="image overflow-hidden">
+        <div className="w-full lg:w-1/3 md:mx-2 mt-0">
+            <div className="bg-primary pt-4 rounded-br-lg rounded-bl-lg border-t-4 border-[#125f82]">
+                <div className="overflow-hidden h-52">
                     <img
-                        className="w-full mx-auto rounded-badge"
+                        className="w-full rounded-badge"
                         src={`${user
-                            ? profileImage
+                            ?
+                            profileImage
                             : user?.photoURL
                             }`}
                         alt=""

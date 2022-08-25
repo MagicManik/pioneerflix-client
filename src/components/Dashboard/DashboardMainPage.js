@@ -7,6 +7,12 @@ import "./DashboardMainPage.css";
 import { useTranslation } from "react-i18next";
 import { FiMonitor } from "react-icons/fi";
 import { FaBackward } from "react-icons/fa";
+import { ImProfile } from 'react-icons/im';
+import { HiCloudUpload } from 'react-icons/hi';
+import { AiOutlineMonitor } from 'react-icons/ai';
+import { RiAdminLine } from 'react-icons/ri';
+import { MdOutlineManageAccounts } from 'react-icons/md';
+
 
 const DashboardMainPage = () => {
 
@@ -44,13 +50,13 @@ const DashboardMainPage = () => {
                 <div className="drawer drawer-side ">
                     <label for="sidebar-dashboard" className="drawer-overlay"></label>
 
-                    <ul className="menu p-4 overflow-y-auto sm:w-52 w-2/3 bg-primary">
+                    <ul className="menu p-2 overflow-y-auto sm:w-52 w-60 bg-primary">
                         {/* <!-- Sidebar content here --> */}
                         <FiMonitor className="text-blue-600 text-4xl w-full justify-center" />
                         <p className="uppercase font-bold mb-2 text-blue-600 text-xl text-center">Dashboard</p>
                         <li>
                             <Link to="" className="uppercase font-bold text-secondary focus:bg-[#1f67f7]">
-                                {t("My Profile")}
+                            <ImProfile className="text-xl text-green-500" />{t("My Profile")}
                             </Link>
                         </li>
                         <li>
@@ -59,7 +65,7 @@ const DashboardMainPage = () => {
                                 className={`uppercase font-bold text-secondary ${pathname.includes("/dashboard/uploadVideo") && "bg-[#1f67f7]"
                                     }`}
                             >
-                                {t("Upload video")}
+                                <HiCloudUpload className="text-xl text-green-500" />{t("Upload video")}
                             </Link>
                         </li>
                         <li>
@@ -68,7 +74,7 @@ const DashboardMainPage = () => {
                                 className={`uppercase font-bold text-secondary ${pathname.includes("/dashboard/myVideos") && "bg-[#1f67f7]"
                                     }`}
                             >
-                                {t("My Videos")}
+                                <AiOutlineMonitor className="text-xl text-green-500" />{t("My Videos")}
                             </Link>
                         </li>
                         {admin && (
@@ -78,7 +84,7 @@ const DashboardMainPage = () => {
                                     className={`uppercase font-bold text-secondary ${pathname.includes("/dashboard/makeAdmin") && "bg-[#1f67f7]"
                                         }`}
                                 >
-                                    {t("Make Admin")}
+                                    <RiAdminLine className="text-xl text-green-500" />{t("Make Admin")}
                                 </Link>
                             </li>
                         )}
@@ -90,7 +96,7 @@ const DashboardMainPage = () => {
                                         "bg-[#1f67f7]"
                                         }`}
                                 >
-                                    {t("Manage Videos")}
+                                    <MdOutlineManageAccounts className="text-xl text-green-500" />{t("Manage Videos")}
                                 </Link>
                             </li>
                         )}
