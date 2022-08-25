@@ -32,7 +32,7 @@ const ManageVideosRow = ({ detail, index, refetch }) => {
             .then(res => res.json())
             .then(result => {
                 toast.success(`Successfully the video uploaded in UI`)
-
+                localStorage.setItem("notificationMode", "true");
                 const url = `http://localhost:5000/uploadedVideo/${id}`;
                 fetch(url, {
                     method: 'DELETE',

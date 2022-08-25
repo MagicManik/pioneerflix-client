@@ -16,13 +16,14 @@ const Notification = () => {
     setShowN(false)
     localStorage.setItem("notificationMode", "false");
   };
+  console.log(showN)
 useEffect(()=>{
   if(getNotificationMode==='true'){
     setShowN(true)
   }
-  // else{
-  //   setShowN(false)
-  // }
+  else{
+    setShowN(false)
+  }
 },[getNotificationMode])
 // console.log(showN)
   return (
@@ -53,14 +54,14 @@ useEffect(()=>{
                   className="flex px-3 py-3 justify-start items-center"
                 >
                   <img
-                    src={v?.adminImg}
+                    src={v?.imgLink}
                     className="h-12 w-12 rounded-full"
                     alt=""
                   />
                   <Link to={`/uploadedVideo/${v?._id}`}>
                     <div
                      onClick={()=>setNotification(false)} className=" ml-3">
-                      <p className="text-lg font-semibold">{v?.adminName}</p>
+                      <p className="text-lg font-semibold">{v?.category}</p>
                       <p className="text-sm">{v?.title}</p>
                     </div>
                   </Link>
