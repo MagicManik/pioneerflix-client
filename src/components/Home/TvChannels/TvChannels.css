@@ -39,10 +39,6 @@
     padding-right: 50px;
 }
 
-.text-container-left p {
-    padding-top: 16px;
-}
-
 /* video */
 .our-story-card-animation-container {
     position: relative;
@@ -128,6 +124,10 @@
     display: none;
 }
 
+.heading {
+    line-height: 1.3;
+}
+
 /* watchTv media query */
 @media screen and (max-width: 576px) {
 
@@ -142,16 +142,16 @@
     }
 
     .text-container {
-        padding: 10px;
-    }
-
-    .text-container-left {
         padding: 16px;
     }
 
+    .text-container-left {
+        padding-right: 0px;
+    }
+
     .text-container-left p {
-        padding-top: 16px;
-        padding-bottom: 20px;
+        padding-top: 0px;
+        padding-bottom: 0px;
     }
 
     .our-story-card-animation {

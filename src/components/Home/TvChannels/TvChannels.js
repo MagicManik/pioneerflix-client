@@ -1,94 +1,24 @@
 import React from 'react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import { Link } from 'react-router-dom';
 import tv from '../../../assets/others/tv.png';
-import useChannels from '../../../hooks/useChannels';
 import './TvChannels.css';
 import { useTranslation } from 'react-i18next';
 
 const TvChannels = () => {
 
-
-    const [channels] = useChannels();
-
     const getTheme = localStorage.getItem("colorTheme");
 
     const { t } = useTranslation(["home"])
 
-    var settings = {
-        dots: false,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 9,
-        slidesToScroll: 9,
-        initialSlide: 0,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 6,
-                    slidesToScroll: 6,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 6,
-                    slidesToScroll: 6,
-                    initialSlide: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    arrows: false,
-                    slidesToShow: 4.2,
-                    slidesToScroll: 4
-                }
-            }
-        ]
-    };
-
-
     return (
         <section className='bg-primary'>
-            <div className='pb-3 wraper custom-bg'>
-
-
-                <div className='bg-white video-section pb-5 lg:hidden md:block'>
-                    <div className='bg-white lg:px-20 sm:px-4 video-container'>
-                        <h1 className='text-1xl text-secondary py-3'>TV CHANNELS</h1>
-
-                        <h1 className='text-2xl text-secondary pt-6'>{t("TVCHANNELS")}</h1>
-
-                        <Slider {...settings} className=''>
-                            {
-                                channels.map(tv =>
-                                    <div key={tv._id}>
-                                        <div className='zoom-div-I video-div' key={tv._id}>
-                                            <Link to={`/channel/${tv._id}`}>
-                                                <div className="bg-white p-3 rounded-2xl shadow-lg">
-                                                    <img className='popular-movie' src={tv.imgLink} alt="" />
-                                                </div>
-                                            </Link>
-                                        </div>
-                                    </div>)
-                            }
-                        </Slider>
-
-                    </div>
-                </div>
-
-
-                <div className={getTheme === 'white' ? 'text-container text-secondary bg-black grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1' : 'text-container text-secondary bg-white grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'}>
+            <div className='pb-3 wraper'>
+                <div className={getTheme === 'white' ? 'text-container text-secondary bg-black grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-secondary bg-white grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
                     <div className='text-container-left'>
-                        <h1 className='text-5xl font-bold '>{t("WatchyourTVChannels")}</h1>
-                        <p className=' text-2xl'>{t("WatchyourfavoritechannelsonPioneerFlixwebsite")}</p>
+                        <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading'>{t("WatchyourTVChannels")}</h1>
+                        <p className='pt-2 lg:pt-2 lg:text-3xl'>{t("WatchyourfavoritechannelsonPioneerFlixwebsite")}</p>
                     </div>
 
                     <div className='our-story-card-animation-container pb-20'>
