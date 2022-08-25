@@ -1,12 +1,21 @@
 import React from 'react';
 
 const DbSingleMainPageCard = ({ data }) => {
-    const { title } = data;
+    const { title, backGround, boxShadow, barValue, update } = data;
     return (
-        <div className="card w-full text-white">
-            <div className="card-body">
-                <h2 className="card-title">{title}</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
+        <div
+            style={{ background: `${backGround}`, boxShadow: `${boxShadow}` }}
+            className="card w-full text-white">
+            <div>
+                <div>
+                <div className="radial-progress w-18 text-4xl text-white" style={{ '--value': `${barValue}` }}>{barValue}</div>
+                <p className="card-title uppercase">{title}</p>
+                </div>
+                <div>
+
+                </div>
+                <data.icon />
+                <p>{update}</p>
             </div>
         </div>
     );
