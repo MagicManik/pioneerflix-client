@@ -32,7 +32,6 @@ import Loading from "./components/Shared/Loading/Loading";
 import RequireAuth from "./components/UserAccount/RequireAuth";
 
 
-
 function App() {
   const [theme, setTheme] = useState(true);
 
@@ -49,49 +48,48 @@ function App() {
   return (
     <div data-theme={theme ? "dark" : "light"}>
       <NavbarResponsive theme={theme} setTheme={setTheme} />
-     <Suspense fallback={<Loading></Loading>}>
-     <Routes>
-        <Route path="/" element={<Home></Home>}></Route>
-        <Route path="/about" element={<About></About>}></Route>
-        <Route path='/channel/:id' element={<TvChannel />}></Route>
-        <Route path="watchList" element={<Library />}></Route>
-        <Route path="favorite" element={<Favorite />}></Route>
-        <Route path='/play/:id'
-          element={
-            <RequireAuth>
-              <Details />
-            </RequireAuth>
-          }
-        />
-        <Route path="/result/:id" element={<SearchResults></SearchResults>}></Route>
-        <Route path="/login" element={<LoginPage></LoginPage>}></Route>
-        <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>
-        <Route path="/solvePay" element={<Payments />} />
-        <Route path="/paymentPage" element={<PaymentPage />} />
-        <Route path="/tv" element={<TvShows></TvShows>}></Route>
-        <Route path="/movies" element={<Movies></Movies>}></Route>
-
-        <Route
-          path="/dashboard"
-          element={<DashboardMainPage></DashboardMainPage>}
-        >
-          <Route path="" index element={<MyProfile></MyProfile>}></Route>
-          <Route
-            path="uploadVideo"
-            element={<UploadVideo></UploadVideo>}
-          ></Route>
-          <Route path="myVideos" element={<MyVideos></MyVideos>}></Route>
-          <Route path="makeAdmin" element={<MakeAdmin></MakeAdmin>}></Route>
+      <Suspense fallback={<Loading></Loading>}>
+        <Routes>
+          <Route path="/" element={<Home></Home>}></Route>
+          <Route path="/about" element={<About></About>}></Route>
+          <Route path='/channel/:id' element={<TvChannel />}></Route>
+          <Route path="watchList" element={<Library />}></Route>
+          <Route path="favorite" element={<Favorite />}></Route>
+          <Route path='/play/:id'
+            element={
+              <RequireAuth>
+                <Details />
+              </RequireAuth>
+            }
+          />
+          <Route path="/result/:id" element={<SearchResults></SearchResults>}></Route>
+          <Route path="/login" element={<LoginPage></LoginPage>}></Route>
+          <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>
+          <Route path="/solvePay" element={<Payments />} />
+          <Route path="/paymentPage" element={<PaymentPage />} />
+          <Route path="/tv" element={<TvShows></TvShows>}></Route>
+          <Route path="/movies" element={<Movies></Movies>}></Route>
 
           <Route
-            path="manageVideos"
-            element={<ManageVideos></ManageVideos>}
-          ></Route>
-        </Route>
+            path="/dashboard"
+            element={<DashboardMainPage></DashboardMainPage>}
+          >
+            <Route path="" index element={<MyProfile></MyProfile>}></Route>
+            <Route
+              path="uploadVideo"
+              element={<UploadVideo></UploadVideo>}
+            ></Route>
+            <Route path="myVideos" element={<MyVideos></MyVideos>}></Route>
+            <Route path="makeAdmin" element={<MakeAdmin></MakeAdmin>}></Route>
+            <Route
+              path="manageVideos"
+              element={<ManageVideos></ManageVideos>}
+            ></Route>
+          </Route>
+          <Route path='/uploadedVideo/:uId' element={<UploadedVideo />} />
+        </Routes>
+      </Suspense>
 
-      <Route path='/uploadedVideo/:uId' element={<UploadedVideo/>}/>
-      </Routes>
-     </Suspense>
 
       {/*...................add facebook messenger .................*/}
       <MessengerCustomerChat pageId="105173368974353" appId="3382482022037618" />

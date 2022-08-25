@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const usePaidUser = user => {
+    console.log(user)
     const [paidUser, setPaidUser] = useState(false);
     const [paidLoading, setPaidLoading] = useState(true);
 

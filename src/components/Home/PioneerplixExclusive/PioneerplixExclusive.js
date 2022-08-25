@@ -1,12 +1,4 @@
 import React from 'react';
-import movie1 from '../../../assets/exclusive-videos/exclusive (1).jpg';
-import movie2 from '../../../assets/exclusive-videos/exclusive (2).jpg';
-import movie3 from '../../../assets/exclusive-videos/exclusive (3).jpg';
-import movie4 from '../../../assets/exclusive-videos/exclusive (4).jpg';
-import movie5 from '../../../assets/exclusive-videos/exclusive (5).jpg';
-import movie6 from '../../../assets/exclusive-videos/exclusive (6).jpg';
-import movie7 from '../../../assets/exclusive-videos/exclusive (7).jpg';
-import movie8 from '../../../assets/exclusive-videos/exclusive (8).jpg';
 import profileKids from '../../../assets/others/exclusive-removebg-preview.png';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -14,91 +6,17 @@ import Slider from "react-slick";
 import './PioneerplixExclusive.css';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import useVideos from '../../../hooks/useVideos';
 
 const PioneerplixExclusive = () => {
 
-    const {t} =useTranslation(["home"])
-    const popularMovies = [
-        {
-            _id: 1,
-            name: 'Movie 1',
-            description: '',
-            img: movie1
-        },
-        {
-            _id: 2,
-            name: 'Movie 2',
-            description: '',
-            img: movie2
-        },
-        {
-            _id: 3,
-            name: 'Movie 3',
-            description: '',
-            img: movie3
-        },
-        {
-            _id: 4,
-            name: 'Movie 4',
-            description: '',
-            img: movie4
-        },
-        {
-            _id: 5,
-            name: 'Movie 5',
-            description: '',
-            img: movie5
-        },
-        {
-            _id: 6,
-            name: 'Movie 6',
-            description: '',
-            img: movie6
-        },
-        {
-            _id: 7,
-            name: 'Movie 7',
-            description: '',
-            img: movie7
-        },
-        {
-            _id: 8,
-            name: 'Movie 8',
-            description: '',
-            img: movie8
-        },
-        {
-            _id: 9,
-            name: 'Movie 8',
-            description: '',
-            img: movie8
-        },
-        {
-            _id: 10,
-            name: 'Movie 8',
-            description: '',
-            img: movie8
-        },
-        {
-            _id: 11,
-            name: 'Movie 8',
-            description: '',
-            img: movie8
-        },
-        {
-            _id: 21,
-            name: 'Movie 8',
-            description: '',
-            img: movie8
-        },
-        {
-            _id: 113,
-            name: 'Movie 8',
-            description: '',
-            img: movie8
-        },
-    ]
+    const [videos] = useVideos();
 
+    const exclusives = videos.filter(video => video.category === 'Exclusive');
+
+    const { t } = useTranslation(["home"])
+
+    let getTheme = localStorage.getItem("colorTheme");
 
     var settings = {
         dots: false,
@@ -138,43 +56,45 @@ const PioneerplixExclusive = () => {
 
 
     return (
-        <section className='text-secondary'>
-            <div className='pb-3 custom-bg'>
 
-                <div className='bg-primary pl-5  video-container-II'>
-                    <h1 className='text-2xl pt-6'>{t("EXCLUSIVEMOVIES")}</h1>
-                    <div className='pb-24'>
-                        <Slider {...settings}>
+        <section className='bg-primary section-border'>
 
-                            {
-                                popularMovies.map(movie =>
+            <div className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
+                <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3" : "text-black text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3"}>{t("EXCLUSIVEMOVIES")}</h1>
+                <Slider {...settings} className=''>
+                    {
+                        exclusives.map(movie =>
 
-                                    <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
-                                        <Link to='/ok'><img className='popular-movie' src={movie.img} alt="" /></Link>
-                                    </div>)
-                            }
+                            <div key={movie._id}>
 
-                        </Slider>
-                    </div>
-                    <i className="fa fal fa-angle-double-down"></i>
+                                <Link to={`/play/${movie._id}`}>
+                                    <div className="mr-2 lg:mr-3 shadow py-2 lg:py-3 px-2 lg:px-0 rounded-2xl">
+                                        <img className='zoom-div-I block mx-auto rounded-lg' src={movie.imgLink} alt="" />
+                                    </div>
+                                </Link>
 
+                            </div>)
+                    }
+                </Slider>
+            </div>
 
-                    <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
+            <div className='bg-primary'>
+                <div className='pb-3 wraper'>
+                    <div className={getTheme === 'white' ? 'text-container text-secondary bg-black grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-secondary bg-white grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
-                        <div className='text-container-left-2 pb-10'>
-                            <h1 className='text-5xl font-bold '>{t("WatchAndEnjoyMoreExclusiveVideos")}</h1>
-                            <br />
-                            <p className='text-2xl'>{t("Keep touch on your exclusive videos with your enjoyment —free with your membership")}</p>
+                        <div className='text-container-left'>
+                            <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading'>{t("WatchAndEnjoyMoreExclusiveVideos")}</h1>
+                            <p className='pt-2 lg:pt-2 lg:text-3xl'>{t("Keep touch on your exclusive videos with your enjoyment —free with your membership")}</p>
                         </div>
 
-                        <div className='pb-10'>
-                            <img src={profileKids} alt="" />
+                        <div className='our-story-card-animation-container pb-10 lg:pb-20 pt-6 lg:pt-20'>
+                            <img className='tv-img rounded-xl ' src={profileKids} alt="" />
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
 
+        </section >
     );
 };
 

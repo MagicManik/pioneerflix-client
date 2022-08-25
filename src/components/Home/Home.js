@@ -8,6 +8,7 @@ import PioneerflixKids from "./PioneerflixKids/PioneerflixKids";
 import PioneerplixExclusive from "./PioneerplixExclusive/PioneerplixExclusive";
 import TvChannels from "./TvChannels/TvChannels";
 import "./Home.css";
+import PopularWebSeries from "./PopularWebSeries/PopularWebSeries";
 
 const Home = () => {
 
@@ -25,6 +26,7 @@ const Home = () => {
       <MostPopular></MostPopular>
       <PioneerplixExclusive></PioneerplixExclusive>
       <PioneerflixKids></PioneerflixKids>
+      <PopularWebSeries></PopularWebSeries>
       <PioneerflixFree></PioneerflixFree>
       <AskAnswer></AskAnswer>
 
