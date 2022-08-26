@@ -16,7 +16,9 @@ import { useTranslation } from 'react-i18next';
 
 const PioneerflixFree = () => {
 
-    const {t} = useTranslation(["home"])
+    const { t } = useTranslation(["home"])
+
+    let getTheme = localStorage.getItem("colorTheme");
 
     const popularMovies = [
         {
@@ -100,42 +102,44 @@ const PioneerflixFree = () => {
     };
 
     return (
-        <section className='text-secondary'>
-            <div className='pb-3 custom-bg'>
-                <div className='bg-primary pl-5  video-container-II'>
-                    <h1 className='text-2xl pt-6'>{t("POPULARWEBSERIES")}</h1>
-                    <div className='pb-10'>
-                        <Slider {...settings}>
+        <section className='bg-primary section-border'>
 
-                            {
-                                popularMovies.map(movie =>
+            <div className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
+                <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3" : "text-black text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3"}>Pioneerflix Free</h1>
+                <Slider {...settings} className=''>
+                    {
+                        popularMovies.map(movie =>
 
-                                    <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
-                                        <Link to='/ok'>
-                                            <img className='popular-movie' src={movie.img} alt="" />
-                                        </Link>
+                            <div key={movie._id}>
 
-                                    </div>)
-                            }
+                                <Link to={`/play/${movie._id}`}>
+                                    <div className="bg-white mr-2 lg:mr-5 shadow py-2 lg:py-3 px-2 lg:px-3 rounded-2xl">
+                                        <img className='zoom-div-I block mx-auto rounded-lg' src={movie.img} alt="" />
+                                    </div>
+                                </Link>
 
-                        </Slider>
-                    </div>
+                            </div>)
+                    }
+                </Slider>
+            </div>
 
-                    <div className='bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
+            <div className='bg-primary'>
+                <div className='pb-3 wraper'>
+                    <div className={getTheme === 'white' ? 'text-container text-secondary bg-black grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-secondary bg-white grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
-                        <div className='text-container-left-2 pb-10'>
-                            <h1 className='text-5xl font-bold '>{t("Have fun to watch with your web series")}</h1>
-                            <br />
-                            <p className='text-2xl'>{t("Simply save Your favorite show on your watch list and entertaining to watch")}</p>
+                        <div className='text-container-left'>
+                            <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading'>Pioneerflix Free</h1>
+                            <p className='pt-2 lg:pt-2 lg:text-3xl'>{t("Simply save Your favorite show on your watch list and entertaining to watch")}</p>
                         </div>
 
-                        <div className='pb-10'>
-                            <img className='w-10/12 pt-10 rounded-2xl' src={freeVideo} alt="" />
+                        <div className='our-story-card-animation-container pb-10 lg:pb-20 pt-6 lg:pt-20'>
+                            <img className='tv-img rounded-xl ' src={freeVideo} alt="" />
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+
+        </section >
     );
 };
 
