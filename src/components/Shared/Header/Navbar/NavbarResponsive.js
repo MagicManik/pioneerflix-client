@@ -3,7 +3,6 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import {
   FaAlignJustify,
   FaTimes,
-  FaRegBell,
   FaRegMoon,
   FaCaretDown,
   FaSearch,
@@ -19,8 +18,10 @@ import pioneerFlix from "../../../../assets/app-logo/pioneerflix.png";
 import "./NavbarResponsive.css";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
-import VoiceSearch from "../../SearchResults/VoiceSearch";
+import Notification from "./Notification";
 // import useVideos from "../../../../hooks/useVideos";
+// import VoiceSearch from "../../SearchResults/VoiceSearch";
+
 
 const megaMenuR1 = [
   { name: "Comedy", href: "/comedy", id: "293oc02c" },
@@ -80,7 +81,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
   };
 
   //<-------------multiple Language ----------->
-  const { i18n, t } = useTranslation(["profile"]);
+  const { i18n, t } = useTranslation(["profile"], [""]);
   useEffect(() => {
     if (localStorage.getItem("i18nextLng")?.length > 2) {
       i18next.changeLanguage("en");
@@ -150,14 +151,14 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         </CustomLink>
                         <CustomLink
                           to="/tv"
-                          className=" text-white  hover:text-white"
+                          className=" text-white hidden xl:block hover:text-white"
                         >
                           {/* ........for multiple language......... */}
                           {t("TVShows")}
                         </CustomLink>
                         <CustomLink
                           to="/movies"
-                          className=" text-white  hover:text-white"
+                          className=" text-white hidden xl:block  hover:text-white"
                         >
                           {/* ........for multiple language......... */}
                           {t("Movies")}
@@ -177,18 +178,18 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
                         {/*.............. Select your Language ..............*/}
                         <select
-                          className="text-center bg-[#222] py-0 decoration-white rounded-2xl"
+                          className="border-none text-center bg-[#222] py-0 decoration-white rounded-2xl"
                           onChange={handleLanguageChange}
                           value={localStorage.getItem("i18nextLng")}
                         >
                           <option value="en">English</option>
                           <option value="bn">বাংলা</option>
-                          <option value="bn">አማርኛ</option>
-                          <option value="bn">हिन्दी</option>
-                          <option value="bn">Հայերեն</option>
-                          <option value="bn">العربية</option>
-                          <option value="bn">Башҡорт</option>
-                          <option value="bn">Беларуская</option>
+                          <option value="amharic">አማርኛ</option>
+                          <option value="arabic">العربية</option>
+                          <option value="hindi">हिन्दी</option>
+                          <option value="russian">Russian</option>
+                          <option value="ukraine">Ukraine</option>
+                          <option value="armenian">Հայերեն</option>
                           <option value="bn">Нохчийн</option>
                           <option value="bn">Чăваш</option>
                           <option value="bn">ᐃᓄᒃᑎᑐᑦ</option>
@@ -214,11 +215,13 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                           id="search-navbar"
                           name="search"
                           className="block p-1 hover:p-1.5 py-1 hover:py-1 pl-10 duration-1000 hover:px-14 text-white focus:px-14  hover:text-white  hover:scale-x-100 mr-1 rounded-full border search-input sm:text-sm"
-                          placeholder="Search..."
+                          placeholder="search..."
                         />
                       </form>
                     </div>
-                    <VoiceSearch></VoiceSearch>
+
+                    {/* Voice Search Component */}
+                    {/* <VoiceSearch></VoiceSearch> */}
                     <button
                       className=" text-white text-xl"
                       onClick={() => setTheme(!theme)}
@@ -229,13 +232,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         <MdLightMode onClick={() => handleTheme("dark")} />
                       )}
                     </button>
-
-                    <button type="button" className=" text-white mx-2 md:mx-3">
-                      <span className="sr-only">View notifications</span>
-
-                      <FaRegBell className="h-6 w-6" aria-hidden="true" />
-                    </button>
-                    {/* subscribe now pc version */}
+                    <Notification/>
                     <Link
                       to="/solvePay"
                       className=" text-white text-lg bg-[#d41821] hover:bg-[#ff1622] px-4 mx-3 py-1 rounded-lg hidden md:block hover:text-white"
@@ -404,7 +401,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   </CustomLink>
                   <CustomLink
                     to="/tv"
-                    className=" text-white  hover:text-white"
+                    className=" text-white hidden   hover:text-white"
                   >
                     {/* ........for multiple language......... */}
                     {t("TVShows")}
@@ -417,10 +414,34 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     {/* ........for multiple language......... */}
                     {t("Movies")}
                   </CustomLink>
+                  <select
+                    className="border-none text-center bg-[#222] py-0 decoration-white rounded-2xl"
+                    onChange={handleLanguageChange}
+                    value={localStorage.getItem("i18nextLng")}
+                  >
+                    <option value="en">English</option>
+                    <option value="bn">বাংলা</option>
+                    <option value="amharic">አማርኛ</option>
+                    <option value="hindi">हिन्दी</option>
+                    <option value="armenian">Հայերեն</option>
+                    <option value="arabic">العربية</option>
+                    <option value="russian">Russian</option>
+                    <option value="ukraine">Ukraine</option>
+                    <option value="bn">Нохчийн</option>
+                    <option value="bn">Чăваш</option>
+                    <option value="bn">ᐃᓄᒃᑎᑐᑦ</option>
+                    <option value="bn">ქართული</option>
+                    <option value="bn">ქართული</option>
+                    <option value="bn">Gĩkũyũ</option>
+                    <option value="bn">Қазақша</option>
+                    <option value="bn">Kuanyama</option>
+                    <option value="bn">Kazakh</option>
+                  </select>
+
                   {/* subscribe now phone version */}
                   <Link
                     to="/solvePay"
-                    className=" text-white text-lg hover:text-white"
+                    className=" text-white block text-lg hover:text-white"
                   >
                     {t("Subscribe")}
                   </Link>
@@ -435,16 +456,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       <FaCaretDown className="ml-1 text-xl" />
                     )}
                   </button>
-                  {user && (
-                    <CustomLink
-                      to="/dashboard"
-                      className=" text-white my-3 hover:text-white"
-                    >
-                      {" "}
-                      {/* ........for multiple language......... */}
-                      {t("Dashboard")}
-                    </CustomLink>
-                  )}
+                 
                 </div>
               </Disclosure.Panel>
             </>

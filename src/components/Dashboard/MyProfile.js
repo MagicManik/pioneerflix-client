@@ -33,54 +33,6 @@ const MyProfile = () => {
         <Loading></Loading>
     }
     const updatedProfileData = data;
-    const updateProfile = e => {
-        e.preventDefault();
-        //upload image in imagebb
-        const imgStorageKey = "d92a7867dc5f803eaff37ac866069fb5";
-        const image = e.target.photo.files[0];
-        const formData = new FormData();
-        formData.append("image", image);
-        const url = `https://api.imgbb.com/1/upload?key=${imgStorageKey}`;
-        fetch(url, {
-            method: "POST",
-            body: formData,
-        })
-            .then((res) => res.json())
-            .then((result) => {
-                // if img upload success then upload data in data base 
-                if (result.success) {
-                    const image = result.data.url;
-                    const updateInfo = {
-                        email: e.target.email.value,
-                        name: e.target.name.value,
-                        link: e.target.link.value,
-                        number: e.target.number.value,
-                        img: image
-                    }
-                    const url = `https://frozen-badlands-14934.herokuapp.com/updateUser/${user?.email}`;
-                    fetch(url, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-
-                        },
-                        body: JSON.stringify(updateInfo)
-                    })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.acknowledged) {
-                                toast.success(`${updateInfo.name} your profile updated .`)
-                                e.reset();
-                            }
-                        })
-                }
-                else {
-                    toast.error('Please give your photo .')
-                }
-            })
-    }
-
-
     const onSubmit = (data, e) => {
         const imgStorageKey = "d92a7867dc5f803eaff37ac866069fb5";
         const image = e.target.photo.files[0];
@@ -106,8 +58,7 @@ const MyProfile = () => {
                         profileImage: image,
                         profileEmail: user.email,
                     }
-                    console.log(userProfile)
-                    const url = `https://infinite-island-65121.herokuapp.com/userProfile/${user?.email}`;
+                    const url = `https://infinite-island-65121.herokuapp.com/userProfile/${user?.email}`
                     fetch(url, {
                         method: 'PUT',
                         headers: {
@@ -129,7 +80,6 @@ const MyProfile = () => {
                 }
             })
     };
-
     return (
         <div className="container w-full mx-auto p-5 lg:p-10 mb-40">
             <div className="md:flex w-full no-wrap md:-mx-2">
@@ -281,5 +231,4 @@ const MyProfile = () => {
         </div>
     );
 };
-
 export default MyProfile;
