@@ -53,17 +53,9 @@ const TvChannel = () => {
       <hr className="line-" />
 
       <div className="justify-center flex pt-4 ">
-        <MediaPlayer></MediaPlayer>
-        {/* <iframe
-                    width="95%"
-                    className="mt-1"
-                    height="500px"
-                    src={channel.channelLink}
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                ></iframe> */}
+        <MediaPlayer 
+        channel={channel}
+        ></MediaPlayer>
       </div>
 
       <section className="bg-secondary ">

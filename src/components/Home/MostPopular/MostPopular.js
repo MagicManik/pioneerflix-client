@@ -57,7 +57,7 @@ const MostPopular = () => {
         <section className='bg-primary section-border'>
 
             <div className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
-                <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-xl pb-2 lg:pb-4 pt-2 lg:pt-0" : "text-black text-sm lg:text-xl pb-2 lg:pb-4 pt-2 lg:pt-0"}>{t("POPULARMOVIES")}</h1>
+                <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-0" : "text-black text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-0"}>{t("POPULARMOVIES")}</h1>
                 <Slider {...settings} className=''>
                     {
                         mostPopularVideos.map(movie =>

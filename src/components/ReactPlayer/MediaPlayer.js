@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactPlayer from "react-player";
-import useChannel from '../../hooks/useChannel';
+import Jodi from "../../assets/video/Jodi.mp4";
 
-
-const MediaPlayer = () => {
-    const [channel] = useChannel();
+const MediaPlayer = ({channel}) => {
+  console.log(channel);
     return (
         <ReactPlayer
           config={{ file: { attributes: { controlsList: "nodownload" } } }}
