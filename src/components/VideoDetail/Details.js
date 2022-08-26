@@ -21,6 +21,7 @@ import usePaidUser from "../../hooks/usePaidUser";
 import useWatchHistory from "../../hooks/useWatchHistory"
 import Payments from "../Payments/Payments";
 import MediaPlayer from "../ReactPlayer/MediaPlayer";
+import MediaPlayerDetails from "./MediaPlayerDetails";
 
 const Details = () => {
   const { id } = useParams();
@@ -260,9 +261,9 @@ const Details = () => {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe> */}
-                <MediaPlayer
-                channel={videoLink}
-                ></MediaPlayer>
+                <MediaPlayerDetails
+                video={video}
+                ></MediaPlayerDetails>
 
               </div>
 

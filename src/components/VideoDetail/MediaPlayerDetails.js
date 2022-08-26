@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactPlayer from "react-player";
 
-const MediaPlayer = ({channel}) => {
+const MediaPlayerDetails = ({video}) => {
     return (
         <ReactPlayer
           config={{ file: { attributes: { controlsList: "nodownload" } } }}
@@ -9,7 +9,7 @@ const MediaPlayer = ({channel}) => {
           width="1024px"
           height="500px"
           controls
-          url={ channel.channelLink}
+          url={video.videoLink}
           onReady={() => console.log("onready call back")}
           onStart={() => console.log("onstart call back")}
           onPause={() => console.log("onpause call back")}
@@ -19,4 +19,4 @@ const MediaPlayer = ({channel}) => {
     );
 };
 
-export default MediaPlayer;
+export default MediaPlayerDetails;

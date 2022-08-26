@@ -11,6 +11,8 @@ const TvChannel = () => {
   const { id } = useParams();
   const [channel] = useChannel(id);
   const [channels] = useChannels();
+  const {channelLink}=channel;
+  // console.log(channelLink);
 
   var settings = {
     dots: false,
