@@ -105,7 +105,7 @@ const PioneerflixFree = () => {
         <section className='bg-primary section-border'>
 
             <div className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
-                <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3" : "text-black text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3"}>Pioneerflix Free</h1>
+                <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3" : "text-black text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3"}>{t("Pioneerflix Free")}</h1>
                 <Slider {...settings} className=''>
                     {
                         popularMovies.map(movie =>
@@ -128,7 +128,7 @@ const PioneerflixFree = () => {
                     <div className={getTheme === 'white' ? 'text-container text-secondary bg-black grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-secondary bg-white grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
                         <div className='text-container-left'>
-                            <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading'>Pioneerflix Free</h1>
+                            <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading'>{t("Pioneerflix Free")}</h1>
                             <p className='pt-2 lg:pt-2 lg:text-3xl'>{t("Simply save Your favorite show on your watch list and entertaining to watch")}</p>
                         </div>
 
