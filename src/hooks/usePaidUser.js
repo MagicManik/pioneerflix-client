@@ -8,7 +8,7 @@ const usePaidUser = user => {
     useEffect(() => {
         const email = user?.email;
         if (email) {
-            fetch(`https://infinite-island-65121.herokuapp.com/paidUser/${email}`, {
+            fetch(`http://localhost:5000/paidUser/${email}`, {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json'
@@ -17,6 +17,7 @@ const usePaidUser = user => {
                 .then(res => res.json())
                 .then(data => {
                     setPaidUser(data)
+                    console.log(data);
                     setPaidLoading(false)
                 })
         }

@@ -172,7 +172,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         </CustomLink>
                         <CustomLink
                           to="/tv"
-                          className=" text-white  hover:text-white"
+                          className=" text-white hidden xl:block hover:text-white"
                         >
                           {/* ........for multiple language......... */}
                           {t("TVShows")}
@@ -190,7 +190,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         {/* 
                         <CustomLink
                           to="/movies"
-                          className=" text-white  hover:text-white"
+                          className=" text-white hidden xl:block  hover:text-white"
                         >
                           ........for multiple language.........
                           {t("Movies")}
@@ -447,7 +447,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   </CustomLink>
                   <CustomLink
                     to="/tv"
-                    className=" text-white  hover:text-white"
+                    className=" text-white hidden   hover:text-white"
                   >
                     {/* ........for multiple language......... */}
                     {t("TVShows")}
@@ -502,16 +502,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       <FaCaretDown className="ml-1 text-xl" />
                     )}
                   </button>
-                  {user && (
-                    <CustomLink
-                      to="/dashboard"
-                      className=" text-white my-3 hover:text-white"
-                    >
-                      {" "}
-                      {/* ........for multiple language......... */}
-                      {t("Dashboard")}
-                    </CustomLink>
-                  )}
+                 
                 </div>
               </Disclosure.Panel>
             </>

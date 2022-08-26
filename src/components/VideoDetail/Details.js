@@ -18,6 +18,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import useVideos from "../../hooks/useVideos";
 import usePaidUser from "../../hooks/usePaidUser";
+import useWatchHistory from "../../hooks/useWatchHistory"
 import Payments from "../Payments/Payments";
 
 const Details = () => {
@@ -30,11 +31,12 @@ const Details = () => {
   const [hover, setHover] = useState(null);
   const [ratings] = useRatings(id, rating);
   const [paidUser] = usePaidUser(user);
+  const [watchVideo] = useWatchHistory(user?.email);
   // const navigate = useNavigate();
 
   const paid = paidUser?.paid;
 
-  console.log(paid);
+  console.log(paid, 'manik vai');
 
   const { videoLink, imgLink, title, category, description, duration } = video;
   const [videos] = useVideos();
@@ -155,7 +157,9 @@ const Details = () => {
   };
 
 
-  // Handle watchlist || Shihab Uddin
+
+
+  // Handle Review || Shihab Uddin
   const libraryInfo = {
     videoId: id,
     email: user?.email,
@@ -164,22 +168,25 @@ const Details = () => {
     // videoDescription:description
   };
 
-
   useEffect(() => {
     if (title) {
-      fetch("https://infinite-island-65121.herokuapp.com/library", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(libraryInfo),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          // console.log(data);
-        });
+      const remaining = watchVideo?.filter((v) => v?.videoId === id);
+      if (remaining?.length === 0) {
+        // fetch("https://infinite-island-65121.herokuapp.com/library", {
+        fetch("http://localhost:5000/library", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(libraryInfo),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // console.log(data);
+          });
+      }
     }
-  }, [title]);
+  }, [title,watchVideo]);
 
   const handleAddList = () => {
     fetch("https://infinite-island-65121.herokuapp.com/favorite", {

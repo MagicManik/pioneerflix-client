@@ -5,6 +5,15 @@ import auth from "../../firebase.init";
 import useAdmin from "../../hooks/useAdmin";
 import "./DashboardMainPage.css";
 import { useTranslation } from "react-i18next";
+import { FiMonitor } from "react-icons/fi";
+import { FaBackward } from "react-icons/fa";
+import { ImProfile } from 'react-icons/im';
+import { HiCloudUpload } from 'react-icons/hi';
+import { AiOutlineMonitor } from 'react-icons/ai';
+import { RiAdminLine } from 'react-icons/ri';
+import { MdOutlineManageAccounts } from 'react-icons/md';
+import DbCardMainPage from "./DbCardMainPage";
+
 
 const DashboardMainPage = () => {
 
@@ -16,26 +25,20 @@ const DashboardMainPage = () => {
     return (
         <section className="pt-16 bg-black">
             <div className="drawer drawer-mobile pt-2 bg-primary">
-                <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+                <input id="sidebar-dashboard" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">
                     {/* <!-- Page content here --> */}
-
-                    <div className="w-full flex justify-center mt-4">
-                        <p className="section-title text-green-500 text-[20px] md:text-[25px]">
-                            {t("Hello")}, <span className="text-[#e6020c]">{user?.displayName}</span>{" "}
-                            {t("Welcome to Dashboard")}
-                        </p>
-                    </div>
+                    <DbCardMainPage />
                     <Outlet />
                     <label
-                        for="my-drawer-2"
+                        for="sidebar-dashboard"
                         className="btn btn-secondary drawer-button lg:hidden"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
-                            class="inline-block w-5 h-5 stroke-current"
+                            className="inline-block w-5 h-5 stroke-current"
                         >
                             <path
                                 stroke-linecap="round"
@@ -46,14 +49,16 @@ const DashboardMainPage = () => {
                         </svg>
                     </label>
                 </div>
-                <div className="drawer-side">
-                    <label for="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 overflow-y-auto w-60 text-base-content">
-                        {/* <!-- Sidebar content here --> */}
+                <div className="drawer drawer-side ">
+                    <label for="sidebar-dashboard" className="drawer-overlay"></label>
 
+                    <ul className="menu p-2 overflow-y-auto sm:w-52 w-60 bg-primary">
+                        {/* <!-- Sidebar content here --> */}
+                        <FiMonitor className="text-blue-600 text-4xl w-full justify-center" />
+                        <p className="uppercase font-bold mb-2 text-blue-600 text-xl text-center">Dashboard</p>
                         <li>
-                            <Link to="" className="uppercase font-bold text-secondary">
-                                {t("My Profile")}
+                            <Link to="" className="uppercase font-bold text-secondary focus:bg-[#1f67f7]">
+                            <ImProfile className="text-xl text-green-500" />{t("My Profile")}
                             </Link>
                         </li>
                         <li>
@@ -62,7 +67,7 @@ const DashboardMainPage = () => {
                                 className={`uppercase font-bold text-secondary ${pathname.includes("/dashboard/uploadVideo") && "bg-[#1f67f7]"
                                     }`}
                             >
-                                {t("Upload video")}
+                                <HiCloudUpload className="text-xl text-green-500" />{t("Upload video")}
                             </Link>
                         </li>
                         <li>
@@ -71,7 +76,7 @@ const DashboardMainPage = () => {
                                 className={`uppercase font-bold text-secondary ${pathname.includes("/dashboard/myVideos") && "bg-[#1f67f7]"
                                     }`}
                             >
-                                {t("My Videos")}
+                                <AiOutlineMonitor className="text-xl text-green-500" />{t("My Videos")}
                             </Link>
                         </li>
                         {admin && (
@@ -81,7 +86,7 @@ const DashboardMainPage = () => {
                                     className={`uppercase font-bold text-secondary ${pathname.includes("/dashboard/makeAdmin") && "bg-[#1f67f7]"
                                         }`}
                                 >
-                                    {t("Make Admin")}
+                                    <RiAdminLine className="text-xl text-green-500" />{t("Make Admin")}
                                 </Link>
                             </li>
                         )}
@@ -93,10 +98,16 @@ const DashboardMainPage = () => {
                                         "bg-[#1f67f7]"
                                         }`}
                                 >
-                                    {t("Manage Videos")}
+                                    <MdOutlineManageAccounts className="text-xl text-green-500" />{t("Manage Videos")}
                                 </Link>
                             </li>
                         )}
+                        <label
+                            for="sidebar-dashboard"
+                            className="drawer-button mt-6 flex justify-end lg:hidden border"
+                        >
+                            <FaBackward className="text-3xl text-secondary justify-end" />
+                        </label>
                     </ul>
                 </div>
             </div>
