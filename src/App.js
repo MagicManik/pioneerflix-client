@@ -30,6 +30,7 @@ import UploadedVideo from "./components/Shared/Header/Uploaded/UploadedVideo";
 import { Suspense } from "react";
 import Loading from "./components/Shared/Loading/Loading";
 import RequireAuth from "./components/UserAccount/RequireAuth";
+import BanglaMovies from "./components/Movies/BanglaMovies/BanglaMovies";
 
 
 function App() {
@@ -87,6 +88,7 @@ function App() {
             ></Route>
           </Route>
           <Route path='/uploadedVideo/:uId' element={<UploadedVideo />} />
+          <Route path="/bangla" element={<BanglaMovies></BanglaMovies>}></Route>
         </Routes>
       </Suspense>
 

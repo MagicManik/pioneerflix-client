@@ -38,6 +38,17 @@ const megaMenuR2 = [
   { name: " Episodes", href: "/episodes", id: "6aod30kd" },
   { name: "Upcoming", href: "/upComing", id: "6ao2d30kd" },
 ];
+
+const megaMenuR3 = [
+  { name: "Bangla Movies", href: "/bangla", id: "293oc02c" },
+  { name: "English Movies", href: "/english", id: "2aod030vkd" },
+  { name: "Hindi Movies", href: "/hindi", id: "8aod030vk" },
+  { name: "Tamil Movies", href: "/tamil", id: "6aod30kd" },
+  { name: "Japanese Movies", href: "/Japanese", id: "6aod30kd" },
+  { name: "Chinese Movies", href: "/chinese", id: "6aod30kd" },
+  { name: "Turkish Movies", href: "/turkish", id: "6ao2d30kd" },
+];
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -46,8 +57,18 @@ const NavbarResponsive = ({ theme, setTheme }) => {
   // const [videos] = useVideos();
   const [scrollNavbar, setScrollNavbar] = useState(false);
   const [mega, setMega] = useState(false);
+  const [moviesMega, setMoviesMega] = useState(false);
 
   const navigateResultPage = useNavigate();
+
+  const handleMega = () => {
+    setMega(!mega);
+    setMoviesMega(false);
+  }
+  const handleMovies = () => {
+    setMega(false);
+    setMoviesMega(!moviesMega);
+  }
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -156,16 +177,41 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                           {/* ........for multiple language......... */}
                           {t("TVShows")}
                         </CustomLink>
+
+
+
+
+
+
+
+
+
+
+                        {/* 
                         <CustomLink
                           to="/movies"
                           className=" text-white  hover:text-white"
                         >
-                          {/* ........for multiple language......... */}
+                          ........for multiple language.........
                           {t("Movies")}
-                        </CustomLink>
+                        </CustomLink> */}
+
+
+                        {/* _____________________mmm_____________________ */}
+                        <button
+                          onClick={() => handleMovies(!moviesMega)}
+                          className=" text-white  flex  items-end  hover:text-white"
+                        >
+                          {t("Movies")}{" "}
+                          {moviesMega ? (
+                            <FaCaretUp className="ml-1 text-xl" />
+                          ) : (
+                            <FaCaretDown className="ml-1 text-xl" />
+                          )}
+                        </button>
 
                         <button
-                          onClick={() => setMega(!mega)}
+                          onClick={() => handleMega(!mega)}
                           className=" text-white  flex  items-end  hover:text-white"
                         >
                           {t("Categories")}{" "}
@@ -232,7 +278,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         <MdLightMode onClick={() => handleTheme("dark")} />
                       )}
                     </button>
-                    <Notification/>
+                    <Notification />
                     <Link
                       to="/solvePay"
                       className=" text-white text-lg bg-[#d41821] hover:bg-[#ff1622] px-4 mx-3 py-1 rounded-lg hidden md:block hover:text-white"
@@ -446,7 +492,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     {t("Subscribe")}
                   </Link>
                   <button
-                    onClick={() => setMega(!mega)}
+                    onClick={() => handleMega(!mega)}
                     className=" text-white  flex  items-end  hover:text-white"
                   >
                     Categories{" "}
@@ -481,7 +527,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   <li key={m.id}>
                     <Link
                       to={m.href}
-                      onClick={() => setMega(!mega)}
+                      onClick={() => handleMega(!mega)}
                       className="duration-200 hover:text-lg  hover:text-blue-600 "
                     >
                       {m.name}
@@ -494,7 +540,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   <li key={m.id}>
                     <Link
                       to={m.href}
-                      onClick={() => setMega(!mega)}
+                      onClick={() => handleMega(!mega)}
                       className="duration-200 hover:text-lg  hover:text-blue-600 "
                     >
                       {m.name}
@@ -502,6 +548,9 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   </li>
                 ))}
               </ul>
+
+
+
               <iframe
                 width="100%"
                 height="100%"
@@ -513,12 +562,32 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                 allowfullscreen
               ></iframe>
               <FaTimes
-                onClick={() => setMega(!mega)}
+                onClick={() => handleMega(!mega)}
                 className="absolute top-2 right-2 text-secondary text-2xl"
               />
             </div>
           </div>
         )}
+
+        {moviesMega &&
+          <div className="absolute bg-[#222] border-2 border-indigo-600 md:top-16 md:left-72 rounded z-30">
+            <div className="py-5 px-4 relative mx-auto  max-w-screen-xl text-base md:px-10">
+              <ul className="mb-4 space-y-3 md:mb-0">
+                {megaMenuR3.map((m) => (
+                  <li key={m.id}>
+                    <Link
+                      to={m.href}
+                      onClick={() => handleMovies(!moviesMega)}
+                      className="duration-200 hover:text-lg  hover:text-blue-600"
+                    >
+                      {m.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>}
+
       </div>
     </>
   );
