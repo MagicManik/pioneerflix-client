@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactPlayer from "react-player";
-import Jodi from "../../assets/video/Jodi.mp4";
 
 const MediaPlayer = ({channel}) => {
   console.log(channel);
     return (
         <ReactPlayer
           config={{ file: { attributes: { controlsList: "nodownload" } } }}
-          // Disable right click
           onContextMenu={(e) => e.preventDefault()}
           width="1024px"
           height="500px"
