@@ -33,7 +33,7 @@ const UploadVideo = () => {
         }
         
         if (admin) {
-            const url = 'https://infinite-island-65121.herokuapp.com/adminUploadVideo';
+            const url = 'http://localhost:5000/adminUploadVideo';
             fetch(url, {
                 method: 'POST',
                 headers: {
