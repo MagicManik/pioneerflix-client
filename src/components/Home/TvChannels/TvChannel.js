@@ -53,7 +53,6 @@ const TvChannel = () => {
       <hr className="line-" />
 
       <div className="justify-center flex pt-4 ">
-        <h2>Media-player</h2>
         <MediaPlayer></MediaPlayer>
         {/* <iframe
                     width="95%"
