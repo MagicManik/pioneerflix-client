@@ -3,7 +3,6 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import {
   FaAlignJustify,
   FaTimes,
-  FaRegBell,
   FaRegMoon,
   FaCaretDown,
   FaSearch,
@@ -19,7 +18,10 @@ import pioneerFlix from "../../../../assets/app-logo/pioneerflix.png";
 import "./NavbarResponsive.css";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
+import Notification from "./Notification";
+// import useVideos from "../../../../hooks/useVideos";
 // import VoiceSearch from "../../SearchResults/VoiceSearch";
+
 
 const megaMenuR1 = [
   { name: "Comedy", href: "/comedy", id: "293oc02c" },
@@ -79,7 +81,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
   };
 
   //<-------------multiple Language ----------->
-  const { i18n, t } = useTranslation(["profile"]);
+  const { i18n, t } = useTranslation(["profile"], [""]);
   useEffect(() => {
     if (localStorage.getItem("i18nextLng")?.length > 2) {
       i18next.changeLanguage("en");
@@ -149,14 +151,14 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         </CustomLink>
                         <CustomLink
                           to="/tv"
-                          className=" text-white  hover:text-white"
+                          className=" text-white hidden xl:block hover:text-white"
                         >
                           {/* ........for multiple language......... */}
                           {t("TVShows")}
                         </CustomLink>
                         <CustomLink
                           to="/movies"
-                          className=" text-white  hover:text-white"
+                          className=" text-white hidden xl:block  hover:text-white"
                         >
                           {/* ........for multiple language......... */}
                           {t("Movies")}
@@ -183,11 +185,11 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                           <option value="en">English</option>
                           <option value="bn">বাংলা</option>
                           <option value="amharic">አማርኛ</option>
-                          <option value="hindi">हिन्दी</option>
-                          <option value="armenian">Հայերեն</option>
                           <option value="arabic">العربية</option>
+                          <option value="hindi">हिन्दी</option>
                           <option value="russian">Russian</option>
                           <option value="ukraine">Ukraine</option>
+                          <option value="armenian">Հայերեն</option>
                           <option value="bn">Нохчийн</option>
                           <option value="bn">Чăваш</option>
                           <option value="bn">ᐃᓄᒃᑎᑐᑦ</option>
@@ -230,13 +232,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         <MdLightMode onClick={() => handleTheme("dark")} />
                       )}
                     </button>
-
-                    <button type="button" className=" text-white mx-2 md:mx-3">
-                      <span className="sr-only">View notifications</span>
-
-                      <FaRegBell className="h-6 w-6" aria-hidden="true" />
-                    </button>
-                    {/* subscribe now pc version */}
+                    <Notification/>
                     <Link
                       to="/solvePay"
                       className=" text-white text-lg bg-[#d41821] hover:bg-[#ff1622] px-4 mx-3 py-1 rounded-lg hidden md:block hover:text-white"
@@ -405,7 +401,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   </CustomLink>
                   <CustomLink
                     to="/tv"
-                    className=" text-white  hover:text-white"
+                    className=" text-white hidden   hover:text-white"
                   >
                     {/* ........for multiple language......... */}
                     {t("TVShows")}
@@ -460,16 +456,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       <FaCaretDown className="ml-1 text-xl" />
                     )}
                   </button>
-                  {user && (
-                    <CustomLink
-                      to="/dashboard"
-                      className=" text-white my-3 hover:text-white"
-                    >
-                      {" "}
-                      {/* ........for multiple language......... */}
-                      {t("Dashboard")}
-                    </CustomLink>
-                  )}
+                 
                 </div>
               </Disclosure.Panel>
             </>

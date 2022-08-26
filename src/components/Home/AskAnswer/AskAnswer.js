@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next';
 import './AskAnswer.css';
 
 const AskAnswer = () => {
-    const {t} =useTranslation(["askedQuestions"])
+    const { t } = useTranslation(["askedQuestions"])
     return (
         <div className='pb-3 custom-bg'>
             <div className='bg-primary w-full pb-24'>
 
-                <h1 className='text-center text-secondary py-12'>{t("Frequently Asked Questions")}</h1>
+                <h1 className='text-center text-secondary text-4xl py-12'>{t("Frequently Asked Questions")}</h1>
                 <div className=' lg:px-48'>
                     <div tabIndex="0" className="collapse collapse-arrow border accordiaon-bg">
                         <div className="collapse-title text-2xl font-bold">

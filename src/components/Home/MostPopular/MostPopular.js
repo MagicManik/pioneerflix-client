@@ -9,16 +9,12 @@ import './MostPopular.css';
 import { useTranslation } from 'react-i18next';
 
 const MostPopular = () => {
-    const [videos, setVideos] = useVideos();
-    const { t } =useTranslation(["home"])
+    const [videos] = useVideos();
+    const { t } = useTranslation(["home"])
 
-    // console.log(videos);
-    // category: "Bangla Movie"
+    let getTheme = localStorage.getItem("colorTheme");
 
     const mostPopularVideos = videos.filter(video => video.category === "Bangla Movie");
-
-
-    // console.log(mostPopularVideos);
 
     var settings = {
         dots: false,
@@ -58,58 +54,43 @@ const MostPopular = () => {
 
 
     return (
-        <section className=' text-secondary'>
-            <div className='pb-3 custom-bg'>
+        <section className='bg-primary section-border'>
 
-                <div className='bg-primary pl-5 video-container-II'>
-                    <h1 className='text-2xl pt-6'>{t("POPULARMOVIES")}</h1>
+            <div className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
+                <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-0" : "text-black text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-0"}>{t("POPULARMOVIES")}</h1>
+                <Slider {...settings} className=''>
+                    {
+                        mostPopularVideos.map(movie =>
 
-                    <div className='pb-10'>
-                        <Slider {...settings}>
+                            <div key={movie._id}>
 
-                            {
-                                mostPopularVideos.map(video =>
+                                <Link to={`/play/${movie._id}`}>
+                                    <div className="bg-white mr-2 lg:mr-5 shadow py-2 lg:py-3 px-2 lg:px-3 rounded-2xl">
+                                        <img className='zoom-div-I block mx-auto rounded-lg' src={movie.imgLink} alt="" />
+                                    </div>
+                                </Link>
 
-                                    <div key={video._id}>
-                                        <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={video._id}>
-                                            <Link to={`/play/${video._id}`}>
-                                                <img className='popular-movie' src={video.imgLink} alt="" />
-                                            </Link>
+                            </div>)
+                    }
+                </Slider>
+            </div>
 
+            <div className='bg-primary'>
+                <div className='pb-3 wraper'>
+                    <div className={getTheme === 'white' ? 'text-container text-secondary bg-black grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-secondary bg-white grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
-                                        </div>
-
-                                    </div>)
-                            }
-
-                        </Slider>
-                    </div >
-                    <i className="fa fal fa-angle-double-down"></i>
-                </div >
-
-                <div className='text-container text-secondary bg-primary grid lg:grid-cols-2 gap-4 items-center sm:grid-cols-1'>
-
-                    <div className='text-container-right'>
-                        <h1 className='text-5xl font-bold m'>{t("EnjoyMostPopularMoviesAllTimes")}</h1>
-                        <p className=' text-2xl pr-3'>{t("Watchmovies,behappy,andsmilefromthebottomofyourheart")}</p>
-                    </div>
-
-                    <div className='our-story-card-animation-container pb-16'>
-                        <img className='tv-img' src={offlineWatch} alt="" />
-
-                        <div className='our-story-card-animation' data-uia="our-story-card-animation">
-
-                            <video className='our-story-card-video'
-
-                                data-uia="our-story-card-video" autoPlay playsInline muted loop>
-                                <source src='https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/video-tv-0819.m4v' type='video/mp4' />
-
-                            </video>
+                        <div className='text-container-left'>
+                            <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading'>{t("EnjoyMostPopularMoviesAllTimes")}</h1>
+                            <p className='pt-2 lg:pt-2 lg:text-3xl'>{t("Watchmovies,behappy,andsmilefromthebottomofyourheart")}</p>
                         </div>
 
+                        <div className='our-story-card-animation-container pb-20'>
+                            <img className='tv-img rounded-xl ' src={offlineWatch} alt="" />
+                        </div>
                     </div>
                 </div>
             </div>
+
         </section >
     );
 };
