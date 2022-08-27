@@ -8,6 +8,7 @@ import {
   FaSearch,
   FaCaretUp,
 } from "react-icons/fa";
+import userPhoto from '../../../../assets/app-logo/download.svg';
 import { MdLightMode } from "react-icons/md";
 import auth from "../../../../firebase.init";
 import CustomLink from "../../customLink/CustomLink";
@@ -111,7 +112,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
   const handleLanguageChange = (e) => {
     i18n.changeLanguage(e.target.value);
-    console.log("object");
+    // console.log("object");
   };
 
   window.addEventListener("scroll", changeBackground);
@@ -301,7 +302,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                           {user ? (
                             <img
                               className="h-9 w-9 rounded-full"
-                              src={user?.photoURL}
+                              src={user?.photoURL || userPhoto}
                               alt=""
                             />
                           ) : (
@@ -315,6 +316,8 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         </Menu.Button>
                       </div>
 
+
+                      {/* My Profile || Manik Islam Mahi */}
                       <Transition
                         as={Fragment}
                         enter="transition ease-out duration-100"
@@ -330,7 +333,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                             {({ active }) => (
                               <img
                                 className="block w-4/12 mx-auto rounded-full"
-                                src={user?.photoURL}
+                                src={user?.photoURL || userPhoto}
                                 alt=""
                               />
                             )}
@@ -502,7 +505,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       <FaCaretDown className="ml-1 text-xl" />
                     )}
                   </button>
-                 
+
                 </div>
               </Disclosure.Panel>
             </>

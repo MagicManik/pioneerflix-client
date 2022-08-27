@@ -4,7 +4,7 @@ const useWatchHistory = (email) => {
     const [watchVideo, setWatchVideo] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/library/${email}`)
+        fetch(`https://infinite-island-65121.herokuapp.com/library/${email}`)
             .then(res => res.json())
             .then(data => setWatchVideo(data))
     }, [email]);

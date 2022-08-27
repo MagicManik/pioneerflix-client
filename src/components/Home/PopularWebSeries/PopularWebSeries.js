@@ -9,7 +9,7 @@ const PopularWebSeries = () => {
 
     const [videos] = useVideos();
 
-    const kidsVideos = videos?.filter(video => video.category === 'Kids Movie');
+    const kidsVideos = videos?.filter(video => video.category === 'Popular Web Series');
     // console.log(videos)
 
     const { t } = useTranslation(["home"])

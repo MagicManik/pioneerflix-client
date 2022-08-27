@@ -18,10 +18,8 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import useVideos from "../../hooks/useVideos";
 import usePaidUser from "../../hooks/usePaidUser";
-import useWatchHistory from "../../hooks/useWatchHistory"
+// import useWatchHistory from "../../hooks/useWatchHistory"
 import Payments from "../Payments/Payments";
-import MediaPlayer from "../ReactPlayer/MediaPlayer";
-import MediaPlayerDetails from "./MediaPlayerDetails";
 
 const Details = () => {
   const { id } = useParams();
@@ -33,7 +31,7 @@ const Details = () => {
   const [hover, setHover] = useState(null);
   const [ratings] = useRatings(id, rating);
   const [paidUser] = usePaidUser(user);
-  const [watchVideo] = useWatchHistory(user?.email);
+  // const [watchVideo] = useWatchHistory(user?.email);
   // const navigate = useNavigate();
 
   const paid = paidUser?.paid;
@@ -167,28 +165,27 @@ const Details = () => {
     email: user?.email,
     videoLink: videoLink,
     videoTitle: title,
-    // videoDescription:description
   };
 
-  useEffect(() => {
-    if (title) {
-      const remaining = watchVideo?.filter((v) => v?.videoId === id);
-      if (remaining?.length === 0) {
-        // fetch("https://infinite-island-65121.herokuapp.com/library", {
-        fetch("http://localhost:5000/library", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(libraryInfo),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            // console.log(data);
-          });
-      }
-    }
-  }, [title,watchVideo]);
+  // useEffect(() => {
+  //   if (title) {
+  //     const remaining = watchVideo?.filter((v) => v?.videoId === id);
+  //     if (remaining?.length === 0) {
+  //       // fetch("https://infinite-island-65121.herokuapp.com/library", {
+  //       fetch("http://localhost:5000/library", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(libraryInfo),
+  //       })
+  //         .then((response) => response.json())
+  //         .then((data) => {
+  //           // console.log(data);
+  //         });
+  //     }
+  //   }
+  // }, [title, watchVideo]);
 
   const handleAddList = () => {
     fetch("https://infinite-island-65121.herokuapp.com/favorite", {
@@ -251,7 +248,7 @@ const Details = () => {
             <div className="md:px-14 px-3 pt-16 bg-primary text-secondary">
               <div className="justify-center flex ">
 
-                {/* <iframe
+                <iframe
                   width="95%"
                   className="mt-1"
                   height="500px"
@@ -260,10 +257,7 @@ const Details = () => {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                ></iframe> */}
-                <MediaPlayerDetails
-                video={video}
-                ></MediaPlayerDetails>
+                ></iframe>
 
               </div>
 

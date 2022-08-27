@@ -13,23 +13,23 @@ const Favorite = () => {
       .then((data) => {
         setFData(data);
       });
-  }, [user.email,fData]);
+  }, [user.email, fData]);
 
 
-// const handleDeleteVideo = (id) => {
-//   const url = `http://localhost:5000/favorite/${id}`;
-//   fetch(url, {
-//       method: 'DELETE',
-//       headers: {
-//           'content-type': 'application/json'
-//       }
-//   })
+  // const handleDeleteVideo = (id) => {
+  //   const url = `https://infinite-island-65121.herokuapp.com/favorite/${id}`;
+  //   fetch(url, {
+  //       method: 'DELETE',
+  //       headers: {
+  //           'content-type': 'application/json'
+  //       }
+  //   })
 
-//       .then(res => res.json())
-//       .then(result => {
-//           toast.success(`${id} is deleted from UI`)
-//       })
-// }
+  //       .then(res => res.json())
+  //       .then(result => {
+  //           toast.success(`${id} is deleted from UI`)
+  //       })
+  // }
 
   // console.log(fData)
   return (
