@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaShareAlt, FaStar, } from "react-icons/fa";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiLike } from "react-icons/bi";
@@ -29,10 +29,12 @@ const Details = () => {
   const [comments] = useComments();
   const [rating, setRating] = useState(null)
   const [hover, setHover] = useState(null);
-  const [ratings] = useRatings(id, rating);
+  const [data, refetch] = useRatings(id);
   const [paidUser] = usePaidUser(user);
   // const [watchVideo] = useWatchHistory(user?.email);
   // const navigate = useNavigate();
+
+  // console.log(data)
 
   const paid = paidUser?.paid;
 
@@ -53,9 +55,10 @@ const Details = () => {
   const commentDisplay = comments?.filter(comment => comment.id === id);
 
   // RATINGS____
-  const totalRating = ratings?.reduce((a, b) => a + b.star, 0);
-  const averageRating = (totalRating / ratings?.length).toFixed(1);
-  const userStar = ratings?.filter(rating => rating?.email === user?.email);
+  const totalRating = data?.reduce((a, b) => a + b.star, 0);
+
+  const averageRating = (totalRating / data?.length || 0).toFixed(1);
+  const userStar = data?.filter(rating => rating?.email === user?.email);
   let displayStar = (userStar?.[0]?.star);
 
   // console.log(displayStar)
@@ -130,23 +133,45 @@ const Details = () => {
       });
   };
 
-
   // Handle Rating || Manik Islam Mahi
-  const handleReview = (star) => {
+  const handleRating = (star) => {
     setRating(star);
-    console.log(star);
     const name = user?.displayName;
     const email = user?.email;
     const rating = { id, star, name, email };
-
     const url = `https://infinite-island-65121.herokuapp.com/rating/${email}`
-
     fetch(url, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(rating)
+    })
+      .then(res => res.json())
+      .then(result => {
+        if (result) {
+          refetch();
+        }
+      })
+  };
+
+  // Handle My List || Manik Islam Mahi
+  const handleMyList = () => {
+
+    const addMyList = {
+      id: id,
+      title: title,
+      email: user?.email,
+      videoLink: videoLink,
+      imgLink: imgLink,
+    }
+
+    fetch(`http://localhost:5000/mylist/${user?.email}`, {
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(addMyList)
     })
       .then(res => res.json())
       .then(result => {
@@ -200,6 +225,7 @@ const Details = () => {
 
 
   // console.log(videos)
+
 
   var settings = {
     dots: false,
@@ -269,7 +295,7 @@ const Details = () => {
                         return (
                           <label key={i}>
 
-                            <input type="radio" className="hidden" name="rating" value={ratingValue} onClick={() => handleReview(ratingValue)} />
+                            <input type="radio" className="hidden" name="rating" value={ratingValue} onClick={() => handleRating(ratingValue)} />
 
                             <FaStar className="ml-2" color={ratingValue <= (hover || rating || displayStar) ? '#ff9501' : '#222'} size={20}
                               onMouseEnter={() => setHover(ratingValue)}
@@ -297,13 +323,13 @@ const Details = () => {
                       <div className={likedUser?.length >= 1 ? 'text-[#ff9501]' : ''}>Like {totalLike?.length}</div>
                     </div>
                     <div className="flex items-center mr-3">
-                      {/* <button
+                      <button
                         onClick={handleMyList}
                         className="btn btn-circle like-btn"
                         title="Add your list"
                       >
                         <AiOutlinePlus />
-                      </button> */}
+                      </button>
                       <span>My List</span>
                     </div>
                     <div className="flex items-center">
