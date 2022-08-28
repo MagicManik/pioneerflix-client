@@ -11,6 +11,7 @@ import {
 import userPhoto from '../../../../assets/app-logo/download.svg';
 import { MdLightMode } from "react-icons/md";
 import auth from "../../../../firebase.init";
+import { BiLike } from "react-icons/bi";
 import CustomLink from "../../customLink/CustomLink";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
@@ -20,6 +21,7 @@ import "./NavbarResponsive.css";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import Notification from "./Notification";
+import { MdPlaylistAdd } from "react-icons/md";
 // import useVideos from "../../../../hooks/useVideos";
 // import VoiceSearch from "../../SearchResults/VoiceSearch";
 
@@ -178,24 +180,6 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                           {/* ........for multiple language......... */}
                           {t("TVShows")}
                         </CustomLink>
-
-
-
-
-
-
-
-
-
-
-                        {/* 
-                        <CustomLink
-                          to="/movies"
-                          className=" text-white hidden xl:block  hover:text-white"
-                        >
-                          ........for multiple language.........
-                          {t("Movies")}
-                        </CustomLink> */}
 
 
                         {/* _____________________mmm_____________________ */}
@@ -384,19 +368,37 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                               </Link>
                             )}
                           </Menu.Item>
+
                           <Menu.Item>
                             {({ active }) => (
                               <Link
-                                to="favorite"
+                                to="likedvideos"
                                 className={classNames(
                                   active
-                                    ? "bg-zinc-800 w-full text-left"
-                                    : "w-full",
+                                    ? "bg-zinc-800 w-full text-left flex items-center"
+                                    : "w-full flex items-center",
                                   "block px-4 py-2 text-sm text-left"
                                 )}
                               >
-                                <i class="fa fal fa-video mr-2"></i>
-                                {t("Favorite Videos")}
+                                <BiLike className="mr-2 text-lg" />
+                                {t("Liked Videos")}
+                              </Link>
+                            )}
+                          </Menu.Item>
+
+                          <Menu.Item>
+                            {({ active }) => (
+                              <Link
+                                to="mylist"
+                                className={classNames(
+                                  active
+                                    ? "bg-zinc-800 w-full text-left flex items-center"
+                                    : "w-full flex items-center",
+                                  "block px-4 py-2 text-sm text-left"
+                                )}
+                              >
+                                <MdPlaylistAdd className="mr-2 text-lg"></MdPlaylistAdd>
+                                {t("My List")}
                               </Link>
                             )}
                           </Menu.Item>

@@ -55,7 +55,7 @@ function App() {
           <Route path="/about" element={<About></About>}></Route>
           <Route path='/channel/:id' element={<TvChannel />}></Route>
           <Route path="watchList" element={<Library />}></Route>
-          <Route path="favorite" element={<Favorite />}></Route>
+          <Route path="mylist" element={<Favorite />}></Route>
           <Route path='/play/:id'
             element={
               <RequireAuth>

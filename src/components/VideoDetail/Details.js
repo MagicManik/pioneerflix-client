@@ -36,14 +36,12 @@ const Details = () => {
 
   const paid = paidUser?.paid;
 
-  console.log(paid, 'manik vai');
-
   const { videoLink, imgLink, title, category, description, duration } = video;
   const [videos] = useVideos();
 
 
   // TOTAL LIKE____
-  // jodi fetch kora like er id soman video details page er id hoy tahole je data paoya jabe ogolai hole ei video er total like.
+  // jodi fetch kora like er id soman video details page er id hoy tahole je data paoya jabe ogolai hobe ei video er total like.
   const totalLike = likes?.filter((li) => li.id === id);
 
   // USER'S LIKE____
@@ -160,12 +158,12 @@ const Details = () => {
 
 
   // Handle Review || Shihab Uddin
-  const libraryInfo = {
-    videoId: id,
-    email: user?.email,
-    videoLink: videoLink,
-    videoTitle: title,
-  };
+  // const libraryInfo = {
+  //   videoId: id,
+  //   email: user?.email,
+  //   videoLink: videoLink,
+  //   videoTitle: title,
+  // };
 
   // useEffect(() => {
   //   if (title) {
@@ -187,19 +185,18 @@ const Details = () => {
   //   }
   // }, [title, watchVideo]);
 
-  const handleAddList = () => {
-    fetch("https://infinite-island-65121.herokuapp.com/favorite", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(libraryInfo),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log(data);
-      });
-  };
+  // const handleAddList = () => {
+  //   fetch("https://infinite-island-65121.herokuapp.com/favorite", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(libraryInfo),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //     });
+  // };
 
 
   // console.log(videos)
@@ -300,13 +297,13 @@ const Details = () => {
                       <div className={likedUser?.length >= 1 ? 'text-[#ff9501]' : ''}>Like {totalLike?.length}</div>
                     </div>
                     <div className="flex items-center mr-3">
-                      <button
-                        onClick={handleAddList}
+                      {/* <button
+                        onClick={handleMyList}
                         className="btn btn-circle like-btn"
                         title="Add your list"
                       >
                         <AiOutlinePlus />
-                      </button>
+                      </button> */}
                       <span>My List</span>
                     </div>
                     <div className="flex items-center">
