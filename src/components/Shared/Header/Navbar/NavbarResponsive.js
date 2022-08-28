@@ -19,9 +19,9 @@ import "./NavbarResponsive.css";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import Notification from "./Notification";
+import VoiceSearch from "../../SearchResults/VoiceSearch";
 // import useVideos from "../../../../hooks/useVideos";
 // import VoiceSearch from "../../SearchResults/VoiceSearch";
-
 
 const megaMenuR1 = [
   { name: "Comedy", href: "/comedy", id: "293oc02c" },
@@ -221,7 +221,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     </div>
 
                     {/* Voice Search Component */}
-                    {/* <VoiceSearch></VoiceSearch> */}
+                    <VoiceSearch></VoiceSearch>
                     <button
                       className=" text-white text-xl"
                       onClick={() => setTheme(!theme)}
@@ -232,7 +232,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         <MdLightMode onClick={() => handleTheme("dark")} />
                       )}
                     </button>
-                    <Notification/>
+                    <Notification />
                     <Link
                       to="/solvePay"
                       className=" text-white text-lg bg-[#d41821] hover:bg-[#ff1622] px-4 mx-3 py-1 rounded-lg hidden md:block hover:text-white"
@@ -456,7 +456,6 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       <FaCaretDown className="ml-1 text-xl" />
                     )}
                   </button>
-                 
                 </div>
               </Disclosure.Panel>
             </>
