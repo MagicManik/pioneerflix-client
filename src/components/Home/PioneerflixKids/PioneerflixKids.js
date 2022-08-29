@@ -13,8 +13,6 @@ const PioneerflixKids = () => {
 
     const kidsVideos = videos?.filter(video => video.category === 'Kids Video');
 
-    console.log(kidsVideos);
-
     const { t } = useTranslation(["home"])
 
     let getTheme = localStorage.getItem("colorTheme");

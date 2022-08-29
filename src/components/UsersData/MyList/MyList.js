@@ -1,28 +1,17 @@
 import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../../firebase.init';
 import { TbHeartPlus } from "react-icons/tb";
 import { useNavigate } from 'react-router-dom';
+import useMyList from '../../../hooks/useMyList';
 
 const MyList = () => {
 
-    const [user] = useAuthState(auth);
-
-    const [myList, setMyList] = useState([]);
+    const [myList] = useMyList();
 
     const navigate = useNavigate();
 
     const handlePlay = (id) => {
         navigate(`/play/${id}`)
-    }
-
-    useEffect(() => {
-        fetch(`http://localhost:5000/mylist/${user?.email}`)
-            .then(req => req.json())
-            .then(data => setMyList(data))
-    }, [user])
+    };
 
     return (
         <section className='py-16 bg-black'>

@@ -22,15 +22,12 @@
 }
 
 .my-profile {
-    /* background: linear-gradient(45deg, black, transparent); */
     transition: .3s;
 }
 
 .my-profile:hover {
-    /* background: linear-gradient(330deg, black, transparent); */
     font-size: 15px !important;
     padding: 8.5px 0;
-
 }
 
 .search-input {
@@ -138,18 +135,23 @@ input:-webkit-autofill {
     background-color: #222 !important;
 }
 
+.search-container {
+    border-radius: 18px;
+    column-count: 0 !important;
+    column-gap: 0 !important;
+}
+
+.search-container form input {
+    border: 0;
+    outline: 0;
+}
+
 @media screen and (max-width: 639px) {
 
     .header-scrolling-mobile {
         position: static !important;
         background-color: black;
         border-bottom: 1px solid #222;
-    }
-
-    .space-y-1>div {
-        padding: 10px;
-        border-radius: 8px;
-        background-color: #222;
     }
 
     .space-y-1>div>a {

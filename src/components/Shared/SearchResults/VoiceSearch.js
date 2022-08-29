@@ -1,48 +1,51 @@
-// import React from "react";
-// import { useState } from "react";
-// import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
-// import { useNavigate } from "react-router-dom";
-// import SpeechRecognition, {
-//     useSpeechRecognition,
-// } from "react-speech-recognition";
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { FaMicrophone, FaMicrophoneSlash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-// const VoiceSearch = () => {
-//     const { transcript, resetTranscript, browserSupportsSpeechRecognition } =
-//         useSpeechRecognition();
-//     const [voiceSearch, setVoiceSearch] = useState(false);
+import SpeechRecognition, {
+    useSpeechRecognition,
+} from "react-speech-recognition";
 
-//     const navigateVoiceResultPage = useNavigate();
+const VoiceSearch = () => {
+    const { transcript, resetTranscript, browserSupportsSpeechRecognition } =
+        useSpeechRecognition();
+    const [voiceSearch, setVoiceSearch] = useState(false);
 
-//     if (voiceSearch) {
-//         if (transcript) {
-//             const voiceSearchedValue = transcript;
-//             navigateVoiceResultPage(`result/${voiceSearchedValue}`);
-//         }
-//     }
+    const navigateVoiceResultPage = useNavigate();
 
-//     if (!browserSupportsSpeechRecognition) {
-//         return <span>Browser doesn't support speech recognition.</span>;
-//     }
+    if (voiceSearch && transcript) {
+        const voiceSearchedValue = transcript;
+        navigateVoiceResultPage(`result/${voiceSearchedValue}`);
+        setTimeout(() => {
+            setVoiceSearch(false);
+        }, 1000);
+    }
 
-//     return (
-//         <button
-//             onClick={() => {
-//                 setVoiceSearch(!voiceSearch);
-//             }}
-//         >
-//             {voiceSearch ? (
-//                 <FaMicrophone
-//                     className=" text-white text-xl mr-3"
-//                     onClick={resetTranscript}
-//                 ></FaMicrophone>
-//             ) : (
-//                 <FaMicrophoneSlash
-//                     className=" text-white text-xl mr-3"
-//                     onClick={SpeechRecognition.startListening}
-//                 ></FaMicrophoneSlash>
-//             )}
-//         </button>
-//     );
-// };
+    if (!browserSupportsSpeechRecognition) {
+        return <span>Browser doesn't support speech recognition.</span>;
+    }
 
-// export default VoiceSearch;
+    return (
+        <button
+            onClick={() => {
+                setVoiceSearch(!voiceSearch);
+            }}
+        >
+            {voiceSearch ? (
+                <FaMicrophone
+                    className=" text-white text-xl mr-3"
+                    onClick={SpeechRecognition.stopListening}
+                ></FaMicrophone>
+            ) : (
+                <FaMicrophoneSlash
+                    className=" text-white text-xl mr-3"
+                    onClick={SpeechRecognition.startListening}
+                ></FaMicrophoneSlash>
+            )}
+        </button>
+    );
+};
+
+export default VoiceSearch;

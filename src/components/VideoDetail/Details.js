@@ -18,8 +18,10 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import useVideos from "../../hooks/useVideos";
 import usePaidUser from "../../hooks/usePaidUser";
+import useMyList from "../../hooks/useMyList";
 // import useWatchHistory from "../../hooks/useWatchHistory"
 import Payments from "../Payments/Payments";
+import { useEffect } from "react";
 
 const Details = () => {
   const { id } = useParams();
@@ -27,42 +29,36 @@ const Details = () => {
   const [video] = useVideo(id);
   const [likes] = useLikes();
   const [comments] = useComments();
-  const [rating, setRating] = useState(null)
+  const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   const [data, refetch] = useRatings(id);
   const [paidUser] = usePaidUser(user);
+  const [myList] = useMyList();
   // const [watchVideo] = useWatchHistory(user?.email);
-  // const navigate = useNavigate();
-
-  // console.log(data)
 
   const paid = paidUser?.paid;
 
   const { videoLink, imgLink, title, category, description, duration } = video;
   const [videos] = useVideos();
 
-
-  // TOTAL LIKE____
-  // jodi fetch kora like er id soman video details page er id hoy tahole je data paoya jabe ogolai hobe ei video er total like.
+  // TOTAL LIKE FOR THIS VIDEO
   const totalLike = likes?.filter((li) => li.id === id);
 
-  // USER'S LIKE____
-  // backend theke fetch kora likes id er sathe video id match korle ebong fetch kore ana oi likes er email er sathe video details page er user er id show show korle je deta pabo otai hobe user like. user er like pele amra conditional css use korbo.
+  // USER'S LIKE
   const likedUser = likes?.filter((li) => li.id === id && li.email === user?.email);
 
-  // DISPLAY COMMENT____
-  //  backend theke fetch kora comments er id soman jodi details page er video id hoy, tahole comment dekhabe.
+  // USER'S MY LIST
+  const hasUserMyList = myList?.filter(list => list.id === id);
+
+  // DISPLAY COMMENT
   const commentDisplay = comments?.filter(comment => comment.id === id);
 
-  // RATINGS____
+  // RATINGS
   const totalRating = data?.reduce((a, b) => a + b.star, 0);
 
   const averageRating = (totalRating / data?.length || 0).toFixed(1);
   const userStar = data?.filter(rating => rating?.email === user?.email);
   let displayStar = (userStar?.[0]?.star);
-
-  // console.log(displayStar)
-
 
   // handler like || Manik Islam Mahi
   const handleLike = () => {
@@ -169,29 +165,61 @@ const Details = () => {
       imgLink: imgLink,
     }
 
-    fetch(`http://localhost:5000/mylist/${user?.email}`, {
+    if (hasUserMyList.length > 0) {
+
+      const id = hasUserMyList[0]._id;
+
+      const url = `https://infinite-island-65121.herokuapp.com/mylist/${id}`;
+
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            // alert("Deleted");
+          }
+        });
+    }
+
+    else {
+      fetch(`https://infinite-island-65121.herokuapp.com/mylist/${user?.email}`, {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(addMyList)
+      })
+        .then(res => res.json())
+        .then(result => {
+          // console.log(result);
+        })
+    }
+  };
+
+
+  // set watch list || Manik Islam Mahi
+  const watchList = {
+    id: id,
+    email: user?.email,
+    videoLink: videoLink,
+    imgLink: imgLink,
+    videoTitle: title,
+  };
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/watchlist/${id}`, {
       method: "PUT",
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(addMyList)
+      body: JSON.stringify(watchList)
     })
       .then(res => res.json())
-      .then(result => {
-        // console.log(result);
-      })
-  };
+      .then(data => console.log(data))
+  }, []);
 
 
-
-
-  // Handle Review || Shihab Uddin
-  // const libraryInfo = {
-  //   videoId: id,
-  //   email: user?.email,
-  //   videoLink: videoLink,
-  //   videoTitle: title,
-  // };
 
   // useEffect(() => {
   //   if (title) {
@@ -212,22 +240,6 @@ const Details = () => {
   //     }
   //   }
   // }, [title, watchVideo]);
-
-  // const handleAddList = () => {
-  //   fetch("https://infinite-island-65121.herokuapp.com/favorite", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(libraryInfo),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //     });
-  // };
-
-
-  // console.log(videos)
 
 
   var settings = {
@@ -325,23 +337,25 @@ const Details = () => {
                       </button>
                       <div className={likedUser?.length >= 1 ? 'text-[#ff9501]' : ''}>Like {totalLike?.length}</div>
                     </div>
+
+                    {/* here is my list button */}
                     <div className="flex items-center mr-3">
                       <button
                         onClick={handleMyList}
                         className="btn btn-circle like-btn"
-                        title="Add your list"
-                      >
-                        <AiOutlinePlus />
+                        title="Add your list">
+                        <AiOutlinePlus className={hasUserMyList?.length >= 1 ? 'fill-[#ff9501]' : ''} />
                       </button>
-                      <span>My List</span>
+                      <span className={hasUserMyList?.length >= 1 ? 'text-[#ff9501]' : ''}>My List</span>
                     </div>
+
                     <div className="flex items-center">
                       <label
                         htmlFor="my-share-modal-3"
                         className="btn btn-circle like-btn"
                         title="Share"
                       >
-                        <FaShareAlt className="text-xl" />
+                        <FaShareAlt className="text-xl active:text-[#ff9501]" />
                       </label>
                       <span>Share</span>
                     </div>
@@ -399,7 +413,6 @@ const Details = () => {
                           <Link to={`/play/${video._id}`}>
                             <img className='popular-movie' src={video.imgLink} alt="" />
                           </Link>
-
 
                         </div>
 

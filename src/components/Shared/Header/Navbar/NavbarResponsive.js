@@ -23,7 +23,7 @@ import i18next from "i18next";
 import Notification from "./Notification";
 import { MdPlaylistAdd } from "react-icons/md";
 // import useVideos from "../../../../hooks/useVideos";
-// import VoiceSearch from "../../SearchResults/VoiceSearch";
+import VoiceSearch from "../../SearchResults/VoiceSearch";
 
 
 const megaMenuR1 = [
@@ -124,7 +124,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
         className={
           scrollNavbar
             ? "sticky header-scrolling top-0  left-0 z-20 border-0"
-            : "border-0 absolute left-0 right-0 z-20 bg-transparent"
+            : "border-0 static lg:absolute left-0 right-0 z-20 bg-black lg:bg-transparent"
         }
       >
         <Disclosure as="nav">
@@ -149,13 +149,17 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   <div className="flex-1 flex items-center justify-center sm:justify-start">
                     <div className="flex-shrink-0 flex items-center">
                       <Link to={"/"}>
+
+                        {/* Mobile Device Logo */}
                         <img
-                          className="block lg:hidden h-8 w-auto"
+                          className="block lg:hidden h-8 w-auto mr-20"
                           src={pioneerFlix}
                           alt="Workflow"
                         />
                       </Link>
                       <Link to={"/"}>
+
+                        {/* Desktop Device Logo */}
                         <img
                           className="hidden lg:block h-12 pt-2 w-auto"
                           src={pioneerFlix}
@@ -240,19 +244,22 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       <div className="flex absolute inset-y-0  left-0 items-center pl-3 pointer-events-none">
                         <FaSearch className="text-sm search-icon" />
                       </div>
-                      <form onSubmit={handleSearch}>
-                        <input
-                          type="text"
-                          id="search-navbar"
-                          name="search"
-                          className="block p-1 hover:p-1.5 py-1 hover:py-1 pl-10 duration-1000 hover:px-14 text-white focus:px-14  hover:text-white  hover:scale-x-100 mr-1 rounded-full border search-input sm:text-sm"
-                          placeholder="search..."
-                        />
-                      </form>
+                      <div className="flex search-container bg-[#222]">
+                        <form onSubmit={handleSearch}>
+                          <input
+                            type="text"
+                            id="search-navbar"
+                            name="search"
+                            className="block p-1 hover:p-1.5 py-1 hover:py-1 pl-10 duration-1000  text-white hover:pl-14 focus:pl-14 hover:pr-3 focus:pr-3  hover:text-white  hover:scale-x-100 mr-1 rounded-full border search-input sm:text-sm"
+                            placeholder="search..."
+                          />
+                        </form>
+                        <VoiceSearch></VoiceSearch>
+                      </div>
                     </div>
 
                     {/* Voice Search Component || Shaila APu */}
-                    {/* <VoiceSearch></VoiceSearch> */}
+
                     <button
                       className=" text-white text-xl"
                       onClick={() => setTheme(!theme)}
@@ -443,28 +450,30 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                 </div>
               </div>
 
+
+              {/* mobile devices togglebar menu */}
               <Disclosure.Panel className="sm:hidden">
-                <div className="px-2 pt-2 pb-3 space-y-1">
-                  <CustomLink to="/" className=" text-white  hover:text-white">
+                <div className="px-2 pt-2 pb-3 space-y-1 pl-4">
+
+                  <CustomLink to="/" className=" text-white mb-4 block hover:text-white">
                     {" "}
                     {/* ........for multiple language......... */}
                     {t("Home")}
                   </CustomLink>
-                  <CustomLink
+
+                  {/* <CustomLink
                     to="/tv"
-                    className=" text-white hidden   hover:text-white"
+                    className=" text-white hidden hover:text-white"
                   >
-                    {/* ........for multiple language......... */}
                     {t("TVShows")}
-                  </CustomLink>
-                  <CustomLink
-                    id="mega-menu-full-image-dropdown"
-                    to="/movies"
-                    className=" text-white  hover:text-white"
-                  >
+                  </CustomLink> */}
+
+                  <CustomLink to="/movies" className=" text-white mb-4 block hover:text-white">
+                    {" "}
                     {/* ........for multiple language......... */}
                     {t("Movies")}
                   </CustomLink>
+
                   <select
                     className="border-none text-center bg-[#222] py-0 decoration-white rounded-2xl"
                     onChange={handleLanguageChange}
@@ -492,7 +501,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   {/* subscribe now phone version */}
                   <Link
                     to="/solvePay"
-                    className=" text-white block text-lg hover:text-white"
+                    className=" text-white py-4 block text-lg hover:text-white"
                   >
                     {t("Subscribe")}
                   </Link>
