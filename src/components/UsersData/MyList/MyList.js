@@ -2,15 +2,21 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
-import { FcLike } from 'react-icons/fc';
+import { TbHeartPlus } from "react-icons/tb";
+import { useNavigate } from 'react-router-dom';
 
 const MyList = () => {
 
     const [user] = useAuthState(auth);
 
     const [myList, setMyList] = useState([]);
+
+    const navigate = useNavigate();
+
+    const handlePlay = (id) => {
+        navigate(`/play/${id}`)
+    }
 
     useEffect(() => {
         fetch(`http://localhost:5000/mylist/${user?.email}`)
@@ -25,14 +31,11 @@ const MyList = () => {
                 {
                     myList.map(video =>
                         <div key={video._id} className='zoom-div-2 shadow-2xl mb-4'>
-                            <Link to={`/play/${video.id}`}>
+                            <button onClick={() => handlePlay(video.id)}>
                                 <img src={video.imgLink} alt="" />
-                                <div className='flex justify-between items-center px-3'>
-                                    <p className='text-lg'>{video.title}</p>
-                                    <FcLike className='text-2xl'></FcLike>
-                                </div>
-                            </Link>
-
+                                <TbHeartPlus className='text-3xl mx-auto fill-[#d41821] pt-2' />
+                                <p className='text-lg text-left text-[#ff9501]'>{video.title}</p>
+                            </button>
                         </div>
                     )
                 }

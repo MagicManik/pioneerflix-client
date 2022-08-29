@@ -69,7 +69,10 @@ const Details = () => {
     const like = true;
     const name = user?.displayName;
     const email = user?.email;
-    const newLike = { id, like, name, email };
+    const videoLink = video.videoLink;
+    const imgLink = video.imgLink;
+    const title = video.title;
+    const newLike = { id, like, name, email, imgLink, videoLink, title };
 
     const likedUser = likes.filter((li) => li.id === id && li.email === email);
 
