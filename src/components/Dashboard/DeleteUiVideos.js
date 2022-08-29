@@ -1,11 +1,11 @@
 import React from 'react';
 // import { useQuery } from '@tanstack/react-query';
 import DeleteUiVideoRow from './DeleteUiVideoRow';
-import { useGetAllPostQuery } from '../../services/post';
+import { useGetAllVideosQuery } from '../../services/post';
 import Loading from '../Shared/Loading/Loading';
 
 const DeleteUiVideos = () => {
-    const { data, refetch, isLoading } = useGetAllPostQuery();
+    const { data, refetch, isLoading } = useGetAllVideosQuery();
     // console.log(data);
 
     if(isLoading){
