@@ -30,6 +30,9 @@ import UploadedVideo from "./components/Shared/Header/Uploaded/UploadedVideo";
 import { Suspense } from "react";
 import Loading from "./components/Shared/Loading/Loading";
 import RequireAuth from "./components/UserAccount/RequireAuth";
+import BanglaMovies from "./components/Movies/BanglaMovies/BanglaMovies";
+import MyList from "./components/UsersData/MyList/MyList";
+import LikedVideos from "./components/UsersData/LikedVideos/LikedVideos";
 
 
 function App() {
@@ -51,6 +54,8 @@ function App() {
       <Suspense fallback={<Loading></Loading>}>
         <Routes>
           <Route path="/" element={<Home></Home>}></Route>
+          <Route path="/likedvideos" element={<LikedVideos></LikedVideos>}></Route>
+          <Route path="mylist" element={<MyList></MyList>}></Route>
           <Route path="/about" element={<About></About>}></Route>
           <Route path='/channel/:id' element={<TvChannel />}></Route>
           <Route path="watchList" element={<Library />}></Route>
@@ -87,6 +92,7 @@ function App() {
             ></Route>
           </Route>
           <Route path='/uploadedVideo/:uId' element={<UploadedVideo />} />
+          <Route path="/bangla" element={<BanglaMovies></BanglaMovies>}></Route>
         </Routes>
       </Suspense>
 

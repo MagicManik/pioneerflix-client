@@ -8,8 +8,10 @@ import {
   FaSearch,
   FaCaretUp,
 } from "react-icons/fa";
+import userPhoto from '../../../../assets/app-logo/download.svg';
 import { MdLightMode } from "react-icons/md";
 import auth from "../../../../firebase.init";
+import { BiLike } from "react-icons/bi";
 import CustomLink from "../../customLink/CustomLink";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
@@ -19,6 +21,7 @@ import "./NavbarResponsive.css";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import Notification from "./Notification";
+import { MdPlaylistAdd } from "react-icons/md";
 // import useVideos from "../../../../hooks/useVideos";
 // import VoiceSearch from "../../SearchResults/VoiceSearch";
 
@@ -38,6 +41,17 @@ const megaMenuR2 = [
   { name: " Episodes", href: "/episodes", id: "6aod30kd" },
   { name: "Upcoming", href: "/upComing", id: "6ao2d30kd" },
 ];
+
+const megaMenuR3 = [
+  { name: "Bangla Movies", href: "/bangla", id: "293oc02c" },
+  { name: "English Movies", href: "/english", id: "2aod030vkd" },
+  { name: "Hindi Movies", href: "/hindi", id: "8aod030vk" },
+  { name: "Tamil Movies", href: "/tamil", id: "6aod30kd" },
+  { name: "Japanese Movies", href: "/Japanese", id: "6aod30kd" },
+  { name: "Chinese Movies", href: "/chinese", id: "6aod30kd" },
+  { name: "Turkish Movies", href: "/turkish", id: "6ao2d30kd" },
+];
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -46,8 +60,18 @@ const NavbarResponsive = ({ theme, setTheme }) => {
   // const [videos] = useVideos();
   const [scrollNavbar, setScrollNavbar] = useState(false);
   const [mega, setMega] = useState(false);
+  const [moviesMega, setMoviesMega] = useState(false);
 
   const navigateResultPage = useNavigate();
+
+  const handleMega = () => {
+    setMega(!mega);
+    setMoviesMega(false);
+  }
+  const handleMovies = () => {
+    setMega(false);
+    setMoviesMega(!moviesMega);
+  }
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -90,7 +114,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
   const handleLanguageChange = (e) => {
     i18n.changeLanguage(e.target.value);
-    console.log("object");
+    // console.log("object");
   };
 
   window.addEventListener("scroll", changeBackground);
@@ -156,16 +180,23 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                           {/* ........for multiple language......... */}
                           {t("TVShows")}
                         </CustomLink>
-                        <CustomLink
-                          to="/movies"
-                          className=" text-white hidden xl:block  hover:text-white"
+
+
+                        {/* _____________________mmm_____________________ */}
+                        <button
+                          onClick={() => handleMovies(!moviesMega)}
+                          className=" text-white  flex  items-end  hover:text-white"
                         >
-                          {/* ........for multiple language......... */}
-                          {t("Movies")}
-                        </CustomLink>
+                          {t("Movies")}{" "}
+                          {moviesMega ? (
+                            <FaCaretUp className="ml-1 text-xl" />
+                          ) : (
+                            <FaCaretDown className="ml-1 text-xl" />
+                          )}
+                        </button>
 
                         <button
-                          onClick={() => setMega(!mega)}
+                          onClick={() => handleMega(!mega)}
                           className=" text-white  flex  items-end  hover:text-white"
                         >
                           {t("Categories")}{" "}
@@ -220,7 +251,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       </form>
                     </div>
 
-                    {/* Voice Search Component */}
+                    {/* Voice Search Component || Shaila APu */}
                     {/* <VoiceSearch></VoiceSearch> */}
                     <button
                       className=" text-white text-xl"
@@ -232,7 +263,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         <MdLightMode onClick={() => handleTheme("dark")} />
                       )}
                     </button>
-                    <Notification/>
+                    <Notification />
                     <Link
                       to="/solvePay"
                       className=" text-white text-lg bg-[#d41821] hover:bg-[#ff1622] px-4 mx-3 py-1 rounded-lg hidden md:block hover:text-white"
@@ -255,7 +286,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                           {user ? (
                             <img
                               className="h-9 w-9 rounded-full"
-                              src={user?.photoURL}
+                              src={user?.photoURL || userPhoto}
                               alt=""
                             />
                           ) : (
@@ -269,6 +300,8 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         </Menu.Button>
                       </div>
 
+
+                      {/* My Profile || Manik Islam Mahi */}
                       <Transition
                         as={Fragment}
                         enter="transition ease-out duration-100"
@@ -284,7 +317,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                             {({ active }) => (
                               <img
                                 className="block w-4/12 mx-auto rounded-full"
-                                src={user?.photoURL}
+                                src={user?.photoURL || userPhoto}
                                 alt=""
                               />
                             )}
@@ -335,19 +368,37 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                               </Link>
                             )}
                           </Menu.Item>
+
                           <Menu.Item>
                             {({ active }) => (
                               <Link
-                                to="favorite"
+                                to="likedvideos"
                                 className={classNames(
                                   active
-                                    ? "bg-zinc-800 w-full text-left"
-                                    : "w-full",
+                                    ? "bg-zinc-800 w-full text-left flex items-center"
+                                    : "w-full flex items-center",
                                   "block px-4 py-2 text-sm text-left"
                                 )}
                               >
-                                <i class="fa fal fa-video mr-2"></i>
-                                {t("Favorite Videos")}
+                                <BiLike className="mr-2 text-lg" />
+                                {t("Liked Videos")}
+                              </Link>
+                            )}
+                          </Menu.Item>
+
+                          <Menu.Item>
+                            {({ active }) => (
+                              <Link
+                                to="mylist"
+                                className={classNames(
+                                  active
+                                    ? "bg-zinc-800 w-full text-left flex items-center"
+                                    : "w-full flex items-center",
+                                  "block px-4 py-2 text-sm text-left"
+                                )}
+                              >
+                                <MdPlaylistAdd className="mr-2 text-lg"></MdPlaylistAdd>
+                                {t("My List")}
                               </Link>
                             )}
                           </Menu.Item>
@@ -446,7 +497,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     {t("Subscribe")}
                   </Link>
                   <button
-                    onClick={() => setMega(!mega)}
+                    onClick={() => handleMega(!mega)}
                     className=" text-white  flex  items-end  hover:text-white"
                   >
                     Categories{" "}
@@ -456,7 +507,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       <FaCaretDown className="ml-1 text-xl" />
                     )}
                   </button>
-                 
+
                 </div>
               </Disclosure.Panel>
             </>
@@ -472,7 +523,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   <li key={m.id}>
                     <Link
                       to={m.href}
-                      onClick={() => setMega(!mega)}
+                      onClick={() => handleMega(!mega)}
                       className="duration-200 hover:text-lg  hover:text-blue-600 "
                     >
                       {m.name}
@@ -485,7 +536,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   <li key={m.id}>
                     <Link
                       to={m.href}
-                      onClick={() => setMega(!mega)}
+                      onClick={() => handleMega(!mega)}
                       className="duration-200 hover:text-lg  hover:text-blue-600 "
                     >
                       {m.name}
@@ -493,6 +544,9 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   </li>
                 ))}
               </ul>
+
+
+
               <iframe
                 width="100%"
                 height="100%"
@@ -504,12 +558,32 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                 allowfullscreen
               ></iframe>
               <FaTimes
-                onClick={() => setMega(!mega)}
+                onClick={() => handleMega(!mega)}
                 className="absolute top-2 right-2 text-secondary text-2xl"
               />
             </div>
           </div>
         )}
+
+        {moviesMega &&
+          <div className="absolute bg-[#222] border-2 border-indigo-600 md:top-16 md:left-72 rounded z-30">
+            <div className="py-5 px-4 relative mx-auto  max-w-screen-xl text-base md:px-10">
+              <ul className="mb-4 space-y-3 md:mb-0">
+                {megaMenuR3.map((m) => (
+                  <li key={m.id}>
+                    <Link
+                      to={m.href}
+                      onClick={() => handleMovies(!moviesMega)}
+                      className="duration-200 hover:text-lg  hover:text-blue-600"
+                    >
+                      {m.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>}
+
       </div>
     </>
   );

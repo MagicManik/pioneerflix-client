@@ -12,7 +12,7 @@ const PioneerplixExclusive = () => {
 
     const [videos] = useVideos();
 
-    const exclusives = videos.filter(video => video.category === 'Exclusive');
+    const exclusives = videos.filter(video => video.category === 'Exclusive Movies');
 
     const { t } = useTranslation(["home"])
 
@@ -60,7 +60,7 @@ const PioneerplixExclusive = () => {
         <section className='bg-primary section-border'>
 
             <div className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
-                <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3" : "text-black text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3"}>{t("EXCLUSIVEMOVIES")}</h1>
+                <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-0 pt-2 lg:pt-3" : "text-black text-sm lg:text-lg pb-2 lg:pb-0 pt-2 lg:pt-3"}>{t("EXCLUSIVEMOVIES")}</h1>
                 <Slider {...settings} className=''>
                     {
                         exclusives.map(movie =>
@@ -68,8 +68,8 @@ const PioneerplixExclusive = () => {
                             <div key={movie._id}>
 
                                 <Link to={`/play/${movie._id}`}>
-                                    <div className="mr-2 lg:mr-3 shadow py-2 lg:py-3 px-2 lg:px-0 rounded-2xl">
-                                        <img className='zoom-div-I block mx-auto rounded-lg' src={movie.imgLink} alt="" />
+                                    <div className="mr-2 lg:mr-3 shadow py-2 lg:py-3 px-2 lg:px-0 rounded-2xl lg:pt-5">
+                                        <img className='zoom-div-2 block mx-auto rounded-lg' src={movie.imgLink} alt="" />
                                     </div>
                                 </Link>
 

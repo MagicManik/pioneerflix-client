@@ -11,7 +11,9 @@ const PioneerflixKids = () => {
 
     const [videos] = useVideos();
 
-    const kidsVideos = videos?.filter(video => video.category === 'Kids Movie');
+    const kidsVideos = videos?.filter(video => video.category === 'Kids Video');
+
+    console.log(kidsVideos);
 
     const { t } = useTranslation(["home"])
 
@@ -66,8 +68,8 @@ const PioneerflixKids = () => {
                             <div key={movie._id}>
 
                                 <Link to={`/play/${movie._id}`}>
-                                    <div className="mr-3 lg:mr-5 shadow py-2 lg:py-3 px-2 lg:px-0 rounded-2xl">
-                                        <img className='zoom-div-I block mx-auto rounded-lg' src={movie.imgLink} alt="" />
+                                    <div className="mr-2 lg:mr-3 shadow py-2 lg:py-3 px-2 lg:px-0 rounded-2xl lg:pt-5">
+                                        <img className='zoom-div-2 block mx-auto rounded-lg' src={movie.imgLink} alt="" />
                                     </div>
                                 </Link>
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaShareAlt, FaStar, } from "react-icons/fa";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiLike } from "react-icons/bi";
@@ -18,10 +18,8 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import useVideos from "../../hooks/useVideos";
 import usePaidUser from "../../hooks/usePaidUser";
-import useWatchHistory from "../../hooks/useWatchHistory"
+// import useWatchHistory from "../../hooks/useWatchHistory"
 import Payments from "../Payments/Payments";
-import MediaPlayer from "../ReactPlayer/MediaPlayer";
-import MediaPlayerDetails from "./MediaPlayerDetails";
 
 const Details = () => {
   const { id } = useParams();
@@ -31,21 +29,21 @@ const Details = () => {
   const [comments] = useComments();
   const [rating, setRating] = useState(null)
   const [hover, setHover] = useState(null);
-  const [ratings] = useRatings(id, rating);
+  const [data, refetch] = useRatings(id);
   const [paidUser] = usePaidUser(user);
-  const [watchVideo] = useWatchHistory(user?.email);
+  // const [watchVideo] = useWatchHistory(user?.email);
   // const navigate = useNavigate();
 
-  const paid = paidUser?.paid;
+  // console.log(data)
 
-  console.log(paid, 'manik vai');
+  const paid = paidUser?.paid;
 
   const { videoLink, imgLink, title, category, description, duration } = video;
   const [videos] = useVideos();
 
 
   // TOTAL LIKE____
-  // jodi fetch kora like er id soman video details page er id hoy tahole je data paoya jabe ogolai hole ei video er total like.
+  // jodi fetch kora like er id soman video details page er id hoy tahole je data paoya jabe ogolai hobe ei video er total like.
   const totalLike = likes?.filter((li) => li.id === id);
 
   // USER'S LIKE____
@@ -57,9 +55,10 @@ const Details = () => {
   const commentDisplay = comments?.filter(comment => comment.id === id);
 
   // RATINGS____
-  const totalRating = ratings?.reduce((a, b) => a + b.star, 0);
-  const averageRating = (totalRating / ratings?.length).toFixed(1);
-  const userStar = ratings?.filter(rating => rating?.email === user?.email);
+  const totalRating = data?.reduce((a, b) => a + b.star, 0);
+
+  const averageRating = (totalRating / data?.length || 0).toFixed(1);
+  const userStar = data?.filter(rating => rating?.email === user?.email);
   let displayStar = (userStar?.[0]?.star);
 
   // console.log(displayStar)
@@ -70,7 +69,10 @@ const Details = () => {
     const like = true;
     const name = user?.displayName;
     const email = user?.email;
-    const newLike = { id, like, name, email };
+    const videoLink = video.videoLink;
+    const imgLink = video.imgLink;
+    const title = video.title;
+    const newLike = { id, like, name, email, imgLink, videoLink, title };
 
     const likedUser = likes.filter((li) => li.id === id && li.email === email);
 
@@ -134,23 +136,45 @@ const Details = () => {
       });
   };
 
-
   // Handle Rating || Manik Islam Mahi
-  const handleReview = (star) => {
+  const handleRating = (star) => {
     setRating(star);
-    console.log(star);
     const name = user?.displayName;
     const email = user?.email;
     const rating = { id, star, name, email };
-
     const url = `https://infinite-island-65121.herokuapp.com/rating/${email}`
-
     fetch(url, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(rating)
+    })
+      .then(res => res.json())
+      .then(result => {
+        if (result) {
+          refetch();
+        }
+      })
+  };
+
+  // Handle My List || Manik Islam Mahi
+  const handleMyList = () => {
+
+    const addMyList = {
+      id: id,
+      title: title,
+      email: user?.email,
+      videoLink: videoLink,
+      imgLink: imgLink,
+    }
+
+    fetch(`http://localhost:5000/mylist/${user?.email}`, {
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(addMyList)
     })
       .then(res => res.json())
       .then(result => {
@@ -162,50 +186,49 @@ const Details = () => {
 
 
   // Handle Review || Shihab Uddin
-  const libraryInfo = {
-    videoId: id,
-    email: user?.email,
-    videoLink: videoLink,
-    videoTitle: title,
-    // videoDescription:description
-  };
+  // const libraryInfo = {
+  //   videoId: id,
+  //   email: user?.email,
+  //   videoLink: videoLink,
+  //   videoTitle: title,
+  // };
 
-  useEffect(() => {
-    if (title) {
-      const remaining = watchVideo?.filter((v) => v?.videoId === id);
-      if (remaining?.length === 0) {
-        // fetch("https://infinite-island-65121.herokuapp.com/library", {
-        fetch("http://localhost:5000/library", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(libraryInfo),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            // console.log(data);
-          });
-      }
-    }
-  }, [title,watchVideo]);
+  // useEffect(() => {
+  //   if (title) {
+  //     const remaining = watchVideo?.filter((v) => v?.videoId === id);
+  //     if (remaining?.length === 0) {
+  //       // fetch("https://infinite-island-65121.herokuapp.com/library", {
+  //       fetch("http://localhost:5000/library", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(libraryInfo),
+  //       })
+  //         .then((response) => response.json())
+  //         .then((data) => {
+  //           // console.log(data);
+  //         });
+  //     }
+  //   }
+  // }, [title, watchVideo]);
 
-  const handleAddList = () => {
-    fetch("https://infinite-island-65121.herokuapp.com/favorite", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(libraryInfo),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log(data);
-      });
-  };
+  // const handleAddList = () => {
+  //   fetch("https://infinite-island-65121.herokuapp.com/favorite", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(libraryInfo),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //     });
+  // };
 
 
   // console.log(videos)
+
 
   var settings = {
     dots: false,
@@ -251,7 +274,7 @@ const Details = () => {
             <div className="md:px-14 px-3 pt-16 bg-primary text-secondary">
               <div className="justify-center flex ">
 
-                {/* <iframe
+                <iframe
                   width="95%"
                   className="mt-1"
                   height="500px"
@@ -260,10 +283,7 @@ const Details = () => {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                ></iframe> */}
-                <MediaPlayerDetails
-                video={video}
-                ></MediaPlayerDetails>
+                ></iframe>
 
               </div>
 
@@ -278,7 +298,7 @@ const Details = () => {
                         return (
                           <label key={i}>
 
-                            <input type="radio" className="hidden" name="rating" value={ratingValue} onClick={() => handleReview(ratingValue)} />
+                            <input type="radio" className="hidden" name="rating" value={ratingValue} onClick={() => handleRating(ratingValue)} />
 
                             <FaStar className="ml-2" color={ratingValue <= (hover || rating || displayStar) ? '#ff9501' : '#222'} size={20}
                               onMouseEnter={() => setHover(ratingValue)}
@@ -307,7 +327,7 @@ const Details = () => {
                     </div>
                     <div className="flex items-center mr-3">
                       <button
-                        onClick={handleAddList}
+                        onClick={handleMyList}
                         className="btn btn-circle like-btn"
                         title="Add your list"
                       >

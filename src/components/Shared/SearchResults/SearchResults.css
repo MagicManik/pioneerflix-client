@@ -1,15 +1,53 @@
-.search-section {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
+.search-img {
+    width: 100%;
+    height: auto;
+    padding: 2px;
+    display: block;
+    margin-bottom: 20px;
 }
 
 .search-container {
-    display: grid;
-    grid-template-columns: 2.2fr 3fr;
-    background-color: #181818;
-    margin-top: 60px;
+    column-count: 5;
+    margin: 0 auto;
+    -moz-column-gap: 16px;
+    -webkit-column-gap: 16px;
+    column-gap: 16px;
 }
 
-.search-items {
-    display: flex;
+@media screen and (max-width: 700px) {
+    .search-img {
+        margin-bottom: 16px;
+
+
+    }
+}
+
+@media screen and (max-width: 799px) {
+
+    .search-container {
+        column-count: 4;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .search-container {
+        column-count: 3;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    .search-img {
+        margin-bottom: 5px;
+
+
+    }
+
+    .search-container {
+        column-count: 2;
+        -moz-column-gap: 5px;
+        -webkit-column-gap: 5px;
+        column-gap: 5px;
+    }
 }
