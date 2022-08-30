@@ -19,7 +19,6 @@ import Slider from "react-slick";
 import useVideos from "../../hooks/useVideos";
 import usePaidUser from "../../hooks/usePaidUser";
 import useMyList from "../../hooks/useMyList";
-// import useWatchHistory from "../../hooks/useWatchHistory"
 import Payments from "../Payments/Payments";
 import { useEffect } from "react";
 
@@ -34,7 +33,6 @@ const Details = () => {
   const [data, refetch] = useRatings(id);
   const [paidUser] = usePaidUser(user);
   const [myList] = useMyList();
-  // const [watchVideo] = useWatchHistory(user?.email);
 
   const paid = paidUser?.paid;
 
@@ -77,7 +75,6 @@ const Details = () => {
       const likedId = likedUser[0]._id;
 
       const url = `https://infinite-island-65121.herokuapp.com/likes/${likedId}`;
-
       fetch(url, {
         method: "DELETE",
       })
@@ -154,23 +151,22 @@ const Details = () => {
       })
   };
 
+  const sendData = {
+    id: id,
+    videoTitle: title,
+    email: user?.email,
+    videoLink: videoLink,
+    imgLink: imgLink,
+  };
+
   // Handle My List || Manik Islam Mahi
   const handleMyList = () => {
-
-    const addMyList = {
-      id: id,
-      title: title,
-      email: user?.email,
-      videoLink: videoLink,
-      imgLink: imgLink,
-    }
 
     if (hasUserMyList.length > 0) {
 
       const id = hasUserMyList[0]._id;
 
       const url = `https://infinite-island-65121.herokuapp.com/mylist/${id}`;
-
       fetch(url, {
         method: "DELETE",
       })
@@ -188,7 +184,7 @@ const Details = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(addMyList)
+        body: JSON.stringify(sendData)
       })
         .then(res => res.json())
         .then(result => {
@@ -197,28 +193,21 @@ const Details = () => {
     }
   };
 
-
   // set watch list || Manik Islam Mahi
-  const watchList = {
-    id: id,
-    email: user?.email,
-    videoLink: videoLink,
-    imgLink: imgLink,
-    videoTitle: title,
-  };
-
   useEffect(() => {
-    fetch(`http://localhost:5000/watchlist/${id}`, {
-      method: "PUT",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(watchList)
-    })
-      .then(res => res.json())
-      .then(data => console.log(data))
-  }, []);
+    if (videoLink) {
+      fetch(`http://localhost:5000/watchlist/${id}`, {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(sendData)
+      })
+        .then(res => res.json())
+        .then(data => console.log(data))
+    }
 
+  }, [video?.videoLink]);
 
 
   // useEffect(() => {
@@ -239,7 +228,7 @@ const Details = () => {
   //         });
   //     }
   //   }
-  // }, [title, watchVideo]);
+  // }, [title]);
 
 
   var settings = {
@@ -322,12 +311,9 @@ const Details = () => {
                         )
                       })}
 
-
                     </div>
                     <span className="pl-8 text-[#a5a5a5] block mt-2">Average Rating : {averageRating}</span>
                   </div>
-
-
 
                   {/* Like section */}
                   <div className="grid grid-cols-3 mr-6 md:ml-0 ml-5  md:mt-0 mt-5">
@@ -364,7 +350,6 @@ const Details = () => {
 
                 <hr className="h-[0.5px] my-3 bg-[#222] " />
 
-
                 {/* Video details */}
               </div>
               <div className="md:grid flex items-center  md:grid-cols-6  md:py-8 ">
@@ -399,26 +384,20 @@ const Details = () => {
                 </div>
               </div>
 
-
               {/* Search Related Video */}
               <div className="mt-5 mb-20">
                 <h3 className="text-[#ff9501]">You may also like...</h3>
                 <Slider {...settings}>
-
                   {
                     videos.map(video =>
-
                       <div key={video._id}>
                         <div className='zoom-div-I pb-2 pl-0 pt-6 pr-3 video-div' key={video._id}>
                           <Link to={`/play/${video._id}`}>
                             <img className='popular-movie' src={video.imgLink} alt="" />
                           </Link>
-
                         </div>
-
                       </div>)
                   }
-
                 </Slider>
               </div>
 
@@ -431,7 +410,6 @@ const Details = () => {
                     alt=""
                   /> : <AiOutlineUser className="commenter-img-icon" />
                 }
-
                 <div className="w-full ml-2">
                   <form onSubmit={handleComment}>
                     <div className="relative">
@@ -460,7 +438,6 @@ const Details = () => {
               <div className=" md:py-5 pt-5 gap-5">
                 {commentDisplay?.map((comment) => (
                   <div className="flex pb-5" key={comment._id}>
-
                     {
                       user?.photoURL ? <img
                         className="mt-1 w-10 h-10 rounded-full mr-3"
@@ -468,8 +445,6 @@ const Details = () => {
                         alt=""
                       /> : <AiOutlineUser className="commenter-img-icon w-10 h-10 rounded-full mr-3" />
                     }
-
-                    {/* <img className="w-10 h-10 rounded-full mr-3" src={comment.img} alt="" /> */}
 
                     <div className="rounded-2xl pb-2 border-[2px #222] ">
                       <p className="text-amber-400">{comment.id === id && comment.name}</p>

@@ -362,7 +362,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                           <Menu.Item>
                             {({ active }) => (
                               <Link
-                                to="watchList"
+                                to="watch/hisory"
                                 className={classNames(
                                   active
                                     ? "bg-zinc-800 w-full text-left"

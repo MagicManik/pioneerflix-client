@@ -31,6 +31,7 @@ import RequireAuth from "./components/UserAccount/RequireAuth";
 import BanglaMovies from "./components/Movies/BanglaMovies/BanglaMovies";
 import MyList from "./components/UsersData/MyList/MyList";
 import LikedVideos from "./components/UsersData/LikedVideos/LikedVideos";
+import WatchList from "./components/UsersData/WatchList/WatchList";
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
           <Route path="/" element={<Home></Home>}></Route>
           <Route path="/likedvideos" element={<LikedVideos></LikedVideos>}></Route>
           <Route path="mylist" element={<MyList></MyList>}></Route>
+          <Route path="watch/hisory" element={<WatchList></WatchList>}></Route>
           <Route path="/about" element={<About></About>}></Route>
           <Route path='/channel/:id' element={<TvChannel />}></Route>
           <Route path='/play/:id'
