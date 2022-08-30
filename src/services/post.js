@@ -39,7 +39,7 @@ export const postApi = createApi({
     updateUserProfile: builder.mutation({
       query: (userProfile) => {
         const {profileEmail, ...data} = userProfile;
-        console.log({profileEmail, data});
+        // console.log({profileEmail, data});
         return {
           url: `userProfile/${profileEmail}`,
           method: 'PUT',
@@ -50,11 +50,20 @@ export const postApi = createApi({
         }
       },
     }),
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    
 
 
+
+
+
+
+
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   }),
 
 })
 
 // Export hooks for usage in functional components, which are auto-generated based on the defined endpoints
-export const { useGetAllVideosQuery, useDeleteUiVideoMutation, useUploadByAdminMutation, useUpdateUserProfileMutation } = postApi;
+export const { useGetAllVideosQuery, useDeleteUiVideoMutation, useUploadByAdminMutation, useUpdateUserProfileMutation, useUpdateUserProfile2Mutation  } = postApi;
