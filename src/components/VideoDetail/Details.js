@@ -169,23 +169,28 @@ const Details = () => {
   };
 
   useEffect(() => {
-    if (title) {
-      const remaining = watchVideo?.filter((v) => v?.videoId === id);
-      if (remaining?.length === 0) {
-        // fetch("https://infinite-island-65121.herokuapp.com/library", {
-        fetch("http://localhost:5000/library", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(libraryInfo),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            // console.log(data);
-          });
+    // const handleWatchList=()=>{
+      if (title) {
+        const remaining = watchVideo?.filter((v) => v?.videoId === id);
+        if (remaining?.length === 0) {
+          fetch("https://infinite-island-65121.herokuapp.com/library", {
+          // fetch("http://localhost:5000/library", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(libraryInfo),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              // console.log(data);
+            });
+        }
       }
-    }
+
+    // }
+    
+  
   }, [title,watchVideo]);
 
   const handleAddList = () => {
@@ -483,7 +488,9 @@ const Details = () => {
           </div>
           :
           <Payments></Payments>
+          
       }
+ 
     </>
   );
 };
