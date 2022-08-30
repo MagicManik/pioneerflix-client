@@ -1,19 +1,27 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
+// import { useQuery } from '@tanstack/react-query';
 import DeleteUiVideoRow from './DeleteUiVideoRow';
+import { useGetAllVideosQuery } from '../../services/post';
+import Loading from '../Shared/Loading/Loading';
 
 const DeleteUiVideos = () => {
+    const { data, refetch, isLoading } = useGetAllVideosQuery();
+    // console.log(data);
 
-    const url = 'https://infinite-island-65121.herokuapp.com/videos'
-    const { data, refetch } = useQuery(['videos'], () =>
-        fetch(url, {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json'
-            }
-        })
-            .then(res => res.json())
-    );
+    if(isLoading){
+        return <Loading />
+    }
+
+    // const url = 'https://infinite-island-65121.herokuapp.com/videos'
+    // const { data, refetch } = useQuery(['videos'], () =>
+    //     fetch(url, {
+    //         method: 'GET',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         }
+    //     })
+    //         .then(res => res.json())
+    // );
 
     return (
         <div className="overflow-x-auto px-4 pt-6 w-full">

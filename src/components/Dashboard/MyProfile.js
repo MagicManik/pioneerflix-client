@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from "react-toastify";
 import auth from '../../firebase.init';
+import { useUpdateUserProfileMutation } from '../../services/post';
 import Loading from '../Shared/Loading/Loading';
 import SingleProfile from './SingleProfile';
 import SingleProfilePic from './SingleProfilePic';
@@ -16,6 +17,7 @@ const MyProfile = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
+    const [updateUserProfile, userData] = useUpdateUserProfileMutation()
 
     const url = `https://infinite-island-65121.herokuapp.com/userProfile?email=${user?.email}`
     const { data, isLoading, refetch } = useQuery(['userProfile'], () =>
@@ -58,21 +60,25 @@ const MyProfile = () => {
                         profileImage: image,
                         profileEmail: user.email,
                     }
-                    const url = `https://infinite-island-65121.herokuapp.com/userProfile/${user?.email}`
-                    fetch(url, {
-                        method: 'PUT',
-                        headers: {
-                            'content-type': 'application/json'
-                        },
-                        body: JSON.stringify(userProfile)
-                    })
-                        .then(res => res.json())
-                        .then(result => {
-                            // console.log(result);
-                            toast.success('Your profile updated successfully!!!')
-                            e.target.reset();
-                            refetch();
-                        })
+                    updateUserProfile(userProfile)
+                    e.target.reset();
+                    refetch();
+                    toast.success('Your profile updated successfully!!!')
+                    // const url = `https://infinite-island-65121.herokuapp.com/userProfile/${user?.email}`
+                    // fetch(url, {
+                    //     method: 'PUT',
+                    //     headers: {
+                    //         'content-type': 'application/json'
+                    //     },
+                    //     body: JSON.stringify(userProfile)
+                    // })
+                    //     .then(res => res.json())
+                    //     .then(result => {
+                    //         // console.log(result);
+                    //         toast.success('Your profile updated successfully!!!')
+                    //         e.target.reset();
+                    //         refetch();
+                    //     })
                 }
 
                 else {
