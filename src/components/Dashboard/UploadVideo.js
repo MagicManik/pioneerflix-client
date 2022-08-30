@@ -6,10 +6,12 @@ import { FiUpload } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import useAdmin from '../../hooks/useAdmin';
+import { useUploadByAdminMutation } from '../../services/post';
 
 const UploadVideo = () => {
     const [user] = useAuthState(auth);
     const [admin] = useAdmin(user);
+    const [uploadVideo, data] = useUploadByAdminMutation()
 
     const { t } = useTranslation(["dashboard"])
 
@@ -33,21 +35,27 @@ const UploadVideo = () => {
         }
 
         if (admin) {
-            const url = 'https://infinite-island-65121.herokuapp.com/adminUploadVideo';
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(userUploadVideo)
-            })
-                .then(res => res.json())
-                .then(result => {
-                    alert('Thanks for uploading')
-                    toast.success('Successfully your video uploaded!!!')
-                    localStorage.setItem("notificationMode", "true");
-                    e.target.reset();
-                })
+            uploadVideo(userUploadVideo)
+            alert('Thanks for uploading')
+            toast.success('Successfully your video uploaded!!!')
+            localStorage.setItem("notificationMode", "true");
+            e.target.reset();
+
+            // const url = 'https://infinite-island-65121.herokuapp.com/adminUploadVideo';
+            // fetch(url, {
+            //     method: 'POST',
+            //     headers: {
+            //         'content-type': 'application/json'
+            //     },
+            //     body: JSON.stringify(userUploadVideo)
+            // })
+            //     .then(res => res.json())
+            //     .then(result => {
+            //         alert('Thanks for uploading')
+            //         toast.success('Successfully your video uploaded!!!')
+            //         localStorage.setItem("notificationMode", "true");
+            //         e.target.reset();
+            //     })
         }
         else {
             const url = 'https://infinite-island-65121.herokuapp.com/userUploadVideo';
