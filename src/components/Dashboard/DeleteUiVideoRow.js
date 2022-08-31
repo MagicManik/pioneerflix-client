@@ -11,20 +11,19 @@ const DeleteUiVideoRow = ({ detail, index, refetch }) => {
     const deleteUiVideo = (id) => {
         // using redux
         deleteVideo(id)
-        if(data?.status === 'fulfilled'){
-            refetch()
-            toast.success(`${id} is deleted from UI`)
-              MySwal.fire({
-                title: <strong>The video has been deleted!</strong>,
-                icon: 'success',
-                showConfirmButton: false,
-                timer: 2000
-            })
-        } 
+        refetch()
+        toast.success(`${id} is deleted from UI`)
+        MySwal.fire({
+            title: <strong>The video has been deleted!</strong>,
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 2000
+        })
+        
         // else {
         //     toast.error(`${id} is not deleted from UI`)
         // }
-        
+
 
         // const url = `https://infinite-island-65121.herokuapp.com/uiVideo/${id}`;
         // fetch(url, {
@@ -59,6 +58,7 @@ const DeleteUiVideoRow = ({ detail, index, refetch }) => {
                 </div>
             </td>
             <td>
+                <span className='text-black'>{detail?.category}</span><br />
                 <span className='text-black'>{detail?.uploader}</span>
             </td>
             <th>
