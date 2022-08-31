@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const usePaidUser = user => {
-    console.log(user)
+    // console.log(user)
     const [paidUser, setPaidUser] = useState(false);
     const [paidLoading, setPaidLoading] = useState(true);
 
@@ -17,7 +17,7 @@ const usePaidUser = user => {
                 .then(res => res.json())
                 .then(data => {
                     setPaidUser(data)
-                    console.log(data);
+                    // console.log(data);
                     setPaidLoading(false)
                 })
         }

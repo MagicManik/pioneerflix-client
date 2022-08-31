@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next';
 
 const MakeAdmin = () => {
 
-    const {t} =useTranslation(["dashboard"])
+    const { t } = useTranslation(["dashboard"])
 
-    const url = 'https://infinite-island-65121.herokuapp.com/allUserData';
+    const url = 'http://localhost:5000/allUserData';
     const { data, refetch } = useQuery(['allUserData'], () =>
         fetch(url, {
             method: 'GET',

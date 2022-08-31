@@ -6,12 +6,14 @@ import { FiUpload } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import useAdmin from '../../hooks/useAdmin';
+import { useUploadByAdminMutation } from '../../services/post';
 
 const UploadVideo = () => {
     const [user] = useAuthState(auth);
     const [admin] = useAdmin(user);
+    const [uploadVideo, data] = useUploadByAdminMutation()
 
-    const { t } =useTranslation(["dashboard"])
+    const { t } = useTranslation(["dashboard"])
 
     const {
         register,
@@ -31,23 +33,29 @@ const UploadVideo = () => {
             adminName: user?.displayName,
             adminImg: user?.photoURL
         }
-        
+
         if (admin) {
-            const url = 'http://localhost:5000/adminUploadVideo';
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(userUploadVideo)
-            })
-                .then(res => res.json())
-                .then(result => {
-                    alert('Thanks for uploading')
-                    toast.success('Successfully your video uploaded!!!')
-                    localStorage.setItem("notificationMode", "true");
-                    e.target.reset();
-                })
+            uploadVideo(userUploadVideo)
+            alert('Thanks for uploading')
+            toast.success('Successfully your video uploaded!!!')
+            localStorage.setItem("notificationMode", "true");
+            e.target.reset();
+
+            // const url = 'http://localhost:5000/adminUploadVideo';
+            // fetch(url, {
+            //     method: 'POST',
+            //     headers: {
+            //         'content-type': 'application/json'
+            //     },
+            //     body: JSON.stringify(userUploadVideo)
+            // })
+            //     .then(res => res.json())
+            //     .then(result => {
+            //         alert('Thanks for uploading')
+            //         toast.success('Successfully your video uploaded!!!')
+            //         localStorage.setItem("notificationMode", "true");
+            //         e.target.reset();
+            //     })
         }
         else {
             const url = 'http://localhost:5000/userUploadVideo';
@@ -124,28 +132,28 @@ const UploadVideo = () => {
                                     <option value=""></option>
                                     <option value="Bangla Movie">Bangla Movie</option>
                                     <option value="Hindi Movie">Hindi Movie</option>
-                                    <option value="Hindi Movie">South Indian Movie</option>
+                                    <option value="South Indian Movie">South Indian Movie</option>
                                     <option value="English Movie">English Movie</option>
-                                    <option value="Kids Video">Exclusive Movies</option>
+                                    <option value="Exclusive Movies">Exclusive Movies</option>
                                     <option value="Kids Video">Kids Video</option>
-                                    <option value="Kids Video">Most Popular</option>
-                                    <option value="Kids Video">Popular Movies</option>
-                                    <option value="Kids Video">Popular Web Series</option>
-                                    <option value="Bangla Movie">Bangla Song</option>
-                                    <option value="Hindi Movie">Hindi Song</option>
-                                    <option value="English Movie">English Song</option>
-                                    <option value="Funny Video">Comedy</option>
+                                    <option value="Most Popular">Most Popular</option>
+                                    <option value="Popular Movies">Popular Movies</option>
+                                    <option value="Popular Web Series">Popular Web Series</option>
+                                    <option value="Bangla Song">Bangla Song</option>
+                                    <option value="Hindi Song">Hindi Song</option>
+                                    <option value="English Song">English Song</option>
+                                    <option value="Comedy">Comedy</option>
                                     <option value="Educational">Educational</option>
-                                    <option value="Kids Video">Live Games</option>
-                                    <option value="Kids Video">Music</option>
-                                    <option value="Kids Video">Thriller</option>
-                                    <option value="Kids Video">Detective</option>
-                                    <option value="Kids Video">Latest</option>
-                                    <option value="Kids Video">Clips</option>
-                                    <option value="Kids Video">Free</option>
-                                    <option value="Kids Video">National Award Winning</option>
-                                    <option value="Kids Video">Just Added</option>
-                                    <option value="Kids Video">Upcoming</option>
+                                    <option value="Live Games">Live Games</option>
+                                    <option value="Music">Music</option>
+                                    <option value="Thriller">Thriller</option>
+                                    <option value="Detective">Detective</option>
+                                    <option value="Latest">Latest</option>
+                                    <option value="Clips">Clips</option>
+                                    <option value="Free">Free</option>
+                                    <option value="National Award Winning">National Award Winning</option>
+                                    <option value="Just Added">Just Added</option>
+                                    <option value="Upcoming">Upcoming</option>
                                     <option value="Drama">Drama</option>
                                 </select>
                             </div>

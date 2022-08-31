@@ -1,22 +1,29 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import { useDeleteUiVideoMutation } from '../../services/post';
 
 const DeleteUiVideoRow = ({ detail, index, refetch }) => {
+    const [deleteVideo, data] = useDeleteUiVideoMutation()
+    // console.log(deleteVideo, data);
 
     const deleteUiVideo = (id) => {
-        const url = `https://infinite-island-65121.herokuapp.com/uiVideo/${id}`;
-        fetch(url, {
-            method: 'DELETE',
-            headers: {
-                'content-type': 'application/json'
-            }
-        })
+        deleteVideo(id)
+        refetch()
+        toast.success(`${id} is deleted from UI`)
 
-            .then(res => res.json())
-            .then(result => {
-                toast.success(`${id} is deleted from UI`)
-                refetch()
-            })
+        // const url = `http://localhost:5000/uiVideo/${id}`;
+        // fetch(url, {
+        //     method: 'DELETE',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     }
+        // })
+
+        //     .then(res => res.json())
+        //     .then(result => {
+        //         toast.success(`${id} is deleted from UI`)
+        //         refetch()
+        //     })
     }
 
     return (

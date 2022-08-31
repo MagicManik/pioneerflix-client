@@ -24,7 +24,7 @@ const CheckoutForm = ({ userBookingData }) => {
     // console.log(id);
 
     useEffect(() => {
-        fetch('https://infinite-island-65121.herokuapp.com/create-payment-intent', {
+        fetch('http://localhost:5000/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -88,9 +88,9 @@ const CheckoutForm = ({ userBookingData }) => {
                 id: id,
                 transactionId: paymentIntent?.id
             }
-            const url = `https://infinite-island-65121.herokuapp.com/booking/${id}`;
-            console.log(url);
-            console.log(payment);
+            const url = `http://localhost:5000/booking/${id}`;
+            // console.log(url);
+            // console.log(payment);
             fetch(url, {
                 method: 'PATCH',
                 headers: {
@@ -101,11 +101,11 @@ const CheckoutForm = ({ userBookingData }) => {
                 .then(res => res.json())
                 .then(data => {
                     setProcessing(false);
-                    console.log(data);
-                    navigate(from, { replace: true });
+
                 })
         }
         event.target.reset();
+        navigate(from, { replace: true });
     }
 
     return (

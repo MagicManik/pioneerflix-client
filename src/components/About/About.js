@@ -93,24 +93,26 @@ const About = () => {
       portfolio: "https://my-portfolio-react1.netlify.app/",
       github: "https://github.com/bariknishan",
       linkedin: "https://www.linkedin.com/in/barik-nishan-430b34220/",
-    }
+    },
   ];
   return (
     <div className="bg-primary  text-white px-5 lg:px-20 py-5 ">
       <div className="flex justify-center items-center flex-col ">
         <div>
-          {developerDetails.map(d => (
+          {developerDetails.map((d) => (
             <>
               <div key={d.id} className="hero flex my-3 justify-start   ">
                 <div className="hero-content lg:flex lg:flex-row lg:items-center lg:justify-start flex-col">
                   <div className="avatar">
                     <div className="w-36 rounded-full ring ring-gradient-to-r shadow-xl shadow-sky-500 from-indigo-500 via-purple-500 to-pink-500 ring-offset-2">
-                      <img src={d?.img} alt='developer img' />
+                      <img src={d?.img} alt="developer img" />
                     </div>
                   </div>
 
                   <div className="ml-3">
-                    <h1 className="lg:text-3xl text-2xl  text-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-bold">{d?.name}</h1>
+                    <h1 className="lg:text-3xl text-2xl  text-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-bold">
+                      {d?.name}
+                    </h1>
                     <p className="py-2 font-semibold">{d?.dev}</p>
                     <p>Email : {d?.gmail}</p>
                     <p className="py-2">Contact : {d?.cell}</p>
@@ -127,7 +129,9 @@ const About = () => {
                         <button className="badge badge-accent">Github</button>
                       </a>
                       <a href={d?.linkedin} target="_blank">
-                        <button className="badge badge-ghost ml-3">Linkedin</button>
+                        <button className="badge badge-ghost ml-3">
+                          Linkedin
+                        </button>
                       </a>
                     </div>
                   </div>

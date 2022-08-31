@@ -1,112 +1,40 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import Slider from 'react-slick';
-import useVideos from '../../../hooks/useVideos';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useGetAllVideosQuery } from '../../../services/post';
+// import useVideos from '../../../hooks/useVideos';
 import './SearchResults.css';
 
 const SearchResults = () => {
-    const [videos] = useVideos();
+    // const [videos] = useVideos();
+    const { data, refetch, isLoading } = useGetAllVideosQuery();
     const { id } = useParams();
 
-    // const result = videos.filter(video => video.title.toLowerCase().indexOf(id.toLowerCase()) !== -1);
+    const result = data?.filter(video => video.title.toLowerCase().includes(id.toLowerCase()));
 
-    const result = videos.filter(video => video.title.toLowerCase().includes(id.toLowerCase()));
+    const navigate = useNavigate();
 
-
-    const resultLength = result.length;
-
-    var settings = {
-        dots: false,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 6,
-        slidesToScroll: 6,
-        initialSlide: 0,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    arrows: false,
-                    slidesToShow: 2.2,
-                    slidesToScroll: 2
-                }
-            }
-        ]
-    };
+    const handlePlay = (id) => {
+        navigate(`/play/${id}`)
+    }
 
     return (
-        <div className='bg-[#212121]'>
+        <section className='bg-[#141414] pt-16'>
+            <h1 className='px-2 md:px-16 lg:px-18 text-red-600 bg-black text-xl lg:text-2xl pt-5'>Your Search Result For "{id}"</h1>
+            <div className='search-container bg-black px-2 md:px-8 lg:px-16 pt-5'>
+                {
+                    result.map(video =>
+                        <div key={video._id} className='zoom-div-2'>
+                            <button onClick={() => handlePlay(video._id)} className='search-video-play-button'>
+                                <img className='search-img rounded-lg' src={video.imgLink} alt="" />
+                                <p className='block mx-auto'>{video.title}</p>
+                            </button>
 
-            <div className='search-section'>
+                        </div>
+                    )
+                }
 
-                <div className='search-menu-bar pl-6 pt-16'>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                </div>
-
-                <div>
-                    {
-                        result.map(video =>
-                            <div className='search-container py-5'>
-                                <div className='search-video pl-6'>
-                                    {/* <img src={video.videoLink} alt="" /> */}
-                                    <Link to={`/play/${video._id}`}>
-                                        <iframe
-                                            width="100%"
-                                            className="mt-1"
-                                            height="300px"
-                                            src={video.videoLink}
-                                            title="YouTube video player"
-                                            frameBorder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowFullScreen
-                                        ></iframe>
-                                    </Link>
-
-                                </div>
-                                <div className='search-video-details pl-4 pt-10'>
-                                    <h3>Lorem ipsum dolor sit amet consecteture</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores aperiam laboriosam similique, sint delectus porro accusamus dolor consequatur voluptatibus velit pariatur laborum eveniet ut necessitatibus ad obcaecati animi ea quis.</p>
-                                </div>
-                            </div>
-                        )
-                    }
-                </div>
             </div>
-        </div>
+        </section>
     );
 };
 

@@ -5,13 +5,13 @@ import Slider from "react-slick";
 import { Link, useParams } from "react-router-dom";
 import useChannel from "../../../hooks/useChannel";
 import useChannels from "../../../hooks/useChannels";
-import MediaPlayer from "../../ReactPlayer/MediaPlayer";
+// import MediaPlayer from "../../ReactPlayer/MediaPlayer";
 
 const TvChannel = () => {
   const { id } = useParams();
   const [channel] = useChannel(id);
   const [channels] = useChannels();
-  const {channelLink}=channel;
+  const { channelLink } = channel;
   // console.log(channelLink);
 
   var settings = {
@@ -53,12 +53,23 @@ const TvChannel = () => {
   return (
     <div className="pt-16 bg-black">
       <hr className="line-" />
-
       <div className="justify-center flex pt-4 ">
-        {/* <MediaPlayer 
-        channel={channel}
-        ></MediaPlayer> */}
+        <iframe
+          width="95%"
+          className="mt-1"
+          height="500px"
+          src={channelLink}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
       </div>
+
+      {/* <MediaPlayer
+          channel={channel}
+        ></MediaPlayer> */}
+
 
       <section className="bg-secondary ">
         <div className="pb-3 custom-bg">
