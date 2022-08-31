@@ -108,7 +108,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
         <Disclosure as="nav">
           {({ open }) => (
             <>
-              <div className="max-w-8xl mx-auto px-2 sm:px-6 lg:px-14 ">
+              <div    className="max-w-8xl mx-auto px-2 sm:px-6 lg:px-14 ">
                 <div className="relative flex items-center justify-between h-16">
                   <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                     {/* Mobile menu button*/}
@@ -167,8 +167,9 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         </CustomLink>
 
                         <button
-                          onClick={() => setMega(!mega)}
-                          className=" text-white  flex  items-end  hover:text-white"
+                          onMouseEnter={() => setMega(true)}
+                        
+                          className=" text-white  flex  items-end duration-1000 transition hover:text-white"
                         >
                           {t("Categories")}{" "}
                           {mega ? (
@@ -467,17 +468,17 @@ const NavbarResponsive = ({ theme, setTheme }) => {
         <hr />
 
         {mega && (
-          <div className="absolute bg-[#222] border-2 border-indigo-600 md:top-16 md:left-56 w-[90%] md:w-[40%] rounded z-30">
+          <div  onMouseLeave={() => setMega(false)} className="absolute bg-[#222] border-2 border-indigo-600 md:top-16 md:left-56 w-[90%] md:w-[60%] rounded z-30">
             <div className="grid py-5 px-4 relative mx-auto  max-w-screen-xl text-base grid-cols-2 md:grid-cols-3 md:px-10">
               <ul className=" relative space-y-3 md:mb-0 md:block">
                 {megaMenuR1.map((m) => (
-                  <div className="flex items-center justify-start">
-                    <span>{m.icon}</span>
+                  <div className="flex items-center   hover:text-blue-600 justify-start">
+                    <span className="text-2xl  ">{m.icon}</span>
                     <li key={m.id}>
                     <Link
                       to={m.href}
                       onClick={() => setMega(!mega)}
-                      className="duration-200 hover:text-lg ml-2  hover:text-blue-600 "
+                      className="duration-200 ml-3 text-lg  "
                     >
                       {m.name}
                     </Link>
@@ -488,13 +489,13 @@ const NavbarResponsive = ({ theme, setTheme }) => {
               </ul>
               <ul className="mb-4 space-y-3 md:mb-0">
                 {megaMenuR2.map((m) => (
-                  <div className="flex items-center justify-start">
-                  <span>{m.icon}</span>
+                  <div className="flex items-center hover:text-blue-600 justify-start">
+                  <span className="text-3xl  ">{m.icon}</span>
                   <li key={m.id}>
                     <Link
                       to={m.href}
                       onClick={() => setMega(!mega)}
-                      className="duration-200 hover:text-lg ml-2 hover:text-blue-600 "
+                      className="duration-200 text-lg ml-3  "
                     >
                       {m.name}
                     </Link>
@@ -512,10 +513,6 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
               ></iframe>
-              <FaTimes
-                onClick={() => setMega(!mega)}
-                className="absolute top-2 right-2 text-secondary text-2xl"
-              />
             </div>
           </div>
         )}
