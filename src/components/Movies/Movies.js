@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import {
-  FaHome,
+  FaRegThumbsUp,
   FaFilm,
   FaTv,
   FaGlobe,
   FaHeart,
   FaUserAlt,
 } from "react-icons/fa";
+import auth from "../../firebase.init";
+import useChannels from "../../hooks/useChannels";
 import useLikes from "../../hooks/useLikes";
+import useMyList from "../../hooks/useMyList";
 import useVideos from "../../hooks/useVideos";
+import useWatchHistory from "../../hooks/useWatchHistory";
 
 const Movies = () => {
   const [videos] = useVideos();
   const [likes] = useLikes();
+  const [myList] = useMyList();
+  const [channels]=useChannels()
+  const [watchVideo] =useWatchHistory()
+  const [user] = useAuthState(auth);
   const [video, setVideo] = useState({});
   const [uVideo, setUVideo] = useState({});
   // const [user] = useAuthState(auth);
@@ -25,29 +34,41 @@ const Movies = () => {
     }
     
   }, [videos]);
-  const handleHome=()=>{
-    setVideo(likes);
-    setUVideo(likes[0]);
-    console.log('from home')
-    console.log(likes)
+  const handleLike=()=>{
+   
+    const likedUser = likes?.filter((li) => li.email === user?.email);
+    setVideo(likedUser);
+    setUVideo(likedUser[0]);
   }
-  // console.log(videos);
+  const handleMyList=()=>{
+    setVideo(myList);
+    setUVideo(myList[0]);
+  }
+  const handleTv=()=>{
+    setUVideo(channels[0]);
+    setVideo(channels);
+    console.log('ok')
+  }
+  const handleWatch=()=>{
+    setUVideo(watchVideo[0]);
+    setVideo(watchVideo);
+  }
   return (
     <div className="bg-primary py-20 px-10">
       <div className=" grid grid-cols-12 gap-5 w-full ">
         <div className="w-full  px-2  col-start-1 col-end-3">
           <div className=" flex flex-col justify-center gap-y-16 mt-10">
-            <button onClick={()=>handleHome()} class=" text-lg font-semibold flex justify-start items-center">
-              <FaHome className="mr-5" /> Home
+            <button onClick={()=>handleLike()} class=" text-lg font-semibold flex justify-start items-center">
+              <FaRegThumbsUp className="mr-5" /> Like
             </button>
-            <button class=" text-lg font-semibold flex justify-start items-center">
+            <button onClick={()=>handleMyList()} class=" text-lg font-semibold flex justify-start items-center">
               <FaFilm className="mr-5" /> Movies
             </button>
-            <button class=" text-lg font-semibold flex justify-start items-center">
+            <button onClick={()=>handleTv()} class=" text-lg font-semibold flex justify-start items-center">
               <FaTv className="mr-5" /> TV Shows
             </button>
-            <button class=" text-lg font-semibold flex justify-start items-center">
-              <FaGlobe className="mr-5" /> Series
+            <button onClick={()=>handleWatch()} class=" text-lg font-semibold flex justify-start items-center">
+              <FaGlobe className="mr-5" />Watch List
             </button>
             <button class=" text-lg font-semibold flex justify-start items-center">
               <FaHeart className="mr-5" /> Favorites
@@ -61,7 +82,7 @@ const Movies = () => {
           <iframe
             width="100%"
             className="p-[.5px] md:h-[450px] rounded-2xl"
-            src={uVideo.videoLink}
+            src={uVideo?.videoLink ||uVideo?.channelLink  }
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
