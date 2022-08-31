@@ -163,9 +163,7 @@ const Details = () => {
   const handleMyList = () => {
 
     if (hasUserMyList.length > 0) {
-
       const id = hasUserMyList[0]._id;
-
       const url = `https://infinite-island-65121.herokuapp.com/mylist/${id}`;
       fetch(url, {
         method: "DELETE",
@@ -210,12 +208,19 @@ const Details = () => {
   }, [video?.videoLink]);
 
 
+  // Handle Review || Shihab Uddin
+  // const libraryInfo = {
+  //   videoId: id,
+  //   email: user?.email,
+  //   videoLink: videoLink,
+  //   videoTitle: title,
+  // };
+
   // useEffect(() => {
   //   if (title) {
   //     const remaining = watchVideo?.filter((v) => v?.videoId === id);
   //     if (remaining?.length === 0) {
-  //       // fetch("https://infinite-island-65121.herokuapp.com/library", {
-  //       fetch("http://localhost:5000/library", {
+  //       fetch("https://infinite-island-65121.herokuapp.com/library", {
   //         method: "POST",
   //         headers: {
   //           "Content-Type": "application/json",
@@ -224,11 +229,24 @@ const Details = () => {
   //       })
   //         .then((response) => response.json())
   //         .then((data) => {
-  //           // console.log(data);
   //         });
   //     }
   //   }
-  // }, [title]);
+  // }, [title,watchVideo]);
+
+  // const handleAddList = () => {
+  //   fetch("https://infinite-island-65121.herokuapp.com/favorite", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(libraryInfo),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //     });
+  // };
+
 
 
   var settings = {
@@ -315,7 +333,7 @@ const Details = () => {
                     <span className="pl-8 text-[#a5a5a5] block mt-2">Average Rating : {averageRating}</span>
                   </div>
 
-                  {/* Like section */}
+                  {/* ______ Like section ______ */}
                   <div className="grid grid-cols-3 mr-6 md:ml-0 ml-5  md:mt-0 mt-5">
                     <div className="flex items-center ">
                       <button onClick={handleLike} className={likedUser?.length >= 1 ? 'btn btn-circle like-btn liked-btn' : 'btn btn-circle like-btn'} title="Like here">
@@ -324,7 +342,7 @@ const Details = () => {
                       <div className={likedUser?.length >= 1 ? 'text-[#ff9501]' : ''}>Like {totalLike?.length}</div>
                     </div>
 
-                    {/* here is my list button */}
+                    {/* _____ Add To List Button _____ */}
                     <div className="flex items-center mr-3">
                       <button
                         onClick={handleMyList}
@@ -350,7 +368,7 @@ const Details = () => {
 
                 <hr className="h-[0.5px] my-3 bg-[#222] " />
 
-                {/* Video details */}
+                {/* ______ Video Details ______ */}
               </div>
               <div className="md:grid flex items-center  md:grid-cols-6  md:py-8 ">
                 <div className=" col-start-1 md:col-end-3 col-end-7 flex md:justify-start justify-center items-center w-full">
@@ -384,7 +402,7 @@ const Details = () => {
                 </div>
               </div>
 
-              {/* Search Related Video */}
+              {/* ______ Search Related Video ______ */}
               <div className="mt-5 mb-20">
                 <h3 className="text-[#ff9501]">You may also like...</h3>
                 <Slider {...settings}>
@@ -401,7 +419,7 @@ const Details = () => {
                 </Slider>
               </div>
 
-              {/* comment section */}
+              {/* _______ Comment Section ______ */}
               <div className="flex items-center">
                 {
                   user?.photoURL ? <img
@@ -434,7 +452,7 @@ const Details = () => {
                 </div>
               </div>
 
-              {/* comment displayed */}
+              {/* _____ comment displayed ______ */}
               <div className=" md:py-5 pt-5 gap-5">
                 {commentDisplay?.map((comment) => (
                   <div className="flex pb-5" key={comment._id}>
