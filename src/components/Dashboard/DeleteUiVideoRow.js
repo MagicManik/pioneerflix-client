@@ -1,15 +1,31 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { useDeleteUiVideoMutation } from '../../services/post';
 
 const DeleteUiVideoRow = ({ detail, index, refetch }) => {
     const [deleteVideo, data] = useDeleteUiVideoMutation()
-    // console.log(deleteVideo, data);
+    console.log(data.status);
+    const MySwal = withReactContent(Swal)
 
     const deleteUiVideo = (id) => {
+        // using redux
         deleteVideo(id)
-        refetch()
-        toast.success(`${id} is deleted from UI`)
+        if(data?.status === 'fulfilled'){
+            refetch()
+            toast.success(`${id} is deleted from UI`)
+              MySwal.fire({
+                title: <strong>The video has been deleted!</strong>,
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        } 
+        // else {
+        //     toast.error(`${id} is not deleted from UI`)
+        // }
+        
 
         // const url = `https://infinite-island-65121.herokuapp.com/uiVideo/${id}`;
         // fetch(url, {

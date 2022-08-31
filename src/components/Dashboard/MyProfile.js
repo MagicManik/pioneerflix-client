@@ -20,7 +20,7 @@ const MyProfile = () => {
         formState: { errors },
     } = useForm();
     const [updateUserProfile, userData] = useUpdateUserProfileMutation()
-    console.log(userData, userData.status);
+    // console.log(userData, userData.status);
     const MySwal = withReactContent(Swal)
 
     const url = `https://infinite-island-65121.herokuapp.com/userProfile?email=${user?.email}`
@@ -75,6 +75,9 @@ const MyProfile = () => {
                             html: <i className='text-xl text-green-500'>Successfully updated your profile</i>,
                             icon: 'success'
                         })
+                    }
+                    else {
+                        toast.error('Try again, Your profile is not update')
                     }
 
                     // const url = `https://infinite-island-65121.herokuapp.com/userProfile/${user?.email}`
