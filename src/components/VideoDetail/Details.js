@@ -36,7 +36,7 @@ const Details = () => {
 
   const paid = paidUser?.paid;
 
-  console.log(paid);
+  // console.log(paid);
 
   const { videoLink, imgLink, title, category, description, duration } = video;
   const [videos] = useVideos();

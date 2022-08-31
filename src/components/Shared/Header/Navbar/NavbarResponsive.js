@@ -7,7 +7,9 @@ import {
   FaCaretDown,
   FaSearch,
   FaCaretUp,
+  FaGrinAlt
 } from "react-icons/fa";
+import {   GiDramaMasks,GiRocketThruster,GiBangingGavel,GiNewBorn,GiPapers,GiGamepad ,GiPartyPopper ,GiIncomingRocket,GiPaperClip,GiSlicedBread} from "react-icons/gi";
 import { MdLightMode } from "react-icons/md";
 import auth from "../../../../firebase.init";
 import CustomLink from "../../customLink/CustomLink";
@@ -24,19 +26,19 @@ import Notification from "./Notification";
 
 
 const megaMenuR1 = [
-  { name: "Comedy", href: "/comedy", id: "293oc02c" },
-  { name: "Drama", href: "/drama", id: "2aod030vkd" },
-  { name: "Thriller", href: "/thriller", id: "8aod030vk" },
-  { name: "Bangla", href: "/bangla", id: "6aod30kd" },
-  { name: "Latest", href: "/latest", id: "6aod3014kd" },
-  { name: "Series", href: "/series", id: "6a5od3014kd" },
+  { name: "Comedy", href: "/comedy", id: "293oc02c",icon:<FaGrinAlt/> },
+  { name: "Drama", href: "/drama", id: "2aod030vkd",icon:<GiDramaMasks/> },
+  { name: "Thriller", href: "/thriller", id: "8aod030vk",icon:<GiRocketThruster/> },
+  { name: "Bangla", href: "/bangla", id: "6aod30kd" ,icon:<GiBangingGavel/>},
+  { name: "Latest", href: "/latest", id: "6aod3014kd",icon:<GiNewBorn/> },
+  { name: "Series", href: "/series", id: "6a5od3014kd",icon:<GiPapers/> },
 ];
 const megaMenuR2 = [
-  { name: "Live Games", href: "/games", id: "293oc02c" },
-  { name: "Most Popular", href: "/popular", id: "2aod030vkd" },
-  { name: "Clips", href: "/clips", id: "8aod030vk" },
-  { name: " Episodes", href: "/episodes", id: "6aod30kd" },
-  { name: "Upcoming", href: "/upComing", id: "6ao2d30kd" },
+  { name: "Live Games", href: "/games", id: "293oc02c",icon:<GiGamepad/> },
+  { name: "Most Popular", href: "/popular", id: "2aod030vkd",icon:<GiPartyPopper/> },
+  { name: "Clips", href: "/clips", id: "8aod030vk",icon:<GiPaperClip/> },
+  { name: " Episodes", href: "/episodes", id: "6aod30kd",icon:<GiSlicedBread/> },
+  { name: "Upcoming", href: "/upComing", id: "6ao2d30kd",icon:<GiIncomingRocket/> },
 ];
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -48,7 +50,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
   const [mega, setMega] = useState(false);
 
   const navigateResultPage = useNavigate();
-
+// console.log(megaMenuR1[0].i)
   const handleSearch = (e) => {
     e.preventDefault();
     const searchedValue = e.target.search.value;
@@ -469,28 +471,35 @@ const NavbarResponsive = ({ theme, setTheme }) => {
             <div className="grid py-5 px-4 relative mx-auto  max-w-screen-xl text-base grid-cols-2 md:grid-cols-3 md:px-10">
               <ul className=" relative space-y-3 md:mb-0 md:block">
                 {megaMenuR1.map((m) => (
-                  <li key={m.id}>
+                  <div className="flex items-center justify-start">
+                    <span>{m.icon}</span>
+                    <li key={m.id}>
                     <Link
                       to={m.href}
                       onClick={() => setMega(!mega)}
-                      className="duration-200 hover:text-lg  hover:text-blue-600 "
+                      className="duration-200 hover:text-lg ml-2  hover:text-blue-600 "
                     >
                       {m.name}
                     </Link>
                   </li>
+                  </div>
+                  
                 ))}
               </ul>
               <ul className="mb-4 space-y-3 md:mb-0">
                 {megaMenuR2.map((m) => (
+                  <div className="flex items-center justify-start">
+                  <span>{m.icon}</span>
                   <li key={m.id}>
                     <Link
                       to={m.href}
                       onClick={() => setMega(!mega)}
-                      className="duration-200 hover:text-lg  hover:text-blue-600 "
+                      className="duration-200 hover:text-lg ml-2 hover:text-blue-600 "
                     >
                       {m.name}
                     </Link>
                   </li>
+                  </div>
                 ))}
               </ul>
               <iframe

@@ -147,6 +147,7 @@ const VideoDetail = () => {
               {video?.map((v) => (
                 <>
                   <div
+                  key={v?._id}
                     onClick={() => setUVideo(v)}
                     className="flex px-3 bg-[#222] rounded-sm  py-3 mb-3"
                   >
