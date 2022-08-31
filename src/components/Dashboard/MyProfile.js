@@ -8,6 +8,8 @@ import { useUpdateUserProfileMutation } from '../../services/post';
 import Loading from '../Shared/Loading/Loading';
 import SingleProfile from './SingleProfile';
 import SingleProfilePic from './SingleProfilePic';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const MyProfile = () => {
     const [user] = useAuthState(auth);
@@ -18,6 +20,8 @@ const MyProfile = () => {
         formState: { errors },
     } = useForm();
     const [updateUserProfile, userData] = useUpdateUserProfileMutation()
+    console.log(userData, userData.status);
+    const MySwal = withReactContent(Swal)
 
     const url = `https://infinite-island-65121.herokuapp.com/userProfile?email=${user?.email}`
     const { data, isLoading, refetch } = useQuery(['userProfile'], () =>
@@ -60,10 +64,19 @@ const MyProfile = () => {
                         profileImage: image,
                         profileEmail: user.email,
                     }
+                    // using redux
                     updateUserProfile(userProfile)
-                    e.target.reset();
-                    refetch();
-                    toast.success('Your profile updated successfully!!!')
+                    if (userData?.status === 'fulfilled') {
+                        e.target.reset();
+                        refetch();
+                        toast.success('Your profile updated successfully!!!')
+                        MySwal.fire({
+                            title: <strong>Wow. Good job!</strong>,
+                            html: <i className='text-xl text-green-500'>Successfully updated your profile</i>,
+                            icon: 'success'
+                        })
+                    }
+
                     // const url = `https://infinite-island-65121.herokuapp.com/userProfile/${user?.email}`
                     // fetch(url, {
                     //     method: 'PUT',
