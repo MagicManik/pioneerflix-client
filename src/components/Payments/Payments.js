@@ -118,11 +118,11 @@ const Payments = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+                    // console.log(data);
                     navigate('/paymentPage');
                 })
         }
-        else{
+        else {
             navigate('/login');
         }
     }
