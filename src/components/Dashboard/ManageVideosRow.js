@@ -1,12 +1,16 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import auth from '../../firebase.init';
-import { useUploadFinalVideoMutation } from '../../services/post';
+import { useDeleteUsersVideoMutation, useUploadFinalVideoMutation } from '../../services/post';
 
 const ManageVideosRow = ({ detail, index, refetch }) => {
     const [user] = useAuthState(auth);
     const [finalUpload, data] = useUploadFinalVideoMutation()
+    const [deleteUserVideo, userVideo] = useDeleteUsersVideoMutation()
+    const MySwal = withReactContent(Swal)
 
     const finalUploadVideo = (id) => {
         const video = {
@@ -22,20 +26,18 @@ const ManageVideosRow = ({ detail, index, refetch }) => {
             adminName: detail?.displayName,
             adminImg: detail?.photoURL
         };
+        // using redux
         finalUpload(video)
+        MySwal.fire({
+            title: <strong>Wow. Good job!</strong>,
+            html: <i className='text-xl font-semibold text-green-500'>The video uploaded on UI Successfully!</i>,
+            icon: 'success'
+        })
         toast.success(`Successfully the video uploaded in UI`)
         localStorage.setItem("notificationMode", "true");
-        const url = `https://infinite-island-65121.herokuapp.com/uploadedVideo/${id}`;
-        fetch(url, {
-            method: 'DELETE',
-            headers: {
-                'content-type': 'application/json'
-            }
-        })
-            .then(res => res.json())
-            .then(result => {
-                refetch()
-            })
+        // using redux
+        deleteUserVideo(id)
+        refetch()
 
         // const url = `https://infinite-island-65121.herokuapp.com/finalUploadByAdmin`
         // fetch(url, {
@@ -65,20 +67,30 @@ const ManageVideosRow = ({ detail, index, refetch }) => {
     }
 
     const deleteVideo = (id) => {
-        const url = `https://infinite-island-65121.herokuapp.com/uploadedVideo/${id}`;
-        fetch(url, {
-            method: 'DELETE',
-            headers: {
-                'content-type': 'application/json'
-            }
+        // using redux
+        deleteUserVideo(id)
+        MySwal.fire({
+            title: <strong>Wow. Good job!</strong>,
+            html: <i className='text-xl font-semibold text-green-500'>The video removed from User collection</i>,
+            icon: 'success'
         })
+        refetch()
+        toast.success(`${id} is deleted`)
+        
+        // const url = `https://infinite-island-65121.herokuapp.com/uploadedVideo/${id}`;
+        // fetch(url, {
+        //     method: 'DELETE',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     }
+        // })
 
-            .then(res => res.json())
-            .then(result => {
-                alert('Are You sure???')
-                toast.success(`${id} is deleted`)
-                refetch()
-            })
+        //     .then(res => res.json())
+        //     .then(result => {
+        //         alert('Are You sure???')
+        //         toast.success(`${id} is deleted`)
+        //         refetch()
+        //     })
     }
 
     return (

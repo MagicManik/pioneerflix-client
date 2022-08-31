@@ -55,7 +55,7 @@ export const postApi = createApi({
     // post final upload video by admin for dashboard stored main videosCollection
     uploadFinalVideo: builder.mutation({
       query: (video) => {
-        console.log(video);
+        // console.log(video);
         return {
           url: 'finalUploadByAdmin',
           method: 'POST',
@@ -67,7 +67,13 @@ export const postApi = createApi({
       },
     }),
 
-
+    // delete user uploaded video by Id for manageVideo
+    deleteUsersVideo: builder.mutation({
+      query: (id) => ({
+        url: `uploadedVideo/${id}`,
+        method: 'DELETE'
+      }),
+    }),
 
 
 
@@ -79,4 +85,4 @@ export const postApi = createApi({
 })
 
 // Export hooks for usage in functional components, which are auto-generated based on the defined endpoints
-export const { useGetAllVideosQuery, useDeleteUiVideoMutation, useUploadByAdminMutation, useUpdateUserProfileMutation, useUploadFinalVideoMutation } = postApi;
+export const { useGetAllVideosQuery, useDeleteUiVideoMutation, useUploadByAdminMutation, useUpdateUserProfileMutation, useUploadFinalVideoMutation, useDeleteUsersVideoMutation } = postApi;
