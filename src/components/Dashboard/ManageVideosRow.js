@@ -2,9 +2,11 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
+import { useUploadFinalVideoMutation } from '../../services/post';
 
 const ManageVideosRow = ({ detail, index, refetch }) => {
     const [user] = useAuthState(auth);
+    const [finalUpload, data] = useUploadFinalVideoMutation()
 
     const finalUploadVideo = (id) => {
         const video = {
@@ -19,33 +21,47 @@ const ManageVideosRow = ({ detail, index, refetch }) => {
             uploader: detail?.uploader,
             adminName: detail?.displayName,
             adminImg: detail?.photoURL
-        }
-
-        const url = `https://infinite-island-65121.herokuapp.com/finalUploadByAdmin`
+        };
+        finalUpload(video)
+        toast.success(`Successfully the video uploaded in UI`)
+        localStorage.setItem("notificationMode", "true");
+        const url = `https://infinite-island-65121.herokuapp.com/uploadedVideo/${id}`;
         fetch(url, {
-            method: 'POST',
+            method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
-            },
-            body: JSON.stringify(video)
+            }
         })
             .then(res => res.json())
             .then(result => {
-                toast.success(`Successfully the video uploaded in UI`)
-                localStorage.setItem("notificationMode", "true");
-                const url = `https://infinite-island-65121.herokuapp.com/uploadedVideo/${id}`;
-                fetch(url, {
-                    method: 'DELETE',
-                    headers: {
-                        'content-type': 'application/json'
-                    }
-                })
-
-                    .then(res => res.json())
-                    .then(result => {
-                        refetch()
-                    })
+                refetch()
             })
+
+        // const url = `https://infinite-island-65121.herokuapp.com/finalUploadByAdmin`
+        // fetch(url, {
+        //     method: 'POST',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify(video)
+        // })
+        //     .then(res => res.json())
+        //     .then(result => {
+        //         toast.success(`Successfully the video uploaded in UI`)
+        //         localStorage.setItem("notificationMode", "true");
+        //         const url = `https://infinite-island-65121.herokuapp.com/uploadedVideo/${id}`;
+        //         fetch(url, {
+        //             method: 'DELETE',
+        //             headers: {
+        //                 'content-type': 'application/json'
+        //             }
+        //         })
+
+        //             .then(res => res.json())
+        //             .then(result => {
+        //                 refetch()
+        //             })
+        //     })
     }
 
     const deleteVideo = (id) => {

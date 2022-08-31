@@ -36,7 +36,7 @@ const MyProfile = () => {
 
     if (isLoading) {
         refetch();
-        <Loading></Loading>
+        return <Loading />
     }
     const updatedProfileData = data;
     const onSubmit = (data, e) => {

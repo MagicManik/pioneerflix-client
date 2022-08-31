@@ -38,21 +38,34 @@ export const postApi = createApi({
     // update user profile in my profile route { mohiuddin }
     updateUserProfile: builder.mutation({
       query: (userProfile) => {
-        const {profileEmail, ...data} = userProfile;
+        const { profileEmail, ...data } = userProfile;
         // console.log({profileEmail, data});
         return {
           url: `userProfile/${profileEmail}`,
           method: 'PUT',
           body: data,
           headers: {
-            'content-type' : 'application/json; charset=UTF-8',
+            'content-type': 'application/json; charset=UTF-8',
           }
         }
       },
     }),
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    
+    // post final upload video by admin for dashboard stored main videosCollection
+    uploadFinalVideo: builder.mutation({
+      query: (video) => {
+        console.log(video);
+        return {
+          url: 'finalUploadByAdmin',
+          method: 'POST',
+          body: video,
+          headers: {
+            'content-type': 'application/json; charset=UTF-8',
+          }
+        }
+      },
+    }),
 
 
 
@@ -66,4 +79,4 @@ export const postApi = createApi({
 })
 
 // Export hooks for usage in functional components, which are auto-generated based on the defined endpoints
-export const { useGetAllVideosQuery, useDeleteUiVideoMutation, useUploadByAdminMutation, useUpdateUserProfileMutation } = postApi;
+export const { useGetAllVideosQuery, useDeleteUiVideoMutation, useUploadByAdminMutation, useUpdateUserProfileMutation, useUploadFinalVideoMutation } = postApi;
