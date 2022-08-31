@@ -17,7 +17,7 @@ const LikedVideos = () => {
     const handlePlay = (id) => {
         navigate(`/play/${id}`)
     }
-
+// console.log(likes)
     return (
 
         <section className='py-16 bg-black'>

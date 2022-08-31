@@ -7,10 +7,12 @@ import {
   FaHeart,
   FaUserAlt,
 } from "react-icons/fa";
+import useLikes from "../../hooks/useLikes";
 import useVideos from "../../hooks/useVideos";
 
 const Movies = () => {
   const [videos] = useVideos();
+  const [likes] = useLikes();
   const [video, setVideo] = useState({});
   const [uVideo, setUVideo] = useState({});
   // const [user] = useAuthState(auth);
@@ -24,10 +26,12 @@ const Movies = () => {
     
   }, [videos]);
   const handleHome=()=>{
-
+    setVideo(likes);
+    setUVideo(likes[0]);
     console.log('from home')
+    console.log(likes)
   }
-  console.log(videos);
+  // console.log(videos);
   return (
     <div className="bg-primary py-20 px-10">
       <div className=" grid grid-cols-12 gap-5 w-full ">

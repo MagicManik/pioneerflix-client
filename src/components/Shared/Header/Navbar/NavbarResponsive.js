@@ -1,14 +1,6 @@
 import { React, Fragment, useState, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import {
-  FaAlignJustify,
-  FaTimes,
-  FaRegMoon,
-  FaCaretDown,
-  FaSearch,
-  FaCaretUp,
-  FaGrinAlt
-} from "react-icons/fa";
+import {FaAlignJustify,FaTimes,FaRegMoon, FaCaretDown,FaSearch,FaCaretUp,FaGrinAlt} from "react-icons/fa";
 import {   GiDramaMasks,GiRocketThruster,GiBangingGavel,GiNewBorn,GiPapers,GiGamepad ,GiPartyPopper ,GiIncomingRocket,GiPaperClip,GiSlicedBread} from "react-icons/gi";
 import userPhoto from '../../../../assets/app-logo/download.svg';
 import { MdLightMode } from "react-icons/md";
@@ -192,6 +184,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         {/* _____________________mmm_____________________ */}
                         <button
                           onClick={() => handleMovies(!moviesMega)}
+                          onMouseEnter={() => handleMovies()}
                           className=" text-white  flex  items-end  hover:text-white"
                         >
                           {t("Movies")}{" "}
@@ -203,7 +196,8 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         </button>
 
                         <button
-                          onMouseEnter={() => setMega(true)}
+                          onMouseEnter={() => handleMega()}
+                
       
                           className=" text-white  flex  items-end duration-1000 transition hover:text-white"
 
@@ -530,7 +524,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
         <hr />
 
         {mega && (
-          <div  onMouseLeave={() => setMega(false)} className="absolute bg-[#222] border-2 border-indigo-600 md:top-16 md:left-56 w-[90%] md:w-[60%] rounded z-30">
+          <div  onMouseLeave={() => handleMega(false)} className="absolute bg-[#222] border-2 border-indigo-600 md:top-16 md:left-56 w-[90%] md:w-[60%] rounded z-30">
             <div className="grid py-5 px-4 relative mx-auto  max-w-screen-xl text-base grid-cols-2 md:grid-cols-3 md:px-10">
               <ul className=" relative space-y-3 md:mb-0 md:block">
                 {megaMenuR1.map((m) => (
@@ -565,9 +559,6 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   </div>
                 ))}
               </ul>
-
-
-
               <iframe
                 width="100%"
                 height="100%"
@@ -583,14 +574,13 @@ const NavbarResponsive = ({ theme, setTheme }) => {
         )}
 
         {moviesMega &&
-          <div className="absolute bg-[#222] border-2 border-indigo-600 md:top-16 md:left-72 rounded z-30">
+          <div onMouseLeave={() =>  handleMovies()} className="absolute bg-[#222] border-2 border-indigo-600 md:top-16 md:left-72 rounded z-30">
             <div className="py-5 px-4 relative mx-auto  max-w-screen-xl text-base md:px-10">
               <ul className="mb-4 space-y-3 md:mb-0">
                 {megaMenuR3.map((m) => (
                   <li key={m.id}>
                     <Link
                       to={m.href}
-                      onClick={() => handleMovies(!moviesMega)}
                       className="duration-200 hover:text-lg  hover:text-blue-600"
                     >
                       {m.name}
