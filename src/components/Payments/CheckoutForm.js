@@ -89,8 +89,8 @@ const CheckoutForm = ({ userBookingData }) => {
                 transactionId: paymentIntent?.id
             }
             const url = `https://infinite-island-65121.herokuapp.com/booking/${id}`;
-            console.log(url);
-            console.log(payment);
+            // console.log(url);
+            // console.log(payment);
             fetch(url, {
                 method: 'PATCH',
                 headers: {
@@ -101,11 +101,11 @@ const CheckoutForm = ({ userBookingData }) => {
                 .then(res => res.json())
                 .then(data => {
                     setProcessing(false);
-                    console.log(data);
-                    navigate(from, { replace: true });
+
                 })
         }
         event.target.reset();
+        navigate(from, { replace: true });
     }
 
     return (

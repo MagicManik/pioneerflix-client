@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
-import banner1 from "../../assets/banner/banner (10).jpg";
 import banner2 from "../../assets/banner/banner (13).jpg";
 import banner3 from "../../assets/banner/banner (14).jpg";
 import banner4 from "../../assets/banner/banner (15).jpg";
+import banner5 from "../../assets/banner/banner (20).jpg";
 import useChannels from "../../hooks/useChannels";
 import { useTranslation } from "react-i18next";
 
@@ -73,7 +73,7 @@ const Banner = () => {
         </div>
 
         <div id="slide2" className="carousel-item relative w-full">
-          <img src={banner1} className="banner-img" alt="banner-2" />
+          <img src={banner5} className="banner-img" alt="banner-2" />
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide1" className="btn btn-circle bg-transparent hidden lg:block w-18 p-[17px]">
               ❮

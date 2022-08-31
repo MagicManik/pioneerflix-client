@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaShareAlt, FaStar, } from "react-icons/fa";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BiLike } from "react-icons/bi";
@@ -18,8 +18,9 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import useVideos from "../../hooks/useVideos";
 import usePaidUser from "../../hooks/usePaidUser";
-import useWatchHistory from "../../hooks/useWatchHistory"
+import useMyList from "../../hooks/useMyList";
 import Payments from "../Payments/Payments";
+import { useEffect } from "react";
 
 const Details = () => {
   const { id } = useParams();
@@ -27,48 +28,45 @@ const Details = () => {
   const [video] = useVideo(id);
   const [likes] = useLikes();
   const [comments] = useComments();
-  const [rating, setRating] = useState(null)
+  const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
-  const [ratings] = useRatings(id, rating);
+  const [data, refetch] = useRatings(id);
   const [paidUser] = usePaidUser(user);
-  const [watchVideo] = useWatchHistory(user?.email);
-  // const navigate = useNavigate();
+  const [myList] = useMyList();
 
   const paid = paidUser?.paid;
-
-  // console.log(paid);
 
   const { videoLink, imgLink, title, category, description, duration } = video;
   const [videos] = useVideos();
 
-
-  // TOTAL LIKE____
-  // jodi fetch kora like er id soman video details page er id hoy tahole je data paoya jabe ogolai hole ei video er total like.
+  // TOTAL LIKE FOR THIS VIDEO
   const totalLike = likes?.filter((li) => li.id === id);
 
-  // USER'S LIKE____
-  // backend theke fetch kora likes id er sathe video id match korle ebong fetch kore ana oi likes er email er sathe video details page er user er id show show korle je deta pabo otai hobe user like. user er like pele amra conditional css use korbo.
+  // USER'S LIKE
   const likedUser = likes?.filter((li) => li.id === id && li.email === user?.email);
 
-  // DISPLAY COMMENT____
-  //  backend theke fetch kora comments er id soman jodi details page er video id hoy, tahole comment dekhabe.
+  // USER'S MY LIST
+  const hasUserMyList = myList?.filter(list => list.id === id);
+
+  // DISPLAY COMMENT
   const commentDisplay = comments?.filter(comment => comment.id === id);
 
-  // RATINGS____
-  const totalRating = ratings?.reduce((a, b) => a + b.star, 0);
-  const averageRating = (totalRating / ratings?.length).toFixed(1);
-  const userStar = ratings?.filter(rating => rating?.email === user?.email);
+  // RATINGS
+  const totalRating = data?.reduce((a, b) => a + b.star, 0);
+
+  const averageRating = (totalRating / data?.length || 0).toFixed(1);
+  const userStar = data?.filter(rating => rating?.email === user?.email);
   let displayStar = (userStar?.[0]?.star);
-
-  // console.log(displayStar)
-
 
   // handler like || Manik Islam Mahi
   const handleLike = () => {
     const like = true;
     const name = user?.displayName;
     const email = user?.email;
-    const newLike = { id, like, name, email };
+    const videoLink = video.videoLink;
+    const imgLink = video.imgLink;
+    const title = video.title;
+    const newLike = { id, like, name, email, imgLink, videoLink, title };
 
     const likedUser = likes.filter((li) => li.id === id && li.email === email);
 
@@ -77,7 +75,6 @@ const Details = () => {
       const likedId = likedUser[0]._id;
 
       const url = `https://infinite-island-65121.herokuapp.com/likes/${likedId}`;
-
       fetch(url, {
         method: "DELETE",
       })
@@ -132,17 +129,13 @@ const Details = () => {
       });
   };
 
-
   // Handle Rating || Manik Islam Mahi
-  const handleReview = (star) => {
+  const handleRating = (star) => {
     setRating(star);
-    console.log(star);
     const name = user?.displayName;
     const email = user?.email;
     const rating = { id, star, name, email };
-
     const url = `https://infinite-island-65121.herokuapp.com/rating/${email}`
-
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -152,63 +145,109 @@ const Details = () => {
     })
       .then(res => res.json())
       .then(result => {
-        // console.log(result);
+        if (result) {
+          refetch();
+        }
       })
   };
 
+  const sendData = {
+    id: id,
+    videoTitle: title,
+    email: user?.email,
+    videoLink: videoLink,
+    imgLink: imgLink,
+  };
 
+  // Handle My List || Manik Islam Mahi
+  const handleMyList = () => {
+
+    if (hasUserMyList.length > 0) {
+      const id = hasUserMyList[0]._id;
+      const url = `https://infinite-island-65121.herokuapp.com/mylist/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            // alert("Deleted");
+          }
+        });
+    }
+
+    else {
+      fetch(`https://infinite-island-65121.herokuapp.com/mylist/${user?.email}`, {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(sendData)
+      })
+        .then(res => res.json())
+        .then(result => {
+          // console.log(result);
+        })
+    }
+  };
+
+  // set watch list || Manik Islam Mahi
+  useEffect(() => {
+    if (videoLink) {
+      fetch(`https://infinite-island-65121.herokuapp.com/watchlist/${id}`, {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(sendData)
+      })
+        .then(res => res.json())
+        .then(data => console.log(data))
+    }
+
+  }, [video?.videoLink]);
 
 
   // Handle Review || Shihab Uddin
-  const libraryInfo = {
-    videoId: id,
-    email: user?.email,
-    videoLink: videoLink,
-    videoTitle: title,
-    // videoDescription:description
-  };
+  // const libraryInfo = {
+  //   videoId: id,
+  //   email: user?.email,
+  //   videoLink: videoLink,
+  //   videoTitle: title,
+  // };
 
-  useEffect(() => {
-    // const handleWatchList=()=>{
-      if (title) {
-        const remaining = watchVideo?.filter((v) => v?.videoId === id);
-        if (remaining?.length === 0) {
-          fetch("https://infinite-island-65121.herokuapp.com/library", {
-          // fetch("http://localhost:5000/library", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(libraryInfo),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              // console.log(data);
-            });
-        }
-      }
+  // useEffect(() => {
+  //   if (title) {
+  //     const remaining = watchVideo?.filter((v) => v?.videoId === id);
+  //     if (remaining?.length === 0) {
+  //       fetch("https://infinite-island-65121.herokuapp.com/library", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(libraryInfo),
+  //       })
+  //         .then((response) => response.json())
+  //         .then((data) => {
+  //         });
+  //     }
+  //   }
+  // }, [title,watchVideo]);
 
-    // }
-    
-  
-  }, [title,watchVideo]);
-
-  const handleAddList = () => {
-    fetch("https://infinite-island-65121.herokuapp.com/favorite", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(libraryInfo),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log(data);
-      });
-  };
+  // const handleAddList = () => {
+  //   fetch("https://infinite-island-65121.herokuapp.com/favorite", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(libraryInfo),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //     });
+  // };
 
 
-  // console.log(videos)
 
   var settings = {
     dots: false,
@@ -278,7 +317,7 @@ const Details = () => {
                         return (
                           <label key={i}>
 
-                            <input type="radio" className="hidden" name="rating" value={ratingValue} onClick={() => handleReview(ratingValue)} />
+                            <input type="radio" className="hidden" name="rating" value={ratingValue} onClick={() => handleRating(ratingValue)} />
 
                             <FaStar className="ml-2" color={ratingValue <= (hover || rating || displayStar) ? '#ff9501' : '#222'} size={20}
                               onMouseEnter={() => setHover(ratingValue)}
@@ -290,14 +329,11 @@ const Details = () => {
                         )
                       })}
 
-
                     </div>
                     <span className="pl-8 text-[#a5a5a5] block mt-2">Average Rating : {averageRating}</span>
                   </div>
 
-
-
-                  {/* Like section */}
+                  {/* ______ Like section ______ */}
                   <div className="grid grid-cols-3 mr-6 md:ml-0 ml-5  md:mt-0 mt-5">
                     <div className="flex items-center ">
                       <button onClick={handleLike} className={likedUser?.length >= 1 ? 'btn btn-circle like-btn liked-btn' : 'btn btn-circle like-btn'} title="Like here">
@@ -305,23 +341,25 @@ const Details = () => {
                       </button>
                       <div className={likedUser?.length >= 1 ? 'text-[#ff9501]' : ''}>Like {totalLike?.length}</div>
                     </div>
+
+                    {/* _____ Add To List Button _____ */}
                     <div className="flex items-center mr-3">
                       <button
-                        onClick={handleAddList}
+                        onClick={handleMyList}
                         className="btn btn-circle like-btn"
-                        title="Add your list"
-                      >
-                        <AiOutlinePlus />
+                        title="Add your list">
+                        <AiOutlinePlus className={hasUserMyList?.length >= 1 ? 'fill-[#ff9501]' : ''} />
                       </button>
-                      <span>My List</span>
+                      <span className={hasUserMyList?.length >= 1 ? 'text-[#ff9501]' : ''}>My List</span>
                     </div>
+
                     <div className="flex items-center">
                       <label
                         htmlFor="my-share-modal-3"
                         className="btn btn-circle like-btn"
                         title="Share"
                       >
-                        <FaShareAlt className="text-xl" />
+                        <FaShareAlt className="text-xl active:text-[#ff9501]" />
                       </label>
                       <span>Share</span>
                     </div>
@@ -330,8 +368,7 @@ const Details = () => {
 
                 <hr className="h-[0.5px] my-3 bg-[#222] " />
 
-
-                {/* Video details */}
+                {/* ______ Video Details ______ */}
               </div>
               <div className="md:grid flex items-center  md:grid-cols-6  md:py-8 ">
                 <div className=" col-start-1 md:col-end-3 col-end-7 flex md:justify-start justify-center items-center w-full">
@@ -365,31 +402,24 @@ const Details = () => {
                 </div>
               </div>
 
-
-              {/* Search Related Video */}
+              {/* ______ Search Related Video ______ */}
               <div className="mt-5 mb-20">
                 <h3 className="text-[#ff9501]">You may also like...</h3>
                 <Slider {...settings}>
-
                   {
                     videos.map(video =>
-
                       <div key={video._id}>
                         <div className='zoom-div-I pb-2 pl-0 pt-6 pr-3 video-div' key={video._id}>
                           <Link to={`/play/${video._id}`}>
                             <img className='popular-movie' src={video.imgLink} alt="" />
                           </Link>
-
-
                         </div>
-
                       </div>)
                   }
-
                 </Slider>
               </div>
 
-              {/* comment section */}
+              {/* _______ Comment Section ______ */}
               <div className="flex items-center">
                 {
                   user?.photoURL ? <img
@@ -398,7 +428,6 @@ const Details = () => {
                     alt=""
                   /> : <AiOutlineUser className="commenter-img-icon" />
                 }
-
                 <div className="w-full ml-2">
                   <form onSubmit={handleComment}>
                     <div className="relative">
@@ -423,11 +452,10 @@ const Details = () => {
                 </div>
               </div>
 
-              {/* comment displayed */}
+              {/* _____ comment displayed ______ */}
               <div className=" md:py-5 pt-5 gap-5">
                 {commentDisplay?.map((comment) => (
                   <div className="flex pb-5" key={comment._id}>
-
                     {
                       user?.photoURL ? <img
                         className="mt-1 w-10 h-10 rounded-full mr-3"
@@ -435,8 +463,6 @@ const Details = () => {
                         alt=""
                       /> : <AiOutlineUser className="commenter-img-icon w-10 h-10 rounded-full mr-3" />
                     }
-
-                    {/* <img className="w-10 h-10 rounded-full mr-3" src={comment.img} alt="" /> */}
 
                     <div className="rounded-2xl pb-2 border-[2px #222] ">
                       <p className="text-amber-400">{comment.id === id && comment.name}</p>
@@ -488,9 +514,7 @@ const Details = () => {
           </div>
           :
           <Payments></Payments>
-          
       }
- 
     </>
   );
 };

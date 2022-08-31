@@ -1,9 +1,9 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const useUploadedVideo = () => {
     const [videos, setVideos] = useState({})
     useEffect(() => {
-        fetch('http://localhost:5000/notification')
+        fetch('https://infinite-island-65121.herokuapp.com/notification')
             .then(res => res.json())
             .then(data => setVideos(data))
 
