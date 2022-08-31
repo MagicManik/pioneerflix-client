@@ -88,7 +88,7 @@ const PioneerplixExclusive = () => {
                         </div>
 
                         <div className='our-story-card-animation-container pb-10 lg:pb-20 pt-6 lg:pt-20'>
-                            <img className='tv-img rounded-xl ' src={profileKids} alt="" />
+                            <img className='tv-img block mx-auto rounded-xl ' src={profileKids} alt="" />
                         </div>
                     </div>
                 </div>

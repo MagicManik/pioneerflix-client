@@ -1,5 +1,5 @@
 import React from 'react';
-import offlineWatch from '../../../assets/others/watch-off.jpg';
+import offlineWatch from '../../../assets/others/watch-off.png';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
@@ -84,7 +84,7 @@ const MostPopular = () => {
                             <p className='pt-2 lg:pt-2 lg:text-3xl'>{t("Watchmovies,behappy,andsmilefromthebottomofyourheart")}</p>
                         </div>
 
-                        <div className='our-story-card-animation-container pb-20'>
+                        <div className='our-story-card-animation-container pt-3 lg:pt-0 pb-3 lg:pb-20'>
                             <img className='tv-img rounded-xl ' src={offlineWatch} alt="" />
                         </div>
                     </div>

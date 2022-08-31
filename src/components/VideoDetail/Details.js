@@ -196,7 +196,7 @@ const Details = () => {
   // set watch list || Manik Islam Mahi
   useEffect(() => {
     if (videoLink) {
-      fetch(`http://localhost:5000/watchlist/${id}`, {
+      fetch(`https://infinite-island-65121.herokuapp.com/watchlist/${id}`, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
