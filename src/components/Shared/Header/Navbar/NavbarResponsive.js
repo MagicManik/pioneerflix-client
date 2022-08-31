@@ -48,6 +48,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
   // const [videos] = useVideos();
   const [scrollNavbar, setScrollNavbar] = useState(false);
   const [mega, setMega] = useState(false);
+  const [notification, setNotification] = useState(false);
 
   const navigateResultPage = useNavigate();
 // console.log(megaMenuR1[0].i)
@@ -77,6 +78,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
     if (window.scrollY >= 80) {
       setScrollNavbar(true);
       setMega(false);
+      setNotification(false)
     } else {
       setScrollNavbar(false);
     }
@@ -235,7 +237,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         <MdLightMode onClick={() => handleTheme("dark")} />
                       )}
                     </button>
-                    <Notification/>
+                    <Notification notification={notification} setNotification={setNotification}/>
                     <Link
                       to="/solvePay"
                       className=" text-white text-lg bg-[#d41821] hover:bg-[#ff1622] px-4 mx-3 py-1 rounded-lg hidden md:block hover:text-white"
