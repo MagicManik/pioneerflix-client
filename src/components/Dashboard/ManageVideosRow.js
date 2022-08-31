@@ -78,7 +78,7 @@ const ManageVideosRow = ({ detail, index, refetch }) => {
                         </div>
                     </div>
                     <div>
-                        <a href={detail?.videoLink} className='text-black' target="_blank" alt=''>{detail?.videoLink}</a>
+                        <a href={detail?.videoLink} className='text-black' target="_blank" alt=''>{detail?.title?.slice(0, 20)}</a>
                     </div>
                 </div>
             </td>

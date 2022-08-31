@@ -1,21 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
-import { t } from 'i18next';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useTranslation } from 'react-i18next';
-import { FcLike } from 'react-icons/fc';
 import auth from '../../firebase.init';
-import useAdmin from '../../hooks/useAdmin';
+import { FcLike } from 'react-icons/fc';
 import LoaderSquare from '../Shared/Loader/LoaderSquare';
 
-const MyVideos = () => {
+const MyVideosAdmin = () => {
     const [user] = useAuthState(auth);
-    const { t } = useTranslation("dashboard")
-    const [admin] = useAdmin(user);
+    const {t} =useTranslation("dashboard")
 
-
-    const url = `https://infinite-island-65121.herokuapp.com/userUploadVideo?email=${user?.email}`
-    const { data, isLoading } = useQuery(['userUploadVideo'], () =>
+    const url = `https://infinite-island-65121.herokuapp.com/adminUploadVideo?email=${user?.email}`
+    const { data, isLoading } = useQuery(['adminUploadVideo'], () =>
         fetch(url, {
             method: 'GET',
             headers: {
@@ -54,4 +50,4 @@ const MyVideos = () => {
     );
 };
 
-export default MyVideos;
+export default MyVideosAdmin;

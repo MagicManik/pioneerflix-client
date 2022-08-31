@@ -5,8 +5,7 @@ import withReactContent from 'sweetalert2-react-content';
 import { useDeleteUiVideoMutation } from '../../services/post';
 
 const DeleteUiVideoRow = ({ detail, index, refetch }) => {
-    const [deleteVideo, data] = useDeleteUiVideoMutation()
-    console.log(data.status);
+    const [deleteVideo, data] = useDeleteUiVideoMutation();
     const MySwal = withReactContent(Swal)
 
     const deleteUiVideo = (id) => {
@@ -55,12 +54,12 @@ const DeleteUiVideoRow = ({ detail, index, refetch }) => {
                         </div>
                     </div>
                     <div>
-                        <a href={detail?.videoLink} className='text-black' target="_blank" alt=''>{detail?.videoLink}</a>
+                        <a href={detail?.videoLink} className='text-black' target="_blank" alt=''>{detail?.title.slice(0, 25)}</a>
                     </div>
                 </div>
             </td>
             <td>
-                <span className='text-black'>{detail?.title}</span>
+                <span className='text-black'>{detail?.uploader}</span>
             </td>
             <th>
                 <button
