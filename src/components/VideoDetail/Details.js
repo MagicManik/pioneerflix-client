@@ -261,9 +261,9 @@ const Details = () => {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe> */}
-                <MediaPlayerDetails
+                {/* <MediaPlayerDetails
                 video={video}
-                ></MediaPlayerDetails>
+                ></MediaPlayerDetails> */}
 
               </div>
 

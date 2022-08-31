@@ -55,9 +55,9 @@ const TvChannel = () => {
       <hr className="line-" />
 
       <div className="justify-center flex pt-4 ">
-        <MediaPlayer 
+        {/* <MediaPlayer 
         channel={channel}
-        ></MediaPlayer>
+        ></MediaPlayer> */}
       </div>
 
       <section className="bg-secondary ">
