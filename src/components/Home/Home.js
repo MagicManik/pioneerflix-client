@@ -1,4 +1,5 @@
 import React from "react";
+import VideoPlayer from "../Shared/VideoPlayer/VideoPlayer";
 import AskAnswer from "./AskAnswer/AskAnswer";
 
 import Banner from "./Banner";
@@ -18,6 +19,7 @@ const Home = () => {
       <PioneerplixExclusive></PioneerplixExclusive>
       <PioneerflixKids></PioneerflixKids>
       <PioneerflixFree></PioneerflixFree>
+      <VideoPlayer></VideoPlayer>
       <AskAnswer></AskAnswer>
     </main>
   );
