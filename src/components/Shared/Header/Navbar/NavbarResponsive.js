@@ -318,7 +318,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                       >
-                        <Menu.Items className="origin-top-right w-[255px] absolute z-20 right-0 mt-2 rounded-[12px] shadow-lg custom-bg ring-1 ring-black ring-opacity-5 focus:outline-none py-4">
+                        <Menu.Items className="origin-top-right w-[245px] absolute z-20 right-0 mt-2 rounded-[18px] shadow-lg custom-bg ring-1 ring-black ring-opacity-5 focus:outline-none py-4">
                           {/* custom-border-II */}
                           <Menu.Item>
                             {({ active }) => (
@@ -413,7 +413,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                           <Menu.Item>
                             {({ active }) => (
                               <Link
-                                to="favorite"
+                                to="dashboard/myVideos"
                                 className={classNames(
                                   active
                                     ? "bg-zinc-800 w-full text-left"

@@ -8,11 +8,11 @@ const DeleteUiVideos = () => {
     const { data, refetch, isLoading } = useGetAllVideosQuery();
     // console.log(data);
 
-    if(isLoading){
+    if (isLoading) {
         return <Loading />
     }
 
-    // const url = 'https://infinite-island-65121.herokuapp.com/videos'
+    // const url = 'http://localhost:5000/videos'
     // const { data, refetch } = useQuery(['videos'], () =>
     //     fetch(url, {
     //         method: 'GET',

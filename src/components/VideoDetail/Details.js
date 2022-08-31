@@ -21,6 +21,7 @@ import usePaidUser from "../../hooks/usePaidUser";
 import useMyList from "../../hooks/useMyList";
 import Payments from "../Payments/Payments";
 import { useEffect } from "react";
+import { useUpdateWatchListMutation, useUploadLikeMutation } from "../../services/post";
 
 const Details = () => {
   const { id } = useParams();
@@ -33,6 +34,11 @@ const Details = () => {
   const [data, refetch] = useRatings(id);
   const [paidUser] = usePaidUser(user);
   const [myList] = useMyList();
+
+  const [updateWatch, watchData] = useUpdateWatchListMutation();
+  const [createLike, likeData] = useUploadLikeMutation();
+
+  // console.log(likeData);
 
   const paid = paidUser?.paid;
 
@@ -74,7 +80,7 @@ const Details = () => {
     if (likedUser?.length > 0) {
       const likedId = likedUser[0]._id;
 
-      const url = `https://infinite-island-65121.herokuapp.com/likes/${likedId}`;
+      const url = `http://localhost:5000/likes/${likedId}`;
       fetch(url, {
         method: "DELETE",
       })
@@ -88,19 +94,20 @@ const Details = () => {
 
     // to add like
     else {
-      fetch("https://infinite-island-65121.herokuapp.com/like", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newLike),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.insertedId) {
-            // alert("Your item successfully added.");
-          }
-        });
+      createLike(newLike);
+      // fetch("http://localhost:5000/like", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(newLike),
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => {
+      //     if (data.insertedId) {
+      //       // alert("Your item successfully added.");
+      //     }
+      //   });
     }
   };
 
@@ -113,7 +120,7 @@ const Details = () => {
     const email = user?.email;
     const newComment = { id, name, comment, img, email };
 
-    fetch("https://infinite-island-65121.herokuapp.com/comment", {
+    fetch("http://localhost:5000/comment", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -135,7 +142,7 @@ const Details = () => {
     const name = user?.displayName;
     const email = user?.email;
     const rating = { id, star, name, email };
-    const url = `https://infinite-island-65121.herokuapp.com/rating/${email}`
+    const url = `http://localhost:5000/rating/${email}`
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -164,7 +171,7 @@ const Details = () => {
 
     if (hasUserMyList.length > 0) {
       const id = hasUserMyList[0]._id;
-      const url = `https://infinite-island-65121.herokuapp.com/mylist/${id}`;
+      const url = `http://localhost:5000/mylist/${id}`;
       fetch(url, {
         method: "DELETE",
       })
@@ -177,7 +184,7 @@ const Details = () => {
     }
 
     else {
-      fetch(`https://infinite-island-65121.herokuapp.com/mylist/${user?.email}`, {
+      fetch(`http://localhost:5000/mylist/${user?.email}`, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -194,15 +201,16 @@ const Details = () => {
   // set watch list || Manik Islam Mahi
   useEffect(() => {
     if (videoLink) {
-      fetch(`https://infinite-island-65121.herokuapp.com/watchlist/${id}`, {
-        method: "PUT",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(sendData)
-      })
-        .then(res => res.json())
-        .then(data => console.log(data))
+      updateWatch(sendData);
+      // fetch(`http://localhost:5000/watchlist/${id}`, {
+      //   method: "PUT",
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(sendData)
+      // })
+      //   .then(res => res.json())
+      //   .then(data => console.log(data))
     }
 
   }, [video?.videoLink]);
@@ -220,7 +228,7 @@ const Details = () => {
   //   if (title) {
   //     const remaining = watchVideo?.filter((v) => v?.videoId === id);
   //     if (remaining?.length === 0) {
-  //       fetch("https://infinite-island-65121.herokuapp.com/library", {
+  //       fetch("http://localhost:5000/library", {
   //         method: "POST",
   //         headers: {
   //           "Content-Type": "application/json",
@@ -235,7 +243,7 @@ const Details = () => {
   // }, [title,watchVideo]);
 
   // const handleAddList = () => {
-  //   fetch("https://infinite-island-65121.herokuapp.com/favorite", {
+  //   fetch("http://localhost:5000/favorite", {
   //     method: "POST",
   //     headers: {
   //       "Content-Type": "application/json",
