@@ -125,7 +125,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
         <Disclosure as="nav">
           {({ open }) => (
             <>
-              <div    className="max-w-8xl mx-auto px-2 sm:px-6 lg:px-14 ">
+              <div    className="max-w-8xl text-secondary mx-auto px-2 sm:px-6 lg:px-14 ">
                 <div className="relative flex items-center justify-between h-16">
                   <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                     {/* Mobile menu button*/}
@@ -166,7 +166,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       <div className="flex space-x-4">
                         <CustomLink
                           to="/"
-                          className=" text-white  hover:text-white"
+                          className="   hover:text-error"
                         >
                           {" "}
                           {/* ........for multiple language......... */}
@@ -174,7 +174,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         </CustomLink>
                         <CustomLink
                           to="/tv"
-                          className=" text-white hidden xl:block hover:text-white"
+                          className="  hidden xl:block hover:text-error"
                         >
                           {/* ........for multiple language......... */}
                           {t("TVShows")}
@@ -185,7 +185,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         <button
                           onClick={() => handleMovies(!moviesMega)}
                           onMouseEnter={() => handleMovies()}
-                          className=" text-white  flex  items-end  hover:text-white"
+                          className="   flex  items-end  hover:text-error"
                         >
                           {t("Movies")}{" "}
                           {moviesMega ? (
@@ -197,10 +197,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
                         <button
                           onMouseEnter={() => handleMega()}
-                
-      
-                          className=" text-white  flex  items-end duration-1000 transition hover:text-white"
-
+                          className="   flex  items-end  hover:text-error"
                         >
                           {t("Categories")}{" "}
                           {mega ? (
@@ -239,7 +236,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   </div>
                   <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                     {/* search here */}
-                    <div className="relative hidden md:block mr-5 text-black">
+                    <div className="relative hidden md:block mr-5 ">
                       <div className="flex absolute inset-y-0  left-0 items-center pl-3 pointer-events-none">
                         <FaSearch className="text-sm search-icon" />
                       </div>
@@ -260,7 +257,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     {/* Voice Search Component || Shaila APu */}
 
                     <button
-                      className=" text-white text-xl"
+                      className="  text-xl"
                       onClick={() => setTheme(!theme)}
                     >
                       {theme ? (
@@ -272,7 +269,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     <Notification notification={notification} setNotification={setNotification}/>
                     <Link
                       to="/solvePay"
-                      className=" text-white text-lg bg-[#d41821] hover:bg-[#ff1622] px-4 mx-3 py-1 rounded-lg hidden md:block hover:text-white"
+                      className="  text-lg bg-[#d41821] hover:bg-[#ff1622] px-4 mx-3 py-1 rounded-lg hidden md:block hover:text-white"
                     >
                       {t("Subscribe")}
                     </Link>
@@ -460,13 +457,6 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     {t("Home")}
                   </CustomLink>
 
-                  {/* <CustomLink
-                    to="/tv"
-                    className=" text-white hidden hover:text-white"
-                  >
-                    {t("TVShows")}
-                  </CustomLink> */}
-
                   <CustomLink to="/movies" className=" text-white mb-4 block hover:text-white">
                     {" "}
                     {/* ........for multiple language......... */}
@@ -524,7 +514,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
         <hr />
 
         {mega && (
-          <div  onMouseLeave={() => handleMega(false)} className="absolute bg-[#222] border-2 border-indigo-600 md:top-16 md:left-56 w-[90%] md:w-[60%] rounded z-30">
+          <div  onMouseLeave={() => handleMega(false)} className="absolute duration-1000 transition bg-[#222] border-2 border-indigo-600 md:top-16 md:left-56 w-[90%] md:w-[60%] rounded z-30">
             <div className="grid py-5 px-4 relative mx-auto  max-w-screen-xl text-base grid-cols-2 md:grid-cols-3 md:px-10">
               <ul className=" relative space-y-3 md:mb-0 md:block">
                 {megaMenuR1.map((m) => (

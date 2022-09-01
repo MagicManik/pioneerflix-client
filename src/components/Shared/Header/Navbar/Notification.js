@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { FaRegBell } from "react-icons/fa";
+import { FaRegBell ,FaBell} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useUploadedVideo from "../../../../hooks/useUploadedVideo";
 
@@ -26,10 +26,10 @@ useEffect(()=>{
   return (
     <>
       <div className="relative">
-        <button type="button"  onClick={handleNotification} className=" text-white mx-2 md:mx-3">
+        <button type="button"  onClick={handleNotification} className=" text-secondary mx-2 md:mx-3">
           <span className="sr-only">View notifications</span>
           <div class="indicator text-lg ">
-            {showN ? (<span class="indicator-item badge ">{videos.length}</span> ) :( <span class="indicator-item badge w-4 md:w-6 text-sm  ">0</span>
+            {showN ? (<span class="indicator-item badge w-4 md:w-6 text-sm text-primary bg-secondary  ">{videos.length}</span> ) :( <span class="indicator-item badge w-4 md:w-6 text-sm text-primary bg-secondary ">0</span>
             )
               }
             <FaRegBell
@@ -44,22 +44,19 @@ useEffect(()=>{
   videos?.length && <>
   
   {notification && (
-          <div className="bg-[#222] text-white max-h-80 overflow-auto  w-80 absolute rounded-sm top-10 left-[-200px]">
+          <div className="bg-[#222] z-50 text-white  max-h-80 overflow-auto  w-80 absolute rounded-sm top-10 left-[-200px]">
 
   {videos?.map((v) => (
     <>
       <div
         key={v?._id}
-        className="flex px-3 py-3 justify-start items-center"
+        className="flex px-3 py-3 hover:bg-stone-700 justify-start items-center"
       >
-        <img
-          src={v?.imgLink}
-          className="h-12 w-12 rounded-full"
-          alt=""
+        <FaBell className=" text-4xl rounded-xl ml-2 bg-amber-800 p-2 duration-500 hover:bg-white hover:text-amber-800"
         />
         <Link to={`/uploadedVideo/${v?._id}`}>
           <div
-           onClick={()=>setNotification(false)} className=" ml-3">
+           onClick={()=>setNotification(false)} className=" ml-5">
             <p className="text-lg font-semibold">{v?.category}</p>
             <p className="text-sm">{v?.title}</p>
           </div>
