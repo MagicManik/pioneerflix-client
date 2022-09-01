@@ -55,7 +55,7 @@ export const postApi = createApi({
     updateWatchList: builder.mutation({
       query: (sendData) => {
         const { id, ...data } = sendData;
-        console.log({ id, data });
+        // console.log({ id, data });
         return {
           url: `watchlist/${id}`,
           method: 'PUT',
@@ -77,6 +77,45 @@ export const postApi = createApi({
         }
       }),
     }),
+    
+    // 
+    
+    getUseVideoById: builder.query({
+      query: (id) => {
+        console.log({id});
+       return{
+         url: `video/${id}`,
+         method: "GET",
+       }
+      },
+    }),
+
+    //-------------Make Admin/muyed---------------//
+    makeAdmin: builder.query({
+      query: () => {
+        // console.log({id});
+       return{
+         url: `allUserData`,
+         method: "GET",
+         headers: {
+          authorization: `Bearer ${localStorage.getItem('accessToken')}`
+      }
+       }
+      },
+    }),
+    //-------------Manage Videos/muyed---------------//
+    manageVideos: builder.query({
+      query: () => {
+        // console.log({id});
+       return{
+         url: `uploadedVideo`,
+         method: "GET",
+         headers: {
+          'content-type': 'application/json'
+      }
+       }
+      },
+    }),
 
 
 
@@ -87,4 +126,4 @@ export const postApi = createApi({
 })
 
 // Export hooks for usage in functional components, which are auto-generated based on the defined endpoints
-export const { useGetAllVideosQuery, useDeleteUiVideoMutation, useUploadByAdminMutation, useUpdateUserProfileMutation, useUpdateWatchListMutation, useUploadLikeMutation } = postApi;
+export const { useGetAllVideosQuery, useDeleteUiVideoMutation, useUploadByAdminMutation, useUpdateUserProfileMutation, useUpdateWatchListMutation, useUploadLikeMutation,useGetUseVideoByIdQuery,useMakeAdminQuery,useManageVideosQuery } = postApi;

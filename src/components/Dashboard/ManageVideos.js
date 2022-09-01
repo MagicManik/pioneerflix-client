@@ -1,19 +1,26 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { useManageVideosQuery } from '../../services/post';
+import LoaderSquare from '../Shared/Loader/LoaderSquare';
 import DeleteUiVideos from './DeleteUiVideos';
 import ManageVideosRow from './ManageVideosRow';
 
 const ManageVideos = () => {
-    const url = 'http://localhost:5000/uploadedVideo';
-    const { data, refetch } = useQuery(['uploadedVideo'], () =>
-        fetch(url, {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json'
-            }
-        })
-            .then(res => res.json())
-    )
+
+    const {data,refetch,isLoading}= useManageVideosQuery()
+    if(isLoading){
+        return <LoaderSquare></LoaderSquare>
+    }
+    // const url = 'http://localhost:5000/uploadedVideo';
+    // const { data, refetch } = useQuery(['uploadedVideo'], () =>
+    //     fetch(url, {
+    //         method: 'GET',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         }
+    //     })
+    //         .then(res => res.json())
+    // )
 
     return (
         <div className=''>
