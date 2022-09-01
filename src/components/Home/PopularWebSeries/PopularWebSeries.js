@@ -3,11 +3,13 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import freeVideo from '../../../assets/others/free-video.jpg';
-import useVideos from '../../../hooks/useVideos';
+import { useGetAllVideosQuery } from '../../../services/post';
+// import useVideos from '../../../hooks/useVideos';
 
 const PopularWebSeries = () => {
 
-    const [videos] = useVideos();
+    // const [videos] = useVideos();
+    const { data: videos, refetch, isLoading } = useGetAllVideosQuery();
 
     const kidsVideos = videos?.filter(video => video.category === 'Popular Web Series');
     // console.log(videos)
@@ -60,7 +62,7 @@ const PopularWebSeries = () => {
                 <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3" : "text-black text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3"}>{t("POPULARWEBSERIES")}</h1>
                 <Slider {...settings} className=''>
                     {
-                        kidsVideos.map(movie =>
+                        kidsVideos?.map(movie =>
 
                             <div key={movie._id}>
 

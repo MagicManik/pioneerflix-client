@@ -20,7 +20,7 @@ const MyList = () => {
     return (
 
         <section className='bg-[#141414] pt-16'>
-            <h1 className='px-2 md:px-16 lg:px-18 bg-black text-xl lg:text-2xl pt-5'>You have {myList.length} videos in your list. Thank you so much Dear, <span>{user.displayName}</span></h1>
+            <h1 className='px-2 md:px-16 lg:px-18 bg-black text-xl lg:text-2xl pt-5'>You have {myList.length} videos in your list. Thank you so much Dear, <span>{user?.displayName}</span></h1>
             <div className='search-container bg-black px-2 md:px-8 lg:px-16 pt-5'>
                 {
                     myList.map(video =>

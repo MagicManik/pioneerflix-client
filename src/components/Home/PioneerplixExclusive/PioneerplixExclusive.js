@@ -6,13 +6,15 @@ import Slider from "react-slick";
 import './PioneerplixExclusive.css';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import useVideos from '../../../hooks/useVideos';
+// import useVideos from '../../../hooks/useVideos';
+import { useGetAllVideosQuery } from '../../../services/post';
 
 const PioneerplixExclusive = () => {
 
-    const [videos] = useVideos();
+    // const [videos] = useVideos();
+    const { data: videos, refetch, isLoading } = useGetAllVideosQuery();
 
-    const exclusives = videos.filter(video => video.category === 'Exclusive Movies');
+    const exclusives = videos?.filter(video => video.category === 'Exclusive Movies');
 
     const { t } = useTranslation(["home"])
 
@@ -63,7 +65,7 @@ const PioneerplixExclusive = () => {
                 <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-0 pt-2 lg:pt-3" : "text-black text-sm lg:text-lg pb-2 lg:pb-0 pt-2 lg:pt-3"}>{t("EXCLUSIVEMOVIES")}</h1>
                 <Slider {...settings} className=''>
                     {
-                        exclusives.map(movie =>
+                        exclusives?.map(movie =>
 
                             <div key={movie._id}>
 

@@ -7,7 +7,7 @@ const MakeAdmin = () => {
 
     const { t } = useTranslation(["dashboard"])
 
-    const url = 'http://localhost:5000/allUserData';
+    const url = 'https://infinite-island-65121.herokuapp.com/allUserData';
     const { data, refetch } = useQuery(['allUserData'], () =>
         fetch(url, {
             method: 'GET',

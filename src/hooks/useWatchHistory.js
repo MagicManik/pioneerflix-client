@@ -1,19 +1,11 @@
-import { useEffect, useState } from "react"
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../firebase.init";
 
-const useWatchHistory = () => {
-    const [user] = useAuthState(auth);
-    const [watchVideo, setWatchVideo] = useState({});
+// import { useEffect, useState } from "react"
 
-    useEffect(() => {
-        fetch(`https://infinite-island-65121.herokuapp.com/watched/${user?.email}`)
-            .then(res => res.json())
-            .then(data => setWatchVideo(data))
-    }, [user]);
+// const useWatchHistory = (email) => {
+//     const [watchVideo, setWatchVideo] = useState({});
 
-    return [watchVideo, setWatchVideo];
-};
-
-export default useWatchHistory;
-
+//     useEffect(() => {
+//         fetch(`https://infinite-island-65121.herokuapp.com/library/${email}`)
+//             .then(res => res.json())
+//             .then(data => setWatchVideo(data))
+//     }, [email]);

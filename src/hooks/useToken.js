@@ -14,7 +14,7 @@ const useToken = user => {
 
         if (email) {
 
-            fetch(`http://localhost:5000/user/${email}`, {
+            fetch(`https://infinite-island-65121.herokuapp.com/user/${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'
@@ -28,14 +28,6 @@ const useToken = user => {
                     localStorage.setItem('accessToken', accessToken);
                     setToken(accessToken);
                 })
-
-            // .then(res=>res.json())
-            // .then(data=>{
-            //     console.log('data inside useToken', data);
-            //     const accessToken = data?.token;
-            //     localStorage.setItem('accessToken', accessToken);
-            //     setToken(accessToken);
-            // })
         }
 
     }, [user])

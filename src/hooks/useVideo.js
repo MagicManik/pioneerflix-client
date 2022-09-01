@@ -4,7 +4,7 @@ const useVideo = (id) => {
     const [video, setVideo] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/video/${id}`)
+        fetch(`https://infinite-island-65121.herokuapp.com/video/${id}`)
             .then(res => res.json())
             .then(data => setVideo(data))
     }, [id, video]);
