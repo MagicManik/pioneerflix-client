@@ -1,4 +1,5 @@
 import React from "react";
+import LoaderSquare from "../Shared/Loader/LoaderSquare";
 
 const About = () => {
   const developerDetails = [
