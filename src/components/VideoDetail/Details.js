@@ -317,8 +317,7 @@ const Details = () => {
 
                 <iframe
                   width="95%"
-                  className="mt-1"
-                  height="500px"
+                  className="mt-1 md:h-500"
                   src={videoLink}
                   title="YouTube video player"
                   frameBorder="0"
@@ -356,9 +355,9 @@ const Details = () => {
                   </div>
 
                   {/* ______ Like section ______ */}
-                  <div className="grid grid-cols-3 mr-6 md:ml-0 ml-5  md:mt-0 mt-5">
+                  <div className="grid grid-cols-3 mr-6 md:ml-0 ml-3 md:mt-0 mt-5">
                     <div className="flex items-center ">
-                      <button onClick={handleLike} className={likedUser?.length >= 1 ? 'btn btn-circle like-btn liked-btn' : 'btn btn-circle like-btn'} title="Like here">
+                      <button onClick={handleLike} className={likedUser?.length >= 1 ? 'btn btn-circle like-btn mr-[7px] md:mr-[10px] liked-btn' : 'btn btn-circle mr-[7px] md:mr-[10px] like-btn'} title="Like here">
                         <BiLike />
                       </button>
                       <div className={likedUser?.length >= 1 ? 'text-[#ff9501]' : ''}>Like {totalLike?.length}</div>
@@ -368,7 +367,7 @@ const Details = () => {
                     <div className="flex items-center mr-3">
                       <button
                         onClick={handleMyList}
-                        className="btn btn-circle like-btn"
+                        className="btn btn-circle mr-[7px] md:mr-[10px] like-btn"
                         title="Add your list">
                         <AiOutlinePlus className={hasUserMyList?.length >= 1 ? 'fill-[#ff9501]' : ''} />
                       </button>
@@ -378,7 +377,7 @@ const Details = () => {
                     <div className="flex items-center">
                       <label
                         htmlFor="my-share-modal-3"
-                        className="btn btn-circle like-btn"
+                        className="btn btn-circle mr-[7px] md:mr-[10px]  like-btn"
                         title="Share"
                       >
                         <FaShareAlt className="text-xl active:text-[#ff9501]" />
@@ -393,14 +392,16 @@ const Details = () => {
                 {/* ______ Video Details ______ */}
               </div>
               <div className="md:grid flex items-center  md:grid-cols-6  md:py-8 ">
-                <div className=" col-start-1 md:col-end-3 col-end-7 flex md:justify-start justify-center items-center w-full">
+              <div className="md:col-start-1 hidden md:block md:col-end-3 ">
+              <div className="  flex md:justify-start justify-center items-center w-full">
                   <img
                     src={imgLink}
-                    className="md:w-[250px] md:h-[350px] h-3/5 hidden md:block  border-[1px] border-white "
+                    className="md:w-[250px] md:h-[350px] h-3/5   border-[1px] border-white "
                     alt=""
                   />
                 </div>
-                <div className=" md:mt-5 md:col-start-3 col-start-7 col-end-12 md:ml-[-130px]">
+              </div>
+                <div className=" md:mt-5 md:col-start-3 col-start-2 ml-5 col-end-12 md:ml-[-130px]">
                   <div>
                     <div>
                       <i className="text-blue-500 text-sm">
@@ -463,7 +464,7 @@ const Details = () => {
                       />
                       <button
                         type="submit"
-                        className="btn bg-[#ff9501] hover:bg-[#d37c02] text-[#f5f5f7] absolute right-2.5 disabled bottom-1 font-medium rounded-lg text-sm px-6"
+                        className="btn bg-[#ff9501] hover:bg-[#d37c02] text-[#f5f5f7] absolute right-2.5 disabled bottom-1 font-medium rounded-lg text-sm px-3 md:px-6"
                       >
                         {" "}
                         Comment
