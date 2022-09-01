@@ -14,7 +14,7 @@ const WatchList = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/watched/${user?.email}`)
+        fetch(`https://infinite-island-65121.herokuapp.com/watched/${user?.email}`)
             .then(res => res.json())
             .then(data => setWatched(data))
     }, [user?.email]);
