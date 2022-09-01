@@ -26,7 +26,7 @@ import { useGetUseVideoByIdQuery, useUpdateWatchListMutation, useUploadLikeMutat
 const Details = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth);
-  // const [video] = useVideo(id);
+  const [video] = useVideo(id);
   const [likes] = useLikes();
   const [comments] = useComments();
   const [rating, setRating] = useState(null);
@@ -37,13 +37,15 @@ const Details = () => {
 
   const [updateWatch, watchData] = useUpdateWatchListMutation();
   const [createLike, likeData] = useUploadLikeMutation();
-  const {currentData}=useGetUseVideoByIdQuery(id)
   
+  const response=useGetUseVideoByIdQuery(id)
+  
+  console.log("data",response)
   // console.log(likeData);
 
   const paid = paidUser?.paid;
 
-  const { videoLink, imgLink, title, category, description, duration } = currentData;
+  const { videoLink, imgLink, title, category, description, duration } = video;
   const [videos] = useVideos();
 
   // TOTAL LIKE FOR THIS VIDEO
@@ -70,9 +72,9 @@ const Details = () => {
     const like = true;
     const name = user?.displayName;
     const email = user?.email;
-    const videoLink = videoLink;
-    const imgLink = imgLink;
-    const title = title;
+    const videoLink = video.videoLink;
+    const imgLink = video.imgLink;
+    const title = video.title;
     const newLike = { id, like, name, email, imgLink, videoLink, title };
 
     const likedUser = likes.filter((li) => li.id === id && li.email === email);
@@ -214,7 +216,7 @@ const Details = () => {
       //   .then(data => console.log(data))
     }
 
-  }, [videoLink]);
+  }, [video?.videoLink]);
 
 
   // Handle Review || Shihab Uddin
