@@ -13,8 +13,6 @@ const PioneerflixKids = () => {
 
     const kidsVideos = videos?.filter(video => video.category === 'Kids Video');
 
-    console.log(kidsVideos);
-
     const { t } = useTranslation(["home"])
 
     let getTheme = localStorage.getItem("colorTheme");
@@ -79,15 +77,15 @@ const PioneerflixKids = () => {
             </div>
 
             <div className='bg-primary'>
-                <div className='pb-3 wraper'>
-                    <div className={getTheme === 'white' ? 'text-container text-secondary bg-black grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-secondary bg-white grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
+                <div className='pb-3 pt-3 lg:pt-10 wraper'>
+                    <div className={getTheme === 'white' ? 'text-container text-secondary grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-secondary grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
                         <div className='text-container-left'>
                             <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading'>{t("Find Your Kid's Collections")}</h1>
                             <p className='pt-2 lg:pt-2 lg:text-3xl'>{t("Send interactive movies with their favorite characters on fantasy in a realm designed specifically for children— With a Membership!")}</p>
                         </div>
 
-                        <div className='our-story-card-animation-container pb-20'>
+                        <div className='our-story-card-animation-container pt-3 lg:pt-0 pb-3 lg:pb-20'>
                             <img className='tv-img rounded-xl ' src={profileKids} alt="" />
                         </div>
                     </div>

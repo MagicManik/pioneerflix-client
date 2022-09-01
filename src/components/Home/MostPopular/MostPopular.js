@@ -1,20 +1,25 @@
 import React from 'react';
-import offlineWatch from '../../../assets/others/watch-off.jpg';
+import offlineWatch from '../../../assets/others/watch-off.png';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
-import useVideos from '../../../hooks/useVideos';
+// import useVideos from '../../../hooks/useVideos';
 import './MostPopular.css';
 import { useTranslation } from 'react-i18next';
+import { useGetAllVideosQuery } from '../../../services/post';
 
 const MostPopular = () => {
-    const [videos] = useVideos();
+    // const [videos] = useVideos();
+    const { data, refetch, isLoading } = useGetAllVideosQuery();
+
+    // console.log(data);
+
     const { t } = useTranslation(["home"])
 
     let getTheme = localStorage.getItem("colorTheme");
 
-    const mostPopularVideos = videos.filter(video => video.category === "Bangla Movie");
+    const mostPopularVideos = data?.filter(video => video?.category === "Bangla Movie");
 
     var settings = {
         dots: false,
@@ -60,7 +65,7 @@ const MostPopular = () => {
                 <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-0" : "text-black text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-0"}>{t("POPULARMOVIES")}</h1>
                 <Slider {...settings} className=''>
                     {
-                        mostPopularVideos.map(movie =>
+                        mostPopularVideos?.map(movie =>
 
                             <div key={movie._id}>
 
@@ -77,14 +82,14 @@ const MostPopular = () => {
 
             <div className='bg-primary'>
                 <div className='pb-3 wraper'>
-                    <div className={getTheme === 'white' ? 'text-container text-secondary bg-black grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-secondary bg-white grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
+                    <div className={getTheme === 'white' ? 'text-container text-secondary grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-secondary grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
                         <div className='text-container-left'>
                             <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading'>{t("EnjoyMostPopularMoviesAllTimes")}</h1>
                             <p className='pt-2 lg:pt-2 lg:text-3xl'>{t("Watchmovies,behappy,andsmilefromthebottomofyourheart")}</p>
                         </div>
 
-                        <div className='our-story-card-animation-container pb-20'>
+                        <div className='our-story-card-animation-container pt-3 lg:pt-0 pb-3 lg:pb-20'>
                             <img className='tv-img rounded-xl ' src={offlineWatch} alt="" />
                         </div>
                     </div>

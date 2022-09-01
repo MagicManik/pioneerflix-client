@@ -12,7 +12,7 @@ const stripePromise = loadStripe('pk_test_51LXnkjI9VBJQHJJfhxESo52ItqIP3SXDLzDJK
 
 const PaymentPage = () => {
     const [user] = useAuthState(auth);
-    const url = `https://infinite-island-65121.herokuapp.com/userBooking/?email=${user?.email}`;
+    const url = `http://localhost:5000/userBooking/?email=${user?.email}`;
     const { data, isLoading, refetch } = useQuery(['userBooking'], () =>
         fetch(url, {
             method: 'GET',

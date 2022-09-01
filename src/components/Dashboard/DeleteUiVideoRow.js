@@ -25,7 +25,7 @@ const DeleteUiVideoRow = ({ detail, index, refetch }) => {
         // }
 
 
-        // const url = `https://infinite-island-65121.herokuapp.com/uiVideo/${id}`;
+        // const url = `http://localhost:5000/uiVideo/${id}`;
         // fetch(url, {
         //     method: 'DELETE',
         //     headers: {
