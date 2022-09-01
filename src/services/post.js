@@ -52,6 +52,29 @@ export const postApi = createApi({
     }),
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+    // post final upload video by admin for dashboard stored main videosCollection
+    uploadFinalVideo: builder.mutation({
+      query: (video) => {
+        // console.log(video);
+        return {
+          url: 'finalUploadByAdmin',
+          method: 'POST',
+          body: video,
+          headers: {
+            'content-type': 'application/json; charset=UTF-8',
+          }
+        }
+      },
+    }),
+
+    // delete user uploaded video by Id for manageVideo
+    deleteUsersVideo: builder.mutation({
+      query: (id) => ({
+        url: `uploadedVideo/${id}`,
+        method: 'DELETE'
+      }),
+    }),
+
     // to post or create like || Manik Islam Mahi
     uploadLike: builder.mutation({
       query: (newLike) => ({
@@ -136,11 +159,10 @@ export const postApi = createApi({
 
 
 
-
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   }),
 
 })
 
 // Export hooks for usage in functional components, which are auto-generated based on the defined endpoints
-export const { useGetAllVideosQuery, useDeleteUiVideoMutation, useUploadByAdminMutation, useUpdateUserProfileMutation, useUploadLikeMutation, useUpdateWatchListMutation, useDeleteLikeMutation, useUploadCommentMutation, useDeleteMyListMutation, useUpsertWatchListMutation, useLoadCommentsQuery } = postApi;
+export const { useGetAllVideosQuery, useDeleteUiVideoMutation, useUploadByAdminMutation, useUpdateUserProfileMutation, useUploadLikeMutation, useUpdateWatchListMutation, useDeleteLikeMutation, useUploadCommentMutation, useDeleteMyListMutation, useUpsertWatchListMutation, useLoadCommentsQuery, useUploadFinalVideoMutation, useDeleteUsersVideoMutation } = postApi;
