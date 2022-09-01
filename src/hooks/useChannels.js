@@ -4,7 +4,7 @@ const useChannels = () => {
     const [channels, setChannels] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/channels')
+        fetch('https://infinite-island-65121.herokuapp.com/channels')
             .then(res => res.json())
             .then(data => setChannels(data))
     }, [])

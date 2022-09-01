@@ -8,7 +8,7 @@ const useMyList = () => {
     const [myList, setMyList] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/mylist/${user?.email}`)
+        fetch(`https://infinite-island-65121.herokuapp.com/mylist/${user?.email}`)
             .then(res => res.json())
             .then(data => setMyList(data))
     }, [user, myList])

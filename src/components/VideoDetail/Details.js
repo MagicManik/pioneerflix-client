@@ -16,12 +16,12 @@ import useRatings from "../../hooks/useRatings";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import useVideos from "../../hooks/useVideos";
+// import useVideos from "../../hooks/useVideos";
 import usePaidUser from "../../hooks/usePaidUser";
 import useMyList from "../../hooks/useMyList";
 import Payments from "../Payments/Payments";
 import { useEffect } from "react";
-import { useDeleteLikeMutation, useDeleteMyListMutation, useLoadCommentsQuery, useUpdateWatchListMutation, useUploadCommentMutation, useUploadLikeMutation, useUpsertWatchListMutation } from "../../services/post";
+import { useDeleteLikeMutation, useDeleteMyListMutation, useGetAllVideosQuery, useLoadCommentsQuery, useUpdateWatchListMutation, useUploadCommentMutation, useUploadLikeMutation, useUpsertWatchListMutation } from "../../services/post";
 
 const Details = () => {
   const { id } = useParams();
@@ -49,7 +49,8 @@ const Details = () => {
   const paid = paidUser?.paid;
 
   const { videoLink, imgLink, title, category, description, duration } = video;
-  const [videos] = useVideos();
+  // const [videos] = useVideos();
+  const { data: videos, refetch: videosRefetch, isLoading: isVideosLoading } = useGetAllVideosQuery();
 
   // TOTAL LIKE FOR THIS VIDEO
   const totalLike = likes?.filter((li) => li.id === id);
@@ -86,7 +87,7 @@ const Details = () => {
     if (likedUser?.length > 0) {
       const likedId = likedUser[0]._id;
       deleteLike(likedId);
-      // const url = `http://localhost:5000/likes/${likedId}`;
+      // const url = `https://infinite-island-65121.herokuapp.com/likes/${likedId}`;
       // fetch(url, {
       //   method: "DELETE",
       // })
@@ -101,7 +102,7 @@ const Details = () => {
     // to add like
     else {
       createLike(newLike);
-      // fetch("http://localhost:5000/like", {
+      // fetch("https://infinite-island-65121.herokuapp.com/like", {
       //   method: "POST",
       //   headers: {
       //     "Content-Type": "application/json",
@@ -130,7 +131,7 @@ const Details = () => {
     commentsFetch();
     e.target.reset();
 
-    // fetch("http://localhost:5000/comment", {
+    // fetch("https://infinite-island-65121.herokuapp.com/comment", {
     //   method: "POST",
     //   headers: {
     //     "Content-Type": "application/json",
@@ -152,7 +153,7 @@ const Details = () => {
     const name = user?.displayName;
     const email = user?.email;
     const rating = { id, star, name, email };
-    const url = `http://localhost:5000/rating/${email}`
+    const url = `https://infinite-island-65121.herokuapp.com/rating/${email}`
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -183,7 +184,7 @@ const Details = () => {
       const id = hasUserMyList[0]._id;
       deleteMyList(id);
 
-      // const url = `http://localhost:5000/mylist/${id}`;
+      // const url = `https://infinite-island-65121.herokuapp.com/mylist/${id}`;
       // fetch(url, {
       //   method: "DELETE",
       // })
@@ -197,7 +198,7 @@ const Details = () => {
 
     else {
       upsertWatchList(sendData);
-      // fetch(`http://localhost:5000/mylist/${user?.email}`, {
+      // fetch(`https://infinite-island-65121.herokuapp.com/mylist/${user?.email}`, {
       //   method: "PUT",
       //   headers: {
       //     'Content-Type': 'application/json'
@@ -215,7 +216,7 @@ const Details = () => {
   useEffect(() => {
     if (videoLink) {
       updateWatch(sendData);
-      // fetch(`http://localhost:5000/watchlist/${id}`, {
+      // fetch(`https://infinite-island-65121.herokuapp.com/watchlist/${id}`, {
       //   method: "PUT",
       //   headers: {
       //     'Content-Type': 'application/json'
@@ -241,7 +242,7 @@ const Details = () => {
   //   if (title) {
   //     const remaining = watchVideo?.filter((v) => v?.videoId === id);
   //     if (remaining?.length === 0) {
-  //       fetch("http://localhost:5000/library", {
+  //       fetch("https://infinite-island-65121.herokuapp.com/library", {
   //         method: "POST",
   //         headers: {
   //           "Content-Type": "application/json",
@@ -256,7 +257,7 @@ const Details = () => {
   // }, [title,watchVideo]);
 
   // const handleAddList = () => {
-  //   fetch("http://localhost:5000/favorite", {
+  //   fetch("https://infinite-island-65121.herokuapp.com/favorite", {
   //     method: "POST",
   //     headers: {
   //       "Content-Type": "application/json",
@@ -428,7 +429,7 @@ const Details = () => {
                 <h3 className="text-[#ff9501]">You may also like...</h3>
                 <Slider {...settings}>
                   {
-                    videos.map(video =>
+                    videos?.map(video =>
                       <div key={video._id}>
                         <div className='zoom-div-I pb-2 pl-0 pt-6 pr-3 video-div' key={video._id}>
                           <Link to={`/play/${video._id}`}>
