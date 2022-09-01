@@ -1,15 +1,29 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { useDeleteUiVideoMutation } from '../../services/post';
 
 const DeleteUiVideoRow = ({ detail, index, refetch }) => {
-    const [deleteVideo, data] = useDeleteUiVideoMutation()
-    // console.log(deleteVideo, data);
+    const [deleteVideo, data] = useDeleteUiVideoMutation();
+    const MySwal = withReactContent(Swal)
 
     const deleteUiVideo = (id) => {
+        // using redux
         deleteVideo(id)
         refetch()
         toast.success(`${id} is deleted from UI`)
+        MySwal.fire({
+            title: <strong>The video has been deleted!</strong>,
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 2000
+        })
+        
+        // else {
+        //     toast.error(`${id} is not deleted from UI`)
+        // }
+
 
         // const url = `https://infinite-island-65121.herokuapp.com/uiVideo/${id}`;
         // fetch(url, {
@@ -39,12 +53,13 @@ const DeleteUiVideoRow = ({ detail, index, refetch }) => {
                         </div>
                     </div>
                     <div>
-                        <a href={detail?.videoLink} className='text-black' target="_blank" alt=''>{detail?.videoLink}</a>
+                        <a href={detail?.videoLink} className='text-black' target="_blank" alt=''>{detail?.title.slice(0, 25)}</a>
                     </div>
                 </div>
             </td>
             <td>
-                <span className='text-black'>{detail?.title}</span>
+                <span className='text-black'>{detail?.category}</span><br />
+                <span className='text-black'>{detail?.uploader}</span>
             </td>
             <th>
                 <button

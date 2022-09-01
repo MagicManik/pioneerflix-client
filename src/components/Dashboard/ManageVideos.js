@@ -14,6 +14,7 @@ const ManageVideos = () => {
         })
             .then(res => res.json())
     )
+    refetch();
 
     return (
         <div className=''>

@@ -34,7 +34,7 @@ const DeleteUiVideos = () => {
                     <tr>
                         <th className='bg-gray-300 text-[#125f82]'>Index</th>
                         <th className='bg-gray-300 text-[#125f82]'>Video</th>
-                        <th className='bg-gray-300 text-[#125f82]'>Title</th>
+                        <th className='bg-gray-300 text-[#125f82]'>Category & Uploader</th>
                         <th className='bg-gray-300 text-[#125f82]'>Remove</th>
                     </tr>
                 </thead>
@@ -53,7 +53,7 @@ const DeleteUiVideos = () => {
                     <tr>
                         <th className='bg-gray-300 text-[#125f82]'>Index</th>
                         <th className='bg-gray-300 text-[#125f82]'>Video</th>
-                        <th className='bg-gray-300 text-[#125f82]'>Title</th>
+                        <th className='bg-gray-300 text-[#125f82]'>Uploader</th>
                         <th className='bg-gray-300 text-[#125f82]'>Remove</th>
                     </tr>
                 </tfoot>
