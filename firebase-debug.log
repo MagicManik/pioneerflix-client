@@ -21,3 +21,25 @@
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
 [error] 
 [error] Error: Failed to get Firebase project pioneerflix. Please make sure the project exists and your account has permission to access it.
+[debug] [2022-09-01T09:52:06.623Z] ----------------------------------------------------------------------
+[debug] [2022-09-01T09:52:06.626Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Magic Manik\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-09-01T09:52:06.626Z] CLI Version:   11.4.2
+[debug] [2022-09-01T09:52:06.627Z] Platform:      win32
+[debug] [2022-09-01T09:52:06.627Z] Node Version:  v16.13.1
+[debug] [2022-09-01T09:52:06.628Z] Time:          Thu Sep 01 2022 15:52:06 GMT+0600 (Bangladesh Standard Time)
+[debug] [2022-09-01T09:52:06.628Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-09-01T09:52:06.704Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-09-01T09:52:06.705Z] > authorizing via signed-in user (megamindedmanik@gmail.com)
+[debug] [2022-09-01T09:52:06.705Z] [iam] checking project pioneerflix for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-09-01T09:52:06.708Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/pioneerflix:testIamPermissions [none]
+[debug] [2022-09-01T09:52:06.708Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/pioneerflix:testIamPermissions x-goog-quota-user=projects/pioneerflix
+[debug] [2022-09-01T09:52:06.708Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/pioneerflix:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-09-01T09:52:17.830Z] [iam] error while checking permissions, command may fail: FirebaseError: Failed to make request to https://cloudresourcemanager.googleapis.com/v1/projects/pioneerflix:testIamPermissions
+[debug] [2022-09-01T09:52:17.834Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/pioneerflix [none]
+[debug] [2022-09-01T09:52:28.952Z] Failed to make request to https://firebase.googleapis.com/v1beta1/projects/pioneerflix
+[debug] [2022-09-01T09:52:40.054Z] FirebaseError: Failed to make request to https://firebase.googleapis.com/v1beta1/projects/pioneerflix
+    at RetryOperation._fn (C:\Users\Magic Manik\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:242:31)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to get Firebase project pioneerflix. Please make sure the project exists and your account has permission to access it.
