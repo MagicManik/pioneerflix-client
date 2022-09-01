@@ -32,7 +32,6 @@ const SearchResults = () => {
                         </div>
                     )
                 }
-
             </div>
         </section>
     );

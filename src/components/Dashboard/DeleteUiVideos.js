@@ -12,6 +12,19 @@ const DeleteUiVideos = () => {
         return <Loading />
     }
 
+
+    // const url = 'https://infinite-island-65121.herokuapp.com/videos'
+    // const { data, refetch } = useQuery(['videos'], () =>
+    //     fetch(url, {
+    //         method: 'GET',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         }
+    //     })
+    //         .then(res => res.json())
+    // );
+
+
     return (
         <div className="overflow-x-auto px-4 pt-6 w-full">
             <p className='text-xl text-green-500 font-bold'>Total videos in UI {data?.length}</p>

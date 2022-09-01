@@ -5,7 +5,7 @@ const UserRow = ({ ud, index, refetch }) => {
     const { profileEmail, profileName, role } = ud;
 
     const makeAdmin = () => {
-        const url = `http://localhost:5000/allUserData/admin/${profileEmail}`;
+        const url = `https://infinite-island-65121.herokuapp.com/allUserData/admin/${profileEmail}`;
         fetch(url, {
             method: 'PUT',
             headers: {

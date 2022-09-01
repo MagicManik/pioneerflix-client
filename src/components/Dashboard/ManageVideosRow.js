@@ -21,7 +21,7 @@ const ManageVideosRow = ({ detail, index, refetch }) => {
             adminImg: detail?.photoURL
         }
 
-        const url = `http://localhost:5000/finalUploadByAdmin`
+        const url = `https://infinite-island-65121.herokuapp.com/finalUploadByAdmin`
         fetch(url, {
             method: 'POST',
             headers: {
@@ -33,7 +33,7 @@ const ManageVideosRow = ({ detail, index, refetch }) => {
             .then(result => {
                 toast.success(`Successfully the video uploaded in UI`)
                 localStorage.setItem("notificationMode", "true");
-                const url = `http://localhost:5000/uploadedVideo/${id}`;
+                const url = `https://infinite-island-65121.herokuapp.com/uploadedVideo/${id}`;
                 fetch(url, {
                     method: 'DELETE',
                     headers: {
@@ -49,7 +49,7 @@ const ManageVideosRow = ({ detail, index, refetch }) => {
     }
 
     const deleteVideo = (id) => {
-        const url = `http://localhost:5000/uploadedVideo/${id}`;
+        const url = `https://infinite-island-65121.herokuapp.com/uploadedVideo/${id}`;
         fetch(url, {
             method: 'DELETE',
             headers: {

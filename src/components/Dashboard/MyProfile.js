@@ -19,7 +19,7 @@ const MyProfile = () => {
     } = useForm();
     const [updateUserProfile, userData] = useUpdateUserProfileMutation()
 
-    const url = `http://localhost:5000/userProfile?email=${user?.email}`
+    const url = `https://infinite-island-65121.herokuapp.com/userProfile?email=${user?.email}`
     const { data, isLoading, refetch } = useQuery(['userProfile'], () =>
         fetch(url, {
             method: 'GET',
@@ -64,7 +64,7 @@ const MyProfile = () => {
                     e.target.reset();
                     refetch();
                     toast.success('Your profile updated successfully!!!')
-                    // const url = `http://localhost:5000/userProfile/${user?.email}`
+                    // const url = `https://infinite-island-65121.herokuapp.com/userProfile/${user?.email}`
                     // fetch(url, {
                     //     method: 'PUT',
                     //     headers: {

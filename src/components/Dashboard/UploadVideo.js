@@ -41,7 +41,7 @@ const UploadVideo = () => {
             localStorage.setItem("notificationMode", "true");
             e.target.reset();
 
-            // const url = 'http://localhost:5000/adminUploadVideo';
+            // const url = 'https://infinite-island-65121.herokuapp.com/adminUploadVideo';
             // fetch(url, {
             //     method: 'POST',
             //     headers: {
@@ -58,7 +58,7 @@ const UploadVideo = () => {
             //     })
         }
         else {
-            const url = 'http://localhost:5000/userUploadVideo';
+            const url = 'https://infinite-island-65121.herokuapp.com/userUploadVideo';
             fetch(url, {
                 method: 'POST',
                 headers: {
