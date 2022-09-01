@@ -52,33 +52,87 @@ export const postApi = createApi({
     }),
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    updateWatchList: builder.mutation({
-      query: (sendData) => {
-        const { id, ...data } = sendData;
-        console.log({ id, data });
-        return {
-          url: `watchlist/${id}`,
-          method: 'PUT',
-          body: data,
-          headers: {
-            'content-type': 'application/json; charset=UTF-8',
-          }
-        }
-      },
-    }),
-
-
-
+    // to post or create like || Manik Islam Mahi
     uploadLike: builder.mutation({
       query: (newLike) => ({
         url: 'like',
         method: 'POST',
         body: newLike,
         headers: {
-          'content-type': 'application/json; charset=UTF-8',
+          'Content-Type': 'application/json; charset=UTF-8',
         }
       }),
     }),
+
+    // to delete or remove like || Manik Islam Mahi
+    deleteLike: builder.mutation({
+      query: (likedId) => ({
+        url: `likes/${likedId}`,
+        method: 'DELETE'
+      }),
+    }),
+
+
+    // to post or create comment || Manik Islam Mahi
+    uploadComment: builder.mutation({
+      query: (newComment) => ({
+        url: 'comment',
+        method: 'POST',
+        body: newComment,
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+        }
+      })
+    }),
+
+    // to load all comments || Manik Islam Mahi
+    loadComments: builder.query({
+      query: () => ({
+        url: 'comments',
+        method: 'GET'
+      }),
+    }),
+
+
+    // to put or upsert my list data || Manik Islam Mahi
+    updateWatchList: builder.mutation({
+      query: (sendData) => {
+        const { id, ...data } = sendData;
+        // console.log({ id, data });
+        return {
+          url: `watchlist/${id}`,
+          method: 'PUT',
+          body: data,
+          headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+          }
+        }
+      },
+    }),
+
+    // to delete or remove my list data || Manik Islam Mahi
+    deleteMyList: builder.mutation({
+      query: (id) => ({
+        url: `mylist/${id}`,
+        method: 'DELETE'
+      }),
+    }),
+
+    // to put or upsert my list data || Manik Islam Mahi
+    upsertWatchList: builder.mutation({
+      query: (sendData) => {
+        const { email, ...data } = sendData;
+        return {
+          url: `mylist/${email}`,
+          method: 'PUT',
+          body: data,
+          headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+          }
+        }
+      }
+    }),
+
 
 
 
@@ -89,4 +143,4 @@ export const postApi = createApi({
 })
 
 // Export hooks for usage in functional components, which are auto-generated based on the defined endpoints
-export const { useGetAllVideosQuery, useDeleteUiVideoMutation, useUploadByAdminMutation, useUpdateUserProfileMutation, useUpdateWatchListMutation, useUploadLikeMutation } = postApi;
+export const { useGetAllVideosQuery, useDeleteUiVideoMutation, useUploadByAdminMutation, useUpdateUserProfileMutation, useUploadLikeMutation, useUpdateWatchListMutation, useDeleteLikeMutation, useUploadCommentMutation, useDeleteMyListMutation, useUpsertWatchListMutation, useLoadCommentsQuery } = postApi;

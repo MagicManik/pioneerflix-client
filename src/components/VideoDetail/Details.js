@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import useVideo from "../../hooks/useVideo";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import useComments from "../../hooks/useComments";
+// import useComments from "../../hooks/useComments";
 import useLikes from "../../hooks/useLikes";
 import "./Details.css";
 import { FacebookShareButton, FacebookIcon, WhatsappShareButton, WhatsappIcon, TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon, RedditIcon, RedditShareButton } from "react-share";
@@ -21,22 +21,28 @@ import usePaidUser from "../../hooks/usePaidUser";
 import useMyList from "../../hooks/useMyList";
 import Payments from "../Payments/Payments";
 import { useEffect } from "react";
-import { useUpdateWatchListMutation, useUploadLikeMutation } from "../../services/post";
+import { useDeleteLikeMutation, useDeleteMyListMutation, useGetAllCommentsQuery, useLoadCommentsQuery, useUpdateWatchListMutation, useUploadCommentMutation, useUploadLikeMutation, useUpsertWatchListMutation } from "../../services/post";
 
 const Details = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth);
   const [video] = useVideo(id);
   const [likes] = useLikes();
-  const [comments] = useComments();
+  // const [comments] = useComments();
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   const [data, refetch] = useRatings(id);
   const [paidUser] = usePaidUser(user);
   const [myList] = useMyList();
 
+  // Using Redux State
   const [updateWatch, watchData] = useUpdateWatchListMutation();
   const [createLike, likeData] = useUploadLikeMutation();
+  const [deleteLike, deleteLikeData] = useDeleteLikeMutation();
+  const [createComment, commentData] = useUploadCommentMutation();
+  const { data: comments, refetch: commentsFetch, isLoading } = useLoadCommentsQuery();
+  const [deleteMyList, deleteMyListData] = useDeleteMyListMutation();
+  const [upsertWatchList, upsertWatchData] = useUpsertWatchListMutation();
 
   // console.log(likeData);
 
@@ -79,17 +85,17 @@ const Details = () => {
     // to delete or remove like
     if (likedUser?.length > 0) {
       const likedId = likedUser[0]._id;
-
-      const url = `http://localhost:5000/likes/${likedId}`;
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-            // alert("Deleted");
-          }
-        });
+      deleteLike(likedId);
+      // const url = `http://localhost:5000/likes/${likedId}`;
+      // fetch(url, {
+      //   method: "DELETE",
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => {
+      //     if (data.deletedCount > 0) {
+      //       alert("Deleted");
+      //     }
+      //   });
     }
 
     // to add like
@@ -120,20 +126,24 @@ const Details = () => {
     const email = user?.email;
     const newComment = { id, name, comment, img, email };
 
-    fetch("http://localhost:5000/comment", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newComment),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
-          // alert('Your item successfully added.')
-          e.target.reset();
-        }
-      });
+    createComment(newComment);
+    commentsFetch();
+    e.target.reset();
+
+    // fetch("http://localhost:5000/comment", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(newComment),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     if (data.insertedId) {
+    //       alert('Your item successfully added.')
+    //       e.target.reset();
+    //     }
+    //   });
   };
 
   // Handle Rating || Manik Islam Mahi
@@ -171,30 +181,33 @@ const Details = () => {
 
     if (hasUserMyList.length > 0) {
       const id = hasUserMyList[0]._id;
-      const url = `http://localhost:5000/mylist/${id}`;
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-            // alert("Deleted");
-          }
-        });
+      deleteMyList(id);
+
+      // const url = `http://localhost:5000/mylist/${id}`;
+      // fetch(url, {
+      //   method: "DELETE",
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => {
+      //     if (data.deletedCount > 0) {
+      //       alert("Deleted");
+      //     }
+      //   });
     }
 
     else {
-      fetch(`http://localhost:5000/mylist/${user?.email}`, {
-        method: "PUT",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(sendData)
-      })
-        .then(res => res.json())
-        .then(result => {
-          // console.log(result);
-        })
+      upsertWatchList(sendData);
+      // fetch(`http://localhost:5000/mylist/${user?.email}`, {
+      //   method: "PUT",
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(sendData)
+      // })
+      //   .then(res => res.json())
+      //   .then(result => {
+      //     console.log(result);
+      //   })
     }
   };
 
