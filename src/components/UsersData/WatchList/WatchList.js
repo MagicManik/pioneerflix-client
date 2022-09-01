@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 
 const WatchList = () => {
     const [user] = useAuthState(auth);
     const [watched, setWatched] = useState([]);
 
-    // console.log(watched)
+    const navigate = useNavigate();
+
+    const handlePlay = (id) => {
+        navigate(`/play/${id}`)
+    }
 
     useEffect(() => {
         fetch(`https://infinite-island-65121.herokuapp.com/watched/${user?.email}`)
@@ -17,18 +21,18 @@ const WatchList = () => {
 
     return (
         <section className='bg-[#141414] pt-16'>
-            <h1 className='px-2 md:px-16 lg:px-18 bg-black text-xl lg:text-2xl pt-5'>You watched {watched.length} videos</h1>
+            <h1 className='px-2 md:px-16 lg:px-18 bg-black text-xl lg:text-2xl pt-5'>You watched {watched.length} video. Thank you so much Dear, <span className='text-[#ff9501]'>{user?.displayName}</span></h1>
             <div className='search-container bg-black px-2 md:px-8 lg:px-16 pt-5'>
                 {
-                    watched.map(video =>
+                    watched?.map(video =>
                         <div key={video._id} className='zoom-div-2'>
-                            <Link to={`/play/${video._id}`}>
+                            <button onClick={() => handlePlay(video.id)} className='search-video-play-button'>
                                 <img className='search-img rounded-lg' src={video.imgLink} alt="" />
-                            </Link>
+                                <p className='block mx-auto'>{video.videoTitle}</p>
+                            </button>
                         </div>
                     )
                 }
-
             </div>
         </section>
     );

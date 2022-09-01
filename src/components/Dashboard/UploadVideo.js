@@ -41,7 +41,7 @@ const UploadVideo = () => {
             localStorage.setItem("notificationMode", "true");
             e.target.reset();
 
-            // const url = 'https://infinite-island-65121.herokuapp.com/adminUploadVideo';
+            // const url = 'http://localhost:5000/adminUploadVideo';
             // fetch(url, {
             //     method: 'POST',
             //     headers: {
@@ -58,7 +58,7 @@ const UploadVideo = () => {
             //     })
         }
         else {
-            const url = 'https://infinite-island-65121.herokuapp.com/userUploadVideo';
+            const url = 'http://localhost:5000/userUploadVideo';
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -81,7 +81,7 @@ const UploadVideo = () => {
             <div className='w-full mx-auto flex mt-0'>
                 <p className='section-title text-green-500 text-[15px] md:text-[25px]'>{t("Upload your favorite video")}</p>
             </div>
-            <div class="card mx-auto sm:w-[80%] md:w-[50%] bg-base-100 shadow-xl">
+            <div className="card mx-auto sm:w-[80%] md:w-[50%] bg-base-100 shadow-xl">
                 <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
                     <span className="text-green-500 inline-block">
                         <FiUpload className='inline-block mr-1' />

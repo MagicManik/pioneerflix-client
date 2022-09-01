@@ -28,8 +28,8 @@ useEffect(()=>{
       <div className="relative">
         <button type="button"  onClick={handleNotification} className=" text-secondary mx-2 md:mx-3">
           <span className="sr-only">View notifications</span>
-          <div class="indicator text-lg ">
-            {showN ? (<span class="indicator-item badge w-4 md:w-6 text-sm text-primary bg-secondary  ">{videos.length}</span> ) :( <span class="indicator-item badge w-4 md:w-6 text-sm text-primary bg-secondary ">0</span>
+          <div className="indicator text-lg ">
+            {showN ? (<span className="indicator-item badge w-4 md:w-6 text-sm text-primary bg-secondary  ">{videos.length}</span> ) :( <span className="indicator-item badge w-4 md:w-6 text-sm text-primary bg-secondary ">0</span>
             )
               }
             <FaRegBell

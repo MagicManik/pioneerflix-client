@@ -32,7 +32,7 @@ const megaMenuR2 = [
   { name: "Live Games", href: "/games", id: "293oc02c",icon:<GiGamepad/> },
   { name: "Most Popular", href: "/popular", id: "2aod030vkd",icon:<GiPartyPopper/> },
   { name: "Clips", href: "/clips", id: "8aod030vk",icon:<GiPaperClip/> },
-  { name: " Episodes", href: "/episodes", id: "6aod30kd",icon:<GiSlicedBread/> },
+  { name: " Episodes", href: "/episodes", id: "6a2od30kd",icon:<GiSlicedBread/> },
   { name: "Upcoming", href: "/upComing", id: "6ao2d30kd",icon:<GiIncomingRocket/> },
 ];
 
@@ -40,9 +40,9 @@ const megaMenuR3 = [
   { name: "Bangla Movies", href: "/bangla", id: "293oc02c" },
   { name: "English Movies", href: "/english", id: "2aod030vkd" },
   { name: "Hindi Movies", href: "/hindi", id: "8aod030vk" },
-  { name: "Tamil Movies", href: "/tamil", id: "6aod30kd" },
-  { name: "Japanese Movies", href: "/Japanese", id: "6aod30kd" },
-  { name: "Chinese Movies", href: "/chinese", id: "6aod30kd" },
+  { name: "Tamil Movies", href: "/tamil", id: "6aod33w0kd" },
+  { name: "Japanese Movies", href: "/Japanese", id: "6a3od30kd" },
+  { name: "Chinese Movies", href: "/chinese", id: "69aod30kd" },
   { name: "Turkish Movies", href: "/turkish", id: "6ao2d30kd" },
 ];
 
@@ -314,7 +314,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                       >
-                        <Menu.Items className="origin-top-right w-[255px] absolute z-20 right-0 mt-2 rounded-[12px] shadow-lg custom-bg ring-1 ring-black ring-opacity-5 focus:outline-none py-4">
+                        <Menu.Items className="origin-top-right w-[245px] absolute z-20 right-0 mt-2 rounded-[18px] shadow-lg custom-bg ring-1 ring-black ring-opacity-5 focus:outline-none py-4">
                           {/* custom-border-II */}
                           <Menu.Item>
                             {({ active }) => (
@@ -366,7 +366,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                                   "block px-4 py-2 text-sm text-left"
                                 )}
                               >
-                                <i class="fa fas fa-history mr-2"></i>
+                                <i className="fa fas fa-history mr-2"></i>
                                 {t("Watch history")}
                               </Link>
                             )}
@@ -409,7 +409,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                           <Menu.Item>
                             {({ active }) => (
                               <Link
-                                to="favorite"
+                                to="dashboard/myVideos"
                                 className={classNames(
                                   active
                                     ? "bg-zinc-800 w-full text-left"
@@ -417,7 +417,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                                   "block px-4 py-2 text-sm text-left"
                                 )}
                               >
-                                <i class="fa fal fa-film mr-2"></i>
+                                <i className="fa fal fa-film mr-2"></i>
                                 {t("My Videos")}
                               </Link>
                             )}
@@ -434,7 +434,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                                   "block px-4 py-2 text-sm text-left"
                                 )}
                               >
-                                <i class="fa fas fa-sign-out-alt mr-2"></i>
+                                <i className="fa fas fa-sign-out-alt mr-2"></i>
                                 {t("LOG OUT")}
                               </button>
                             )}

@@ -58,22 +58,22 @@ const Movies = () => {
       <div className=" grid grid-cols-12 gap-5 w-full ">
         <div className="w-full md:block hidden px-2  col-start-1 col-end-3">
           <div className=" flex flex-col justify-center gap-y-16 mt-10">
-            <button onClick={()=>handleLike()} class=" text-lg font-semibold flex justify-start items-center">
+            <button onClick={()=>handleLike()} className=" text-lg font-semibold flex justify-start items-center">
               <FaRegThumbsUp className="mr-5" /> Like
             </button>
-            <button onClick={()=>handleMyList()} class=" text-lg font-semibold flex justify-start items-center">
+            <button onClick={()=>handleMyList()} className=" text-lg font-semibold flex justify-start items-center">
               <FaFilm className="mr-5" /> Movies
             </button>
-            <button onClick={()=>handleTv()} class=" text-lg font-semibold flex justify-start items-center">
+            <button onClick={()=>handleTv()} className=" text-lg font-semibold flex justify-start items-center">
               <FaTv className="mr-5" /> TV Shows
             </button>
-            <button onClick={()=>handleWatch()} class=" text-lg font-semibold flex justify-start items-center">
+            <button onClick={()=>handleWatch()} className=" text-lg font-semibold flex justify-start items-center">
               <FaGlobe className="mr-5" />Watch List
             </button>
-            <button class=" text-lg font-semibold flex justify-start items-center">
+            <button className=" text-lg font-semibold flex justify-start items-center">
               <FaHeart className="mr-5" /> Favorites
             </button>
-            <button class=" text-lg font-semibold flex justify-start items-center">
+            <button className=" text-lg font-semibold flex justify-start items-center">
               <FaUserAlt className="mr-5" /> Account
             </button>
           </div>

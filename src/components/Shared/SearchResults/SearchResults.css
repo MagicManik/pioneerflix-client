@@ -1,24 +1,26 @@
+.search-video-play-button {
+    margin-bottom: 20px;
+}
+
 .search-img {
-    width: 100%;
+    width: 95%;
     height: auto;
     padding: 2px;
     display: block;
-    margin-bottom: 20px;
 }
 
 .search-container {
     column-count: 5;
-    margin: 0 auto;
-    -moz-column-gap: 16px;
-    -webkit-column-gap: 16px;
-    column-gap: 16px;
+    /* margin: 0 auto;
+    -moz-column-gap: 26px;
+    -webkit-column-gap: 26px;
+    column-gap: 26px; */
 }
+
 
 @media screen and (max-width: 700px) {
     .search-img {
         margin-bottom: 16px;
-
-
     }
 }
 
