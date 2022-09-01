@@ -108,7 +108,7 @@ const Payments = () => {
             bookingTime: currentDate
         }
         if (user) {
-            const url = `https://infinite-island-65121.herokuapp.com/userBooking/${user?.email}`;
+            const url = `http://localhost:5000/userBooking/${user?.email}`;
             fetch(url, {
                 method: 'PUT',
                 headers: {

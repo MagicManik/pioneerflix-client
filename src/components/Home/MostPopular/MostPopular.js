@@ -4,17 +4,22 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
-import useVideos from '../../../hooks/useVideos';
+// import useVideos from '../../../hooks/useVideos';
 import './MostPopular.css';
 import { useTranslation } from 'react-i18next';
+import { useGetAllVideosQuery } from '../../../services/post';
 
 const MostPopular = () => {
-    const [videos] = useVideos();
+    // const [videos] = useVideos();
+    const { data, refetch, isLoading } = useGetAllVideosQuery();
+
+    // console.log(data);
+
     const { t } = useTranslation(["home"])
 
     let getTheme = localStorage.getItem("colorTheme");
 
-    const mostPopularVideos = videos.filter(video => video.category === "Bangla Movie");
+    const mostPopularVideos = data?.filter(video => video?.category === "Bangla Movie");
 
     var settings = {
         dots: false,
@@ -60,7 +65,7 @@ const MostPopular = () => {
                 <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-0" : "text-black text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-0"}>{t("POPULARMOVIES")}</h1>
                 <Slider {...settings} className=''>
                     {
-                        mostPopularVideos.map(movie =>
+                        mostPopularVideos?.map(movie =>
 
                             <div key={movie._id}>
 
