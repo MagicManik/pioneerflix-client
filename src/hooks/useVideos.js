@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react"
+// import { useEffect, useState } from "react"
 
-const useVideos = () => {
-    const [videos, setVideos] = useState([]);
+// const useVideos = () => {
+//     const [videos, setVideos] = useState([]);
 
-    useEffect(() => {
-        fetch('http://localhost:5000/videos')
-            .then(res => res.json())
-            .then(data => setVideos(data));
-    }, []);
+//     useEffect(() => {
+//         fetch('http://localhost:5000/videos')
+//             .then(res => res.json())
+//             .then(data => setVideos(data));
+//     }, []);
 
-    return [videos, setVideos];
-}
+//     return [videos, setVideos];
+// }
 
-export default useVideos;
+// export default useVideos;

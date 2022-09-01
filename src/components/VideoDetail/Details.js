@@ -21,7 +21,7 @@ import usePaidUser from "../../hooks/usePaidUser";
 import useMyList from "../../hooks/useMyList";
 import Payments from "../Payments/Payments";
 import { useEffect } from "react";
-import { useDeleteLikeMutation, useDeleteMyListMutation, useGetAllCommentsQuery, useLoadCommentsQuery, useUpdateWatchListMutation, useUploadCommentMutation, useUploadLikeMutation, useUpsertWatchListMutation } from "../../services/post";
+import { useDeleteLikeMutation, useDeleteMyListMutation, useLoadCommentsQuery, useUpdateWatchListMutation, useUploadCommentMutation, useUploadLikeMutation, useUpsertWatchListMutation } from "../../services/post";
 
 const Details = () => {
   const { id } = useParams();
