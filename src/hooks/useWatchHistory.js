@@ -1,3 +1,4 @@
+
 // import { useEffect, useState } from "react"
 
 // const useWatchHistory = (email) => {
@@ -8,9 +9,3 @@
 //             .then(res => res.json())
 //             .then(data => setWatchVideo(data))
 //     }, [email]);
-
-//     return [watchVideo, setWatchVideo];
-// };
-
-// export default useWatchHistory;
-

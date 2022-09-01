@@ -12,6 +12,7 @@ const DeleteUiVideos = () => {
         return <Loading />
     }
 
+
     // const url = 'https://infinite-island-65121.herokuapp.com/videos'
     // const { data, refetch } = useQuery(['videos'], () =>
     //     fetch(url, {
@@ -22,6 +23,7 @@ const DeleteUiVideos = () => {
     //     })
     //         .then(res => res.json())
     // );
+
 
     return (
         <div className="overflow-x-auto px-4 pt-6 w-full">

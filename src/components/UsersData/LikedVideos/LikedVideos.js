@@ -18,7 +18,7 @@ const LikedVideos = () => {
     const handlePlay = (id) => {
         navigate(`/play/${id}`)
     }
-
+// console.log(likes)
     return (
         <section className='bg-[#141414] pt-16'>
             <h1 className='px-2 md:px-16 lg:px-18 bg-black text-xl lg:text-2xl pt-5'>You liked total {likedUser.length} video. Thank you so much Dear, <span className='text-[#ff9501]'>{user?.displayName}</span></h1>
