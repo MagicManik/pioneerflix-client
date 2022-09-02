@@ -7,7 +7,7 @@ export const postApi = createApi({
   }),
 
   endpoints: (builder) => ({
-    // get all video for dashboard from main videosCollection { mohiuddin }
+    // get all video for dashboard from main videosCollection { mohi }
     getAllVideos: builder.query({
       query: () => ({
         url: 'videos',
@@ -15,7 +15,7 @@ export const postApi = createApi({
       }),
     }),
 
-    // delete video by Id for dashboard from main videosCollection { mohiuddin }
+    // delete video by Id for dashboard from main videosCollection { mohi }
     deleteUiVideo: builder.mutation({
       query: (id) => ({
         url: `uiVideo/${id}`,
@@ -23,7 +23,7 @@ export const postApi = createApi({
       }),
     }),
 
-    // post video by admin for dashboard stored main videosCollection { mohiuddin }
+    // post video by admin for dashboard stored main videosCollection { moh }
     uploadByAdmin: builder.mutation({
       query: (userUploadVideo) => ({
         url: 'adminUploadVideo',
@@ -35,7 +35,7 @@ export const postApi = createApi({
       }),
     }),
 
-    // update user profile in my profile route { mohiuddin }
+    // update user profile in my profile route { mohi }
     updateUserProfile: builder.mutation({
       query: (userProfile) => {
         const { profileEmail, ...data } = userProfile;
@@ -50,7 +50,7 @@ export const postApi = createApi({
         }
       },
     }),
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // ------------manik islam mahi----------------//
 
     // post final upload video by admin for dashboard stored main videosCollection
     uploadFinalVideo: builder.mutation({
@@ -85,6 +85,33 @@ export const postApi = createApi({
           'Content-Type': 'application/json; charset=UTF-8',
         }
       }),
+    }),
+    
+    //-------------Make Admin/muyed---------------//
+    makeAdmin: builder.query({
+      query: () => {
+        // console.log({id});
+       return{
+         url: `allUserData`,
+         method: "GET",
+         headers: {
+          authorization: `Bearer ${localStorage.getItem('accessToken')}`
+      }
+       }
+      },
+    }),
+    //-------------Manage Videos/muyed---------------//
+    manageVideos: builder.query({
+      query: () => {
+        // console.log({id});
+       return{
+         url: `uploadedVideo`,
+         method: "GET",
+         headers: {
+          'content-type': 'application/json'
+      }
+       }
+      },
     }),
 
     // to delete or remove like || Manik Islam Mahi
@@ -155,14 +182,9 @@ export const postApi = createApi({
         }
       }
     }),
-
-
-
-
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   }),
 
 })
 
 // Export hooks for usage in functional components, which are auto-generated based on the defined endpoints
-export const { useGetAllVideosQuery, useDeleteUiVideoMutation, useUploadByAdminMutation, useUpdateUserProfileMutation, useUploadLikeMutation, useUpdateWatchListMutation, useDeleteLikeMutation, useUploadCommentMutation, useDeleteMyListMutation, useUpsertWatchListMutation, useLoadCommentsQuery, useUploadFinalVideoMutation, useDeleteUsersVideoMutation } = postApi;
+export const { useGetAllVideosQuery, useDeleteUiVideoMutation, useUploadByAdminMutation, useUpdateUserProfileMutation, useUploadLikeMutation, useUpdateWatchListMutation, useDeleteLikeMutation, useUploadCommentMutation, useDeleteMyListMutation, useUpsertWatchListMutation, useLoadCommentsQuery, useUploadFinalVideoMutation, useDeleteUsersVideoMutation,useMakeAdminQuery,useManageVideosQuery } = postApi;

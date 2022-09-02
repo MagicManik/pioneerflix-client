@@ -8,7 +8,7 @@ import LoaderSquare from '../Shared/Loader/LoaderSquare';
 
 const MyVideosAdmin = () => {
     const [user] = useAuthState(auth);
-    const { t } = useTranslation("dashboard")
+    const {t} =useTranslation("dashboard")
 
     const url = `https://infinite-island-65121.herokuapp.com/adminUploadVideo?email=${user?.email}`
     const { data, isLoading } = useQuery(['adminUploadVideo'], () =>

@@ -1,20 +1,26 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { useManageVideosQuery } from '../../services/post';
+import LoaderSquare from '../Shared/Loader/LoaderSquare';
 import DeleteUiVideos from './DeleteUiVideos';
 import ManageVideosRow from './ManageVideosRow';
 
 const ManageVideos = () => {
-    const url = 'https://infinite-island-65121.herokuapp.com/uploadedVideo';
-    const { data, refetch } = useQuery(['uploadedVideo'], () =>
-        fetch(url, {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json'
-            }
-        })
-            .then(res => res.json())
-    )
-    refetch();
+
+    const {data,refetch,isLoading}= useManageVideosQuery()
+    if(isLoading){
+        return <LoaderSquare></LoaderSquare>
+    }
+    // const url = 'https://infinite-island-65121.herokuapp.com/uploadedVideo';
+    // const { data, refetch } = useQuery(['uploadedVideo'], () =>
+    //     fetch(url, {
+    //         method: 'GET',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         }
+    //     })
+    //         .then(res => res.json())
+    // )
 
     return (
         <div className=''>

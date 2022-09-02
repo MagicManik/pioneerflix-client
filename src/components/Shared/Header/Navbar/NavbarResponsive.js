@@ -209,7 +209,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
                         {/*.............. Select your Language ..............*/}
                         <select
-                          className="border-none text-center bg-[#222] py-0 decoration-white text-white rounded-2xl"
+                          className="border-none text-center bg-[#222] py-0 decoration-white text-white rounded"
                           onChange={handleLanguageChange}
                           value={localStorage.getItem("i18nextLng")}
                         >

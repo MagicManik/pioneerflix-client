@@ -2,21 +2,30 @@ import React from 'react';
 import UserRow from './UserRow';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
+import { useMakeAdminQuery } from '../../services/post';
+import LoaderSquare from '../Shared/Loader/LoaderSquare';
 
 const MakeAdmin = () => {
 
+    const {data,refetch,isLoading}= useMakeAdminQuery()
+    // console.log(data);
     const { t } = useTranslation(["dashboard"])
+    
+    if(isLoading)
+    {
+        return <LoaderSquare></LoaderSquare>
+    }
 
-    const url = 'https://infinite-island-65121.herokuapp.com/allUserData';
-    const { data, refetch } = useQuery(['allUserData'], () =>
-        fetch(url, {
-            method: 'GET',
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
-            .then(res => res.json())
-    )
+    // const url = 'https://infinite-island-65121.herokuapp.com/allUserData';
+    // const { data, refetch } = useQuery(['allUserData'], () =>
+    //     fetch(url, {
+    //         method: 'GET',
+    //         headers: {
+    //             authorization: `Bearer ${localStorage.getItem('accessToken')}`
+    //         }
+    //     })
+    //         .then(res => res.json())
+    // )
 
     return (
         <div className="w-11/12 lg:w-full mt-12 mb-40 pr-2 pl-2">

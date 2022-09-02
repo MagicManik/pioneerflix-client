@@ -11,7 +11,7 @@ import { useGetAllVideosQuery } from "../../services/post";
 const VideoDetail = () => {
   // const [videos] = useVideos();
   const { data: videos, refetch, isLoading } = useGetAllVideosQuery();
-  console.log(videos)
+  // console.log(videos)
   const [video, setVideo] = useState({});
   const [uVideo, setUVideo] = useState({});
   const [user] = useAuthState(auth);
@@ -129,7 +129,7 @@ const VideoDetail = () => {
             </div>
           </div>
 
-          <div className=" md:py-5 pt-5 gap-5">
+          <div className=" md:py-5 pt-5 cursor-pointer gap-5">
             {user?.photoURL ? (
               <img
                 className="mt-1 w-10 h-10 rounded-full mr-3"
@@ -152,7 +152,7 @@ const VideoDetail = () => {
                   <div
                     key={v?._id}
                     onClick={() => setUVideo(v)}
-                    className="flex px-3 bg-[#222] rounded-sm  py-3 mb-3"
+                    className="flex px-3 bg-[#222] cursor-pointer rounded-sm  py-3 mb-3"
                   >
                     <img
                       src={v?.imgLink}
@@ -161,7 +161,7 @@ const VideoDetail = () => {
                     />
                     <div className="ml-3">
                       <p className=" text-lg font-semibold ">{v?.title}</p>
-                      <p className="text-sm">
+                      <p className="text-sm hover:underline hover:underline-offset-1 duration-500">
                         {v?.description.slice(0, 50)}....
                       </p>
                     </div>
