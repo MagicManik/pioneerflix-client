@@ -1,14 +1,17 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import useVideos from "../../hooks/useVideos";
+// import useVideos from "../../hooks/useVideos";
 import { FaShareAlt, FaStar } from "react-icons/fa";
 import { AiOutlinePlus, AiOutlineUser } from "react-icons/ai";
 import { BiLike } from "react-icons/bi";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import { useGetAllVideosQuery } from "../../services/post";
 
 const VideoDetail = () => {
-  const [videos] = useVideos();
+  // const [videos] = useVideos();
+  const { data: videos, refetch, isLoading } = useGetAllVideosQuery();
+  console.log(videos)
   const [video, setVideo] = useState({});
   const [uVideo, setUVideo] = useState({});
   const [user] = useAuthState(auth);
@@ -147,7 +150,7 @@ const VideoDetail = () => {
               {video?.map((v) => (
                 <>
                   <div
-                  key={v?._id}
+                    key={v?._id}
                     onClick={() => setUVideo(v)}
                     className="flex px-3 bg-[#222] rounded-sm  py-3 mb-3"
                   >

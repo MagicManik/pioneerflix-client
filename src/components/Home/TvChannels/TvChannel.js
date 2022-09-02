@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import { Link, useParams } from "react-router-dom";
 import useChannel from "../../../hooks/useChannel";
 import useChannels from "../../../hooks/useChannels";
-// import MediaPlayer from "../../ReactPlayer/MediaPlayer";
+import MediaPlayer from "../../ReactPlayer/MediaPlayer";
 
 const TvChannel = () => {
   const { id } = useParams();
@@ -51,10 +51,10 @@ const TvChannel = () => {
   };
 
   return (
-    <div className="pt-16 bg-black">
+    <section className="pt-16 bg-black">
       <hr className="line-" />
       <div className="justify-center flex pt-4 ">
-        <iframe
+        {/* <iframe
           width="95%"
           className="mt-1"
           height="500px"
@@ -63,15 +63,14 @@ const TvChannel = () => {
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-        ></iframe>
+        ></iframe> */}
+
+        <MediaPlayer
+          channel={channel}
+        ></MediaPlayer>
       </div>
 
-      {/* <MediaPlayer
-          channel={channel}
-        ></MediaPlayer> */}
-
-
-      <section className="bg-secondary ">
+      <div className="bg-secondary ">
         <div className="pb-3 custom-bg">
           <div className="bg-primary video-section py-14">
             <div className="bg-primary lg:px-20 sm:px-4 video-container">
@@ -103,8 +102,8 @@ const TvChannel = () => {
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 

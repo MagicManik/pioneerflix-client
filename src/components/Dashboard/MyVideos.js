@@ -12,7 +12,7 @@ import MyVideosAdmin from './MyVideosAdmin';
 const MyVideos = () => {
     const [user] = useAuthState(auth);
     const { t } = useTranslation("dashboard")
-    
+
     const [admin] = useAdmin(user);
 
 
