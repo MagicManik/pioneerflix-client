@@ -87,18 +87,6 @@ export const postApi = createApi({
       }),
     }),
     
-    // --------------useVideo/muyed-------------//
-    
-    getUseVideoById: builder.query({
-      query: (id) => {
-        console.log({id});
-       return{
-         url: `video/${id}`,
-         method: "GET",
-       }
-      },
-    }),
-
     //-------------Make Admin/muyed---------------//
     makeAdmin: builder.query({
       query: () => {
