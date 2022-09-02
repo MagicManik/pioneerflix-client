@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import useVideo from "../../hooks/useVideo";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import useComments from "../../hooks/useComments";
+// import useComments from "../../hooks/useComments";
 import useLikes from "../../hooks/useLikes";
 import "./Details.css";
 import { FacebookShareButton, FacebookIcon, WhatsappShareButton, WhatsappIcon, TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon, RedditIcon, RedditShareButton } from "react-share";
@@ -16,12 +16,12 @@ import useRatings from "../../hooks/useRatings";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import useVideos from "../../hooks/useVideos";
+// import useVideos from "../../hooks/useVideos";
 import usePaidUser from "../../hooks/usePaidUser";
 import useMyList from "../../hooks/useMyList";
 import Payments from "../Payments/Payments";
 import { useEffect } from "react";
-import { useGetUseVideoByIdQuery, useUpdateWatchListMutation, useUploadLikeMutation } from "../../services/post";
+import { useDeleteLikeMutation, useDeleteMyListMutation, useGetAllVideosQuery, useLoadCommentsQuery, useUpdateWatchListMutation, useUploadCommentMutation, useUploadLikeMutation, useUpsertWatchListMutation } from "../../services/post";
 import MediaPlayerDetails from "./MediaPlayerDetails";
 
 const Details = () => {
@@ -29,25 +29,29 @@ const Details = () => {
   const [user] = useAuthState(auth);
   const [video] = useVideo(id);
   const [likes] = useLikes();
-  const [comments] = useComments();
+  // const [comments] = useComments();
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   const [data, refetch] = useRatings(id);
   const [paidUser] = usePaidUser(user);
   const [myList] = useMyList();
 
+  // Using Redux State
   const [updateWatch, watchData] = useUpdateWatchListMutation();
   const [createLike, likeData] = useUploadLikeMutation();
-  
-  const response=useGetUseVideoByIdQuery(id)
-  
-  console.log("data",response)
+  const [deleteLike, deleteLikeData] = useDeleteLikeMutation();
+  const [createComment, commentData] = useUploadCommentMutation();
+  const { data: comments, refetch: commentsFetch, isLoading } = useLoadCommentsQuery();
+  const [deleteMyList, deleteMyListData] = useDeleteMyListMutation();
+  const [upsertWatchList, upsertWatchData] = useUpsertWatchListMutation();
+
   // console.log(likeData);
 
   const paid = paidUser?.paid;
 
   const { videoLink, imgLink, title, category, description, duration } = video;
-  const [videos] = useVideos();
+  // const [videos] = useVideos();
+  const { data: videos, refetch: videosRefetch, isLoading: isVideosLoading } = useGetAllVideosQuery();
 
   // TOTAL LIKE FOR THIS VIDEO
   const totalLike = likes?.filter((li) => li.id === id);
@@ -83,23 +87,23 @@ const Details = () => {
     // to delete or remove like
     if (likedUser?.length > 0) {
       const likedId = likedUser[0]._id;
-
-      const url = `http://localhost:5000/likes/${likedId}`;
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-            // alert("Deleted");
-          }
-        });
+      deleteLike(likedId);
+      // const url = `https://infinite-island-65121.herokuapp.com/likes/${likedId}`;
+      // fetch(url, {
+      //   method: "DELETE",
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => {
+      //     if (data.deletedCount > 0) {
+      //       alert("Deleted");
+      //     }
+      //   });
     }
 
     // to add like
     else {
       createLike(newLike);
-      // fetch("http://localhost:5000/like", {
+      // fetch("https://infinite-island-65121.herokuapp.com/like", {
       //   method: "POST",
       //   headers: {
       //     "Content-Type": "application/json",
@@ -124,20 +128,24 @@ const Details = () => {
     const email = user?.email;
     const newComment = { id, name, comment, img, email };
 
-    fetch("http://localhost:5000/comment", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newComment),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
-          // alert('Your item successfully added.')
-          e.target.reset();
-        }
-      });
+    createComment(newComment);
+    commentsFetch();
+    e.target.reset();
+
+    // fetch("https://infinite-island-65121.herokuapp.com/comment", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(newComment),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     if (data.insertedId) {
+    //       alert('Your item successfully added.')
+    //       e.target.reset();
+    //     }
+    //   });
   };
 
   // Handle Rating || Manik Islam Mahi
@@ -146,7 +154,7 @@ const Details = () => {
     const name = user?.displayName;
     const email = user?.email;
     const rating = { id, star, name, email };
-    const url = `http://localhost:5000/rating/${email}`
+    const url = `https://infinite-island-65121.herokuapp.com/rating/${email}`
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -175,30 +183,33 @@ const Details = () => {
 
     if (hasUserMyList.length > 0) {
       const id = hasUserMyList[0]._id;
-      const url = `http://localhost:5000/mylist/${id}`;
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-            // alert("Deleted");
-          }
-        });
+      deleteMyList(id);
+
+      // const url = `https://infinite-island-65121.herokuapp.com/mylist/${id}`;
+      // fetch(url, {
+      //   method: "DELETE",
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => {
+      //     if (data.deletedCount > 0) {
+      //       alert("Deleted");
+      //     }
+      //   });
     }
 
     else {
-      fetch(`http://localhost:5000/mylist/${user?.email}`, {
-        method: "PUT",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(sendData)
-      })
-        .then(res => res.json())
-        .then(result => {
-          // console.log(result);
-        })
+      upsertWatchList(sendData);
+      // fetch(`https://infinite-island-65121.herokuapp.com/mylist/${user?.email}`, {
+      //   method: "PUT",
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(sendData)
+      // })
+      //   .then(res => res.json())
+      //   .then(result => {
+      //     console.log(result);
+      //   })
     }
   };
 
@@ -206,7 +217,7 @@ const Details = () => {
   useEffect(() => {
     if (videoLink) {
       updateWatch(sendData);
-      // fetch(`http://localhost:5000/watchlist/${id}`, {
+      // fetch(`https://infinite-island-65121.herokuapp.com/watchlist/${id}`, {
       //   method: "PUT",
       //   headers: {
       //     'Content-Type': 'application/json'
@@ -232,7 +243,7 @@ const Details = () => {
   //   if (title) {
   //     const remaining = watchVideo?.filter((v) => v?.videoId === id);
   //     if (remaining?.length === 0) {
-  //       fetch("http://localhost:5000/library", {
+  //       fetch("https://infinite-island-65121.herokuapp.com/library", {
   //         method: "POST",
   //         headers: {
   //           "Content-Type": "application/json",
@@ -247,7 +258,7 @@ const Details = () => {
   // }, [title,watchVideo]);
 
   // const handleAddList = () => {
-  //   fetch("http://localhost:5000/favorite", {
+  //   fetch("https://infinite-island-65121.herokuapp.com/favorite", {
   //     method: "POST",
   //     headers: {
   //       "Content-Type": "application/json",
@@ -307,8 +318,7 @@ const Details = () => {
 
                 {/* <iframe
                   width="95%"
-                  className="mt-1"
-                  height="500px"
+                  className="mt-1 md:h-500"
                   src={videoLink}
                   title="YouTube video player"
                   frameBorder="0"
@@ -346,9 +356,9 @@ const Details = () => {
                   </div>
 
                   {/* ______ Like section ______ */}
-                  <div className="grid grid-cols-3 mr-6 md:ml-0 ml-5  md:mt-0 mt-5">
+                  <div className="grid grid-cols-3 mr-6 md:ml-0 ml-3 md:mt-0 mt-5">
                     <div className="flex items-center ">
-                      <button onClick={handleLike} className={likedUser?.length >= 1 ? 'btn btn-circle like-btn liked-btn' : 'btn btn-circle like-btn'} title="Like here">
+                      <button onClick={handleLike} className={likedUser?.length >= 1 ? 'btn btn-circle like-btn mr-[7px] md:mr-[10px] liked-btn' : 'btn btn-circle mr-[7px] md:mr-[10px] like-btn'} title="Like here">
                         <BiLike />
                       </button>
                       <div className={likedUser?.length >= 1 ? 'text-[#ff9501]' : ''}>Like {totalLike?.length}</div>
@@ -358,7 +368,7 @@ const Details = () => {
                     <div className="flex items-center mr-3">
                       <button
                         onClick={handleMyList}
-                        className="btn btn-circle like-btn"
+                        className="btn btn-circle mr-[7px] md:mr-[10px] like-btn"
                         title="Add your list">
                         <AiOutlinePlus className={hasUserMyList?.length >= 1 ? 'fill-[#ff9501]' : ''} />
                       </button>
@@ -368,7 +378,7 @@ const Details = () => {
                     <div className="flex items-center">
                       <label
                         htmlFor="my-share-modal-3"
-                        className="btn btn-circle like-btn"
+                        className="btn btn-circle mr-[7px] md:mr-[10px]  like-btn"
                         title="Share"
                       >
                         <FaShareAlt className="text-xl active:text-[#ff9501]" />
@@ -383,14 +393,16 @@ const Details = () => {
                 {/* ______ Video Details ______ */}
               </div>
               <div className="md:grid flex items-center  md:grid-cols-6  md:py-8 ">
-                <div className=" col-start-1 md:col-end-3 col-end-7 flex md:justify-start justify-center items-center w-full">
+              <div className="md:col-start-1 hidden md:block md:col-end-3 ">
+              <div className="  flex md:justify-start justify-center items-center w-full">
                   <img
                     src={imgLink}
-                    className="md:w-[250px] md:h-[350px] h-3/5 hidden md:block  border-[1px] border-white "
+                    className="md:w-[250px] md:h-[350px] h-3/5   border-[1px] border-white "
                     alt=""
                   />
                 </div>
-                <div className=" md:mt-5 md:col-start-3 col-start-7 col-end-12 md:ml-[-130px]">
+              </div>
+                <div className=" md:mt-5 md:col-start-3 col-start-2 ml-5 col-end-12 md:ml-[-130px]">
                   <div>
                     <div>
                       <i className="text-blue-500 text-sm">
@@ -419,7 +431,7 @@ const Details = () => {
                 <h3 className="text-[#ff9501]">You may also like...</h3>
                 <Slider {...settings}>
                   {
-                    videos.map(video =>
+                    videos?.map(video =>
                       <div key={video._id}>
                         <div className='zoom-div-I pb-2 pl-0 pt-6 pr-3 video-div' key={video._id}>
                           <Link to={`/play/${video._id}`}>
@@ -453,7 +465,7 @@ const Details = () => {
                       />
                       <button
                         type="submit"
-                        className="btn bg-[#ff9501] hover:bg-[#d37c02] text-[#f5f5f7] absolute right-2.5 disabled bottom-1 font-medium rounded-lg text-sm px-6"
+                        className="btn bg-[#ff9501] hover:bg-[#d37c02] text-[#f5f5f7] absolute right-2.5 disabled bottom-1 font-medium rounded-lg text-sm px-3 md:px-6"
                       >
                         {" "}
                         Comment

@@ -28,6 +28,7 @@ import UploadedVideo from "./components/Shared/Header/Uploaded/UploadedVideo";
 import { Suspense } from "react";
 import Loading from "./components/Shared/Loading/Loading";
 import RequireAuth from "./components/UserAccount/RequireAuth";
+import VideoDetail from "./components/VideoDetail/VideoDetail";
 import BanglaMovies from "./components/Movies/BanglaMovies/BanglaMovies";
 import MyList from "./components/UsersData/MyList/MyList";
 import LikedVideos from "./components/UsersData/LikedVideos/LikedVideos";
@@ -58,20 +59,14 @@ function App() {
           <Route path="watch/hisory" element={<WatchList></WatchList>}></Route>
           <Route path="/about" element={<About></About>}></Route>
           <Route path='/channel/:id' element={<TvChannel />}></Route>
-          <Route path='/play/:id'
-            element={
-              <RequireAuth>
-                <Details />
-              </RequireAuth>
-            }
-          />
+          <Route path='/play/:id' element={<RequireAuth><Details /></RequireAuth> }/>
           <Route path="/result/:id" element={<SearchResults></SearchResults>}></Route>
           <Route path="/login" element={<LoginPage></LoginPage>}></Route>
           <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>
           <Route path="/solvePay" element={<Payments />} />
           <Route path="/paymentPage" element={<PaymentPage />} />
           <Route path="/tv" element={<TvShows></TvShows>}></Route>
-          <Route path="/movies" element={<Movies></Movies>}></Route>
+          <Route path="/drama" element={<Movies></Movies>}></Route>
 
           <Route
             path="/dashboard"
@@ -90,6 +85,7 @@ function App() {
             ></Route>
           </Route>
           <Route path='/uploadedVideo/:uId' element={<UploadedVideo />} />
+          <Route path="/comedy" element={<VideoDetail/>}></Route>
           <Route path="/bangla" element={<BanglaMovies></BanglaMovies>}></Route>
         </Routes>
       </Suspense>

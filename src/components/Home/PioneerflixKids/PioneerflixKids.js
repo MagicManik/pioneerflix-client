@@ -5,11 +5,13 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import useVideos from '../../../hooks/useVideos';
+import { useGetAllVideosQuery } from '../../../services/post';
+// import useVideos from '../../../hooks/useVideos';
 
 const PioneerflixKids = () => {
 
-    const [videos] = useVideos();
+    // const [videos] = useVideos();
+    const { data: videos, refetch, isLoading } = useGetAllVideosQuery();
 
     const kidsVideos = videos?.filter(video => video.category === 'Kids Video');
 
@@ -61,7 +63,7 @@ const PioneerflixKids = () => {
                 <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3" : "text-black text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3"}>{t("KIDSCOLLECTIONS")}</h1>
                 <Slider {...settings} className=''>
                     {
-                        kidsVideos.map(movie =>
+                        kidsVideos?.map(movie =>
 
                             <div key={movie._id}>
 

@@ -1,16 +1,11 @@
-import { useEffect, useState } from "react"
 
-const useWatchHistory = (email) => {
-    const [watchVideo, setWatchVideo] = useState({});
+// import { useEffect, useState } from "react"
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/library/${email}`)
-            .then(res => res.json())
-            .then(data => setWatchVideo(data))
-    }, [email]);
+// const useWatchHistory = (email) => {
+//     const [watchVideo, setWatchVideo] = useState({});
 
-    return [watchVideo, setWatchVideo];
-};
-
-export default useWatchHistory;
-
+//     useEffect(() => {
+//         fetch(`https://infinite-island-65121.herokuapp.com/library/${email}`)
+//             .then(res => res.json())
+//             .then(data => setWatchVideo(data))
+//     }, [email]);

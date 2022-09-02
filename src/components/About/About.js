@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const About = () => {
   const developerDetails = [
     {
@@ -96,7 +97,7 @@ const About = () => {
     },
   ];
   return (
-    <div className="bg-primary  text-white px-5 lg:px-20 py-5 ">
+    <div className="bg-primary  text-secondary px-5 lg:px-20 py-8 lg:py-20 ">
       <div className="flex justify-center items-center flex-col ">
         <div>
           {developerDetails.map((d) => (
@@ -117,7 +118,7 @@ const About = () => {
                     <p>Email : {d?.gmail}</p>
                     <p className="py-2">Contact : {d?.cell}</p>
                     <div>
-                      <a href={d?.resume} target="_blank">
+                      <a href={d?.resume} target="_blank" >
                         <button className="badge badge-warning">Resume</button>
                       </a>
                       <a href={d?.portfolio} target="_blank">

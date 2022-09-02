@@ -51,7 +51,7 @@ const TvChannel = () => {
   };
 
   return (
-    <div className="pt-16 bg-black">
+    <section className="pt-16 bg-black">
       <hr className="line-" />
       <div className="justify-center flex pt-4 ">
       <MediaPlayer
@@ -59,10 +59,7 @@ const TvChannel = () => {
         ></MediaPlayer>
       </div>
 
-      
-
-
-      <section className="bg-secondary ">
+      <div className="bg-secondary ">
         <div className="pb-3 custom-bg">
           <div className="bg-primary video-section py-14">
             <div className="bg-primary lg:px-20 sm:px-4 video-container">
@@ -94,8 +91,8 @@ const TvChannel = () => {
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 

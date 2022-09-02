@@ -8,6 +8,8 @@ import { useUpdateUserProfileMutation } from '../../services/post';
 import Loading from '../Shared/Loading/Loading';
 import SingleProfile from './SingleProfile';
 import SingleProfilePic from './SingleProfilePic';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const MyProfile = () => {
     const [user] = useAuthState(auth);
@@ -18,8 +20,10 @@ const MyProfile = () => {
         formState: { errors },
     } = useForm();
     const [updateUserProfile, userData] = useUpdateUserProfileMutation()
+    // console.log(userData, userData.status);
+    const MySwal = withReactContent(Swal)
 
-    const url = `http://localhost:5000/userProfile?email=${user?.email}`
+    const url = `https://infinite-island-65121.herokuapp.com/userProfile?email=${user?.email}`
     const { data, isLoading, refetch } = useQuery(['userProfile'], () =>
         fetch(url, {
             method: 'GET',
@@ -32,7 +36,7 @@ const MyProfile = () => {
 
     if (isLoading) {
         refetch();
-        <Loading></Loading>
+        return <Loading />
     }
     const updatedProfileData = data;
     const onSubmit = (data, e) => {
@@ -60,11 +64,23 @@ const MyProfile = () => {
                         profileImage: image,
                         profileEmail: user.email,
                     }
+                    // using redux
                     updateUserProfile(userProfile)
-                    e.target.reset();
-                    refetch();
-                    toast.success('Your profile updated successfully!!!')
-                    // const url = `http://localhost:5000/userProfile/${user?.email}`
+                    if (userData?.status === 'fulfilled') {
+                        e.target.reset();
+                        refetch();
+                        toast.success('Your profile updated successfully!!!')
+                        MySwal.fire({
+                            title: <strong>Wow. Good job!</strong>,
+                            html: <i className='text-xl text-green-500'>Successfully updated your profile</i>,
+                            icon: 'success'
+                        })
+                    }
+                    else {
+                        toast.error('Try again, Your profile is not update')
+                    }
+
+                    // const url = `https://infinite-island-65121.herokuapp.com/userProfile/${user?.email}`
                     // fetch(url, {
                     //     method: 'PUT',
                     //     headers: {

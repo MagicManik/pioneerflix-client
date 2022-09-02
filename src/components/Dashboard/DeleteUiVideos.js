@@ -12,7 +12,8 @@ const DeleteUiVideos = () => {
         return <Loading />
     }
 
-    // const url = 'http://localhost:5000/videos'
+
+    // const url = 'https://infinite-island-65121.herokuapp.com/videos'
     // const { data, refetch } = useQuery(['videos'], () =>
     //     fetch(url, {
     //         method: 'GET',
@@ -23,6 +24,7 @@ const DeleteUiVideos = () => {
     //         .then(res => res.json())
     // );
 
+
     return (
         <div className="overflow-x-auto px-4 pt-6 w-full">
             <p className='text-xl text-green-500 font-bold'>Total videos in UI {data?.length}</p>
@@ -32,7 +34,7 @@ const DeleteUiVideos = () => {
                     <tr>
                         <th className='bg-gray-300 text-[#125f82]'>Index</th>
                         <th className='bg-gray-300 text-[#125f82]'>Video</th>
-                        <th className='bg-gray-300 text-[#125f82]'>Title</th>
+                        <th className='bg-gray-300 text-[#125f82]'>Category & Uploader</th>
                         <th className='bg-gray-300 text-[#125f82]'>Remove</th>
                     </tr>
                 </thead>
@@ -51,7 +53,7 @@ const DeleteUiVideos = () => {
                     <tr>
                         <th className='bg-gray-300 text-[#125f82]'>Index</th>
                         <th className='bg-gray-300 text-[#125f82]'>Video</th>
-                        <th className='bg-gray-300 text-[#125f82]'>Title</th>
+                        <th className='bg-gray-300 text-[#125f82]'>Uploader</th>
                         <th className='bg-gray-300 text-[#125f82]'>Remove</th>
                     </tr>
                 </tfoot>
