@@ -22,6 +22,7 @@ import useMyList from "../../hooks/useMyList";
 import Payments from "../Payments/Payments";
 import { useEffect } from "react";
 import { useGetUseVideoByIdQuery, useUpdateWatchListMutation, useUploadLikeMutation } from "../../services/post";
+import MediaPlayerDetails from "./MediaPlayerDetails";
 
 const Details = () => {
   const { id } = useParams();
@@ -304,7 +305,7 @@ const Details = () => {
             <div className="md:px-14 px-3 pt-16 bg-primary text-secondary">
               <div className="justify-center flex ">
 
-                <iframe
+                {/* <iframe
                   width="95%"
                   className="mt-1"
                   height="500px"
@@ -313,8 +314,8 @@ const Details = () => {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                ></iframe>
-
+                ></iframe> */}
+                <MediaPlayerDetails video={video}></MediaPlayerDetails>
               </div>
 
               {/* ________________ Rating Section _____________ */}

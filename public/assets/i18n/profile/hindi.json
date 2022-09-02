@@ -1,9 +1,16 @@
 {
-    "TVCHANNELS" :"टी वी चैनल",
-    "Home":"घर",
-    "TVShows":"टीवी शो",
-    "Movies":"चलचित्र",
-    "Categories":"श्रेणियाँ",
-    "Subscribe":"सदस्यता लेने के",
-    "LOG IN":"लॉग इन करें"
+    "Home": "घर",
+    "TVShows": "टीवी शो",
+    "Movies": "चलचित्र",
+    "Categories": "श्रेणियाँ",
+    "Subscribe": "सदस्यता लेने के",
+    "LOG IN": "लॉग इन करें",
+    "Dashboard": "डैशबोर्ड",
+    "LOG OUT": "लॉग आउट",
+    "My Profile": "मेरी प्रोफाइल",
+    "Watch history": "इतिहास देखें",
+    "Favorite Videos": "पसंदीदा वीडियो",
+    "My Videos": "मेरे वीडियो",
+    "Liked Videos": "पसंद कि वीडियो",
+    "My List": "मेरी सूची"
 }

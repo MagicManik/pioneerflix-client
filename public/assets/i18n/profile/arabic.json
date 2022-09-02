@@ -1,8 +1,16 @@
 {
-    "Home":"مسكن",
-    "TVShows":"عرض تلفزيوني",
-    "Movies":"أفلام",
-    "Categories":"فئات",
-    "Subscribe":"الإشتراك",
-    "LOG IN":"تسجيل"
+    "Home": "مسكن",
+    "TVShows": "عرض تلفزيوني",
+    "Movies": "أفلام",
+    "Categories": "فئات",
+    "Subscribe": "الإشتراك",
+    "LOG IN": "تسجيل",
+    "Dashboard": "لوحة القيادة",
+    "LOG OUT": "تسجيل ",
+    "My Profile": "ملفي",
+    "Watch history": "سجل المشاهدة",
+    "Favorite Videos": "مقاطع الفيديو المفضلة",
+    "My Videos": "أشرطة الفيدي",
+    "Liked Videos": "مقاطع الفيديو التي",
+    "My List": "قائمتي"
 }
