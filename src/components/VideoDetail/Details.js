@@ -23,6 +23,7 @@ import Payments from "../Payments/Payments";
 import { useEffect } from "react";
 import { useDeleteLikeMutation, useDeleteMyListMutation, useGetAllVideosQuery, useLoadCommentsQuery, useUpdateWatchListMutation, useUploadCommentMutation, useUploadLikeMutation, useUpsertWatchListMutation } from "../../services/post";
 import MediaPlayerDetails from "./MediaPlayerDetails";
+import LoaderSquare from "../Shared/Loader/LoaderSquare";
 
 const Details = () => {
   const { id } = useParams();
@@ -307,6 +308,11 @@ const Details = () => {
       }
     ]
   };
+
+  if(!videoLink)
+  {
+    return <LoaderSquare></LoaderSquare>
+  }
 
   return (
     <>

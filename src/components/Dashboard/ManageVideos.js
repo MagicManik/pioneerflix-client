@@ -11,7 +11,7 @@ const ManageVideos = () => {
     if(isLoading){
         return <LoaderSquare></LoaderSquare>
     }
-    // const url = 'http://localhost:5000/uploadedVideo';
+    // const url = 'https://infinite-island-65121.herokuapp.com/uploadedVideo';
     // const { data, refetch } = useQuery(['uploadedVideo'], () =>
     //     fetch(url, {
     //         method: 'GET',
