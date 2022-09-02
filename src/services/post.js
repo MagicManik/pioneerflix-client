@@ -50,7 +50,7 @@ export const postApi = createApi({
         }
       },
     }),
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // ------------manik islam mahi----------------//
 
     updateWatchList: builder.mutation({
       query: (sendData) => {
