@@ -55,7 +55,7 @@ const Footer = () => {
                 </div>
 
             </div>
-            <hr className='h-[0.5px] w-full bg-secondary' />
+            {/* <hr className='h-[0.5px] w-full bg-secondary' /> */}
             <div className='text-center text-secondary py-4 copy-right'>Copyright &copy; pioneerflix.com</div>
 
         </footer>

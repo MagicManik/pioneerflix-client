@@ -1,7 +1,7 @@
 import { React, Fragment, useState, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import {FaAlignJustify,FaTimes,FaRegMoon, FaCaretDown,FaSearch,FaCaretUp,FaGrinAlt} from "react-icons/fa";
-import {   GiDramaMasks,GiRocketThruster,GiBangingGavel,GiNewBorn,GiPapers,GiGamepad ,GiPartyPopper ,GiIncomingRocket,GiPaperClip,GiSlicedBread} from "react-icons/gi";
+import { FaAlignJustify, FaTimes, FaRegMoon, FaCaretDown, FaSearch, FaCaretUp, FaGrinAlt } from "react-icons/fa";
+import { GiDramaMasks, GiRocketThruster, GiBangingGavel, GiNewBorn, GiPapers, GiGamepad, GiPartyPopper, GiIncomingRocket, GiPaperClip, GiSlicedBread } from "react-icons/gi";
 import userPhoto from '../../../../assets/app-logo/download.svg';
 import { MdLightMode } from "react-icons/md";
 import auth from "../../../../firebase.init";
@@ -21,19 +21,19 @@ import VoiceSearch from "../../SearchResults/VoiceSearch";
 
 
 const megaMenuR1 = [
-  { name: "Comedy", href: "/comedy", id: "293oc02c",icon:<FaGrinAlt/> },
-  { name: "Drama", href: "/drama", id: "2aod030vkd",icon:<GiDramaMasks/> },
-  { name: "Thriller", href: "/thriller", id: "8aod030vk",icon:<GiRocketThruster/> },
-  { name: "Bangla", href: "/bangla", id: "6aod30kd" ,icon:<GiBangingGavel/>},
-  { name: "Latest", href: "/latest", id: "6aod3014kd",icon:<GiNewBorn/> },
-  { name: "Series", href: "/series", id: "6a5od3014kd",icon:<GiPapers/> },
+  { name: "Comedy", href: "/comedy", id: "293oc02c", icon: <FaGrinAlt /> },
+  { name: "Drama", href: "/drama", id: "2aod030vkd", icon: <GiDramaMasks /> },
+  { name: "Thriller", href: "/thriller", id: "8aod030vk", icon: <GiRocketThruster /> },
+  { name: "Bangla", href: "/bangla", id: "6aod30kd", icon: <GiBangingGavel /> },
+  { name: "Latest", href: "/latest", id: "6aod3014kd", icon: <GiNewBorn /> },
+  { name: "Series", href: "/series", id: "6a5od3014kd", icon: <GiPapers /> },
 ];
 const megaMenuR2 = [
-  { name: "Live Games", href: "/games", id: "293oc02c",icon:<GiGamepad/> },
-  { name: "Most Popular", href: "/popular", id: "2aod030vkd",icon:<GiPartyPopper/> },
-  { name: "Clips", href: "/clips", id: "8aod030vk",icon:<GiPaperClip/> },
-  { name: " Episodes", href: "/episodes", id: "6a2od30kd",icon:<GiSlicedBread/> },
-  { name: "Upcoming", href: "/upComing", id: "6ao2d30kd",icon:<GiIncomingRocket/> },
+  { name: "Live Games", href: "/games", id: "293oc02c", icon: <GiGamepad /> },
+  { name: "Most Popular", href: "/popular", id: "2aod030vkd", icon: <GiPartyPopper /> },
+  { name: "Clips", href: "/clips", id: "8aod030vk", icon: <GiPaperClip /> },
+  { name: " Episodes", href: "/episodes", id: "6a2od30kd", icon: <GiSlicedBread /> },
+  { name: "Upcoming", href: "/upComing", id: "6ao2d30kd", icon: <GiIncomingRocket /> },
 ];
 
 const megaMenuR3 = [
@@ -125,7 +125,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
         <Disclosure as="nav">
           {({ open }) => (
             <>
-              <div    className="max-w-8xl text-secondary mx-auto px-2 sm:px-6 lg:px-14 ">
+              <div className="max-w-8xl text-secondary mx-auto px-2 sm:px-6 lg:px-14 ">
                 <div className="relative flex items-center justify-between h-16">
                   <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                     {/* Mobile menu button*/}
@@ -147,7 +147,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
                         {/* Mobile Device Logo */}
                         <img
-                          className="block lg:hidden h-8 w-auto mr-20"
+                          className="block lg:hidden h-8 w-auto mr-24"
                           src={pioneerFlix}
                           alt="Workflow"
                         />
@@ -166,7 +166,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       <div className="flex space-x-4">
                         <CustomLink
                           to="/"
-                          className="   hover:text-error"
+                          className="hover:text-error text-white"
                         >
                           {" "}
                           {/* ........for multiple language......... */}
@@ -174,7 +174,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         </CustomLink>
                         <CustomLink
                           to="/tv"
-                          className="  hidden xl:block hover:text-error"
+                          className=" text-white  hidden xl:block hover:text-error"
                         >
                           {/* ........for multiple language......... */}
                           {t("TVShows")}
@@ -185,7 +185,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                         <button
                           onClick={() => handleMovies(!moviesMega)}
                           onMouseEnter={() => handleMovies()}
-                          className="   flex  items-end  hover:text-error"
+                          className=" text-white  flex  items-end  hover:text-error"
                         >
                           {t("Movies")}{" "}
                           {moviesMega ? (
@@ -197,7 +197,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
                         <button
                           onMouseEnter={() => handleMega()}
-                          className="   flex  items-end  hover:text-error"
+                          className="text-white  flex  items-end  hover:text-error"
                         >
                           {t("Categories")}{" "}
                           {mega ? (
@@ -209,7 +209,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
                         {/*.............. Select your Language ..............*/}
                         <select
-                          className="border-none text-center bg-[#222] py-0 decoration-white rounded-2xl"
+                          className="border-none text-center bg-[#222] py-0 decoration-white text-white rounded-2xl"
                           onChange={handleLanguageChange}
                           value={localStorage.getItem("i18nextLng")}
                         >
@@ -261,15 +261,15 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       onClick={() => setTheme(!theme)}
                     >
                       {theme ? (
-                        <FaRegMoon onClick={() => handleTheme("white")} />
+                        <FaRegMoon className="text-white" onClick={() => handleTheme("white")} />
                       ) : (
-                        <MdLightMode onClick={() => handleTheme("dark")} />
+                        <MdLightMode className="text-white" onClick={() => handleTheme("dark")} />
                       )}
                     </button>
-                    <Notification notification={notification} setNotification={setNotification}/>
+                    <Notification notification={notification} setNotification={setNotification} />
                     <Link
                       to="/solvePay"
-                      className="  text-lg bg-[#d41821] hover:bg-[#ff1622] px-4 mx-3 py-1 rounded-lg hidden md:block hover:text-white"
+                      className="  text-lg bg-[#d41821] hover:bg-[#ff1622] px-4 mx-3 py-1 rounded-lg hidden md:block text-white hover:text-white"
                     >
                       {t("Subscribe")}
                     </Link>
@@ -295,7 +295,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                           ) : (
                             <Link
                               to="/logIn"
-                              className="bg-black custom-border-II px-4 login-btn rounded-xl"
+                              className="bg-black text-white custom-border-II px-4 login-btn rounded-xl"
                             >
                               {t("LOG IN")}
                             </Link>
@@ -514,38 +514,38 @@ const NavbarResponsive = ({ theme, setTheme }) => {
         <hr />
 
         {mega && (
-          <div  onMouseLeave={() => handleMega(false)} className="absolute duration-1000 transition bg-[#222] border-2 border-indigo-600 md:top-16 md:left-56 w-[90%] md:w-[60%] rounded z-30">
+          <div onMouseLeave={() => handleMega(false)} className="absolute duration-1000 transition bg-[#222] border-2 rounded-2xl border-indigo-600 md:top-16 md:left-56 w-[90%] md:w-[60%] z-30">
             <div className="grid py-5 px-4 relative mx-auto  max-w-screen-xl text-base grid-cols-2 md:grid-cols-3 md:px-10">
               <ul className=" relative space-y-3 md:mb-0 md:block">
                 {megaMenuR1.map((m) => (
                   <div className="flex items-center   hover:text-blue-600 justify-start">
                     <span className="text-2xl  ">{m.icon}</span>
                     <li key={m.id}>
-                    <Link
-                      to={m.href}
-                      onClick={() => setMega(!mega)}
-                      className="duration-200 ml-3 text-lg  "
-                    >
-                      {m.name}
-                    </Link>
-                  </li>
+                      <Link
+                        to={m.href}
+                        onClick={() => setMega(!mega)}
+                        className="duration-200 ml-3 text-lg  "
+                      >
+                        {m.name}
+                      </Link>
+                    </li>
                   </div>
-                  
+
                 ))}
               </ul>
               <ul className="mb-4 space-y-3 md:mb-0">
                 {megaMenuR2.map((m) => (
                   <div className="flex items-center hover:text-blue-600 justify-start">
-                  <span className="text-3xl  ">{m.icon}</span>
-                  <li key={m.id}>
-                    <Link
-                      to={m.href}
-                      onClick={() => setMega(!mega)}
-                      className="duration-200 text-lg ml-3  "
-                    >
-                      {m.name}
-                    </Link>
-                  </li>
+                    <span className="text-3xl  ">{m.icon}</span>
+                    <li key={m.id}>
+                      <Link
+                        to={m.href}
+                        onClick={() => setMega(!mega)}
+                        className="duration-200 text-lg ml-3  "
+                      >
+                        {m.name}
+                      </Link>
+                    </li>
                   </div>
                 ))}
               </ul>
@@ -564,7 +564,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
         )}
 
         {moviesMega &&
-          <div onMouseLeave={() =>  handleMovies()} className="absolute bg-[#222] border-2 border-indigo-600 md:top-16 md:left-72 rounded z-30">
+          <div onMouseLeave={() => handleMovies()} className="absolute bg-[#222] border-2 border-indigo-600 md:top-16 md:left-72 rounded z-30">
             <div className="py-5 px-4 relative mx-auto  max-w-screen-xl text-base md:px-10">
               <ul className="mb-4 space-y-3 md:mb-0">
                 {megaMenuR3.map((m) => (
