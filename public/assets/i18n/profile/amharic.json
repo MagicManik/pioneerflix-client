@@ -1,10 +1,16 @@
 {
-    
-    "Home":"ቤት",
-    "TVShows":"የቲቪትዕ",
-    "Movies":"ፊልሞች",
-    "Categories":"ምድቦች",
-    "Subscribe":"ሰብስክራይብ",
-    "LOG IN":"ግባ",
-    "TVCHANNELS" :"ቲቪ ቻናል"
+    "Home": "ቤት",
+    "TVShows": "የቲቪትዕ",
+    "Movies": "ፊልሞች",
+    "Categories": "ምድቦች",
+    "Subscribe": "ሰብስክራይብ",
+    "LOG IN": "ግባ",
+    "Dashboard": "ዳሽቦርድ",
+    "LOG OUT": "ውጣ",
+    "My Profile": "የግል ማህደሬ",
+    "Watch history": "ታሪክ ይመልከቱ",
+    "Favorite Videos":"ተወዳጅ ቪዲዮዎች",
+    "My Videos": "የእኔ ቪዲዮዎች",
+    "Liked Videos": "የተወደዱ ቪዲዮ",
+    "My List": "የእኔ ዝርዝር"
 }

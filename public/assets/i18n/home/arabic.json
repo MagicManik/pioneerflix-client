@@ -1,3 +1,31 @@
 {
-    "TVCHANNELS" :"قنوات التلفاز"
+    "TVCHANNELS" :"قنوات التلفاز",
+   
+ "POPULARMOVIES":"أفلام شعبية",
+   
+ "EXCLUSIVEMOVIES":"أفلام حصرية",
+    
+"KIDSCOLLECTIONS":"مجموعات الأطفال",
+    
+"POPULARWEBSERIES":"مواقع الويب الشائعة",
+    
+"WatchyourTVChannels":"شاهد قنواتك التلفزيونية",
+    
+"WatchyourfavoritechannelsonPioneerFlixwebsite":"شاهد قنواتك المفضلة على موقع PioneerFlix",
+    
+"EnjoyMostPopularMoviesAllTimes": "استمتع بأشهر الأفلام طوال الوقت",
+    
+"Watchmovies,behappy,andsmilefromthebottomofyourheart" :"شاهد الأفلام ، وكن سعيدًا ، وابتسم من أعماق قلبك",
+    
+"WatchAndEnjoyMoreExclusiveVideos":"شاهد واستمتع بمزيد من مقاطع الفيديو الحصرية",
+    
+"Keep touch on your exclusive videos with your enjoyment —free with your membership":"ابق على اتصال بمقاطع الفيديو الحصرية الخاصة بك مع الاستمتاع - مجانًا مع عضويتك",
+    
+"Find Your Kid's Collections":"ابحث عن مجموعات طفلك",
+    
+"Send interactive movies with their favorite characters on fantasy in a realm designed specifically for children— With a Membership!":"أرسل أفلامًا تفاعلية مع شخصياتهم المفضلة على الخيال في عالم مصمم خصيصًا للأطفال - مع عضوية!",
+    
+"Have fun to watch with your web series":"استمتع بمشاهدة سلسلة الويب الخاصة بك",
+    
+"Simply save Your favorite show on your watch list and entertaining to watch":"ببساطة احفظ برنامجك المفضل في قائمة المشاهدة واستمتع بمشاهدته"  
 }

@@ -236,7 +236,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                   </div>
                   <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                     {/* search here */}
-                    <div className="relative hidden md:block mr-5 ">
+                    <div className="relative hidden md:block mr-7 ">
                       <div className="flex absolute inset-y-0  left-0 items-center pl-3 pointer-events-none">
                         <FaSearch className="text-sm search-icon" />
                       </div>
@@ -514,7 +514,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
         <hr />
 
         {mega && (
-          <div onMouseLeave={() => handleMega(false)} className="absolute duration-1000 transition bg-[#222] border-2 rounded-2xl border-indigo-600 md:top-16 md:left-56 w-[90%] md:w-[60%] z-30">
+          <div onMouseLeave={() => handleMega(false)} className="absolute duration-1000 transition bg-[#222] border-2 rounded-lg border-indigo-600 md:top-16 md:left-56 w-[90%] md:w-[60%] z-30">
             <div className="grid py-5 px-4 relative mx-auto  max-w-screen-xl text-base grid-cols-2 md:grid-cols-3 md:px-10">
               <ul className=" relative space-y-3 md:mb-0 md:block">
                 {megaMenuR1.map((m) => (

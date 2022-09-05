@@ -75,6 +75,8 @@ export const postApi = createApi({
       }),
     }),
 
+
+
     // to post or create like || Manik Islam Mahi
     uploadLike: builder.mutation({
       query: (newLike) => ({
@@ -97,24 +99,24 @@ export const postApi = createApi({
 
 
     // to post or create comment || Manik Islam Mahi
-    uploadComment: builder.mutation({
-      query: (newComment) => ({
-        url: 'comment',
-        method: 'POST',
-        body: newComment,
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-        }
-      })
-    }),
+    // uploadComment: builder.mutation({
+    //   query: (newComment) => ({
+    //     url: 'comment',
+    //     method: 'POST',
+    //     body: newComment,
+    //     headers: {
+    //       'Content-Type': 'application/json; charset=UTF-8',
+    //     }
+    //   })
+    // }),
 
     // to load all comments || Manik Islam Mahi
-    loadComments: builder.query({
-      query: () => ({
-        url: 'comments',
-        method: 'GET'
-      }),
-    }),
+    // loadComments: builder.query({
+    //   query: () => ({
+    //     url: 'comments',
+    //     method: 'GET'
+    //   }),
+    // }),
 
 
     // to put or upsert my list data || Manik Islam Mahi
@@ -155,8 +157,6 @@ export const postApi = createApi({
         }
       }
     }),
-
-
 
 
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

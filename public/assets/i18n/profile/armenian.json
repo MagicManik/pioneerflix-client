@@ -1,9 +1,16 @@
 {
-    "TVCHANNELS" :"Հեռուստ",
-    "Home":"Տուն",
-    "TVShows":"Հեռուս",
-    "Movies":"Ֆիլմեր",
-    "Categories":"Կատեո",
-    "Subscribe":"Բաժանորդվել",
-    "LOG IN":"Մուտք"
+    "Home": "Տուն",
+    "TVShows": "Հեռուս",
+    "Movies": "Ֆիլմեր",
+    "Categories": "Կատեո",
+    "Subscribe": "Բաժանորդվել",
+    "LOG IN": "Մուտք",
+    "Dashboard": "Վահանակ",
+    "LOG OUT": "ԴՈՒՐՍ",
+    "My Profile": "Իմ էջը",
+    "Watch history": "Դիտու պատմու",
+    "Favorite Videos": "Սիրելի տեսանյ",
+    "My Videos": "Իմ տեսան",
+    "Liked Videos": "Հավանած տեսանյու",
+    "My List": "Իմ ցուցակը"
 }

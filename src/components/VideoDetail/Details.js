@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import useVideo from "../../hooks/useVideo";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-// import useComments from "../../hooks/useComments";
+import useComments from "../../hooks/useComments";
 import useLikes from "../../hooks/useLikes";
 import "./Details.css";
 import { FacebookShareButton, FacebookIcon, WhatsappShareButton, WhatsappIcon, TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon, RedditIcon, RedditShareButton } from "react-share";
@@ -21,7 +21,7 @@ import usePaidUser from "../../hooks/usePaidUser";
 import useMyList from "../../hooks/useMyList";
 import Payments from "../Payments/Payments";
 import { useEffect } from "react";
-import { useDeleteLikeMutation, useDeleteMyListMutation, useGetAllVideosQuery, useLoadCommentsQuery, useUpdateWatchListMutation, useUploadCommentMutation, useUploadLikeMutation, useUpsertWatchListMutation } from "../../services/post";
+import { useDeleteLikeMutation, useDeleteMyListMutation, useGetAllVideosQuery, useUpdateWatchListMutation, useUploadLikeMutation, useUpsertWatchListMutation } from "../../services/post";
 import MediaPlayerDetails from "./MediaPlayerDetails";
 
 const Details = () => {
@@ -29,7 +29,7 @@ const Details = () => {
   const [user] = useAuthState(auth);
   const [video] = useVideo(id);
   const [likes] = useLikes();
-  // const [comments] = useComments();
+  const [comments] = useComments();
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   const [data, refetch] = useRatings(id);
@@ -40,8 +40,8 @@ const Details = () => {
   const [updateWatch, watchData] = useUpdateWatchListMutation();
   const [createLike, likeData] = useUploadLikeMutation();
   const [deleteLike, deleteLikeData] = useDeleteLikeMutation();
-  const [createComment, commentData] = useUploadCommentMutation();
-  const { data: comments, refetch: commentsFetch, isLoading } = useLoadCommentsQuery();
+  // const [createComment, commentData] = useUploadCommentMutation();
+  // const { data: comments, refetch: commentsFetch, isLoading } = useLoadCommentsQuery();
   const [deleteMyList, deleteMyListData] = useDeleteMyListMutation();
   const [upsertWatchList, upsertWatchData] = useUpsertWatchListMutation();
 
@@ -128,24 +128,24 @@ const Details = () => {
     const email = user?.email;
     const newComment = { id, name, comment, img, email };
 
-    createComment(newComment);
-    commentsFetch();
-    e.target.reset();
+    // createComment(newComment);
+    // commentsFetch();
+    // e.target.reset();
 
-    // fetch("https://infinite-island-65121.herokuapp.com/comment", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(newComment),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data.insertedId) {
-    //       alert('Your item successfully added.')
-    //       e.target.reset();
-    //     }
-    //   });
+    fetch("https://infinite-island-65121.herokuapp.com/comment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newComment),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          // alert('Your item successfully added.')
+          e.target.reset();
+        }
+      });
   };
 
   // Handle Rating || Manik Islam Mahi

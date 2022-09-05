@@ -23,9 +23,16 @@ const Notification = ({ notification, setNotification }) => {
       setShowN(false)
     }
   }, [getNotificationMode])
+
+  const notificationStyle = {
+    padding: '0 8px',
+    paddingTop: '7px',
+    position: 'relative'
+  }
+
   return (
     <>
-      <div className="relative">
+      <div style={notificationStyle}>
         <button type="button" onClick={handleNotification} className=" text-secondary mx-2 md:mx-3">
           <span className="sr-only">View notifications</span>
           <div className="indicator text-lg ">
@@ -34,7 +41,7 @@ const Notification = ({ notification, setNotification }) => {
             }
             <FaRegBell
 
-              className="h-6 w-6 text-white"
+              className="h-6 w-6 text-sn text-white"
               aria-hidden="true"
             />
           </div>

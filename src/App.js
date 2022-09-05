@@ -33,6 +33,11 @@ import BanglaMovies from "./components/Movies/BanglaMovies/BanglaMovies";
 import MyList from "./components/UsersData/MyList/MyList";
 import LikedVideos from "./components/UsersData/LikedVideos/LikedVideos";
 import WatchList from "./components/UsersData/WatchList/WatchList";
+import Thriller from "./components/Categories/Thriller/Thriller";
+import MostPopular from "./components/Home/MostPopular/MostPopular";
+import LiveGames from "./components/Categories/LiveGames/LiveGames";
+import HindiMovies from "./components/Movies/HindiMovies/HindiMovies";
+import EnglishMovies from "./components/Movies/EnglishMovies/EnglishMovies";
 
 
 function App() {
@@ -59,7 +64,7 @@ function App() {
           <Route path="watch/hisory" element={<WatchList></WatchList>}></Route>
           <Route path="/about" element={<About></About>}></Route>
           <Route path='/channel/:id' element={<TvChannel />}></Route>
-          <Route path='/play/:id' element={<RequireAuth><Details /></RequireAuth> }/>
+          <Route path='/play/:id' element={<RequireAuth><Details /></RequireAuth>} />
           <Route path="/result/:id" element={<SearchResults></SearchResults>}></Route>
           <Route path="/login" element={<LoginPage></LoginPage>}></Route>
           <Route path="/signup" element={<SignUpPage></SignUpPage>}></Route>
@@ -67,6 +72,13 @@ function App() {
           <Route path="/paymentPage" element={<PaymentPage />} />
           <Route path="/tv" element={<TvShows></TvShows>}></Route>
           <Route path="/drama" element={<Movies></Movies>}></Route>
+          <Route path="/thriller" element={<Thriller></Thriller>}></Route>
+
+          <Route path="/games" element={<LiveGames></LiveGames>}></Route>
+          <Route path="/bangla" element={<BanglaMovies></BanglaMovies>}></Route>
+          <Route path="/english" element={<EnglishMovies></EnglishMovies>}></Route>
+          <Route path="/hindi" element={<HindiMovies></HindiMovies>}></Route>
+
 
           <Route
             path="/dashboard"
@@ -85,7 +97,7 @@ function App() {
             ></Route>
           </Route>
           <Route path='/uploadedVideo/:uId' element={<UploadedVideo />} />
-          <Route path="/comedy" element={<VideoDetail/>}></Route>
+          <Route path="/comedy" element={<VideoDetail />}></Route>
           <Route path="/bangla" element={<BanglaMovies></BanglaMovies>}></Route>
         </Routes>
       </Suspense>

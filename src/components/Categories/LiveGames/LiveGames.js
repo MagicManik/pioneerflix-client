@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BanglaMovies = () => {
+const LiveGames = () => {
     return (
         <div className='bg-black pt-16'>
             <div className='bg-[#181818] w-full h-screen'>
@@ -10,4 +10,4 @@ const BanglaMovies = () => {
     );
 };
 
-export default BanglaMovies;
+export default LiveGames;
