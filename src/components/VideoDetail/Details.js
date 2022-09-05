@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import useVideo from "../../hooks/useVideo";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import useComments from "../../hooks/useComments";
+// import useComments from "../../hooks/useComments";
 import useLikes from "../../hooks/useLikes";
 import "./Details.css";
 import { FacebookShareButton, FacebookIcon, WhatsappShareButton, WhatsappIcon, TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon, RedditIcon, RedditShareButton } from "react-share";
@@ -16,28 +16,42 @@ import useRatings from "../../hooks/useRatings";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import useVideos from "../../hooks/useVideos";
+// import useVideos from "../../hooks/useVideos";
 import usePaidUser from "../../hooks/usePaidUser";
 import useMyList from "../../hooks/useMyList";
 import Payments from "../Payments/Payments";
 import { useEffect } from "react";
+import { useDeleteLikeMutation, useDeleteMyListMutation, useGetAllVideosQuery, useLoadCommentsQuery, useUpdateWatchListMutation, useUploadCommentMutation, useUploadLikeMutation, useUpsertWatchListMutation } from "../../services/post";
+import MediaPlayerDetails from "./MediaPlayerDetails";
 
 const Details = () => {
   const { id } = useParams();
   const [user] = useAuthState(auth);
   const [video] = useVideo(id);
   const [likes] = useLikes();
-  const [comments] = useComments();
+  // const [comments] = useComments();
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   const [data, refetch] = useRatings(id);
   const [paidUser] = usePaidUser(user);
   const [myList] = useMyList();
 
+  // Using Redux State
+  const [updateWatch, watchData] = useUpdateWatchListMutation();
+  const [createLike, likeData] = useUploadLikeMutation();
+  const [deleteLike, deleteLikeData] = useDeleteLikeMutation();
+  const [createComment, commentData] = useUploadCommentMutation();
+  const { data: comments, refetch: commentsFetch, isLoading } = useLoadCommentsQuery();
+  const [deleteMyList, deleteMyListData] = useDeleteMyListMutation();
+  const [upsertWatchList, upsertWatchData] = useUpsertWatchListMutation();
+
+  // console.log(likeData);
+
   const paid = paidUser?.paid;
 
   const { videoLink, imgLink, title, category, description, duration } = video;
-  const [videos] = useVideos();
+  // const [videos] = useVideos();
+  const { data: videos, refetch: videosRefetch, isLoading: isVideosLoading } = useGetAllVideosQuery();
 
   // TOTAL LIKE FOR THIS VIDEO
   const totalLike = likes?.filter((li) => li.id === id);
@@ -73,34 +87,35 @@ const Details = () => {
     // to delete or remove like
     if (likedUser?.length > 0) {
       const likedId = likedUser[0]._id;
-
-      const url = `https://infinite-island-65121.herokuapp.com/likes/${likedId}`;
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-            // alert("Deleted");
-          }
-        });
+      deleteLike(likedId);
+      // const url = `https://infinite-island-65121.herokuapp.com/likes/${likedId}`;
+      // fetch(url, {
+      //   method: "DELETE",
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => {
+      //     if (data.deletedCount > 0) {
+      //       alert("Deleted");
+      //     }
+      //   });
     }
 
     // to add like
     else {
-      fetch("https://infinite-island-65121.herokuapp.com/like", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newLike),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.insertedId) {
-            // alert("Your item successfully added.");
-          }
-        });
+      createLike(newLike);
+      // fetch("https://infinite-island-65121.herokuapp.com/like", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(newLike),
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => {
+      //     if (data.insertedId) {
+      //       // alert("Your item successfully added.");
+      //     }
+      //   });
     }
   };
 
@@ -113,20 +128,24 @@ const Details = () => {
     const email = user?.email;
     const newComment = { id, name, comment, img, email };
 
-    fetch("https://infinite-island-65121.herokuapp.com/comment", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newComment),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedId) {
-          // alert('Your item successfully added.')
-          e.target.reset();
-        }
-      });
+    createComment(newComment);
+    commentsFetch();
+    e.target.reset();
+
+    // fetch("https://infinite-island-65121.herokuapp.com/comment", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(newComment),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     if (data.insertedId) {
+    //       alert('Your item successfully added.')
+    //       e.target.reset();
+    //     }
+    //   });
   };
 
   // Handle Rating || Manik Islam Mahi
@@ -164,45 +183,49 @@ const Details = () => {
 
     if (hasUserMyList.length > 0) {
       const id = hasUserMyList[0]._id;
-      const url = `https://infinite-island-65121.herokuapp.com/mylist/${id}`;
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.deletedCount > 0) {
-            // alert("Deleted");
-          }
-        });
+      deleteMyList(id);
+
+      // const url = `https://infinite-island-65121.herokuapp.com/mylist/${id}`;
+      // fetch(url, {
+      //   method: "DELETE",
+      // })
+      //   .then((res) => res.json())
+      //   .then((data) => {
+      //     if (data.deletedCount > 0) {
+      //       alert("Deleted");
+      //     }
+      //   });
     }
 
     else {
-      fetch(`https://infinite-island-65121.herokuapp.com/mylist/${user?.email}`, {
-        method: "PUT",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(sendData)
-      })
-        .then(res => res.json())
-        .then(result => {
-          // console.log(result);
-        })
+      upsertWatchList(sendData);
+      // fetch(`https://infinite-island-65121.herokuapp.com/mylist/${user?.email}`, {
+      //   method: "PUT",
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(sendData)
+      // })
+      //   .then(res => res.json())
+      //   .then(result => {
+      //     console.log(result);
+      //   })
     }
   };
 
   // set watch list || Manik Islam Mahi
   useEffect(() => {
     if (videoLink) {
-      fetch(`https://infinite-island-65121.herokuapp.com/watchlist/${id}`, {
-        method: "PUT",
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(sendData)
-      })
-        .then(res => res.json())
-        .then(data => console.log(data))
+      updateWatch(sendData);
+      // fetch(`https://infinite-island-65121.herokuapp.com/watchlist/${id}`, {
+      //   method: "PUT",
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(sendData)
+      // })
+      //   .then(res => res.json())
+      //   .then(data => console.log(data))
     }
 
   }, [video?.videoLink]);
@@ -293,7 +316,7 @@ const Details = () => {
             <div className="md:px-14 px-3 pt-16 bg-primary text-secondary">
               <div className="justify-center flex ">
 
-                <iframe
+                {/* <iframe
                   width="95%"
                   className="mt-1"
                   height="500px"
@@ -302,8 +325,8 @@ const Details = () => {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                ></iframe>
-
+                ></iframe> */}
+                <MediaPlayerDetails video={video}></MediaPlayerDetails>
               </div>
 
               {/* ________________ Rating Section _____________ */}
@@ -407,7 +430,7 @@ const Details = () => {
                 <h3 className="text-[#ff9501]">You may also like...</h3>
                 <Slider {...settings}>
                   {
-                    videos.map(video =>
+                    videos?.map(video =>
                       <div key={video._id}>
                         <div className='zoom-div-I pb-2 pl-0 pt-6 pr-3 video-div' key={video._id}>
                           <Link to={`/play/${video._id}`}>

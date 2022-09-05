@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { FiUpload } from 'react-icons/fi';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import auth from '../../firebase.init';
 import useAdmin from '../../hooks/useAdmin';
 import { useUploadByAdminMutation } from '../../services/post';
@@ -12,6 +14,7 @@ const UploadVideo = () => {
     const [user] = useAuthState(auth);
     const [admin] = useAdmin(user);
     const [uploadVideo, data] = useUploadByAdminMutation()
+    const MySwal = withReactContent(Swal)
 
     const { t } = useTranslation(["dashboard"])
 
@@ -35,11 +38,16 @@ const UploadVideo = () => {
         }
 
         if (admin) {
+            // using redux
             uploadVideo(userUploadVideo)
-            alert('Thanks for uploading')
             toast.success('Successfully your video uploaded!!!')
             localStorage.setItem("notificationMode", "true");
             e.target.reset();
+            MySwal.fire({
+                title: <strong>Wow. Good job!</strong>,
+                html: <i className='text-xl font-semibold text-green-500'>Successfully your video uploaded!!!</i>,
+                icon: 'success'
+            })
 
             // const url = 'https://infinite-island-65121.herokuapp.com/adminUploadVideo';
             // fetch(url, {
@@ -68,10 +76,14 @@ const UploadVideo = () => {
             })
                 .then(res => res.json())
                 .then(result => {
-                    alert('Thanks for uploading')
                     toast.success('Successfully your video uploaded!!!')
                     localStorage.setItem("notificationMode", "true");
                     e.target.reset();
+                    MySwal.fire({
+                        title: <strong>Wow. Good job!</strong>,
+                        html: <i className='text-xl font-semibold text-green-500'>Successfully your video uploaded!!!</i>,
+                        icon: 'success'
+                    })
                 })
         }
     };
@@ -81,7 +93,7 @@ const UploadVideo = () => {
             <div className='w-full mx-auto flex mt-0'>
                 <p className='section-title text-green-500 text-[15px] md:text-[25px]'>{t("Upload your favorite video")}</p>
             </div>
-            <div class="card mx-auto sm:w-[80%] md:w-[50%] bg-base-100 shadow-xl">
+            <div className="card mx-auto sm:w-[80%] md:w-[50%] bg-base-100 shadow-xl">
                 <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
                     <span className="text-green-500 inline-block">
                         <FiUpload className='inline-block mr-1' />

@@ -55,7 +55,8 @@ const Footer = () => {
                 </div>
 
             </div>
-            <div className='text-center py-4 copy-right'>Copyright &copy; pioneerflix.com</div>
+            {/* <hr className='h-[0.5px] w-full bg-secondary' /> */}
+            <div className='text-center text-secondary py-4 copy-right'>Copyright &copy; pioneerflix.com</div>
 
         </footer>
     );

@@ -13,15 +13,6 @@ const useRatings = (id) => {
     );
 
     return [data, refetch]
-    // const [ratings, setRatings] = useState();
-
-    // useEffect(() => {
-    //     fetch(`https://infinite-island-65121.herokuapp.com/ratings/${id}`)
-    //         .then(res => res.json())
-    //         .then(data => setRatings(data));
-    // }, [id, rating])
-
-    // return [ratings, setRatings];
 }
 
 export default useRatings;

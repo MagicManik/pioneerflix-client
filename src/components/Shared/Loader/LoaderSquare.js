@@ -7,6 +7,7 @@ const LoaderSquare = () => {
       height="100"
       width="100"
       color="#4fa94d"
+      // color="orange"
       ariaLabel="rotating-square-loading"
       strokeWidth="4"
       wrapperStyle={{}}

@@ -1,17 +1,21 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import useVideos from '../../../hooks/useVideos';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useGetAllVideosQuery } from '../../../services/post';
+// import useVideos from '../../../hooks/useVideos';
 import './SearchResults.css';
 
 const SearchResults = () => {
-    const [videos] = useVideos();
+    // const [videos] = useVideos();
+    const { data, refetch, isLoading } = useGetAllVideosQuery();
     const { id } = useParams();
 
-    let getTheme = localStorage.getItem("colorTheme");
+    const result = data?.filter(video => video.title.toLowerCase().includes(id.toLowerCase()));
 
-    const result = videos.filter(video => video.title.toLowerCase().includes(id.toLowerCase()));
+    const navigate = useNavigate();
 
-    const resultLength = result.length;
+    const handlePlay = (id) => {
+        navigate(`/play/${id}`)
+    }
 
     return (
         <section className='bg-[#141414] pt-16'>
@@ -20,13 +24,14 @@ const SearchResults = () => {
                 {
                     result.map(video =>
                         <div key={video._id} className='zoom-div-2'>
-                            <Link to={`/play/${video._id}`}>
+                            <button onClick={() => handlePlay(video._id)} className='search-video-play-button'>
                                 <img className='search-img rounded-lg' src={video.imgLink} alt="" />
-                            </Link>
+                                <p className='block mx-auto'>{video.title}</p>
+                            </button>
+
                         </div>
                     )
                 }
-
             </div>
         </section>
     );

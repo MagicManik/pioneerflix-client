@@ -12,7 +12,7 @@ module.exports = {
           secondary: "#FFFFFF",
           accent: "#111111",
           neutral: "#FFFFFF",
-          info: "#000",
+          info: "#06c",
           mybtn: "#ff9501",
           error: "#FA5C5C",
           mytext: '#f5f5f7',
@@ -22,7 +22,7 @@ module.exports = {
       {
         dark: {
           primary: "#f5f5f7",
-          secondary: "#000",
+          secondary: "#000000",
           // accent: "#404040",
           accent: "#1c4662",
           neutral: "#FFFFFF",
