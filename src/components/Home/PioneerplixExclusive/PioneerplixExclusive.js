@@ -61,7 +61,12 @@ const PioneerplixExclusive = () => {
 
         <section className='bg-primary section-border'>
 
-            <div className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
+            <div
+                data-aos="fade-up"
+                data-aos-anchor-placement="bottom-bottom"
+                data-aos-duration="2000"
+                className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}
+            >
                 <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-0 pt-2 lg:pt-3" : "text-black text-sm lg:text-lg pb-2 lg:pb-0 pt-2 lg:pt-3"}>{t("EXCLUSIVEMOVIES")}</h1>
                 <Slider {...settings} className=''>
                     {
@@ -84,12 +89,12 @@ const PioneerplixExclusive = () => {
                 <div className='pb-3 wraper'>
                     <div className={getTheme === 'white' ? 'text-container text-secondary grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-secondary grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
-                        <div className='text-container-left'>
+                        <div data-aos="fade-down-right" data-aos-duration="2000" className='text-container-left'>
                             <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading'>{t("WatchAndEnjoyMoreExclusiveVideos")}</h1>
                             <p className='pt-2 lg:pt-2 lg:text-3xl'>{t("Keep touch on your exclusive videos with your enjoyment —free with your membership")}</p>
                         </div>
 
-                        <div className='our-story-card-animation-container pb-10 lg:pb-20 pt-6 lg:pt-20'>
+                        <div data-aos="fade-down-left" data-aos-duration="2000" className='our-story-card-animation-container pb-10 lg:pb-20 pt-6 lg:pt-20'>
                             <img className='tv-img block mx-auto rounded-xl ' src={profileKids} alt="" />
                         </div>
                     </div>

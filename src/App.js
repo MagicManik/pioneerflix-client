@@ -33,6 +33,8 @@ import BanglaMovies from "./components/Movies/BanglaMovies/BanglaMovies";
 import MyList from "./components/UsersData/MyList/MyList";
 import LikedVideos from "./components/UsersData/LikedVideos/LikedVideos";
 import WatchList from "./components/UsersData/WatchList/WatchList";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 function App() {
@@ -47,6 +49,10 @@ function App() {
       setTheme(false);
     }
   }, [getTheme]);
+
+  useEffect( ()=> {
+    AOS.init()
+  }, [])
 
   return (
     <div data-theme={theme ? "dark" : "light"}>

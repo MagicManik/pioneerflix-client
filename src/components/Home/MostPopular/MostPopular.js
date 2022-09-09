@@ -61,7 +61,7 @@ const MostPopular = () => {
     return (
         <section className='bg-primary section-border'>
 
-            <div className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
+            <div data-aos="zoom-in-down" data-aos-duration="2000" className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
                 <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-0" : "text-black text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-0"}>{t("POPULARMOVIES")}</h1>
                 <Slider {...settings} className=''>
                     {
@@ -84,12 +84,12 @@ const MostPopular = () => {
                 <div className='pb-3 wraper'>
                     <div className={getTheme === 'white' ? 'text-container text-secondary grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-secondary grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
-                        <div className='text-container-left'>
+                        <div data-aos="fade-down-right" data-aos-duration="2000" className='text-container-left'>
                             <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading'>{t("EnjoyMostPopularMoviesAllTimes")}</h1>
                             <p className='pt-2 lg:pt-2 lg:text-3xl'>{t("Watchmovies,behappy,andsmilefromthebottomofyourheart")}</p>
                         </div>
 
-                        <div className='our-story-card-animation-container pt-3 lg:pt-0 pb-3 lg:pb-20'>
+                        <div data-aos="fade-down-left" data-aos-duration="2000" className='our-story-card-animation-container pt-3 lg:pt-0 pb-3 lg:pb-20'>
                             <img className='tv-img rounded-xl ' src={offlineWatch} alt="" />
                         </div>
                     </div>

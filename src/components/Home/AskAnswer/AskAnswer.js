@@ -6,7 +6,7 @@ const AskAnswer = () => {
     const { t } = useTranslation(["askedQuestions"])
     return (
         <div className='pb-3 custom-bg'>
-            <div className='bg-primary w-full pb-24'>
+            <div  data-aos="zoom-in-up" data-aos-duration="2000" className='bg-primary w-full pb-24'>
 
                 <h1 className='text-center text-secondary text-4xl py-12'>{t("Frequently Asked Questions")}</h1>
                 <div className=' lg:px-48'>
