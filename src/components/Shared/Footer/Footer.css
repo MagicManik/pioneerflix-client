@@ -22,15 +22,10 @@
 
 .footer-text a {
     text-decoration: none;
-    color: rgb(138, 138, 138);
 }
 
 .footer-text a:hover {
-    color: #29613d;
-}
-
-.footer-span {
-    color: #29613d;
+    color: #52f78c;
 }
 
 .company-others {
@@ -52,13 +47,8 @@
 }
 
 .social-icon:hover {
-    color: #29613d;
+    color: #52f78c;
 }
-
-.copy-right {
-    color: rgb(191, 196, 201);
-}
-
 
 
 @media screen and (max-width: 576px) {

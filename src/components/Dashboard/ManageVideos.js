@@ -4,7 +4,7 @@ import DeleteUiVideos from './DeleteUiVideos';
 import ManageVideosRow from './ManageVideosRow';
 
 const ManageVideos = () => {
-    const url = 'https://infinite-island-65121.herokuapp.com/uploadedVideo';
+    const url = 'http://localhost:5000/uploadedVideo';
     const { data, refetch } = useQuery(['uploadedVideo'], () =>
         fetch(url, {
             method: 'GET',

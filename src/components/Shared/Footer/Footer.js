@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="footer-section">
                 <div className='footer-container'>
                     <img className='w-7/12 mx-auto pb-3' src={pioneerFlix} alt="" />
-                    <p className='text-2xl text-secondary'>Download Our Mobile App</p>
+                    <p className='text-2xl text-neutral'>Download Our Mobile App</p>
                     <div className='flex py-5 gap-3'>
                         <a href="https://www.google.com/">
                             <img className='app-logo mr-1' src={playStore} alt="" />
@@ -24,26 +24,26 @@ const Footer = () => {
 
                 <div className='company-others'>
                     <div>
-                        <h5 className='footer-text text-secondary pb-2'>Company</h5>
-                        <p className='footer-text'><a href="https://www.google.com/">Career</a></p>
-                        <p className='footer-text'><a href="https://www.google.com/">Privacy Policy</a></p>
-                        <p className='footer-text'><a href="https://www.google.com/">Refund Policy</a></p>
+                        <h5 className='text-neutral pb-2'>Company</h5>
+                        <p className='text-accent'><a href="https://www.google.com/">Career</a></p>
+                        <p className='text-accent'><a href="https://www.google.com/">Privacy Policy</a></p>
+                        <p className='text-accent'><a href="https://www.google.com/">Refund Policy</a></p>
 
                     </div>
 
                     <div className='footer-others'>
-                        <h5 className='footer-text pb-2 text-secondary'>Others</h5>
-                        <p className='footer-text'><a href="https://www.google.com/">Blogs</a></p>
-                        <p className='footer-text'><Link to='/about'>About</Link></p>
-                        <p className='footer-text'><a href="https://www.google.com/">Want to be an affiliate</a></p>
+                        <h5 className='pb-2 text-neutral'>Others</h5>
+                        <p className='text-accent'><a href="https://www.google.com/">Blogs</a></p>
+                        <p className='text-accent'><Link to='/about'>About</Link></p>
+                        <p className='text-accent'><a href="https://www.google.com/">Want to be an affiliate</a></p>
                     </div>
                 </div>
 
                 <div className='social-media'>
-                    <h5 className='footer-text text-secondary pb-2'>Through social media we</h5>
-                    <p className='footer-text text-secondary'>Contact: <span className='footer-span text-secondary'>8244</span> (8AM - 11PM)</p>
-                    <p className='footer-text text-secondary'>SMS: SHCHelp to 440404 (24X7)</p>
-                    <p className='footer-text text-secondary'>Email: <span className='footer-span text-secondary'>support@pioneerflix.com</span></p>
+                    <h5 className='text-neutral pb-2'>Through social media we</h5>
+                    <p className='text-accent '>Contact: <span className='footer-span'>8244</span> (8AM - 11PM)</p>
+                    <p className='text-accent'>SMS: SHCHelp to 440404 (24X7)</p>
+                    <p className='text-accent'>Email: <span className='footer-span text-neutral'>support@pioneerflix.com</span></p>
 
                     <div className='social-icon-container'>
                         {/* <a href="https://www.google.com/"><FaFacebook className='social-icon' /></a>
@@ -56,7 +56,7 @@ const Footer = () => {
 
             </div>
             {/* <hr className='h-[0.5px] w-full bg-secondary' /> */}
-            <div className='text-center text-secondary py-4 copy-right'>Copyright &copy; pioneerflix.com</div>
+            <div className='text-center text-accent py-4 copy-right'>Copyright &copy; pioneerflix.com</div>
 
         </footer>
     );

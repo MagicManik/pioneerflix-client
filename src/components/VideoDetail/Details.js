@@ -9,7 +9,6 @@ import auth from "../../firebase.init";
 // import useComments from "../../hooks/useComments";
 import useLikes from "../../hooks/useLikes";
 import "./Details.css";
-import { FacebookShareButton, FacebookIcon, WhatsappShareButton, WhatsappIcon, TwitterShareButton, TwitterIcon, LinkedinShareButton, LinkedinIcon, RedditIcon, RedditShareButton } from "react-share";
 import { BsFillEmojiSmileFill } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
 import useRatings from "../../hooks/useRatings";
@@ -23,6 +22,7 @@ import Payments from "../Payments/Payments";
 import { useEffect } from "react";
 import { useDeleteLikeMutation, useDeleteMyListMutation, useGetAllVideosQuery, useLoadCommentsQuery, useUpdateWatchListMutation, useUploadCommentMutation, useUploadLikeMutation, useUpsertWatchListMutation } from "../../services/post";
 import MediaPlayerDetails from "./MediaPlayerDetails";
+import ShareVideo from "./ShareVideo";
 
 const Details = () => {
   const { id } = useParams();
@@ -88,34 +88,11 @@ const Details = () => {
     if (likedUser?.length > 0) {
       const likedId = likedUser[0]._id;
       deleteLike(likedId);
-      // const url = `https://infinite-island-65121.herokuapp.com/likes/${likedId}`;
-      // fetch(url, {
-      //   method: "DELETE",
-      // })
-      //   .then((res) => res.json())
-      //   .then((data) => {
-      //     if (data.deletedCount > 0) {
-      //       alert("Deleted");
-      //     }
-      //   });
     }
 
     // to add like
     else {
       createLike(newLike);
-      // fetch("https://infinite-island-65121.herokuapp.com/like", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(newLike),
-      // })
-      //   .then((res) => res.json())
-      //   .then((data) => {
-      //     if (data.insertedId) {
-      //       // alert("Your item successfully added.");
-      //     }
-      //   });
     }
   };
 
@@ -131,21 +108,6 @@ const Details = () => {
     createComment(newComment);
     commentsFetch();
     e.target.reset();
-
-    // fetch("https://infinite-island-65121.herokuapp.com/comment", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(newComment),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     if (data.insertedId) {
-    //       alert('Your item successfully added.')
-    //       e.target.reset();
-    //     }
-    //   });
   };
 
   // Handle Rating || Manik Islam Mahi
@@ -154,7 +116,7 @@ const Details = () => {
     const name = user?.displayName;
     const email = user?.email;
     const rating = { id, star, name, email };
-    const url = `https://infinite-island-65121.herokuapp.com/rating/${email}`
+    const url = `http://localhost:5000/rating/${email}`
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -184,32 +146,10 @@ const Details = () => {
     if (hasUserMyList.length > 0) {
       const id = hasUserMyList[0]._id;
       deleteMyList(id);
-
-      // const url = `https://infinite-island-65121.herokuapp.com/mylist/${id}`;
-      // fetch(url, {
-      //   method: "DELETE",
-      // })
-      //   .then((res) => res.json())
-      //   .then((data) => {
-      //     if (data.deletedCount > 0) {
-      //       alert("Deleted");
-      //     }
-      //   });
     }
 
     else {
       upsertWatchList(sendData);
-      // fetch(`https://infinite-island-65121.herokuapp.com/mylist/${user?.email}`, {
-      //   method: "PUT",
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify(sendData)
-      // })
-      //   .then(res => res.json())
-      //   .then(result => {
-      //     console.log(result);
-      //   })
     }
   };
 
@@ -217,59 +157,9 @@ const Details = () => {
   useEffect(() => {
     if (videoLink) {
       updateWatch(sendData);
-      // fetch(`https://infinite-island-65121.herokuapp.com/watchlist/${id}`, {
-      //   method: "PUT",
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   body: JSON.stringify(sendData)
-      // })
-      //   .then(res => res.json())
-      //   .then(data => console.log(data))
     }
 
   }, [video?.videoLink]);
-
-
-  // Handle Review || Shihab Uddin
-  // const libraryInfo = {
-  //   videoId: id,
-  //   email: user?.email,
-  //   videoLink: videoLink,
-  //   videoTitle: title,
-  // };
-
-  // useEffect(() => {
-  //   if (title) {
-  //     const remaining = watchVideo?.filter((v) => v?.videoId === id);
-  //     if (remaining?.length === 0) {
-  //       fetch("https://infinite-island-65121.herokuapp.com/library", {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(libraryInfo),
-  //       })
-  //         .then((response) => response.json())
-  //         .then((data) => {
-  //         });
-  //     }
-  //   }
-  // }, [title,watchVideo]);
-
-  // const handleAddList = () => {
-  //   fetch("https://infinite-island-65121.herokuapp.com/favorite", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(libraryInfo),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //     });
-  // };
-
 
 
   var settings = {
@@ -315,21 +205,8 @@ const Details = () => {
           <div>
             <div className="md:px-14 px-3 pt-16 bg-primary text-secondary">
               <div className="justify-center flex ">
-
-                {/* <iframe
-                  width="95%"
-                  className="mt-1"
-                  height="500px"
-                  src={videoLink}
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe> */}
                 <MediaPlayerDetails video={video}></MediaPlayerDetails>
               </div>
-
-              {/* ________________ Rating Section _____________ */}
               <div className="py-5 text-white">
                 <div className="md:flex justify-between items-center">
 
@@ -346,18 +223,18 @@ const Details = () => {
                               onMouseEnter={() => setHover(ratingValue)}
                               onMouseLeave={() => setHover(null)}
                             >
-
                             </FaStar>
                           </label>
                         )
                       })}
-
                     </div>
+
                     <span className="pl-8 text-[#a5a5a5] block mt-2">Average Rating : {averageRating}</span>
                   </div>
 
-                  {/* ______ Like section ______ */}
+                  {/* Like section */}
                   <div className="grid grid-cols-3 mr-6 md:ml-0 ml-5  md:mt-0 mt-5">
+
                     <div className="flex items-center ">
                       <button onClick={handleLike} className={likedUser?.length >= 1 ? 'btn btn-circle like-btn liked-btn' : 'btn btn-circle like-btn'} title="Like here">
                         <BiLike />
@@ -365,7 +242,7 @@ const Details = () => {
                       <div className={likedUser?.length >= 1 ? 'text-[#ff9501]' : ''}>Like {totalLike?.length}</div>
                     </div>
 
-                    {/* _____ Add To List Button _____ */}
+                    {/* Add To List Button */}
                     <div className="flex items-center mr-3">
                       <button
                         onClick={handleMyList}
@@ -391,7 +268,7 @@ const Details = () => {
 
                 <hr className="h-[0.5px] my-3 bg-[#222] " />
 
-                {/* ______ Video Details ______ */}
+                {/* Video Details */}
               </div>
               <div className="md:grid flex items-center  md:grid-cols-6  md:py-8 ">
                 <div className=" col-start-1 md:col-end-3 col-end-7 flex md:justify-start justify-center items-center w-full">
@@ -425,7 +302,7 @@ const Details = () => {
                 </div>
               </div>
 
-              {/* ______ Search Related Video ______ */}
+              {/* Search Related Video */}
               <div className="mt-5 mb-20">
                 <h3 className="text-[#ff9501]">You may also like...</h3>
                 <Slider {...settings}>
@@ -442,7 +319,7 @@ const Details = () => {
                 </Slider>
               </div>
 
-              {/* _______ Comment Section ______ */}
+              {/* Comment Section */}
               <div className="flex items-center">
                 {
                   user?.photoURL ? <img
@@ -475,7 +352,7 @@ const Details = () => {
                 </div>
               </div>
 
-              {/* _____ comment displayed ______ */}
+              {/* comment displayed */}
               <div className=" md:py-5 pt-5 gap-5">
                 {commentDisplay?.map((comment) => (
                   <div className="flex pb-5" key={comment._id}>
@@ -510,28 +387,7 @@ const Details = () => {
                 <span className="text-white items-center justify-center flex mb-4">
                   Share your favorite video on social media <BsFillEmojiSmileFill className="ml-1" />
                 </span>
-                <div className="flex justify-center">
-                  <FacebookShareButton url={videoLink}>
-                    <FacebookIcon className="rounded-3xl mr-4"></FacebookIcon>
-                  </FacebookShareButton>
-
-                  <WhatsappShareButton url={videoLink}>
-                    <WhatsappIcon className="rounded-3xl mr-4"></WhatsappIcon>
-                  </WhatsappShareButton>
-
-                  <TwitterShareButton url={videoLink}>
-                    {" "}
-                    <TwitterIcon className="rounded-3xl mr-4"></TwitterIcon>
-                  </TwitterShareButton>
-
-                  <LinkedinShareButton url={videoLink}>
-                    <LinkedinIcon className="rounded-3xl mr-4"></LinkedinIcon>
-                  </LinkedinShareButton>
-
-                  <RedditShareButton url={videoLink}>
-                    <RedditIcon className="rounded-3xl"></RedditIcon>
-                  </RedditShareButton>
-                </div>
+                <ShareVideo videoLink={videoLink}></ShareVideo>
               </div>
             </div>
           </div>

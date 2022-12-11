@@ -4,23 +4,27 @@ import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import freeVideo from '../../../assets/others/free-video.jpg';
 import { useGetAllVideosQuery } from '../../../services/post';
+import LoaderColorfull from '../../Shared/Loader/LoaderColorfull';
+import LoaderInfinitySpin from '../../Shared/Loader/LoaderInfinitySpin';
 // import useVideos from '../../../hooks/useVideos';
 
 const PopularWebSeries = () => {
 
+    const { t } = useTranslation(["home"])
+
     // const [videos] = useVideos();
     const { data: videos, refetch, isLoading } = useGetAllVideosQuery();
 
-    const kidsVideos = videos?.filter(video => video.category === 'Popular Web Series');
+    const popularWebSeries = videos?.filter(video => video.category === 'Popular Web Series');
     // console.log(videos)
 
-    const { t } = useTranslation(["home"])
+
 
     let getTheme = localStorage.getItem("colorTheme");
 
     var settings = {
         dots: false,
-        infinite: false,
+        infinite: true,
         speed: 500,
         slidesToShow: 6,
         slidesToScroll: 6,
@@ -59,36 +63,43 @@ const PopularWebSeries = () => {
         <section className='bg-primary section-border'>
 
             <div className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
-                <h1 className={getTheme === 'white' ? "text-white text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3" : "text-black text-sm lg:text-lg pb-2 lg:pb-4 pt-2 lg:pt-3"}>{t("POPULARWEBSERIES")}</h1>
-                <Slider {...settings} className=''>
-                    {
-                        kidsVideos?.map(movie =>
+                <h1 className={"text-neutral text-sm lg:text-xl pb-2 lg:pb-4 pt-2 lg:pt-3"}>{t("POPULARWEBSERIES")}</h1>
+                {
+                    popularWebSeries ?
 
-                            <div key={movie._id}>
+                        <Slider {...settings} className=''>
+                            {
+                                popularWebSeries?.map(movie =>
 
-                                <Link to={`/play/${movie._id}`}>
-                                    <div className="bg-white mr-2 lg:mr-5 shadow py-2 lg:py-3 px-2 lg:px-3 rounded-2xl">
-                                        <img className='zoom-div-I block mx-auto rounded-lg' src={movie.imgLink} alt="" />
-                                    </div>
-                                </Link>
+                                    <div key={movie._id}>
 
-                            </div>)
-                    }
-                </Slider>
+                                        <Link to={`/play/${movie._id}`}>
+                                            <div className="bg-white mr-2 lg:mr-5 shadow py-2 lg:py-3 px-2 lg:px-3 rounded-2xl">
+                                                <img className='zoom-div-I block mx-auto rounded-lg' src={movie.imgLink} alt="" />
+                                            </div>
+                                        </Link>
+
+                                    </div>)
+                            }
+                        </Slider>
+                        :
+                        <LoaderColorfull />
+                }
             </div>
 
             <div className='bg-primary'>
                 <div className='pb-3 wraper'>
-                    <div className={getTheme === 'white' ? 'text-container text-secondary grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-secondary grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
+                    <div className={'text-container text-neutral grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
                         <div className='text-container-left'>
-                            <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading'>{t("Have fun to watch with your web series")}</h1>
-                            <p className='pt-2 lg:pt-2 lg:text-3xl'>{t("Simply save Your favorite show on your watch list and entertaining to watch")}</p>
+                            <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading text-neutral'>{t("Have fun to watch with your web series")}</h1>
+                            <p className='pt-2 lg:pt-2 lg:text-3xl text-accent'>{t("Simply save Your favorite show on your watch list and entertaining to watch")}</p>
                         </div>
 
-                        <div className='our-story-card-animation-container pb-10 lg:pb-20 pt-6 lg:pt-20'>
-                            <img className='tv-img rounded-xl ' src={freeVideo} alt="" />
+                        <div className='our-story-card-animation-container pb-10 lg:pb-20 pt-10 lg:pt-28'>
+                            <img className='tv-img w-4/5 rounded-xl' src={freeVideo} alt="" />
                         </div>
+
                     </div>
                 </div>
             </div>

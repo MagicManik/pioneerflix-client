@@ -49,7 +49,7 @@ const UploadVideo = () => {
                 icon: 'success'
             })
 
-            // const url = 'https://infinite-island-65121.herokuapp.com/adminUploadVideo';
+            // const url = 'http://localhost:5000/adminUploadVideo';
             // fetch(url, {
             //     method: 'POST',
             //     headers: {
@@ -66,7 +66,7 @@ const UploadVideo = () => {
             //     })
         }
         else {
-            const url = 'https://infinite-island-65121.herokuapp.com/userUploadVideo';
+            const url = 'http://localhost:5000/userUploadVideo';
             fetch(url, {
                 method: 'POST',
                 headers: {

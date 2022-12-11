@@ -19,13 +19,13 @@ const DeleteUiVideoRow = ({ detail, index, refetch }) => {
             showConfirmButton: false,
             timer: 2000
         })
-        
+
         // else {
         //     toast.error(`${id} is not deleted from UI`)
         // }
 
 
-        // const url = `https://infinite-island-65121.herokuapp.com/uiVideo/${id}`;
+        // const url = `http://localhost:5000/uiVideo/${id}`;
         // fetch(url, {
         //     method: 'DELETE',
         //     headers: {

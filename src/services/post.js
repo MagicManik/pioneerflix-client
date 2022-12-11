@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const postApi = createApi({
   reducerPath: 'postApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://infinite-island-65121.herokuapp.com/'
+    baseUrl: 'http://localhost:5000/'
   }),
 
   endpoints: (builder) => ({
@@ -74,6 +74,8 @@ export const postApi = createApi({
         method: 'DELETE'
       }),
     }),
+
+
 
     // to post or create like || Manik Islam Mahi
     uploadLike: builder.mutation({
@@ -156,10 +158,6 @@ export const postApi = createApi({
       }
     }),
 
-
-
-
-    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   }),
 
 })

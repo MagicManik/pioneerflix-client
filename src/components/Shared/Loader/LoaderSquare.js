@@ -11,7 +11,7 @@ const LoaderSquare = () => {
       ariaLabel="rotating-square-loading"
       strokeWidth="4"
       wrapperStyle={{}}
-      wrapperClass=""
+      wrapperclassName=""
       visible={true}
     />
   );

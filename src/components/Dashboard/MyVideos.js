@@ -16,7 +16,7 @@ const MyVideos = () => {
     const [admin] = useAdmin(user);
 
 
-    const url = `https://infinite-island-65121.herokuapp.com/userUploadVideo?email=${user?.email}`
+    const url = `http://localhost:5000/userUploadVideo?email=${user?.email}`
     const { data, isLoading } = useQuery(['userUploadVideo'], () =>
         fetch(url, {
             method: 'GET',

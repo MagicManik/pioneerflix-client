@@ -10,7 +10,7 @@ const MyVideosAdmin = () => {
     const [user] = useAuthState(auth);
     const { t } = useTranslation("dashboard")
 
-    const url = `https://infinite-island-65121.herokuapp.com/adminUploadVideo?email=${user?.email}`
+    const url = `http://localhost:5000/adminUploadVideo?email=${user?.email}`
     const { data, isLoading } = useQuery(['adminUploadVideo'], () =>
         fetch(url, {
             method: 'GET',

@@ -82,11 +82,11 @@ const NavbarResponsive = ({ theme, setTheme }) => {
     navigate("/");
   };
 
-  const handleTheme = (colorTheme) => {
-    if (colorTheme === "dark") {
-      localStorage.setItem("colorTheme", colorTheme);
+  const handleTheme = (color) => {
+    if (color === "light") {
+      localStorage.setItem("theme", color);
     } else {
-      localStorage.setItem("colorTheme", colorTheme);
+      localStorage.setItem("theme", color);
     }
   };
   const changeBackground = () => {
@@ -172,16 +172,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                           {/* ........for multiple language......... */}
                           {t("Home")}
                         </CustomLink>
-                        <CustomLink
-                          to="/tv"
-                          className=" text-white  hidden xl:block hover:text-error"
-                        >
-                          {/* ........for multiple language......... */}
-                          {t("TVShows")}
-                        </CustomLink>
 
-
-                        {/* _____________________mmm_____________________ */}
                         <button
                           onClick={() => handleMovies(!moviesMega)}
                           onMouseEnter={() => handleMovies()}
@@ -221,15 +212,6 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                           <option value="russian">Russian</option>
                           <option value="ukraine">Ukraine</option>
                           <option value="armenian">Հայերեն</option>
-                          <option value="bn">Нохчийн</option>
-                          <option value="bn">Чăваш</option>
-                          <option value="bn">ᐃᓄᒃᑎᑐᑦ</option>
-                          <option value="bn">ქართული</option>
-                          <option value="bn">ქართული</option>
-                          <option value="bn">Gĩkũyũ</option>
-                          <option value="bn">Қазақша</option>
-                          <option value="bn">Kuanyama</option>
-                          <option value="bn">Kazakh</option>
                         </select>
                       </div>
                     </div>
@@ -261,7 +243,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                       onClick={() => setTheme(!theme)}
                     >
                       {theme ? (
-                        <FaRegMoon className="text-white" onClick={() => handleTheme("white")} />
+                        <FaRegMoon className="text-white" onClick={() => handleTheme("light")} />
                       ) : (
                         <MdLightMode className="text-white" onClick={() => handleTheme("dark")} />
                       )}
@@ -273,6 +255,9 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     >
                       {t("Subscribe")}
                     </Link>
+
+
+
                     {/* Profile dropdown */}
                     <Menu
                       as="div"
@@ -476,7 +461,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     <option value="arabic">العربية</option>
                     <option value="russian">Russian</option>
                     <option value="ukraine">Ukraine</option>
-                    <option value="bn">Нохчийн</option>
+                    {/* <option value="bn">Нохчийн</option>
                     <option value="bn">Чăваш</option>
                     <option value="bn">ᐃᓄᒃᑎᑐᑦ</option>
                     <option value="bn">ქართული</option>
@@ -484,7 +469,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     <option value="bn">Gĩkũyũ</option>
                     <option value="bn">Қазақша</option>
                     <option value="bn">Kuanyama</option>
-                    <option value="bn">Kazakh</option>
+                    <option value="bn">Kazakh</option> */}
                   </select>
 
                   {/* subscribe now phone version */}
@@ -514,7 +499,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
         <hr />
 
         {mega && (
-          <div onMouseLeave={() => handleMega(false)} className="absolute duration-1000 transition bg-[#222] border-2 rounded-2xl border-indigo-600 md:top-16 md:left-56 w-[90%] md:w-[60%] z-30">
+          <div onMouseLeave={() => handleMega(false)} className="absolute duration-1000 transition bg-[#222] border-2 rounded-md border-indigo-600 md:top-16 md:left-56 w-[90%] md:w-[60%] z-30">
             <div className="grid py-5 px-4 relative mx-auto  max-w-screen-xl text-base grid-cols-2 md:grid-cols-3 md:px-10">
               <ul className=" relative space-y-3 md:mb-0 md:block">
                 {megaMenuR1.map((m) => (

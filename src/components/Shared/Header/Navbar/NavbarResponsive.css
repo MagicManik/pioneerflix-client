@@ -136,7 +136,7 @@ input:-webkit-autofill {
 }
 
 .search-container {
-    border-radius: 8px;
+    border-radius: 5px;
     column-count: 0 !important;
     column-gap: 0 !important;
 }

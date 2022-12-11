@@ -1,0 +1,14 @@
+.text-container-left {
+    padding-right: 50px;
+}
+
+@media screen and (max-width: 576px) {
+    .text-container-left {
+        padding-right: 0px;
+    }
+
+    .text-container-left p {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+}

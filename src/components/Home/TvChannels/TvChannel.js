@@ -6,11 +6,13 @@ import { Link, useParams } from "react-router-dom";
 import useChannel from "../../../hooks/useChannel";
 import useChannels from "../../../hooks/useChannels";
 import MediaPlayer from "../../ReactPlayer/MediaPlayer";
+import LoaderDNA from "../../Shared/Loader/LoaderDNA";
+import LoaderColorfull from "../../Shared/Loader/LoaderColorfull";
 
 const TvChannel = () => {
   const { id } = useParams();
   const [channel] = useChannel(id);
-  const [channels] = useChannels();
+  const [channels, setChannels] = useChannels();
   const { channelLink } = channel;
   // console.log(channelLink);
 
@@ -20,7 +22,6 @@ const TvChannel = () => {
     speed: 500,
     slidesToShow: 9,
     slidesToScroll: 9,
-    initialSlide: 0,
     responsive: [
       {
         breakpoint: 1024,
@@ -78,22 +79,29 @@ const TvChannel = () => {
                 You can see more...
               </h1>
               <Slider {...settings} className="">
-                {channels.map((tv) => (
-                  <div key={tv._id}>
-                    <div
-                      className="zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div"
-                      key={tv._id}
-                    >
-                      <Link to={`/channel/${tv._id}`}>
-                        <img
-                          className="popular-movie bg-white p-6"
-                          src={tv.imgLink}
-                          alt=""
-                        />
-                      </Link>
-                    </div>
-                  </div>
-                ))}
+                {
+                  channels ?
+
+                    channels.map((tv) => (
+                      <div key={tv._id}>
+                        <div
+                          className="zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div"
+                          key={tv._id}
+                        >
+                          <Link to={`/channel/${tv._id}`}>
+                            <img
+                              className="popular-movie bg-white p-6"
+                              src={tv.imgLink}
+                              alt=""
+                            />
+                          </Link>
+                        </div>
+                      </div>
+                    ))
+                    :
+                    <LoaderColorfull />
+                }
+
               </Slider>
 
               <h1 className="text-2xl text-secondary text-right bt-6">

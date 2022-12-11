@@ -3,8 +3,23 @@ import LoaderSquare from "../Shared/Loader/LoaderSquare";
 
 const About = () => {
   const developerDetails = [
+
     {
       id: 1,
+      name: "Manik Islam Mahi",
+      dev: "MERN Stack Web Developer",
+      img: "https://avatars.githubusercontent.com/u/97013257?v=4",
+      cell: "+8801682440404",
+      gmail: "megamindedmanik@gmail.com",
+      resume:
+        "https://drive.google.com/file/d/14K7q05kEYptqFhPM3eyLfA3Ocg-1Ysqr/view",
+      portfolio: "https://magicmanik.netlify.app/",
+      github: "https://github.com/MagicManik/",
+      linkedin: "https://www.linkedin.com/in/manikislammahi/",
+    },
+
+    {
+      id: 2,
       name: "K M Mohiuddin Patwary",
       dev: "MERN Stack Web Developer",
       img: "https://km-mohiuddin-patwary.netlify.app/images/profile.png",
@@ -17,7 +32,7 @@ const About = () => {
       linkedin: "https://www.linkedin.com/in/k-m-mohiuddin-patwary/",
     },
     {
-      id: 2,
+      id: 3,
       name: "Md. Saiyadul  Amin Akhand ",
       dev: "Junior Web Developer",
       img: "https://my-portfolio-52c27.web.app/static/media/123.708c647ccf809cf4b8e4.jpg",
@@ -30,7 +45,7 @@ const About = () => {
       linkedin: "https://www.linkedin.com/in/md-saiyadul-amin-akhand-9a46b5b3/",
     },
     {
-      id: 3,
+      id: 4,
       name: "Md : Shihab Uddin",
       dev: "Junior Front-End Developer",
       img: "https://kubb-photography.web.app/static/media/aboutMe.d26479d7cf1371dcc957.jpg",
@@ -41,19 +56,6 @@ const About = () => {
       portfolio: "https://my-portfolio-52c27.web.app/",
       github: "https://github.com/Shihab2022",
       linkedin: "https://www.linkedin.com/in/shihab-uddin-4b6369241/",
-    },
-    {
-      id: 4,
-      name: "Manik Islam Mahi",
-      dev: "MERN Stack Web Developer",
-      img: "https://avatars.githubusercontent.com/u/97013257?v=4",
-      cell: "+8801682440404",
-      gmail: "megamindedmanik@gmail.com",
-      resume:
-        "https://drive.google.com/file/d/14K7q05kEYptqFhPM3eyLfA3Ocg-1Ysqr/view",
-      portfolio: "https://magicmanik.netlify.app/",
-      github: "https://github.com/MagicManik/",
-      linkedin: "https://www.linkedin.com/in/manikislammahi/",
     },
 
     {
@@ -97,7 +99,8 @@ const About = () => {
     },
   ];
   return (
-    <div className="bg-primary  text-secondary px-5 lg:px-20 py-8 lg:py-20 ">
+    <div className="bg-primary text-secondary">
+      <div className="bg-black px-5 lg:px-20 py-8 lg:py-8"></div>
       <div className="flex justify-center items-center flex-col ">
         <div>
           {developerDetails.map((d) => (
@@ -111,12 +114,12 @@ const About = () => {
                   </div>
 
                   <div className="ml-3">
-                    <h1 className="lg:text-3xl text-2xl  text-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-bold">
+                    <h1 className="lg:text-3xl text-2xl text-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-bold text-neutral">
                       {d?.name}
                     </h1>
-                    <p className="py-2 font-semibold">{d?.dev}</p>
-                    <p>Email : {d?.gmail}</p>
-                    <p className="py-2">Contact : {d?.cell}</p>
+                    <p className="py-2 text-accent font-semibold">{d?.dev}</p>
+                    <p className="text-accent">Email : {d?.gmail}</p>
+                    <p className="py-2 text-accent">Contact : {d?.cell}</p>
                     <div>
                       <a href={d?.resume} target="_blank" >
                         <button className="badge badge-warning">Resume</button>
