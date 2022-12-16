@@ -9,7 +9,6 @@ import useChannels from "../../hooks/useChannels";
 import { useTranslation } from "react-i18next";
 
 import "./Banner.css";
-import LoaderSquare from "../Shared/Loader/LoaderSquare";
 import LoaderColorfull from "../Shared/Loader/LoaderColorfull";
 import LoaderDNA from "../Shared/Loader/LoaderDNA";
 import LoaderIOS from "../Shared/Loader/LoaderIOS";

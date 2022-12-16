@@ -1,5 +1,4 @@
 import React from "react";
-import LoaderSquare from "../Shared/Loader/LoaderSquare";
 
 const About = () => {
   const developerDetails = [
@@ -99,7 +98,7 @@ const About = () => {
     },
   ];
   return (
-    <div className="bg-primary text-secondary">
+    <div className="bg-primary text-accent">
       <div className="bg-black px-5 lg:px-20 py-8 lg:py-8"></div>
       <div className="flex justify-center items-center flex-col ">
         <div>

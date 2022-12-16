@@ -102,14 +102,14 @@ const PioneerflixKids = () => {
 
             <div className='bg-primary'>
                 <div className='pb-3 wraper'>
-                    <div className={getTheme === 'white' ? 'text-container text-secondary grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-secondary grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
+                    <div className={getTheme === 'white' ? 'text-container text-accent grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-accent grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
 
                         <div className='our-story-card-animation-container pb-10 lg:pb-16 pt-6 lg:pt-16'>
-                            <img className='tv-img block mx-auto rounded-xl ' src={profileKids} alt="" />
+                            <img className='tv-img block mx-auto rounded-xl' src={profileKids} alt="" />
                         </div>
 
-                        <div className='text-container-left'>
+                        <div className='text-container-left lg:ml-8 ml-0'>
                             <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading text-neutral'>{t("WatchAndEnjoyMoreExclusiveVideos")}</h1>
                             <p className='pt-2 text-accent lg:pt-2 lg:text-3xl'>{t("Keep touch on your exclusive videos with your enjoyment —free with your membership")}</p>
                         </div>

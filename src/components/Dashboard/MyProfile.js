@@ -23,7 +23,7 @@ const MyProfile = () => {
     // console.log(userData, userData.status);
     const MySwal = withReactContent(Swal)
 
-    const url = `http://localhost:5000/userProfile?email=${user?.email}`
+    const url = `https://server-production-b237.up.railway.app/userProfile?email=${user?.email}`
     const { data, isLoading, refetch } = useQuery(['userProfile'], () =>
         fetch(url, {
             method: 'GET',
@@ -80,7 +80,7 @@ const MyProfile = () => {
                         toast.error('Try again, Your profile is not update')
                     }
 
-                    // const url = `http://localhost:5000/userProfile/${user?.email}`
+                    // const url = `https://server-production-b237.up.railway.app/userProfile/${user?.email}`
                     // fetch(url, {
                     //     method: 'PUT',
                     //     headers: {
@@ -126,7 +126,7 @@ const MyProfile = () => {
                     </div>
                     <div className="my-4"></div>
                     <div
-                        className={`${isEdit ? "block" : "hidden"} bg-white w-full border-t-4 border-[#125f82] mx-auto p-5 my-5 mt-16 rounded-br-lg rounded-bl-lg shadow-sm rounded-sm relative`}
+                        className={`${isEdit ? "block" : "hidden"} bg-white w-full border-t-4 border-[#125f82] mx-auto p-5 my-5 mt-1 rounded-br-lg rounded-bl-lg shadow-sm rounded-sm relative`}
                     >
                         <div className="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
                             <span className="text-green-500">

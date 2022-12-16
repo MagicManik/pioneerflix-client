@@ -25,7 +25,7 @@ const DeleteUiVideoRow = ({ detail, index, refetch }) => {
         // }
 
 
-        // const url = `http://localhost:5000/uiVideo/${id}`;
+        // const url = `https://server-production-b237.up.railway.app/uiVideo/${id}`;
         // fetch(url, {
         //     method: 'DELETE',
         //     headers: {

@@ -14,7 +14,7 @@ const useToken = user => {
 
         if (email) {
 
-            fetch(`http://localhost:5000/user/${email}`, {
+            fetch(`https://server-production-b237.up.railway.app/user/${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'

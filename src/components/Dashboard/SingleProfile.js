@@ -57,13 +57,13 @@ const SingleProfile = ({ pd, refetch, setIsEdit }) => {
                     </div>
                 </div>
             </div>
-            <label
+            <button
                 htmlhtmlFor="my-modal-6"
                 onClick={() => setIsEdit(true)}
-                className="text-center block w-full text-primary text-md shadow font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
+                className="bg-orange-300 hover:bg-orange-400 text-black w-full rounded p-2 mt-4"
             >
                 Edit Profile
-            </label>
+            </button>
         </div>
     );
 };

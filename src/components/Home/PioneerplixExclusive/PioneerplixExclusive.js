@@ -16,7 +16,6 @@ import LoaderHTMLCSS from '../../Shared/Loader/LoaderHTMLCSS';
 import LoaderHTMLCSSII from '../../Shared/Loader/LoaderHTMLCSSII';
 import LoaderInfinitySpin from '../../Shared/Loader/LoaderInfinitySpin';
 import LoaderRotatingLines from '../../Shared/Loader/LoaderRotatingLines';
-import LoaderSquare from '../../Shared/Loader/LoaderSquare';
 import LoaderGoogle from '../../Shared/Loader/LoaderGoogle';
 import LoaderMicrosoft from '../../Shared/Loader/LoaderMicrosoft';
 import LoaderAjax from './LoaderAjax';
@@ -111,7 +110,7 @@ const PioneerplixExclusive = () => {
 
             <div className='bg-primary'>
                 <div className='pb-3 wraper'>
-                    <div className={getTheme === 'white' ? 'text-container text-secondary grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-secondary grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
+                    <div className={getTheme === 'white' ? 'text-container text-accent grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-accent grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
 
                         <div className='text-container-left'>

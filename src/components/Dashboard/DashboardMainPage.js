@@ -57,14 +57,14 @@ const DashboardMainPage = () => {
                         <FiMonitor className="text-blue-600 text-4xl w-full justify-center" />
                         <p className="uppercase font-bold mb-2 text-blue-600 text-xl text-center">Dashboard</p>
                         <li>
-                            <Link to="" className="uppercase font-bold text-secondary focus:bg-[#1f67f7]">
+                            <Link to="" className="uppercase font-bold text-green-500 focus:bg-[#1f67f7]">
                             <ImProfile className="text-xl text-green-500" />{t("My Profile")}
                             </Link>
                         </li>
                         <li>
                             <Link
                                 to="uploadVideo"
-                                className={`uppercase font-bold text-secondary ${pathname.includes("/dashboard/uploadVideo") && "bg-[#1f67f7]"
+                                className={`uppercase font-bold text-green-500 ${pathname.includes("/dashboard/uploadVideo") && "bg-[#1f67f7]"
                                     }`}
                             >
                                 <HiCloudUpload className="text-xl text-green-500" />{t("Upload video")}
@@ -73,7 +73,7 @@ const DashboardMainPage = () => {
                         <li>
                             <Link
                                 to="myVideos"
-                                className={`uppercase font-bold text-secondary ${pathname.includes("/dashboard/myVideos") && "bg-[#1f67f7]"
+                                className={`uppercase font-bold text-green-500 ${pathname.includes("/dashboard/myVideos") && "bg-[#1f67f7]"
                                     }`}
                             >
                                 <AiOutlineMonitor className="text-xl text-green-500" />{t("My Videos")}
@@ -83,7 +83,7 @@ const DashboardMainPage = () => {
                             <li>
                                 <Link
                                     to="makeAdmin"
-                                    className={`uppercase font-bold text-secondary ${pathname.includes("/dashboard/makeAdmin") && "bg-[#1f67f7]"
+                                    className={`uppercase font-bold text-green-500 ${pathname.includes("/dashboard/makeAdmin") && "bg-[#1f67f7]"
                                         }`}
                                 >
                                     <RiAdminLine className="text-xl text-green-500" />{t("Make Admin")}
@@ -94,7 +94,7 @@ const DashboardMainPage = () => {
                             <li>
                                 <Link
                                     to="manageVideos"
-                                    className={`uppercase font-bold text-secondary ${pathname.includes("/dashboard/manageVideos") &&
+                                    className={`uppercase font-bold text-green-500 ${pathname.includes("/dashboard/manageVideos") &&
                                         "bg-[#1f67f7]"
                                         }`}
                                 >
@@ -106,7 +106,7 @@ const DashboardMainPage = () => {
                             for="sidebar-dashboard"
                             className="drawer-button mt-6 flex justify-end lg:hidden border"
                         >
-                            <FaBackward className="text-3xl text-secondary justify-end" />
+                            <FaBackward className="text-3xl text-green-500 justify-end" />
                         </label>
                     </ul>
                 </div>

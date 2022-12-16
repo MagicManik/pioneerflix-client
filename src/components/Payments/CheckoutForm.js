@@ -24,7 +24,7 @@ const CheckoutForm = ({ userBookingData }) => {
     // console.log(id);
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://server-production-b237.up.railway.app/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -88,7 +88,7 @@ const CheckoutForm = ({ userBookingData }) => {
                 id: id,
                 transactionId: paymentIntent?.id
             }
-            const url = `http://localhost:5000/booking/${id}`;
+            const url = `https://server-production-b237.up.railway.app/booking/${id}`;
             // console.log(url);
             // console.log(payment);
             fetch(url, {

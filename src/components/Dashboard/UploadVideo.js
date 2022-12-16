@@ -49,7 +49,7 @@ const UploadVideo = () => {
                 icon: 'success'
             })
 
-            // const url = 'http://localhost:5000/adminUploadVideo';
+            // const url = 'https://server-production-b237.up.railway.app/adminUploadVideo';
             // fetch(url, {
             //     method: 'POST',
             //     headers: {
@@ -66,7 +66,7 @@ const UploadVideo = () => {
             //     })
         }
         else {
-            const url = 'http://localhost:5000/userUploadVideo';
+            const url = 'https://server-production-b237.up.railway.app/userUploadVideo';
             fetch(url, {
                 method: 'POST',
                 headers: {

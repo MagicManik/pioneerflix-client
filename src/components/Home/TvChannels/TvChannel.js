@@ -75,7 +75,7 @@ const TvChannel = () => {
         <div className="pb-3 custom-bg">
           <div className="bg-primary video-section py-14">
             <div className="bg-primary lg:px-20 sm:px-4 video-container">
-              <h1 className="text-2xl text-secondary bt-6">
+              <h1 className="text-2xl text-accent bt-6">
                 You can see more...
               </h1>
               <Slider {...settings} className="">
@@ -104,7 +104,7 @@ const TvChannel = () => {
 
               </Slider>
 
-              <h1 className="text-2xl text-secondary text-right bt-6">
+              <h1 className="text-2xl text-accent text-right bt-6">
                 You can see more...
               </h1>
             </div>

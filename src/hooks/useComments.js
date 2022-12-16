@@ -4,7 +4,7 @@
 //     const [comments, setComments] = useState([]);
 
 //     useEffect(() => {
-//         fetch('http://localhost:5000/comments')
+//         fetch('https://server-production-b237.up.railway.app/comments')
 //             .then(res => res.json())
 //             .then(data => setComments(data));
 //     }, [comments]);

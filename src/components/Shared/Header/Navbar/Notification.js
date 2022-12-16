@@ -33,7 +33,7 @@ const Notification = ({ notification, setNotification }) => {
   return (
     <>
       <div style={notificationStyle}>
-        <button type="button" onClick={handleNotification} className=" text-secondary mx-2 md:mx-3">
+        <button type="button" onClick={handleNotification} className=" text-accent mx-2 md:mx-3">
           <span className="sr-only">View notifications</span>
           <div className="indicator text-lg ">
             {showN ? (<span className="indicator-item badge w-4 md:w-6 text-sm text-primary bg-primary ">{videos.length}</span>) : (<span className="indicator-item badge w-4 md:w-6 text-sm bg-white text-black ">0</span>

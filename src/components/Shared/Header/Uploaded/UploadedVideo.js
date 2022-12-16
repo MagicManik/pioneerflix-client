@@ -33,7 +33,7 @@ const UploadedVideo = () => {
         ></iframe>
       </div>
 
-      <div className="md:flex justify-between text-secondary px-2 md:px-10 py-3 items-center">
+      <div className="md:flex justify-between text-accent px-2 md:px-10 py-3 items-center">
         <div className="">
           <p className="text-2xl font-bold">{video?.title}</p>
           <p className="text-sm">
@@ -59,7 +59,7 @@ const UploadedVideo = () => {
           </label>
         </div>
       </div>
-      <p className="px-2 md:px-10 text-secondary">{video?.description}</p>
+      <p className="px-2 md:px-10 text-accent">{video?.description}</p>
 
       {videos?.length && (
         <div className="pt-10 px-2 md:px-10">

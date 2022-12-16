@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 const useUploadedVideo = () => {
     const [videos, setVideos] = useState({})
     useEffect(() => {
-        fetch('http://localhost:5000/notification')
+        fetch('https://server-production-b237.up.railway.app/notification')
             .then(res => res.json())
             .then(data => setVideos(data))
 

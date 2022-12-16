@@ -12,7 +12,7 @@ const stripePromise = loadStripe('pk_test_51LXnkjI9VBJQHJJfhxESo52ItqIP3SXDLzDJK
 
 const PaymentPage = () => {
     const [user] = useAuthState(auth);
-    const url = `http://localhost:5000/userBooking/?email=${user?.email}`;
+    const url = `https://server-production-b237.up.railway.app/userBooking/?email=${user?.email}`;
     const { data, isLoading, refetch } = useQuery(['userBooking'], () =>
         fetch(url, {
             method: 'GET',

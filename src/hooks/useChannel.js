@@ -4,7 +4,7 @@ const useChannel = (id) => {
     const [channel, setChannel] = useState({})
 
     useEffect(() => {
-        fetch(`http://localhost:5000/channels/${id}`)
+        fetch(`https://server-production-b237.up.railway.app/channels/${id}`)
             .then(res => res.json())
             .then(data => setChannel(data))
 

@@ -2,7 +2,7 @@ import { React, Fragment, useState, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { FaAlignJustify, FaTimes, FaRegMoon, FaCaretDown, FaSearch, FaCaretUp, FaGrinAlt } from "react-icons/fa";
 import { GiDramaMasks, GiRocketThruster, GiBangingGavel, GiNewBorn, GiPapers, GiGamepad, GiPartyPopper, GiIncomingRocket, GiPaperClip, GiSlicedBread } from "react-icons/gi";
-import userPhoto from '../../../../assets/app-logo/download.svg';
+import userPhoto from '../../../../assets/download.svg';
 import { MdLightMode } from "react-icons/md";
 import auth from "../../../../firebase.init";
 import { BiLike } from "react-icons/bi";
@@ -125,7 +125,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
         <Disclosure as="nav">
           {({ open }) => (
             <>
-              <div className="max-w-8xl text-secondary mx-auto px-2 sm:px-6 lg:px-14 ">
+              <div className="max-w-8xl text-accent mx-auto px-2 sm:px-6 lg:px-14 ">
                 <div className="relative flex items-center justify-between h-16">
                   <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                     {/* Mobile menu button*/}
@@ -313,7 +313,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
                           <Menu.Item>
                             {({ active }) => (
-                              <p className=" font-bold pt-3 text-center">
+                              <p className=" font-semibold text-lg pt-3 text-center text-[#f5f5f7]">
                                 {user?.displayName}
                               </p>
                             )}
@@ -321,7 +321,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
                           <Menu.Item>
                             {({ active }) => (
-                              <p className="user-email text-center">
+                              <p className="user-email text-center text-info">
                                 {user?.email}
                               </p>
                             )}
@@ -332,7 +332,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                               <Link
                                 to="/dashboard"
                                 className={classNames(
-                                  active ? "my-profile-btn" : "my-profile-btn"
+                                  active ? "my-profile-btn text-info" : "my-profile-btn text-info"
                                 )}
                               >
                                 {t("My Profile")}
@@ -348,10 +348,10 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                                   active
                                     ? "bg-zinc-800 w-full text-left"
                                     : "w-full",
-                                  "block px-4 py-2 text-sm text-left"
+                                  "block px-4 py-2 text-info text-left"
                                 )}
                               >
-                                <i className="fa fas fa-history mr-2"></i>
+                                <i className="fa fas text-info fa-history mr-2"></i>
                                 {t("Watch history")}
                               </Link>
                             )}
@@ -365,7 +365,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                                   active
                                     ? "bg-zinc-800 w-full text-left flex items-center"
                                     : "w-full flex items-center",
-                                  "block px-4 py-2 text-sm text-left"
+                                  "block px-4 py-2  text-info text-sm text-left"
                                 )}
                               >
                                 <BiLike className="mr-2 text-lg" />
@@ -382,10 +382,10 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                                   active
                                     ? "bg-zinc-800 w-full text-left flex items-center"
                                     : "w-full flex items-center",
-                                  "block px-4 py-2 text-sm text-left"
+                                  "block px-4 py-2 text-sm text-left text-info"
                                 )}
                               >
-                                <MdPlaylistAdd className="mr-2 text-lg"></MdPlaylistAdd>
+                                <MdPlaylistAdd className="mr-2 text-lg text-center"></MdPlaylistAdd>
                                 {t("My List")}
                               </Link>
                             )}
@@ -399,7 +399,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                                   active
                                     ? "bg-zinc-800 w-full text-left"
                                     : "w-full",
-                                  "block px-4 py-2 text-sm text-left"
+                                  "block px-4 py-2 text-sm text-left text-info"
                                 )}
                               >
                                 <i className="fa fal fa-film mr-2"></i>
@@ -416,7 +416,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                                   active
                                     ? "bg-zinc-800 w-full text-left"
                                     : "w-full",
-                                  "block px-4 py-2 text-sm text-left"
+                                  "block px-4 py-2 text-sm text-left text-info"
                                 )}
                               >
                                 <i className="fa fas fa-sign-out-alt mr-2"></i>

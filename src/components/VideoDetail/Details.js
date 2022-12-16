@@ -116,7 +116,7 @@ const Details = () => {
     const name = user?.displayName;
     const email = user?.email;
     const rating = { id, star, name, email };
-    const url = `http://localhost:5000/rating/${email}`
+    const url = `https://server-production-b237.up.railway.app/rating/${email}`
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -202,8 +202,8 @@ const Details = () => {
     <>
       {
         paid ?
-          <div>
-            <div className="md:px-14 px-3 pt-16 bg-primary text-secondary">
+          <div className="bg-black pt-16">
+            <div className="md:px-14 pt-4 px-3 bg-primary text-accent">
               <div className="justify-center flex ">
                 <MediaPlayerDetails video={video}></MediaPlayerDetails>
               </div>
@@ -229,7 +229,7 @@ const Details = () => {
                       })}
                     </div>
 
-                    <span className="pl-8 text-[#a5a5a5] block mt-2">Average Rating : {averageRating}</span>
+                    <span className="pl-8 text-accent block mt-2">Average Rating : {averageRating}</span>
                   </div>
 
                   {/* Like section */}
@@ -239,7 +239,7 @@ const Details = () => {
                       <button onClick={handleLike} className={likedUser?.length >= 1 ? 'btn btn-circle like-btn liked-btn' : 'btn btn-circle like-btn'} title="Like here">
                         <BiLike />
                       </button>
-                      <div className={likedUser?.length >= 1 ? 'text-[#ff9501]' : ''}>Like {totalLike?.length}</div>
+                      <div className={likedUser?.length >= 1 ? 'text-[#ff9501]' : ' text-accent'}>Like {totalLike?.length}</div>
                     </div>
 
                     {/* Add To List Button */}
@@ -248,9 +248,9 @@ const Details = () => {
                         onClick={handleMyList}
                         className="btn btn-circle like-btn"
                         title="Add your list">
-                        <AiOutlinePlus className={hasUserMyList?.length >= 1 ? 'fill-[#ff9501]' : ''} />
+                        <AiOutlinePlus className={hasUserMyList?.length >= 1 ? 'fill-[#ff9501]' : 'text-accent'} />
                       </button>
-                      <span className={hasUserMyList?.length >= 1 ? 'text-[#ff9501]' : ''}>My List</span>
+                      <span className={hasUserMyList?.length >= 1 ? 'text-[#ff9501]' : 'text-accent'}>My List</span>
                     </div>
 
                     <div className="flex items-center">
@@ -261,7 +261,7 @@ const Details = () => {
                       >
                         <FaShareAlt className="text-xl active:text-[#ff9501]" />
                       </label>
-                      <span>Share</span>
+                      <span className="text-accent">Share</span>
                     </div>
                   </div>
                 </div>
@@ -292,7 +292,7 @@ const Details = () => {
 
                       <p className="text-sm">( 2022 ) . {duration} . Serial </p>
                       <p className="my-2 "> Category : {category}</p>
-                      <span className="block my-2">Average Rating : {averageRating}</span>
+                      <span className="block my-2 text-accent">Average Rating : {averageRating}</span>
                       <p className="text-sm">{description}</p>
 
                       <hr className="md:mt-6 bg-[#222] h-[1px] my-3 md:mb-4" />

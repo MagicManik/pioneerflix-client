@@ -13,7 +13,7 @@ const DeleteUiVideos = () => {
     }
 
 
-    // const url = 'http://localhost:5000/videos'
+    // const url = 'https://server-production-b237.up.railway.app/videos'
     // const { data, refetch } = useQuery(['videos'], () =>
     //     fetch(url, {
     //         method: 'GET',

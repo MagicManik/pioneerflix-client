@@ -4,7 +4,7 @@ const useLikes = () => {
     const [likes, setLikes] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/likes')
+        fetch('https://server-production-b237.up.railway.app/likes')
             .then(res => res.json())
             .then(data => setLikes(data))
     }, [likes])

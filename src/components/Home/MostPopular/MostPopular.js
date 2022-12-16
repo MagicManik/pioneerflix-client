@@ -89,7 +89,7 @@ const MostPopular = () => {
 
             {/* <div className='bg-primary'>
                 <div className='pb-3 wraper'>
-                    <div className={getTheme === 'white' ? 'text-container text-secondary grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-secondary grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
+                    <div className={getTheme === 'white' ? 'text-container text-accent grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-accent grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
                         <div className='text-container-left'>
                             <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading text-neutral'>{t("EnjoyMostPopularMoviesAllTimes")}</h1>
@@ -106,7 +106,7 @@ const MostPopular = () => {
 
             <div className='bg-primary'>
                 <div className=' wraper'>
-                    <div className={getTheme === 'white' ? 'text-container text-secondary grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-secondary grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
+                    <div className={getTheme === 'white' ? 'text-container text-accent grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-accent grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
                         <div className='our-story-card-animation-container pt-0 lg:pt-10 pb-10'>
                             <img className='tv-img block mx-auto rounded-xl ' src={offlineWatch} alt="" />

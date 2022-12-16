@@ -13,10 +13,8 @@ module.exports = {
           secondary: "#000",
           accent: "#ededed",
           neutral: "#f5f5f7",
-          info: "#06c",
-          mybtn: "#ff9501",
+          info: "#c3bcbc",
           error: "#FA5C5C",
-          anchorbtn: '#06c',
         },
       },
       {
@@ -25,9 +23,8 @@ module.exports = {
           secondary: "#ffff",
           accent: "#333",
           neutral: "#202124",
-          info: "#1c4662",
+          info: "#c3bcbc",
           error: "#FB7185",
-          anchorbtn: '#06c'
         },
       },
 

@@ -4,7 +4,7 @@
 //     const [videos, setVideos] = useState([]);
 
 //     useEffect(() => {
-//         fetch('http://localhost:5000/videos')
+//         fetch('https://server-production-b237.up.railway.app/videos')
 //             .then(res => res.json())
 //             .then(data => setVideos(data));
 //     }, []);

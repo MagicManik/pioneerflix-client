@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { FcLike } from 'react-icons/fc';
 import auth from '../../firebase.init';
 import useAdmin from '../../hooks/useAdmin';
-import LoaderSquare from '../Shared/Loader/LoaderSquare';
+import LoaderIOS from '../Shared/Loader/LoaderIOS';
 import MyVideosAdmin from './MyVideosAdmin';
 
 const MyVideos = () => {
@@ -15,8 +15,7 @@ const MyVideos = () => {
 
     const [admin] = useAdmin(user);
 
-
-    const url = `http://localhost:5000/userUploadVideo?email=${user?.email}`
+    const url = `https://server-production-b237.up.railway.app/userUploadVideo?email=${user?.email}`
     const { data, isLoading } = useQuery(['userUploadVideo'], () =>
         fetch(url, {
             method: 'GET',
@@ -27,10 +26,6 @@ const MyVideos = () => {
             .then(res => res.json())
     )
 
-    if (isLoading) {
-        return <LoaderSquare></LoaderSquare>
-    }
-
     return (
         <div>
             {
@@ -40,7 +35,11 @@ const MyVideos = () => {
                         <div className='w-full flex justify-center mt-0'>
                             <p className='section-title text-green-500 text-[15px] md:text-[25px]'>{t("All of my videos")}</p>
                         </div>
-                        <div className='grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 sm:gap-1 gap-4 mb-4'>
+                        {
+                            isLoading ?
+                        <LoaderIOS/>
+                            :
+                            <div className='grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 sm:gap-1 gap-4 mb-4'>
                             {
                                 data?.map(movie =>
                                     <div className='bg-black rounded-md h-auto'>
@@ -56,6 +55,7 @@ const MyVideos = () => {
                                 )
                             }
                         </div>
+                        }
                     </div>
                     :
                     <MyVideosAdmin />

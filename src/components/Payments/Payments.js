@@ -108,7 +108,7 @@ const Payments = () => {
             bookingTime: currentDate
         }
         if (user) {
-            const url = `http://localhost:5000/userBooking/${user?.email}`;
+            const url = `https://server-production-b237.up.railway.app/userBooking/${user?.email}`;
             fetch(url, {
                 method: 'PUT',
                 headers: {
@@ -135,9 +135,9 @@ const Payments = () => {
         <div className="bg-black pt-16">
             <div className='bg-primary pb-8'>
                 <h1 className='mx-auto text-center pt-8
-                 text-2xl pb-3 font-bold text-secondary'>CHOOSE A PLAN AND</h1>
+                 text-2xl pb-3 font-bold text-accent'>CHOOSE A PLAN AND</h1>
                 <p className='mx-auto text-center
-                 text-xl pb-3 font-bold mb-4 text-secondary'>ENJOY ALL PIONEERFLIX PREMIUM CONTENTS</p>
+                 text-xl pb-3 font-bold mb-4 text-accent'>ENJOY ALL PIONEERFLIX PREMIUM CONTENTS</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 overflow-hidden sm:w-[60%] mx-auto">
                     {
                         paymentApi?.map(a =>

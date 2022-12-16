@@ -8,7 +8,7 @@ const usePaidUser = user => {
     useEffect(() => {
         const email = user?.email;
         if (email) {
-            fetch(`http://localhost:5000/paidUser/${email}`, {
+            fetch(`https://server-production-b237.up.railway.app/paidUser/${email}`, {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json'

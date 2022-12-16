@@ -8,7 +8,7 @@ const useMyList = () => {
     const [myList, setMyList] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/mylist/${user?.email}`)
+        fetch(`https://server-production-b237.up.railway.app/mylist/${user?.email}`)
             .then(res => res.json())
             .then(data => setMyList(data))
     }, [user, myList])

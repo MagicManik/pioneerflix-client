@@ -7,7 +7,7 @@ const MakeAdmin = () => {
 
     const { t } = useTranslation(["dashboard"])
 
-    const url = 'http://localhost:5000/allUserData';
+    const url = 'https://server-production-b237.up.railway.app/allUserData';
     const { data, refetch } = useQuery(['allUserData'], () =>
         fetch(url, {
             method: 'GET',
