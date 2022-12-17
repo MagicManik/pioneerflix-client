@@ -30,7 +30,6 @@ const Home = () => {
       <PioneerflixFree></PioneerflixFree>
       <AskAnswer></AskAnswer>
 
-
       <ScrollToTop
         smooth
         top="100"

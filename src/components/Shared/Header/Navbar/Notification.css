@@ -1,0 +1,28 @@
+/* custom scrollbar */
+#notification-scrollbar {
+    resize: none;
+    cursor: auto;
+}
+
+#notification-scrollbar::-webkit-scrollbar {
+    width: 7px;
+    height: 10px;
+}
+
+#notification-scrollbar::-webkit-scrollbar-button:start:decrement,
+#notification-scrollbar::-webkit-scrollbar-button:end:increment {
+    height: 10px;
+    background-color: transparent;
+}
+
+#notification-scrollbar::-webkit-scrollbar-track-piece {
+    background-color: #eeeeee;
+    -webkit-border-radius: 16px;
+}
+
+#notification-scrollbar::-webkit-scrollbar-thumb:vertical {
+    height: 10px;
+    background: linear-gradient(335.64deg, #92400e -19.22%, #dd7b3e 118.87%);
+    border: 1px solid #eee;
+    -webkit-border-radius: 16px;
+}

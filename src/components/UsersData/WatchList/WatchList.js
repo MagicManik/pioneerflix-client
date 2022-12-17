@@ -20,7 +20,7 @@ const WatchList = () => {
     }, [user?.email]);
 
     return (
-        <section className='bg-[#141414] pt-16'>
+        <section className='bg-[#141414] lg:pt-16 pt-1'>
             <h1 className='px-2 md:px-16 lg:px-18 bg-black text-xl lg:text-2xl pt-5'>You watched {watched.length} video. Thank you so much Dear, <span className='text-[#ff9501]'>{user?.displayName}</span></h1>
             <div className='search-container bg-black px-2 md:px-8 lg:px-16 pt-5'>
                 {

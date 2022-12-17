@@ -23,7 +23,7 @@ const DashboardMainPage = () => {
     const { pathname } = useLocation();
 
     return (
-        <section className="pt-16 bg-black">
+        <section className="lg:pt-16 pt-1 bg-black">
             <div className="drawer drawer-mobile pt-2 bg-primary">
                 <input id="sidebar-dashboard" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content">

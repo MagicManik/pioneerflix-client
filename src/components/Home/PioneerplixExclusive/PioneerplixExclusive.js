@@ -52,16 +52,16 @@ const PioneerplixExclusive = () => {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2
+                    arrows: false,
+                    slidesToShow: 3,
+                    slidesToScroll: 3
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
                     arrows: false,
-                    slidesToShow: 2.2,
+                    slidesToShow: 2,
                     slidesToScroll: 2
                 }
             }
@@ -73,8 +73,13 @@ const PioneerplixExclusive = () => {
 
         <section className='bg-primary section-border'>
 
-            <div className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
-                <h1 className=" text-neutral text-sm lg:text-xl pb-2 lg:pb-3 pt-2 lg:pt-3">{t("EXCLUSIVEMOVIES")}</h1>
+            <div
+                data-aos="fade-up"
+                data-aos-anchor-placement="bottom-bottom"
+                data-aos-duration="2000"
+                   
+            className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
+                <h1 className=" text-neutral text-lg lg:text-xl pb-2 lg:pb-3 pt-2 lg:pt-3">{t("EXCLUSIVEMOVIES")}</h1>
                 {
                     videos ?
                         <Slider {...settings} className=''>
@@ -112,14 +117,12 @@ const PioneerplixExclusive = () => {
                 <div className='pb-3 wraper'>
                     <div className={getTheme === 'white' ? 'text-container text-accent grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-accent grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
-
-                        <div className='text-container-left'>
+                        <div data-aos="fade-down-right" data-aos-duration="2000" className='text-container-left'>
                             <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading text-neutral'>{t("WatchAndEnjoyMoreExclusiveVideos")}</h1>
                             <p className='pt-2 text-accent lg:pt-2 lg:text-3xl'>{t("Keep touch on your exclusive videos with your enjoyment —free with your membership")}</p>
                         </div>
 
-
-                        <div className='our-story-card-animation-container pb-0 lg:pb-10 pt-6 lg:pt-16'>
+                        <div data-aos="fade-down-left" data-aos-duration="2000" className='our-story-card-animation-container pb-0 lg:pb-10 pt-6 lg:pt-16'>
                             <img className='tv-img block mx-auto rounded-xl ' src={profileKids} alt="" />
                         </div>
                     </div>

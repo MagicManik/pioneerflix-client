@@ -51,8 +51,8 @@ const PopularWebSeries = () => {
                 breakpoint: 480,
                 settings: {
                     arrows: false,
-                    slidesToShow: 2.2,
-                    slidesToScroll: 2
+                    slidesToShow: 3,
+                    slidesToScroll: 3
                 }
             }
         ]
@@ -62,8 +62,8 @@ const PopularWebSeries = () => {
 
         <section className='bg-primary section-border'>
 
-            <div className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
-                <h1 className={"text-neutral text-sm lg:text-xl pb-2 lg:pb-4 pt-2 lg:pt-3"}>{t("POPULARWEBSERIES")}</h1>
+            <div  data-aos="zoom-in-up" data-aos-duration="2000" className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
+                <h1 className={"text-neutral text-lg lg:text-xl pb-3 lg:pb-4 pt-3 lg:pt-3"}>{t("POPULARWEBSERIES")}</h1>
                 {
                     popularWebSeries ?
 
@@ -91,12 +91,18 @@ const PopularWebSeries = () => {
                 <div className='pb-3 wraper'>
                     <div className={'text-container text-neutral grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
-                        <div className='text-container-left'>
+                        <div
+                        data-aos="fade-up-right"
+                        data-aos-duration="2000"
+                        className='text-container-left'>
                             <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading text-neutral'>{t("Have fun to watch with your web series")}</h1>
                             <p className='pt-2 lg:pt-2 lg:text-3xl text-accent'>{t("Simply save Your favorite show on your watch list and entertaining to watch")}</p>
                         </div>
 
-                        <div className='our-story-card-animation-container pb-10 lg:pb-20 pt-10 lg:pt-28'>
+                        <div
+                        data-aos="flip-right"
+                        data-aos-duration="2000"
+                        className='our-story-card-animation-container pb-10 lg:pb-20 pt-10 lg:pt-28'>
                             <img className='tv-img w-4/5 rounded-xl' src={freeVideo} alt="" />
                         </div>
 

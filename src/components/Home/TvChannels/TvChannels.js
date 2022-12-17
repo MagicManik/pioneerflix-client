@@ -15,12 +15,12 @@ const TvChannels = () => {
             <div className='pb-3 wraper'>
                 <div className={getTheme === 'dark' ? 'text-container text-accent grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-accent grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
-                    <div className='text-container-left pt-5 lg:pt-0 mt-0 lg:-mt-24'>
-                        <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading text-neutral'>{t("WatchyourTVChannels")}</h1>
+                    <div data-aos="zoom-in-down" data-aos-duration="2000" className='text-container-left pt-5 lg:pt-0 mt-0 lg:-mt-24'>
+                        <h1 className='pt-7 lg:pt-0 text-xl lg:text-5xl font-semibold heading text-neutral'>{t("WatchyourTVChannels")}</h1>
                         <p className='pt-2 text-accent lg:pt-2 lg:text-3xl'>{t("WatchyourfavoritechannelsonPioneerFlixwebsite")}</p>
                     </div>
 
-                    <div className='our-story-card-animation-container pb-20'>
+                    <div data-aos="flip-right" data-aos-duration="2000" className='our-story-card-animation-container pb-20'>
                         <img className='tv-img rounded-xl ' src={tv} alt="" />
 
                         <div className='our-story-card-animation' data-uia="our-story-card-animation">

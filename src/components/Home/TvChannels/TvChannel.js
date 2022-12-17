@@ -35,16 +35,16 @@ const TvChannel = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+          arrows: false,
+          slidesToShow: 4,
+          slidesToScroll: 4,
         },
       },
       {
         breakpoint: 480,
         settings: {
           arrows: false,
-          slidesToShow: 4.2,
+          slidesToShow: 4,
           slidesToScroll: 4,
         },
       },

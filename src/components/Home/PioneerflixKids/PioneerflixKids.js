@@ -39,17 +39,17 @@ const PioneerflixKids = () => {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2,
-                    initialSlide: 2
+                    arrows: false,
+                    slidesToShow: 3,
+                    slidesToScroll: 3
                 }
             },
             {
                 breakpoint: 480,
                 settings: {
                     arrows: false,
-                    slidesToShow: 1.2,
-                    slidesToScroll: 1
+                    slidesToShow: 2,
+                    slidesToScroll: 2
                 }
             }
         ]
@@ -59,8 +59,11 @@ const PioneerflixKids = () => {
 
         <section className='bg-primary section-border'>
 
-            <div className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
-                <h1 className="text-neutral text-sm lg:text-xl pb-2 lg:pb-3 pt-2 lg:pt-3">{t("KIDSCOLLECTIONS")}</h1>
+            <div
+             data-aos="zoom-in-up"
+             data-aos-duration="2000"
+            className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
+                <h1 className="text-neutral text-lg lg:text-xl pb-2 lg:pb-3 pt-2 lg:pt-3">{t("KIDSCOLLECTIONS")}</h1>
                 {
                     kidsVideos ?
                         <Slider {...settings} className=''>
@@ -105,11 +108,18 @@ const PioneerflixKids = () => {
                     <div className={getTheme === 'white' ? 'text-container text-accent grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-accent grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
 
 
-                        <div className='our-story-card-animation-container pb-10 lg:pb-16 pt-6 lg:pt-16'>
+                        <div 
+                        data-aos="fade-down"
+                            data-aos-easing="linear"
+                            data-aos-duration="1500" className='our-story-card-animation-container pb-10 lg:pb-16 pt-6 lg:pt-16'>
                             <img className='tv-img block mx-auto rounded-xl' src={profileKids} alt="" />
                         </div>
 
-                        <div className='text-container-left lg:ml-8 ml-0'>
+                        <div 
+                             data-aos="flip-left"
+                             data-aos-easing="ease-out-cubic"
+                             data-aos-duration="2000"
+                        className='text-container-left lg:ml-8 ml-0'>
                             <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading text-neutral'>{t("WatchAndEnjoyMoreExclusiveVideos")}</h1>
                             <p className='pt-2 text-accent lg:pt-2 lg:text-3xl'>{t("Keep touch on your exclusive videos with your enjoyment —free with your membership")}</p>
                         </div>

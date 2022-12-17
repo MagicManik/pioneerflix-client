@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { FaRegBell, FaBell } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useUploadedVideo from "../../../../hooks/useUploadedVideo";
+import './Notification.css';
 
 const Notification = ({ notification, setNotification }) => {
   const [videos] = useUploadedVideo();
@@ -35,15 +36,19 @@ const Notification = ({ notification, setNotification }) => {
       <div style={notificationStyle}>
         <button type="button" onClick={handleNotification} className=" text-accent mx-2 md:mx-3">
           <span className="sr-only">View notifications</span>
-          <div className="indicator text-lg ">
-            {showN ? (<span className="indicator-item badge w-4 md:w-6 text-sm text-primary bg-primary ">{videos.length}</span>) : (<span className="indicator-item badge w-4 md:w-6 text-sm bg-white text-black ">0</span>
-            )
-            }
+          <div className="indicator text-lg relative">
             <FaRegBell
-
               className="h-6 w-6 text-sn text-white"
               aria-hidden="true"
             />
+
+            { showN ?
+            
+            (<span className="badge absolute -top-2 -right-1 lg:-right-3 w-4 md:w-6 text-sm text-primary bg-white ">{videos.length}</span>)
+            :
+            (<span className=" badge absolute -top-2 -right-1 lg:-right-3 w-4 md:w-6 text-sm bg-white text-black ">0</span>
+            )
+            }
           </div>
         </button>
 
@@ -51,7 +56,7 @@ const Notification = ({ notification, setNotification }) => {
           videos?.length && <>
 
             {notification && (
-              <div className="bg-[#222] z-50 text-white  max-h-80 overflow-auto  w-80 absolute rounded-sm top-10 left-[-200px]">
+              <div id="notification-scrollbar" className="bg-[#222] z-50 text-white  max-h-80 overflow-auto  w-80 absolute rounded-sm top-10 left-[-200px]">
 
                 {videos?.map((v) => (
                   <>

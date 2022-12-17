@@ -51,7 +51,7 @@ const Banner = () => {
         breakpoint: 480,
         settings: {
           arrows: false,
-          slidesToShow: 4.2,
+          slidesToShow: 4,
           slidesToScroll: 4
         }
       }
@@ -118,7 +118,7 @@ const Banner = () => {
 
       {/* Tv Channels */}
       <div className={getTheme === 'dark' ? 'lg:absolute tv-chanels-container bottom-0 w-full video-section lg:px-12 md:px-4' : 'lg:absolute tv-chanels-container-dark bottom-0 w-full video-section px-12'}>
-        <h1 className="text-black lg:text-white text-sm lg:text-xl pb-2 lg:pb-7 pt-2 lg:pt-0">{t("TVCHANNELS")}</h1>
+        <h1 className=" text-neutral lg:text-white text-lg lg:text-xl pb-2 lg:pb-7 pt-2 lg:pt-0">{t("TVCHANNELS")}</h1>
 
         {channels.length === 0 ?
           // <LoaderColorfull />

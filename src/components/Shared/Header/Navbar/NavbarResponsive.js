@@ -147,7 +147,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
                         {/* Mobile Device Logo */}
                         <img
-                          className="block lg:hidden h-8 w-auto mr-24"
+                          className="block lg:hidden h-8 w-auto mr-[130px]"
                           src={pioneerFlix}
                           alt="Workflow"
                         />
@@ -255,7 +255,6 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     >
                       {t("Subscribe")}
                     </Link>
-
 
 
                     {/* Profile dropdown */}

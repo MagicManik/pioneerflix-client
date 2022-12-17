@@ -9,6 +9,7 @@ const AskAnswer = () => {
             <div className='bg-primary w-full pb-24'>
 
                 <h1 className='text-center text-neutral text-4xl py-12'>{t("Frequently Asked Questions")}</h1>
+                <div  data-aos="zoom-in-up" data-aos-duration="2000" >
                 <div className=' lg:px-48'>
                     <div tabIndex="0" className="collapse collapse-arrow border accordiaon-bg">
                         <div className="collapse-title text-2xl font-bold">
@@ -75,6 +76,7 @@ const AskAnswer = () => {
                             <p>{t("Kids profiles come with PIN-protected parental controls that let you restrict the maturity rating of content kids can watch and block specific titles you don’t want kids to see.")}</p>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
