@@ -33,20 +33,25 @@ const PaymentPage = () => {
         <div className="bg-black pt-16">
             <div className='bg-primary'>
                 <div className="grid grid-cols-1 sm:grid-cols-2 sm:w-[60%] mx-auto min-h-screen">
-                    <div className={`bg-accent rounded-2xl mx-2 shadow-lg my-auto`}>
+                    <div className={`bg-[#333] rounded-2xl mx-2 shadow-lg my-auto`}>
                         {
                             userBookingData?.map(booking =>
                                 <div key={booking?._id} className="card-body">
-                                    <p className="text-2xl text-center text-green-500 font-bold">Hello, {booking?.userName}</p>
-                                    <h2 className="card-title text-white">Your package <span className='text-orange-500'>"{booking?.month}"-{booking?.package}</span></h2>
+                                    <p className="text-2xl text-green-500 font-bold">Hello, {booking?.userName}</p>
+
+                                    <h2 className="card-title text-white">
+                                        Your package
+                                        <span className='text-orange-500'>{booking?.month}</span>
+                                    </h2>
+
                                     <p className='text-white'>Please pay $ <span className='text-orange-500'>{booking?.taka}</span></p>
-                                    <p className="text-white">Date:  <span className='text-orange-500'>{booking?.bookingTime}</span></p>
+                                    <p className="text-white">Date: <span className='text-orange-500'>{booking?.bookingTime}</span></p>
                                     <p className='flex'><FaCcMastercard className='text-4xl text-white' /> <FaCcPaypal className='mx-3 text-4xl text-white' /> <FaCcVisa className='text-4xl text-white' /></p>
                                 </div>
                             )
                         }
                     </div>
-                    <div className={`bg-accent rounded-2xl mx-2 shadow-lg my-auto`}>
+                    <div className={`bg-[#333] py-9 rounded-2xl mx-2 shadow-lg my-auto`}>
                         <div className="card-body">
                             <Elements stripe={stripePromise}>
                                 <CheckoutForm userBookingData={userBookingData} refetch={refetch} />

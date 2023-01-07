@@ -26,7 +26,6 @@ const megaMenuR1 = [
   { name: "Thriller", href: "/thriller", id: "8aod030vk", icon: <GiRocketThruster /> },
   { name: "Bangla", href: "/bangla", id: "6aod30kd", icon: <GiBangingGavel /> },
   { name: "Latest", href: "/latest", id: "6aod3014kd", icon: <GiNewBorn /> },
-  { name: "Series", href: "/series", id: "6a5od3014kd", icon: <GiPapers /> },
 ];
 const megaMenuR2 = [
   { name: "Live Games", href: "/games", id: "293oc02c", icon: <GiGamepad /> },
@@ -40,7 +39,6 @@ const megaMenuR3 = [
   { name: "Bangla Movies", href: "/bangla", id: "293oc02c" },
   { name: "English Movies", href: "/english", id: "2aod030vkd" },
   { name: "Hindi Movies", href: "/hindi", id: "8aod030vk" },
-  { name: "Tamil Movies", href: "/tamil", id: "6aod33w0kd" },
   { name: "Japanese Movies", href: "/Japanese", id: "6a3od30kd" },
   { name: "Chinese Movies", href: "/chinese", id: "69aod30kd" },
   { name: "Turkish Movies", href: "/turkish", id: "6ao2d30kd" },
@@ -173,6 +171,9 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                           {t("Home")}
                         </CustomLink>
 
+
+
+
                         <button
                           onClick={() => handleMovies(!moviesMega)}
                           onMouseEnter={() => handleMovies()}
@@ -185,6 +186,13 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                             <FaCaretDown className="ml-1 text-xl" />
                           )}
                         </button>
+
+
+
+
+
+
+
 
                         <button
                           onMouseEnter={() => handleMega()}
@@ -439,16 +447,118 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     {" "}
                     {/* ........for multiple language......... */}
                     {t("Home")}
-                  </CustomLink>
+                  </CustomLink >
 
-                  <CustomLink to="/movies" className=" text-white mb-4 block hover:text-white">
-                    {" "}
-                    {/* ........for multiple language......... */}
-                    {t("Movies")}
-                  </CustomLink>
+
+
+
+
+                  <button
+                    onClick={() => handleMovies(!moviesMega)}
+                    onMouseEnter={() => handleMovies()}
+                    className=" text-white  flex  items-end  hover:text-error"
+                  >
+                    {t("Movies")}{" "}
+                    {moviesMega ? (
+                      <FaCaretUp className="ml-1 text-xl" />
+                    ) : (
+                      <FaCaretDown className="ml-1 text-xl" />
+                    )}
+                  </button>
+
+                  {moviesMega &&
+                    <div onMouseLeave={() => handleMovies()} className="absolute bg-[#222] lg:hidden block border-2 border-indigo-600 md:top-16 md:left-72 rounded z-30">
+                      <div className="py-5 px-4 relative mx-auto  max-w-screen-xl text-base md:px-10">
+                        <ul className="mb-4 space-y-3 md:mb-0">
+                          {megaMenuR3.map((m) => (
+                            <li key={m.id}>
+                              <Link
+                                to={m.href}
+                                className="duration-200 hover:text-lg  hover:text-blue-600"
+                              >
+                                {m.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>}
+
+
+                  <button
+                    onClick={() => handleMega(!mega)}
+                    className=" text-white pt-3 flex  items-end  hover:text-white"
+                  >
+                    Categories{" "}
+                    {mega ? (
+                      <FaCaretUp className="ml-1 text-xl" />
+                    ) : (
+                      <FaCaretDown className="ml-1 text-xl" />
+                    )}
+                  </button>
+
+                  {mega && (
+                    <div onMouseLeave={() => handleMega(false)} className="absolute duration-1000 transition lg:hidden block bg-[#222] border-2 rounded-md border-indigo-600 md:top-16 md:left-56 w-[90%] md:w-[60%] z-30">
+                      <div className="grid py-5 px-4 relative mx-auto  max-w-screen-xl text-base grid-cols-2 md:grid-cols-3 md:px-10">
+                        <ul className=" relative space-y-3 md:mb-0 md:block">
+                          {megaMenuR1.map((m) => (
+                            <div className="flex items-center   hover:text-blue-600 justify-start">
+                              <span className="text-2xl  ">{m.icon}</span>
+                              <li key={m.id}>
+                                <Link
+                                  to={m.href}
+                                  onClick={() => setMega(!mega)}
+                                  className="duration-200 ml-3 text-lg  "
+                                >
+                                  {m.name}
+                                </Link>
+                              </li>
+                            </div>
+
+                          ))}
+                        </ul>
+
+                        <ul className="mb-4 space-y-3 md:mb-0">
+                          {megaMenuR2.map((m) => (
+                            <div className="flex items-center hover:text-blue-600 justify-start">
+                              <span className="text-3xl  ">{m.icon}</span>
+                              <li key={m.id}>
+                                <Link
+                                  to={m.href}
+                                  onClick={() => setMega(!mega)}
+                                  className="duration-200 text-lg ml-3  "
+                                >
+                                  {m.name}
+                                </Link>
+                              </li>
+                            </div>
+                          ))}
+                        </ul>
+                        <iframe
+                          width="100%"
+                          height="100%"
+                          className="rounded-sm hidden md:block"
+                          src="https://www.youtube.com/embed/sxSa0MItDkg?controls=0"
+                          title="YouTube video player"
+                          frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen
+                        ></iframe>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* subscribe now phone version */}
+                  <Link
+                    to="/solvePay"
+                    className=" text-white pt-2 pb-4 block text-lg hover:text-white"
+                  >
+                    {t("Subscribe")}
+                  </Link>
+
 
                   <select
-                    className="border-none text-center bg-[#222] py-0 decoration-white rounded-2xl"
+                    className="border-none text-center bg-[#222] py-0 decoration-white lg:rounded-2xl rounded-md"
                     onChange={handleLanguageChange}
                     value={localStorage.getItem("i18nextLng")}
                   >
@@ -460,45 +570,21 @@ const NavbarResponsive = ({ theme, setTheme }) => {
                     <option value="arabic">العربية</option>
                     <option value="russian">Russian</option>
                     <option value="ukraine">Ukraine</option>
-                    {/* <option value="bn">Нохчийн</option>
-                    <option value="bn">Чăваш</option>
-                    <option value="bn">ᐃᓄᒃᑎᑐᑦ</option>
-                    <option value="bn">ქართული</option>
-                    <option value="bn">ქართული</option>
-                    <option value="bn">Gĩkũyũ</option>
-                    <option value="bn">Қазақша</option>
-                    <option value="bn">Kuanyama</option>
-                    <option value="bn">Kazakh</option> */}
                   </select>
-
-                  {/* subscribe now phone version */}
-                  <Link
-                    to="/solvePay"
-                    className=" text-white py-4 block text-lg hover:text-white"
-                  >
-                    {t("Subscribe")}
-                  </Link>
-                  <button
-                    onClick={() => handleMega(!mega)}
-                    className=" text-white  flex  items-end  hover:text-white"
-                  >
-                    Categories{" "}
-                    {mega ? (
-                      <FaCaretUp className="ml-1 text-xl" />
-                    ) : (
-                      <FaCaretDown className="ml-1 text-xl" />
-                    )}
-                  </button>
 
                 </div>
               </Disclosure.Panel>
+
+
             </>
           )}
         </Disclosure>
+
+
         <hr />
 
         {mega && (
-          <div onMouseLeave={() => handleMega(false)} className="absolute duration-1000 transition bg-[#222] border-2 rounded-md border-indigo-600 md:top-16 md:left-56 w-[90%] md:w-[60%] z-30">
+          <div onMouseLeave={() => handleMega(false)} className="absolute duration-1000 lg:block hidden transition bg-[#222] border-2 rounded-md border-indigo-600 md:top-16 md:left-56 w-[90%] md:w-[60%] z-30">
             <div className="grid py-5 px-4 relative mx-auto  max-w-screen-xl text-base grid-cols-2 md:grid-cols-3 md:px-10">
               <ul className=" relative space-y-3 md:mb-0 md:block">
                 {megaMenuR1.map((m) => (
@@ -517,6 +603,8 @@ const NavbarResponsive = ({ theme, setTheme }) => {
 
                 ))}
               </ul>
+
+
               <ul className="mb-4 space-y-3 md:mb-0">
                 {megaMenuR2.map((m) => (
                   <div className="flex items-center hover:text-blue-600 justify-start">
@@ -548,7 +636,7 @@ const NavbarResponsive = ({ theme, setTheme }) => {
         )}
 
         {moviesMega &&
-          <div onMouseLeave={() => handleMovies()} className="absolute bg-[#222] border-2 border-indigo-600 md:top-16 md:left-72 rounded z-30">
+          <div onMouseLeave={() => handleMovies()} className="absolute lg:block hidden bg-[#222] border-2 border-indigo-600 md:top-16 md:left-72 rounded z-30">
             <div className="py-5 px-4 relative mx-auto  max-w-screen-xl text-base md:px-10">
               <ul className="mb-4 space-y-3 md:mb-0">
                 {megaMenuR3.map((m) => (

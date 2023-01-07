@@ -61,12 +61,11 @@ const Banner = () => {
   return (
 
     <section className="relative md-static">
+
       <div className="carousel w-full  z-10 banner-container">
 
         <div id="slide1" className="carousel-item  w-full">
-
           <img src={banner5} className="banner-img" alt="banner1" />
-
           <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
             <a href="#slide4" className="btn btn-circle bg-transparent hidden lg:block w-18 p-[17px]">
               ❮

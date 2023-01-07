@@ -493,7 +493,7 @@ const Details = () => {
                     </div>
                   </div>
                   {/* video details area */}
-                  <hr className="h-[0.5px] mt-8 mb-4 bg-slate-900" />
+                  <hr className="h-[0.5px] mt-8 mb-4 bg-[#222]" />
                   <div className="container mx-auto flex lg:px-5 px-0 lg:pt-16 lg:pb-16 pt-14 pb-0 md:flex-row flex-col items-center">
                     <div className="lg:max-w-xs lg:w-full md:w-full w-11/12">
                       <img
@@ -534,13 +534,13 @@ const Details = () => {
                           autoComplete="off"
                           type="text"
                           name="comment"
-                          className="block comment-line p-3 pl-5 focus:outline-none w-full text-sm   bg-primary rounded-sm pr-40"
+                          className="block comment-line p-3 pl-5 focus:outline-none w-full text-sm   bg-primary rounded-sm lg:pr-40 pr-28"
                           placeholder="Add a comment…"
                           required
                         />
                         <button
                           type="submit"
-                          className="btn bg-[#ff9501] hover:bg-[#d37c02] text-[#f5f5f7] absolute right-2.5 disabled bottom-1 font-medium rounded-lg text-sm px-6"
+                          className="btn lg:btn-md btn-sm bg-[#ff9501] hover:bg-[#d37c02] text-[#f5f5f7] absolute right-2.5 disabled bottom-1 lg:font-medium font-thin lg:rounded-lg rounded text-sm lg:px-6 px-2"
                         >
                           {" "}
                           Comment

@@ -1,89 +1,39 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import useVideos from '../../../hooks/useVideos';
-// import React, { Component } from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import banner1 from '../../../assets/banner/bangla/banner (18).jpg';
-import banner2 from '../../../assets/banner/bangla/banner (18).jpg';
-import banner3 from '../../../assets/banner/bangla/banner (18).jpg';
-import './BanglaMovies.css';
+import React, { useEffect, useState } from "react";
+import banner1 from "../../../assets/banner/bangla/banner 01.jpg";
+import banner2 from "../../../assets/banner/bangla/banner 02.jpg";
+import banner3 from "../../../assets/banner/bangla/banner 03.jpg";
+import banner4 from "../../../assets/banner/bangla/banner 04.jpg";
+import { useGetAllVideosQuery } from "../../../services/post";
+import CategoriesMovies from "../CategoriesMovies";
 
-const BanglaMovies = () => {
+const BanglaMovie = () => {
+    const { data: videos, refetch, isLoading } = useGetAllVideosQuery();
+    const [video, setVideo] = useState({});
+    // const [uVideo, setUVideo] = useState({});
 
-    const [videos] = useVideos();
-    const { t } = useTranslation(["home"])
-
-    let getTheme = localStorage.getItem("colorTheme");
-
-    const banglaMovies = videos.filter(video => video.category === "Bangla Movie");
-
-
-    const banners = [
-        banner1,
-        banner2,
-        banner3
-    ];
-
-    const settings = {
-        dots: true,
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        autoplay: true,
-        speed: 2000,
-        autoplaySpeed: 2000,
-        cssEase: "linear"
-    };
+    useEffect(() => {
+        if (videos?.length) {
+            const remaining = videos?.filter(
+                (v) => v?.category === "Bangla Movie"
+            );
+            setVideo(remaining);
+            // setUVideo(remaining[0]);
+        }
+    }, [videos]);
 
     return (
-
-        <div className='bangla-movie-section'>
-
-            <div className='bangla-movie-menu-bar'>
-
-                {/* <img src={videos[0].imgLink} alt="" /> */}
-
-                <div className="bangla-movie-menu-">
-                    <p>Home</p>
-                    <p>Movies</p>
-                    <p>TV Shows</p>
-                    <p>Series</p>
-                    <p>Favourites</p>
-                    <p>Account</p>
-                    <p>Subscription</p>
-                    <p>Hello</p>
-                    <p>Hello</p>
-                </div>
+        <section className="bg-black lg:pt-24 pt-3">
+            <div className=" lg:w-9/12 w-full mx-auto">
+                <CategoriesMovies
+                    banner1={banner1}
+                    banner2={banner2}
+                    banner3={banner3}
+                    banner4={banner4}
+                    video={video}
+                />
             </div>
-
-            <div><span className="divider-line"></span></div>
-
-            <div className='bangla-movie-container'>
-
-                {/* <div className='search-video'>
-                        <img src="images/700PIrates.jpg" alt="" />
-                    </div> */}
-
-                <div>
-
-                    <h2>Trending Movies</h2>
-                    {/* <div className="movie-list">
-                            {
-                                banglaMovies.map(banglaMovie =>
-                                    <div>
-                                        <img src={banglaMovie.imgLink} alt="" />
-                                    </div>)
-                            }
-
-                        </div> */}
-                </div>
-
-            </div>
-
-        </div>
+        </section>
     );
-};
+}
 
-export default BanglaMovies;
+export default BanglaMovie;

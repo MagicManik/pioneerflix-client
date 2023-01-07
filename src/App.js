@@ -36,6 +36,11 @@ import WatchList from "./components/UsersData/WatchList/WatchList";
 // Aos
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import EnglishMovies from "./components/Movies/EnglishMovies/EnglishMovies";
+import HindiMovies from "./components/Movies/HindiMovies/HindiMovies";
+import JapaneseMovies from "./components/Movies/JapaneseMovies/JapaneseMovies";
+import ChineseMovies from "./components/Movies/ChineseMovies/ChineseMovies";
+import TurkishMovies from "./components/Movies/TurkishMovies/TurkishMovies";
 
 function App() {
   const [theme, setTheme] = useState(true);
@@ -50,7 +55,7 @@ function App() {
     }
   }, [getTheme]);
 
-  useEffect( ()=> {
+  useEffect(() => {
     AOS.init()
   }, [])
 
@@ -73,7 +78,24 @@ function App() {
           <Route path="/paymentPage" element={<PaymentPage />} />
           <Route path="/tv" element={<TvShows></TvShows>}></Route>
           <Route path="/drama" element={<Movies></Movies>}></Route>
-
+          <Route path="/games" element={<Movies></Movies>}></Route>
+          <Route path="/popular" element={<BanglaMovies></BanglaMovies>}></Route>
+          <Route path="/latest" element={<Movies></Movies>}></Route>
+          <Route path="/clips" element={<BanglaMovies></BanglaMovies>}></Route>
+          <Route path="/episodes" element={<VideoDetail />}></Route>
+          <Route path="/upComing" element={<BanglaMovies></BanglaMovies>}></Route>
+          <Route path="/bangla" element={<BanglaMovies></BanglaMovies>}></Route>
+          <Route path="/english" element={<EnglishMovies></EnglishMovies>}></Route>
+          <Route path="/hindi" element={<HindiMovies></HindiMovies>}></Route>
+          <Route path="/japanese" element={<JapaneseMovies></JapaneseMovies>}></Route>
+          <Route path="/chinese" element={<ChineseMovies></ChineseMovies>}></Route>
+          <Route path="/turkish" element={<TurkishMovies></TurkishMovies>}></Route>
+          <Route path='/uploadedVideo/:uId' element={<UploadedVideo />} />
+          <Route path="/comedy" element={<VideoDetail />}></Route>
+          <Route path="/comedy" element={<VideoDetail />}></Route>
+          <Route path="/thriller" element={<VideoDetail />}></Route>
+          <Route path="/comedy" element={<VideoDetail />}></Route>
+          <Route path="/bangla" element={<BanglaMovies></BanglaMovies>}></Route>
           <Route
             path="/dashboard"
             element={<DashboardMainPage></DashboardMainPage>}
@@ -90,9 +112,6 @@ function App() {
               element={<ManageVideos></ManageVideos>}
             ></Route>
           </Route>
-          <Route path='/uploadedVideo/:uId' element={<UploadedVideo />} />
-          <Route path="/comedy" element={<VideoDetail />}></Route>
-          <Route path="/bangla" element={<BanglaMovies></BanglaMovies>}></Route>
         </Routes>
       </Suspense>
 

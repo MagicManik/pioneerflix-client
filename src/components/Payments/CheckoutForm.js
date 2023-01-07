@@ -110,12 +110,14 @@ const CheckoutForm = ({ userBookingData }) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} style={{ padding: "13px", backgroundColor: "black", borderRadius: "10px" }}>
                 <CardElement
                     options={{
                         style: {
                             base: {
                                 fontSize: '16px',
+                                backgroundColor: "black",
+
                                 color: '#FFFFFF',
                                 '::placeholder': {
                                     color: '#aab7c4',
@@ -127,10 +129,12 @@ const CheckoutForm = ({ userBookingData }) => {
                         },
                     }}
                 />
-                <button className='text-white btn btn-success btn-xs mt-3' type="submit" disabled={!stripe || !clientSecret || success}>
-                    Pay
-                </button>
+
             </form>
+
+            <button className='text-white btn btn-success px-10 btn-xs mt-6' type="submit" disabled={!stripe || !clientSecret || success}>
+                Pay
+            </button>
             {
                 cardError && <p className='text-red-500'>{cardError}</p>
             }
