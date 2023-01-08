@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import banner1 from "../../../assets/banner/bangla/banner 01.jpg";
-import banner2 from "../../../assets/banner/bangla/banner 02.jpg";
-import banner3 from "../../../assets/banner/bangla/banner 03.jpg";
-import banner4 from "../../../assets/banner/bangla/banner 04.jpg";
+import banner1 from "../../../assets/banner/english/banner 01.jpg";
+import banner2 from "../../../assets/banner/english/banner 02.jpg";
+import banner3 from "../../../assets/banner/english/banner 03.jpg";
+import banner4 from "../../../assets/banner/english/banner 04.jpg";
 import { useGetAllVideosQuery } from "../../../services/post";
 import CategoriesMovies from "../CategoriesMovies";
 

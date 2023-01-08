@@ -9,6 +9,7 @@ import {
   FaHeart,
   FaUserAlt,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 import useChannels from "../../hooks/useChannels";
 import useLikes from "../../hooks/useLikes";
@@ -86,10 +87,12 @@ const Movies = () => {
             </button> */}
 
             <button className=" text-lg font-semibold flex justify-start items-center">
-              <FaHeart className="mr-5" /> Favorites
+              <FaHeart className="mr-5" />
+              <Link to="/mylist"> Favorites</Link>
             </button>
             <button className=" text-lg font-semibold flex justify-start items-center">
-              <FaUserAlt className="mr-5" /> Account
+              <FaUserAlt className="mr-5" />
+              <Link to={'/dashboard'}>Account</Link>
             </button>
           </div>
         </div>
