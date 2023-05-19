@@ -4,7 +4,7 @@
 //     const [comments, setComments] = useState([]);
 
 //     useEffect(() => {
-//         fetch('https://server-production-b237.up.railway.app/comments')
+//         fetch('https://pioneerflix-server-new.onrender.com/comments')
 //             .then(res => res.json())
 //             .then(data => setComments(data));
 //     }, [comments]);

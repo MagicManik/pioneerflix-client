@@ -4,7 +4,7 @@ import DeleteUiVideos from './DeleteUiVideos';
 import ManageVideosRow from './ManageVideosRow';
 
 const ManageVideos = () => {
-    const url = 'https://server-production-b237.up.railway.app/uploadedVideo';
+    const url = 'https://pioneerflix-server-new.onrender.com/uploadedVideo';
     const { data, refetch } = useQuery(['uploadedVideo'], () =>
         fetch(url, {
             method: 'GET',

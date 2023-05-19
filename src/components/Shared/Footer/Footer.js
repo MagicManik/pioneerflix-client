@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer className='text-white bg-primary'>
+        <footer className='text-white bg-primary mx-auto max-w-[1440px]'>
             <div className="footer-section">
                 <div className='footer-container'>
                     <img className='w-7/12 mx-auto pb-3' src={pioneerFlix} alt="" />

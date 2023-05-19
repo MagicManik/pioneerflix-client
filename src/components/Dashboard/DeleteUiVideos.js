@@ -13,7 +13,7 @@ const DeleteUiVideos = () => {
     }
 
 
-    // const url = 'https://server-production-b237.up.railway.app/videos'
+    // const url = 'https://pioneerflix-server-new.onrender.com/videos'
     // const { data, refetch } = useQuery(['videos'], () =>
     //     fetch(url, {
     //         method: 'GET',

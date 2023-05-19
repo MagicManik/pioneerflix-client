@@ -8,7 +8,7 @@ const usePaidUser = user => {
     useEffect(() => {
         const email = user?.email;
         if (email) {
-            fetch(`https://server-production-b237.up.railway.app/paidUser/${email}`, {
+            fetch(`https://pioneerflix-server-new.onrender.com/paidUser/${email}`, {
                 method: 'GET',
                 headers: {
                     'content-type': 'application/json'

@@ -1,0 +1,52 @@
+.custom-bg {
+    background-color: #222;
+}
+
+.banner-img {
+    width: 100%;
+    height: 100%;
+}
+
+.tv-chanels-container-dark {
+    background: #000;
+    background: -moz-linear-gradient(90 deg - 0deg, #000 0, rgba(255, 255, 255, 0) 100%);
+    background: -webkit-linear-gradient(90 deg - 0deg, #000 0, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(0deg, #000 0, rgba(255, 255, 255, 0) 100%);
+    backdrop-filter: blur(2px);
+    background: linear-gradient(0deg, #000 0, rgba(255, 255, 255, 0) 100%);
+    backdrop-filter: blur(3px);
+    height: 200px;
+}
+
+.tv-chanels-container {
+    background: #fff;
+    background: -moz-linear-gradient(90 deg - 0deg, #fff 0, rgba(255, 255, 255, 0) 100%);
+    background: -webkit-linear-gradient(90 deg - 0deg, #fff 0, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(0deg, #fff 0, rgba(255, 255, 222, 0) 100%);
+    backdrop-filter: blur(2px);
+    background: linear-gradient(0deg, #fff 0, rgba(255, 255, 222, 0) 100%);
+    backdrop-filter: blur(2px);
+    height: 200px;
+}
+
+@media screen and (max-width: 676px) {
+    .tv-chanels-container-dark {
+        background: -moz-linear-gradient(90 deg - 0deg, #000 0, rgba(255, 255, 255, 1) 100%);
+        background: -webkit-linear-gradient(90 deg - 0deg, #000 0, rgba(255, 255, 255, 1) 100%);
+        backdrop-filter: blur(2px);
+        background: #000;
+        backdrop-filter: blur(3px);
+        height: 90px;
+    }
+
+
+    .tv-chanels-container {
+        background: -moz-linear-gradient(90 deg - 0deg, #f5f5f7 0, rgba(255, 255, 255, 1) 100%);
+        background: -webkit-linear-gradient(90 deg - 0deg, #f5f5f7 0, rgba(255, 255, 255, 1) 100%);
+        background: linear-gradient(0deg, #f5f5f7 0, rgba(255, 255, 222, 1) 100%);
+        backdrop-filter: blur(2px);
+        background: linear-gradient(0deg, #f5f5f7 0, rgba(255, 255, 222, 1) 100%);
+        backdrop-filter: blur(2px);
+        height: 90px;
+    }
+}

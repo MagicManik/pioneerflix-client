@@ -25,7 +25,7 @@ const DeleteUiVideoRow = ({ detail, index, refetch }) => {
         // }
 
 
-        // const url = `https://server-production-b237.up.railway.app/uiVideo/${id}`;
+        // const url = `https://pioneerflix-server-new.onrender.com/uiVideo/${id}`;
         // fetch(url, {
         //     method: 'DELETE',
         //     headers: {

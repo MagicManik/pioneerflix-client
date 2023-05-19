@@ -1,10 +1,9 @@
 import React from 'react';
 import './LoaderIOS.css'
 
-const LoaderIOS = ({ fontSize, margin }) => {
-    return (
+const LoaderIOS = ({ fontSize }) => {
 
-        // orginal
+    return (
         <div className='relative'>
             <div className="overlay">
                 <div className="spinner-container center">
@@ -23,7 +22,6 @@ const LoaderIOS = ({ fontSize, margin }) => {
                 </div>
             </div>
         </div>
-
     );
 };
 

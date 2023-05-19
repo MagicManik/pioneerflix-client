@@ -39,7 +39,7 @@ const ManageVideosRow = ({ detail, index, refetch }) => {
         deleteUserVideo(id)
         refetch()
 
-        // const url = `https://server-production-b237.up.railway.app/finalUploadByAdmin`
+        // const url = `https://pioneerflix-server-new.onrender.com/finalUploadByAdmin`
         // fetch(url, {
         //     method: 'POST',
         //     headers: {
@@ -51,7 +51,7 @@ const ManageVideosRow = ({ detail, index, refetch }) => {
         //     .then(result => {
         //         toast.success(`Successfully the video uploaded in UI`)
         //         localStorage.setItem("notificationMode", "true");
-        //         const url = `https://server-production-b237.up.railway.app/uploadedVideo/${id}`;
+        //         const url = `https://pioneerflix-server-new.onrender.com/uploadedVideo/${id}`;
         //         fetch(url, {
         //             method: 'DELETE',
         //             headers: {
@@ -77,7 +77,7 @@ const ManageVideosRow = ({ detail, index, refetch }) => {
         refetch()
         toast.success(`${id} is deleted`)
 
-        // const url = `https://server-production-b237.up.railway.app/uploadedVideo/${id}`;
+        // const url = `https://pioneerflix-server-new.onrender.com/uploadedVideo/${id}`;
         // fetch(url, {
         //     method: 'DELETE',
         //     headers: {

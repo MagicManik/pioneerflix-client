@@ -53,7 +53,6 @@ const VideoDetail = () => {
                           name="rating"
                           value={ratingValue}
                         />
-
                         <FaStar className="ml-2"></FaStar>
                       </label>
                     );

@@ -15,7 +15,7 @@ const MyVideos = () => {
 
     const [admin] = useAdmin(user);
 
-    const url = `https://server-production-b237.up.railway.app/userUploadVideo?email=${user?.email}`
+    const url = `https://pioneerflix-server-new.onrender.com/userUploadVideo?email=${user?.email}`
     const { data, isLoading } = useQuery(['userUploadVideo'], () =>
         fetch(url, {
             method: 'GET',
@@ -37,24 +37,24 @@ const MyVideos = () => {
                         </div>
                         {
                             isLoading ?
-                        <LoaderIOS/>
-                            :
-                            <div className='grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 sm:gap-1 gap-4 mb-4'>
-                            {
-                                data?.map(movie =>
-                                    <div className='bg-black rounded-md h-auto'>
-                                        <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
-                                            <img className='w-full' src={movie.imgLink} alt="" />
-                                        </div>
-                                        <div>
-                                            <p className='test-xs md:text-xs lg:text-xs text-white'><span className='font-bold text-green-500 pl-2'>Description: </span>{movie?.description}</p>
-                                            <p><FcLike className='my-2 ml-2 inline-block' />1.8M <span className='text-sm'> ({movie?.duration}min)</span></p>
+                                <LoaderIOS />
+                                :
+                                <div className='grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 sm:gap-1 gap-4 mb-4'>
+                                    {
+                                        data?.map(movie =>
+                                            <div className='bg-black rounded-md h-auto'>
+                                                <div className='zoom-div-I pb-2 pl-2 pt-6 pr-4 video-div' key={movie._id}>
+                                                    <img className='w-full' src={movie.imgLink} alt="" />
+                                                </div>
+                                                <div>
+                                                    <p className='test-xs md:text-xs lg:text-xs text-white'><span className='font-bold text-green-500 pl-2'>Description: </span>{movie?.description}</p>
+                                                    <p><FcLike className='my-2 ml-2 inline-block' />1.8M <span className='text-sm'> ({movie?.duration}min)</span></p>
 
-                                        </div>
-                                    </div>
-                                )
-                            }
-                        </div>
+                                                </div>
+                                            </div>
+                                        )
+                                    }
+                                </div>
                         }
                     </div>
                     :

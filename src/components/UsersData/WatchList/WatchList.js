@@ -14,7 +14,7 @@ const WatchList = () => {
     }
 
     useEffect(() => {
-        fetch(`https://server-production-b237.up.railway.app/watched/${user?.email}`)
+        fetch(`https://pioneerflix-server-new.onrender.com/watched/${user?.email}`)
             .then(res => res.json())
             .then(data => setWatched(data))
     }, [user?.email]);

@@ -4,7 +4,7 @@ const useLikes = () => {
     const [likes, setLikes] = useState([]);
 
     useEffect(() => {
-        fetch('https://server-production-b237.up.railway.app/likes')
+        fetch('https://pioneerflix-server-new.onrender.com/likes')
             .then(res => res.json())
             .then(data => setLikes(data))
     }, [likes])

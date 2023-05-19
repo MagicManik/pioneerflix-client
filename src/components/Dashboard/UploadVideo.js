@@ -49,7 +49,7 @@ const UploadVideo = () => {
                 icon: 'success'
             })
 
-            // const url = 'https://server-production-b237.up.railway.app/adminUploadVideo';
+            // const url = 'https://pioneerflix-server-new.onrender.com/adminUploadVideo';
             // fetch(url, {
             //     method: 'POST',
             //     headers: {
@@ -66,7 +66,7 @@ const UploadVideo = () => {
             //     })
         }
         else {
-            const url = 'https://server-production-b237.up.railway.app/userUploadVideo';
+            const url = 'https://pioneerflix-server-new.onrender.com/userUploadVideo';
             fetch(url, {
                 method: 'POST',
                 headers: {

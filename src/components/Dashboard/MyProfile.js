@@ -23,7 +23,7 @@ const MyProfile = () => {
     // console.log(userData, userData.status);
     const MySwal = withReactContent(Swal)
 
-    const url = `https://server-production-b237.up.railway.app/userProfile?email=${user?.email}`
+    const url = `https://pioneerflix-server-new.onrender.com/userProfile?email=${user?.email}`
     const { data, isLoading, refetch } = useQuery(['userProfile'], () =>
         fetch(url, {
             method: 'GET',
@@ -80,7 +80,7 @@ const MyProfile = () => {
                         toast.error('Try again, Your profile is not update')
                     }
 
-                    // const url = `https://server-production-b237.up.railway.app/userProfile/${user?.email}`
+                    // const url = `https://pioneerflix-server-new.onrender.com/userProfile/${user?.email}`
                     // fetch(url, {
                     //     method: 'PUT',
                     //     headers: {

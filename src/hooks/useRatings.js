@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 const useRatings = (id) => {
 
     const { data, refetch } = useQuery(['ratings'], () =>
-        fetch(`https://server-production-b237.up.railway.app/ratings/${id}`, {
+        fetch(`https://pioneerflix-server-new.onrender.com/ratings/${id}`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json'
