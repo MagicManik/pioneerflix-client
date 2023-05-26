@@ -26,8 +26,8 @@ const Notification = ({ notification, setNotification }) => {
   }, [getNotificationMode])
 
   const notificationStyle = {
-    padding: '0 8px',
-    paddingTop: '7px',
+    padding: '0 4px',
+    paddingTop: '7.5px',
     position: 'relative'
   }
 

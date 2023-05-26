@@ -74,7 +74,7 @@ const Popular = () => {
                         <div
                             data-aos="zoom-in-right"
                             className='our-story-card-animation-container pt-0 lg:pt-10 pb-10'>
-                            <img className='tv-img block mx-auto rounded-xl ' src={offlineWatch} alt="" />
+                            <img className='tv-img block mx-auto rounded-xl' src={offlineWatch} alt="" />
                         </div>
 
                         <div className='text-container-left mt-0 lg:-mt-16'>

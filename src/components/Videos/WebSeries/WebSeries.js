@@ -87,7 +87,7 @@ const WebSeries = () => {
                         <div
                             data-aos="zoom-in-left"
                             className='our-story-card-animation-container pb-10 lg:pb-20 pt-10 lg:pt-28'>
-                            <img className='tv-img w-4/5 rounded-xl' src={freeVideo} alt="" />
+                            <img className='tv-img block mx-auto rounded-xl w-4/5' src={freeVideo} alt="" />
                         </div>
                     </div>
                 </div>

@@ -146,6 +146,35 @@ input:-webkit-autofill {
     outline: 0;
 }
 
+.hamburger-icon {
+    display: none !important;
+}
+
+.nav-items {
+    display: block;
+}
+
+@media screen and (max-width: 1180px) {
+    .site-logo {
+        padding-top: 0;
+    }
+
+    .hamburger-icon {
+        display: block !important;
+        margin-right: 26px;
+    }
+
+    .nav-items {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .hamburger-icon {
+        margin-right: 5px;
+    }
+}
+
 @media screen and (max-width: 639px) {
 
     .header-scrolling-mobile {
@@ -167,5 +196,18 @@ input:-webkit-autofill {
 
     .user-email {
         font-size: 12px !important;
+    }
+}
+
+
+@media screen and (max-width: 390px) {
+    .hamburger-icon {
+        margin-right: 3px;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .site-logo {
+        display: none;
     }
 }

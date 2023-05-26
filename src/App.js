@@ -29,13 +29,11 @@ import VideoDetail from "./components/VideoDetail/VideoDetail";
 import MyList from "./components/UsersData/MyList/MyList";
 import LikedVideos from "./components/UsersData/LikedVideos/LikedVideos";
 import WatchList from "./components/UsersData/WatchList/WatchList";
-// import Bangla from "./pages/moviePages/Bangla/Bangla";
 import Bangla from "./pages/movies/Bangla/Bangla";
 import Chinese from "./pages/movies/Chinese/Chinese";
 import English from "./pages/movies/English/English";
 import Hindi from "./pages/movies/Hindi/Hindi";
 import Japanese from "./pages/movies/Japanese/Japanese";
-
 import Turkish from "./pages/movies/Turkish/Turkish";
 // facebook chat
 import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
@@ -105,7 +103,7 @@ function App() {
           </Route>
         </Routes>
       </Suspense>
-      {/* ...................add facebook messenger ................. */}
+      {/* ...................add facebook messenger ................ */}
       <MessengerCustomerChat pageId="105173368974353" appId="3382482022037618" />
       <Footer></Footer>
       <ToastContainer />

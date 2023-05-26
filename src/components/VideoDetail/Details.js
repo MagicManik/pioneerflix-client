@@ -6,7 +6,6 @@ import { Link, useParams } from "react-router-dom";
 import useVideo from "../../hooks/useVideo";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-// import useComments from "../../hooks/useComments";
 import useLikes from "../../hooks/useLikes";
 import "./Details.css";
 import { BsFillEmojiSmileFill } from "react-icons/bs";
@@ -14,14 +13,11 @@ import { AiOutlineUser } from "react-icons/ai";
 import useRatings from "../../hooks/useRatings";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-// import useVideos from "../../hooks/useVideos";
 import usePaidUser from "../../hooks/usePaidUser";
 import useMyList from "../../hooks/useMyList";
 import Payments from "../../pages/Payments/Payments";
 import { useEffect } from "react";
 import { useDeleteLikeMutation, useDeleteMyListMutation, useGetAllVideosQuery, useLoadCommentsQuery, useUpdateWatchListMutation, useUploadCommentMutation, useUploadLikeMutation, useUpsertWatchListMutation } from "../../services/post";
-import MediaPlayerDetails from "./MediaPlayerDetails";
 import ShareVideo from "./ShareVideo";
 
 const Details = () => {
@@ -29,44 +25,32 @@ const Details = () => {
   const [user] = useAuthState(auth);
   const [video] = useVideo(id);
   const [likes] = useLikes();
-  // const [comments] = useComments();
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
   const [data, refetch] = useRatings(id);
   const [paidUser] = usePaidUser(user);
   const [myList] = useMyList();
-
   // Using Redux State
-  const [updateWatch, watchData] = useUpdateWatchListMutation();
-  const [createLike, likeData] = useUploadLikeMutation();
-  const [deleteLike, deleteLikeData] = useDeleteLikeMutation();
-  const [createComment, commentData] = useUploadCommentMutation();
-  const { data: comments, refetch: commentsFetch, isLoading } = useLoadCommentsQuery();
-  const [deleteMyList, deleteMyListData] = useDeleteMyListMutation();
-  const [upsertWatchList, upsertWatchData] = useUpsertWatchListMutation();
+  const [updateWatch,] = useUpdateWatchListMutation();
+  const [createLike] = useUploadLikeMutation();
+  const [deleteLike] = useDeleteLikeMutation();
+  const [createComment] = useUploadCommentMutation();
+  const { data: comments, refetch: commentsFetch, } = useLoadCommentsQuery();
+  const [deleteMyList] = useDeleteMyListMutation();
+  const [upsertWatchList] = useUpsertWatchListMutation();
 
   const paid = paidUser?.paid;
-
   const { videoLink, imgLink, title, category, description, duration } = video;
-  // const [videos] = useVideos();
-  const { data: videos, refetch: videosRefetch, isLoading: isVideosLoading } = useGetAllVideosQuery();
-
-  // TOTAL LIKE FOR THIS VIDEO
+  const { data: videos } = useGetAllVideosQuery();
   const totalLike = likes?.filter((li) => li.id === id);
-  // USER'S LIKE
   const likedUser = likes?.filter((li) => li.id === id && li.email === user?.email);
-  // USER'S MY LIST
   const hasUserMyList = myList?.filter(list => list.id === id);
-  // DISPLAY COMMENT
   const commentDisplay = comments?.filter(comment => comment.id === id);
-  // RATINGS
   const totalRating = data?.reduce((a, b) => a + b.star, 0);
-
   const averageRating = (totalRating / data?.length || 0).toFixed(1);
   const userStar = data?.filter(rating => rating?.email === user?.email);
   let displayStar = (userStar?.[0]?.star);
 
-  // handler like || Manik Islam Mahi
   const handleLike = () => {
     const like = true;
     const name = user?.displayName;
@@ -75,21 +59,16 @@ const Details = () => {
     const imgLink = video.imgLink;
     const title = video.title;
     const newLike = { id, like, name, email, imgLink, videoLink, title };
-
     const likedUser = likes.filter((li) => li.id === id && li.email === email);
 
-    // to delete or remove like
     if (likedUser?.length > 0) {
       const likedId = likedUser[0]._id;
       deleteLike(likedId);
-    }
-    // to add like
-    else {
+    } else {
       createLike(newLike);
     }
   };
 
-  // Handle Comment || Manik Islam Mahi
   const handleComment = (e) => {
     e.preventDefault();
     const comment = e.target.comment.value;
@@ -105,7 +84,6 @@ const Details = () => {
     }, 500)
   };
 
-  // Handle Rating || Manik Islam Mahi
   const handleRating = (star) => {
     setRating(star);
     const name = user?.displayName;
@@ -135,9 +113,7 @@ const Details = () => {
     imgLink: imgLink,
   };
 
-  // Handle My List || Manik Islam Mahi
   const handleMyList = () => {
-
     if (hasUserMyList.length > 0) {
       const id = hasUserMyList[0]._id;
       deleteMyList(id);
@@ -146,53 +122,11 @@ const Details = () => {
     }
   };
 
-  // set watch list || Manik Islam Mahi
   useEffect(() => {
     if (videoLink) {
       updateWatch(sendData);
     }
   }, [video?.videoLink]);
-
-
-  var settings = {
-    dots: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 6,
-    initialSlide: 6,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 5,
-          initialSlide: 5,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          arrows: false,
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          initialSlide: 3,
-          initialSlide: 3,
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          arrows: false,
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          initialSlide: 3
-        }
-      }
-    ]
-  };
 
   return (
     <>
@@ -220,9 +154,7 @@ const Details = () => {
                           const ratingValue = i + 1;
                           return (
                             <label key={i}>
-
                               <input type="radio" className="hidden" name="rating" value={ratingValue} onClick={() => handleRating(ratingValue)} />
-
                               <FaStar className="lg:ml-2 ml-0 lg:mr-0 mr-2" color={ratingValue <= (hover || rating || displayStar) ? '#ff9501' : '#222'} size={20}
                                 onMouseEnter={() => setHover(ratingValue)}
                                 onMouseLeave={() => setHover(null)}
@@ -281,7 +213,6 @@ const Details = () => {
                           <ShareVideo videoLink={videoLink}></ShareVideo>
                         </div>
                       </div>
-
                     </div>
                   </div>
                   {/* video details area */}
@@ -342,7 +273,6 @@ const Details = () => {
                     </form>
                   </div>
                 </div>
-
                 {/* comment displayed */}
                 <div className="pl-2 md:py-5 pt-5 gap-5">
                   {commentDisplay?.map((comment) => (
@@ -354,7 +284,6 @@ const Details = () => {
                           alt=""
                         /> : <AiOutlineUser className="commenter-img-icon w-10 h-10 rounded-full mr-3" />
                       }
-
                       <div className="rounded-2xl pb-2 border-[2px #222] ">
                         <p className="text-amber-400">{comment.id === id && comment.name}</p>
                         <span className="text-sm">
@@ -373,7 +302,6 @@ const Details = () => {
                       <Link to={`/play/${video._id}`}>
                         <div
                           key={video._id}
-
                           className="flex px-3 bg-[#222] cursor-pointer rounded-sm  py-3 mb-3"
                         >
                           <img
@@ -391,7 +319,6 @@ const Details = () => {
                       </Link>
                     )}
                 </div>
-
               </div>
             </div>
           </div>
