@@ -105,7 +105,6 @@ const Header = ({ theme, setTheme }) => {
 
   const handleLanguageChange = (e) => {
     i18n.changeLanguage(e.target.value);
-    // console.log("object");
   };
 
   window.addEventListener("scroll", changeBackground);
@@ -121,7 +120,7 @@ const Header = ({ theme, setTheme }) => {
             <>
               <div className="max-w-8xl text-accent mx-auto px-2 sm:px-6 lg:px-11 ">
                 <div className="relative flex items-center justify-between h-16">
-                  {/* hamburger icon*/}
+                  {/* hamburger icon for smale devices*/}
                   <Disclosure.Button className="p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white hamburger-icon">
                     <span className="sr-only">Open main menu</span>
                     {open ? (
@@ -132,8 +131,8 @@ const Header = ({ theme, setTheme }) => {
                         aria-hidden="true" />
                     )}
                   </Disclosure.Button>
+                  {/* site logo start for small and large devices */}
                   <div className="flex-1 flex items-center sm:justify-start">
-                    {/* site logo */}
                     <div className="flex-shrink-0 flex items-center">
                       <Link to={"/"}>
                         <img
@@ -250,9 +249,10 @@ const Header = ({ theme, setTheme }) => {
                     </div>
                     {/* nav menu close for large devices */}
                   </div>
+                  {/* site logo close for small and large devices */}
 
                   <div className="absolute inset-y-0 right-0 flex items-center mr-1 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    {/* search here */}
+                    {/* search menu start for large devices */}
                     <div className="relative hidden md:block mr-5 ">
                       <div className="flex absolute inset-y-0  left-0 items-center pl-3 pointer-events-none">
                         <FaSearch className="text-sm search-icon" />
@@ -269,7 +269,9 @@ const Header = ({ theme, setTheme }) => {
                         <VoiceSearch></VoiceSearch>
                       </div>
                     </div>
-                    {/* theme */}
+                    {/* search menu close for large devices */}
+
+                    {/* theme, notification and login button start for small and large devices */}
                     <button
                       className="  text-xl"
                       onClick={() => setTheme(!theme)}>
@@ -280,12 +282,15 @@ const Header = ({ theme, setTheme }) => {
                       )}
                     </button>
                     <Notification notification={notification} setNotification={setNotification} />
+                    {/* subscribe button start for large devices */}
                     <Link
                       to="/pay"
                       className="  text-lg bg-[#d41821] hover:bg-[#ff1622] px-3 mx-2 py-1 rounded-lg hidden md:block text-white hover:text-white">
                       {t("Subscribe")}
                     </Link>
-                    {/* Profile dropdown */}
+                    {/* subscribe button close for large devices */}
+
+                    {/* Profile dropdown start for large and small devices */}
                     <Menu as="div" className={user ?
                       "ml-3 relative  custom-border-I" : "ml-3 relative"}>
                       <div>
@@ -305,7 +310,7 @@ const Header = ({ theme, setTheme }) => {
                             )}
                         </Menu.Button>
                       </div>
-                      {/* My Profile || Manik Islam Mahi */}
+                      {/* my profile menu */}
                       <Transition
                         as={Fragment}
                         enter="transition ease-out duration-100"
@@ -321,24 +326,18 @@ const Header = ({ theme, setTheme }) => {
                               <img
                                 className="block w-4/12 mx-auto rounded-full"
                                 src={user?.photoURL || userPhoto}
-                                alt="" />
-                            )}
+                                alt="" />)}
                           </Menu.Item>
-
                           <Menu.Item>
                             {({ active }) => (
                               <p className=" font-semibold text-lg pt-3 text-center text-[#f5f5f7]">
                                 {user?.displayName}
                               </p>)}
                           </Menu.Item>
-
                           <Menu.Item>
                             {({ active }) => (
-                              <p className="user-email text-center text-info">
-                                {user?.email}
-                              </p>)}
+                              <p className="user-email text-center text-info">{user?.email}</p>)}
                           </Menu.Item>
-
                           <Menu.Item>
                             {({ active }) => (
                               <Link
@@ -346,8 +345,7 @@ const Header = ({ theme, setTheme }) => {
                                 className={classNames(
                                   active ? "my-profile-btn text-info" : "my-profile-btn text-info")}>
                                 {t("My Profile")}
-                              </Link>
-                            )}
+                              </Link>)}
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }) => (
@@ -376,7 +374,6 @@ const Header = ({ theme, setTheme }) => {
                                 {t("Liked Videos")}
                               </Link>)}
                           </Menu.Item>
-
                           <Menu.Item>
                             {({ active }) => (
                               <Link
@@ -422,6 +419,7 @@ const Header = ({ theme, setTheme }) => {
                         </Menu.Items>
                       </Transition>
                     </Menu>
+                    {/* Profile dropdown close for small and large device */}
                   </div>
                 </div>
               </div>
