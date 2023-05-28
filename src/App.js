@@ -16,7 +16,7 @@ import Footer from "./components/Shared/Footer/Footer";
 import Header from "./components/Shared/Header/Header";
 import LoginPage from "./components/UserAccount/LoginPage";
 import SignUpPage from "./components/UserAccount/SignUpPage";
-import VideoDetails from "./components/VideoDetails/VideoDetails";
+import VideoDetails from "./pages/VideoDetails/VideoDetails";
 import SearchResults from "./components/Shared/SearchResults/SearchResults";
 import PaymentPage from "./pages/Payments/PaymentPage";
 import Payments from "./pages/Payments/Payments";
@@ -25,7 +25,6 @@ import Drama from "./pages/Drama/Drama";
 import UploadedVideo from "./pages/UploadedVideo/UploadedVideo";
 import Loading from "./components/Shared/Loading/Loading";
 import RequireAuth from "./components/UserAccount/RequireAuth";
-// import VideoDetail from "./components/VideoDetail/VideoDetail";
 import MyList from "./components/UsersData/MyList/MyList";
 import LikedVideos from "./components/UsersData/LikedVideos/LikedVideos";
 import WatchList from "./components/UsersData/WatchList/WatchList";
@@ -35,15 +34,16 @@ import English from "./pages/movies/English/English";
 import Hindi from "./pages/movies/Hindi/Hindi";
 import Japanese from "./pages/movies/Japanese/Japanese";
 import Turkish from "./pages/movies/Turkish/Turkish";
+import Comedy from "./pages/Comedy/Comedy";
+import LiveGame from "./pages/LiveGame/LiveGame";
+import Thriller from "./pages/Thriller/Thriller";
+import Episodes from "./pages/Episodes/Episodes";
 // facebook chat
 import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
 // Aos
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Comedy from "./pages/Comedy/Comedy";
-import LiveGame from "./pages/LiveGame/LiveGame";
-import Thriller from "./pages/Thriller/Thriller";
-import Episodes from "./pages/Episodes/Episodes";
+
 
 function App() {
   const [theme, setTheme] = useState(true);
@@ -95,9 +95,6 @@ function App() {
           <Route path='/uploadedVideo/:uId' element={<UploadedVideo />} />
           <Route path="/comedy" element={<Comedy />}></Route>
           <Route path="/thriller" element={<Thriller />}></Route>
-          {/* <Route path="/comedy" element={<VideoDetail />}></Route>
-          <Route path="/comedy" element={<VideoDetail />}></Route>
-          <Route path="/comedy" element={<VideoDetail />}></Route> */}
           <Route path="/bangla" element={<Bangla />}></Route>
           <Route path="/dashboard" element={<DashboardMainPage />}>
             <Route path="" index element={<MyProfile />}></Route>

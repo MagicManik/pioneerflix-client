@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Poneerflix
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is subscription-based streaming website which will be like Netflix but not exactly Netflix.
 
-## Available Scripts
+## Project Description:
+Pioneerflix is ​​a subscription-based streaming website which will be like Netflix but not exactly Netflix. We have used various features and functionalities in it to make the user experience smooth.
+
+Here the users can easily access the TV channels. So, users can see live TV shows. By clicking on the tv channel icon the live tv show is starting on another page. From there users can access the other tv channels as their demands from see more options.
+
+Log in, sign up system is used for authentication on this site. The user will be registered on the site by signing up. After registration the registered users can get video access. Registered user will log in every time to enter the site if he or she is not logged in the site so that unauthenticated users do not get access to the video.
+
+Users will not be able to see exclusive videos without pay. If any user paid then he can see those videos. So users need to make a subscription here. They can see subscription packages by clicking on the subscribe button from navbar. Users can buy any package as they choose. The stripe payment method gateway system is implemented to get payment from users.
+
+By clicking on the video thumbnail the video is played in the video details page. Here the full video is playing to entertain users. We have used the like, comment, share, add to favorite list and rating features in the video details page. In this, users can like the video and share their opinion about the video in the comments.
+
+We have implemented a dashboard to upload videos and various information as well. We can access our dashboard from our profile in navbar which contains users data. Admin as well as users can upload videos from the dashboard. When the user uploads the video, it will first go to the admin for review. Then the admin can publish or delete the video considering the quality of the video.  Admin can upload and delete as many videos as he wants from manage videos page of the dashboard. The dashboard will contain user information. Users can update their information if they want.
+
 
 In the project directory, you can run:
 
-### `npm start`
+### The Main Features of Pioneerflix
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* Search Feature: Users can search any videos by name or categories and the search result is displayed in a specific page. This feature will make the user experience better. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* Payment Feature: Users can make payment for subscribing on this site to watch the exclusive videos. Stripe payment method gateway system is implemented to get payment from users.
 
-### `npm test`
+3. Dark and white mode features: Light and dark mode is used to make a more accessible site for users. We use localstorage to set the user’s data. As a result, If a user reloads our web page then user favorite mode does not change.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Multiple Language Feature: Users can access this site in many languages which is a great achievement for us to make a user-friendly site.
 
-### `npm run build`
+* Notification Feature: If a new video is uploaded on site then the notification will arrive to the users by this notification feature that is implemented in the home page.
+* Voice Search Feature: The voice search feature helps the users to search the videos easily. Users just use their voice to search for any videos. It is a very time optimizing feature for the users as well as that will enhance the better user experience.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Live Chat Feature: The live chat feature is added to make a better user experience on this site. It will increase the engagement of users on the site.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Scroll To Top Feature: When the user scrolls down, if he needs to access the top i.e. navbar, he can do so easily by clicking the scroll to top button. With the help of this feature he or she can easily move to the top of the page. It will optimize the time of the users.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Like Feature: Every user can like every video. It is also implemented to increase the user engagement with the site.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* Comment Feature: Users can also comment on each video. Users can add as many comments as they like. Users can delete their comments if they want. And admin and users will have the ability to delete comments.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Rating and Average Rating Feature: The rating feature is implemented in the video detail page. Users can provide ratings to the videos and admin use this rating to get trending popular videos.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* Video Share Feature: Users can share video on any social media. Pioneerflix will have a community on social media where they can share their favorite movies, series, and give reviews to inform each other. Registered and paid users can access videos from here.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* Watch history Feature: When a user watches a video from the site, it will be added to his watch history. From here users can easily find out their watched videos gallery.
 
-## Learn More
+* Liked Videos Feature: Users can find out their liked videos from here. If users want to find out their liked videos easily then they can access them from here.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+15. My List Feature: User can keep any video in his favorite list if he wants. He can easily access his favorite videos from this list.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* My Videos Feature: When users can upload videos successfully then the videos list are stored in this page. Here users can find out their uploaded videos data simply.
 
-### Code Splitting
+* Video Upload And Review Feature: Admin as well as users can upload videos from the dashboard. When the user uploads the video, it will first go to the admin for review. Then the admin can publish or delete the video considering the quality of the video. Admin can upload and delete as many videos as he wants.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+18. Media Player Feature: We didn't just use an iframe for playing youtube embedded video on our website. We used React Media Player to use our project for original business purposes. Where URLs, including file paths, YouTube, Facebook, Twitch, SoundCloud, Streamable, Vimeo, Wistia, Mixcloud, DailyMotion and Kaltura almost any type of video can be played in our media player. Since the Heroku server was slow, we played YouTube videos in our media player. Due to which our project uses a different media player but it is not clear from the UI.
 
-### Analyzing the Bundle Size
+* Live Tv Channel: Users can see live TV channels.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Technologies are used:
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ Redux, React.js, React Query, Node.js, Express.js, JavaScript, MongoDB, JWT, Stripe, Tailwind etc

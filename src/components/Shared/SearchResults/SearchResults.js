@@ -1,15 +1,17 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useGetAllVideosQuery } from '../../../services/post';
-// import useVideos from '../../../hooks/useVideos';
 import './SearchResults.css';
 
 const SearchResults = () => {
-    // const [videos] = useVideos();
-    const { data, refetch, isLoading } = useGetAllVideosQuery();
+    const { data } = useGetAllVideosQuery();
     const { id } = useParams();
 
-    const result = data?.filter(video => video.title.toLowerCase().includes(id.toLowerCase()));
+    const result = data?.filter((video) => (
+        (video.title.toLowerCase()).includes(id.toLowerCase())
+        ||
+        (video.category.toLowerCase()).includes(id.toLowerCase())
+    ));
 
     const navigate = useNavigate();
 
@@ -28,7 +30,6 @@ const SearchResults = () => {
                                 <img className='search-img rounded-lg' src={video.imgLink} alt="" />
                                 <p className='block mx-auto'>{video.title}</p>
                             </button>
-
                         </div>
                     )
                 }

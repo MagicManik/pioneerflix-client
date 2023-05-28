@@ -1,7 +1,7 @@
 import { React, Fragment, useState, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { FaAlignJustify, FaTimes, FaRegMoon, FaCaretDown, FaSearch, FaCaretUp, FaGrinAlt, FaRegClipboard } from "react-icons/fa";
-import { GiDramaMasks, GiNewBorn, GiGamepad, GiPaperClip, GiSlicedBread } from "react-icons/gi";
+import { GiDramaMasks, GiNewBorn, GiGamepad, GiSlicedBread } from "react-icons/gi";
 import { HiOutlinePaperAirplane } from "react-icons/hi";
 import { MdOutlineAttractions } from "react-icons/md";
 import userPhoto from '../../../assets/download.svg';
@@ -53,6 +53,7 @@ const Header = ({ theme, setTheme }) => {
   const [mega, setMega] = useState(false);
   const [notification, setNotification] = useState(false);
   const [moviesMega, setMoviesMega] = useState(false);
+  const [voiceSearch, setVoiceSearch] = useState(false);
 
   const navigateResultPage = useNavigate();
 
@@ -109,6 +110,15 @@ const Header = ({ theme, setTheme }) => {
   };
 
   window.addEventListener("scroll", changeBackground);
+
+  const userAgent = navigator.userAgent;
+
+  useEffect(() => {
+    if (userAgent.match(/chrome|chromium|crios/i)) {
+      setVoiceSearch(true);
+    }
+  }, [userAgent]);
+
   return (
     <>
       <div
@@ -264,10 +274,12 @@ const Header = ({ theme, setTheme }) => {
                             type="text"
                             id="search-navbar"
                             name="search"
-                            className="block p-1 hover:p-1.5 py-1 hover:py-1 pl-10 duration-1000  text-white hover:pl-14 focus:pl-14 hover:pr-3 focus:pr-3  hover:text-white  hover:scale-x-100 mr-1 rounded-full border search-input sm:text-sm"
+                            className="block p-1 hover:p-1.5 py-1 hover:py-1 pl-10 duration-1000  text-white hover:pl-14 focus:pl-14 hover:pr-3 focus:pr-3  hover:text-white lg:text-base  hover:scale-x-100 mr-1 rounded-full border search-input sm:text-sm"
                             placeholder="search..." />
                         </form>
-                        <VoiceSearch></VoiceSearch>
+                        {
+                          voiceSearch && <VoiceSearch></VoiceSearch>
+                        }
                       </div>
                     </div>
                     {/* search menu close for large devices */}
@@ -337,14 +349,14 @@ const Header = ({ theme, setTheme }) => {
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }) => (
-                              <p className="user-email text-center text-info">{user?.email}</p>)}
+                              <p className="user-email text-center text-white">{user?.email}</p>)}
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }) => (
                               <Link
                                 to="/dashboard"
                                 className={classNames(
-                                  active ? "my-profile-btn text-info" : "my-profile-btn text-info")}>
+                                  active ? "my-profile-btn text-white" : "my-profile-btn text-info")}>
                                 {t("My Profile")}
                               </Link>)}
                           </Menu.Item>
@@ -356,8 +368,8 @@ const Header = ({ theme, setTheme }) => {
                                   active
                                     ? "bg-zinc-800 w-full text-left"
                                     : "w-full",
-                                  "block px-4 py-2 text-info text-left")}>
-                                <i className="fa fas text-info fa-history mr-2" />
+                                  "block px-4 py-2 text-white text-left")}>
+                                <i className="fa fas text-white fa-history mr-2" />
                                 {t("Watch history")}
                               </Link>
                             )}
@@ -370,7 +382,7 @@ const Header = ({ theme, setTheme }) => {
                                   active
                                     ? "bg-zinc-800 w-full text-left flex items-center"
                                     : "w-full flex items-center",
-                                  "block px-4 py-2  text-info text-sm text-left")}>
+                                  "block px-4 py-2  text-white text-sm text-left")}>
                                 <BiLike className="mr-2 text-lg" />
                                 {t("Liked Videos")}
                               </Link>)}
@@ -383,8 +395,8 @@ const Header = ({ theme, setTheme }) => {
                                   active
                                     ? "bg-zinc-800 w-full text-left flex items-center"
                                     : "w-full flex items-center",
-                                  "block px-4 py-2 text-sm text-left text-info")}>
-                                <MdPlaylistAdd className="mr-2 text-lg text-center"></MdPlaylistAdd>
+                                  "block px-4 py-2 text-sm text-left text-white")}>
+                                <MdPlaylistAdd className="mr-2 text-lg text-center text-white"></MdPlaylistAdd>
                                 {t("My List")}
                               </Link>
                             )}
@@ -397,7 +409,7 @@ const Header = ({ theme, setTheme }) => {
                                   active
                                     ? "bg-zinc-800 w-full text-left"
                                     : "w-full",
-                                  "block px-4 py-2 text-sm text-left text-info")}>
+                                  "block px-4 py-2 text-sm text-left text-white")}>
                                 <i className="fa fal fa-film mr-2" />
                                 {t("My Videos")}
                               </Link>
@@ -411,7 +423,7 @@ const Header = ({ theme, setTheme }) => {
                                   active
                                     ? "bg-zinc-800 w-full text-left"
                                     : "w-full",
-                                  "block px-4 py-2 text-sm text-left text-info")}>
+                                  "block px-4 py-2 text-sm text-left text-white")}>
                                 <i className="fa fas fa-sign-out-alt mr-2"></i>
                                 {t("LOG OUT")}
                               </button>
@@ -428,7 +440,7 @@ const Header = ({ theme, setTheme }) => {
               <Disclosure.Panel className=" border-[#333] border-b-2 border-solid">
                 <div className="px-4 pt-1 pb-3 space-y-1">
                   {/* search here */}
-                  <div className="relative mb-4">
+                  <div className="relative mb-4 mobile-search-container">
                     <div className="flex absolute inset-y-0  left-0 items-center pl-3 pointer-events-none">
                       <FaSearch className="text-sm search-icon" />
                     </div>

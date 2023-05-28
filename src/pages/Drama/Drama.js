@@ -99,7 +99,7 @@ const Drama = () => {
                             <div className="w-full col-start-1 cursor-pointer  md:col-start-3 col-end-13">
                                 <iframe
                                     width="100%"
-                                    className="p-[.5px] md:h-[450px] rounded-2xl"
+                                    className="p-[.5px] md:h-[520px] h-60 left-0 right-0 rounded-2xl overflow-hidden"
                                     src={uVideo?.videoLink || uVideo?.channelLink}
                                     title="YouTube video player"
                                     frameBorder="0"

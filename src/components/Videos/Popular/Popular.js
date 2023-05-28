@@ -1,5 +1,5 @@
 import React from 'react';
-import offlineWatch from '../../../assets/others/watch-off.png';
+import offlineWatch from '../../../assets/others/watch-off-2.png';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
