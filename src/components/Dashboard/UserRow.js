@@ -5,7 +5,7 @@ const UserRow = ({ ud, index, refetch }) => {
     const { profileEmail, profileName, role } = ud;
 
     const makeAdmin = () => {
-        const url = `https://pioneerflix-server-new.onrender.com/allUserData/admin/${profileEmail}`;
+        const url = `https://pioneerflix-server.onrender.com/allUserData/admin/${profileEmail}`;
         fetch(url, {
             method: 'PUT',
             headers: {

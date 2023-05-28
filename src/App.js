@@ -16,16 +16,16 @@ import Footer from "./components/Shared/Footer/Footer";
 import Header from "./components/Shared/Header/Header";
 import LoginPage from "./components/UserAccount/LoginPage";
 import SignUpPage from "./components/UserAccount/SignUpPage";
-import Details from "./components/VideoDetail/Details";
+import VideoDetails from "./components/VideoDetails/VideoDetails";
 import SearchResults from "./components/Shared/SearchResults/SearchResults";
 import PaymentPage from "./pages/Payments/PaymentPage";
 import Payments from "./pages/Payments/Payments";
 import TvShows from "./components/TvShows/TvShows";
 import Drama from "./pages/Drama/Drama";
-import UploadedVideo from "./components/Shared/Header/Uploaded/UploadedVideo";
+import UploadedVideo from "./pages/UploadedVideo/UploadedVideo";
 import Loading from "./components/Shared/Loading/Loading";
 import RequireAuth from "./components/UserAccount/RequireAuth";
-import VideoDetail from "./components/VideoDetail/VideoDetail";
+// import VideoDetail from "./components/VideoDetail/VideoDetail";
 import MyList from "./components/UsersData/MyList/MyList";
 import LikedVideos from "./components/UsersData/LikedVideos/LikedVideos";
 import WatchList from "./components/UsersData/WatchList/WatchList";
@@ -40,6 +40,10 @@ import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCu
 // Aos
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Comedy from "./pages/Comedy/Comedy";
+import LiveGame from "./pages/LiveGame/LiveGame";
+import Thriller from "./pages/Thriller/Thriller";
+import Episodes from "./pages/Episodes/Episodes";
 
 function App() {
   const [theme, setTheme] = useState(true);
@@ -68,7 +72,7 @@ function App() {
           <Route path="watch/hisory" element={<WatchList />}></Route>
           <Route path="/about" element={<About />}></Route>
           <Route path='/channel/:id' element={<TvChannel />}></Route>
-          <Route path='/play/:id' element={<RequireAuth><Details /></RequireAuth>} />
+          <Route path='/play/:id' element={<RequireAuth><VideoDetails /></RequireAuth>} />
           <Route path="/result/:id" element={<SearchResults />}></Route>
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/signup" element={<SignUpPage />}></Route>
@@ -76,11 +80,11 @@ function App() {
           <Route path="/paymentPage" element={<PaymentPage />} />
           <Route path="/tv" element={<TvShows />}></Route>
           <Route path="/drama" element={<Drama />}></Route>
-          <Route path="/games" element={<Drama />}></Route>
+          <Route path="/games" element={<LiveGame />}></Route>
           <Route path="/popular" element={<Bangla />}></Route>
           <Route path="/latest" element={<Drama />}></Route>
           <Route path="/clips" element={<Bangla />}></Route>
-          <Route path="/episodes" element={<VideoDetail />}></Route>
+          <Route path="/episodes" element={<Episodes />}></Route>
           <Route path="/upComing" element={<Bangla />}></Route>
           <Route path="/bangla" element={<Bangla />}></Route>
           <Route path="/english" element={<English />}></Route>
@@ -89,10 +93,11 @@ function App() {
           <Route path="/chinese" element={<Chinese />}></Route>
           <Route path="/turkish" element={<Turkish />}></Route>
           <Route path='/uploadedVideo/:uId' element={<UploadedVideo />} />
+          <Route path="/comedy" element={<Comedy />}></Route>
+          <Route path="/thriller" element={<Thriller />}></Route>
+          {/* <Route path="/comedy" element={<VideoDetail />}></Route>
           <Route path="/comedy" element={<VideoDetail />}></Route>
-          <Route path="/comedy" element={<VideoDetail />}></Route>
-          <Route path="/thriller" element={<VideoDetail />}></Route>
-          <Route path="/comedy" element={<VideoDetail />}></Route>
+          <Route path="/comedy" element={<VideoDetail />}></Route> */}
           <Route path="/bangla" element={<Bangla />}></Route>
           <Route path="/dashboard" element={<DashboardMainPage />}>
             <Route path="" index element={<MyProfile />}></Route>

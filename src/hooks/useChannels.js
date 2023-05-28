@@ -4,7 +4,7 @@ const useChannels = () => {
     const [channels, setChannels] = useState([]);
 
     useEffect(() => {
-        fetch('https://pioneerflix-server-new.onrender.com/channels')
+        fetch('https://pioneerflix-server.onrender.com/channels')
             .then(res => res.json())
             .then(data => setChannels(data))
     }, [])

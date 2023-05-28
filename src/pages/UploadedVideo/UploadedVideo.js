@@ -5,7 +5,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { BiLike } from "react-icons/bi";
 import { FaShareAlt, FaRegPlayCircle } from "react-icons/fa";
 import { useParams } from "react-router-dom";
-import useUploadedVideo from "../../../../hooks/useUploadedVideo";
+import useUploadedVideo from "../../hooks/useUploadedVideo";
 
 const UploadedVideo = () => {
   const { uId } = useParams();
@@ -28,8 +28,8 @@ const UploadedVideo = () => {
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+          allowFullScreen>
+        </iframe>
       </div>
       <div className="md:flex justify-between text-accent px-2 md:px-10 py-3 items-center">
         <div className="">
@@ -51,8 +51,7 @@ const UploadedVideo = () => {
           <label
             htmlFor="my-share-modal-3"
             className="flex  cursor-pointer ml-3 items-center"
-            title="Share"
-          >
+            title="Share">
             <FaShareAlt className="mr-2 text-xl" /> Share
           </label>
         </div>
@@ -63,8 +62,7 @@ const UploadedVideo = () => {
           {videos?.map((v) => (
             <div
               onClick={() => setVideo(v)}
-              className="my-5  bg-[#222] p-3 flex justify-between md:justify-start rounded-md cursor-pointer items-center"
-            >
+              className="my-5  bg-[#222] p-3 flex justify-between md:justify-start rounded-md cursor-pointer items-center">
               <img src={v?.imgLink} className="h-[100px] w-[100px] " alt="" />
               <div className="ml-5 md:ml-10">
                 <div className="md:flex  items-center">

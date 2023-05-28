@@ -23,7 +23,7 @@ const CheckoutForm = ({ userBookingData }) => {
     // console.log(id);
 
     useEffect(() => {
-        fetch('https://pioneerflix-server-new.onrender.com/create-payment-intent', {
+        fetch('https://pioneerflix-server.onrender.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -87,7 +87,7 @@ const CheckoutForm = ({ userBookingData }) => {
                 id: id,
                 transactionId: paymentIntent?.id
             }
-            const url = `https://pioneerflix-server-new.onrender.com/booking/${id}`;
+            const url = `https://pioneerflix-server.onrender.com/booking/${id}`;
             // console.log(url);
             // console.log(payment);
             fetch(url, {
@@ -109,14 +109,13 @@ const CheckoutForm = ({ userBookingData }) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit} style={{ padding: "13px", backgroundColor: "black", borderRadius: "10px" }}>
+            <form onSubmit={handleSubmit} style={{ padding: "50px 10px", backgroundColor: "black", borderRadius: "10px", border: "2px solid green" }}>
                 <CardElement
                     options={{
                         style: {
                             base: {
-                                fontSize: '16px',
+                                fontSize: '20px',
                                 backgroundColor: "black",
-
                                 color: '#FFFFFF',
                                 '::placeholder': {
                                     color: '#aab7c4',
@@ -128,18 +127,16 @@ const CheckoutForm = ({ userBookingData }) => {
                         },
                     }}
                 />
-
+                <button className='text-white btn btn-success w-full px-10 btn-sm mt-12' type="submit" disabled={!stripe || !clientSecret || success}>
+                    Pay
+                </button>
             </form>
-
-            <button className='text-white btn btn-success px-10 btn-xs mt-6' type="submit" disabled={!stripe || !clientSecret || success}>
-                Pay
-            </button>
             {
                 cardError && <p className='text-red-500'>{cardError}</p>
             }
             {
                 success && <div className='text-green-500'>
-                    <p>{success}  </p>
+                    <p>{success}</p>
                     <p>Your transaction Id: <span className="text-orange-500 font-bold">{transactionId}</span> </p>
                 </div>
             }

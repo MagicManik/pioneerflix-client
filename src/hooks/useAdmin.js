@@ -7,7 +7,7 @@ const useAdmin = user => {
     useEffect(() => {
         const email = user?.email;
         if (email) {
-            fetch(`https://pioneerflix-server-new.onrender.com/admin/${email}`, {
+            fetch(`https://pioneerflix-server.onrender.com/admin/${email}`, {
                 method: 'GET',
 
                 headers: {

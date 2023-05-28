@@ -1,0 +1,124 @@
+.hero-section {
+    background-image: url('../../assets/banner/anna-rosar-ZxFyVBHMK-c-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    height: 100vh;
+    min-height: 670px;
+    margin-bottom: -90px;
+}
+
+.hero-section .ratio {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.hero-section svg {
+    position: absolute;
+    right: 0;
+    left: 0;
+}
+
+.hero-section>svg {
+    top: 0;
+}
+
+.hero-section .container+svg {
+    top: auto;
+    bottom: -1px;
+}
+
+.hero-section .row {
+    position: relative;
+    z-index: 22;
+}
+
+.section-overlay {
+    content: "";
+    background: rgba(0, 0, 0, 0) linear-gradient(rgba(39, 48, 83, 0.01) 0%, rgb(39, 48, 83) 100%) repeat scroll 0% 0%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+
+.hero-50 .container+svg {
+    transform: rotate(180deg);
+}
+
+.cd-words-wrapper {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+}
+
+.cd-words-wrapper b {
+    color: red;
+    display: inline-block;
+    position: absolute;
+    white-space: nowrap;
+    left: 0;
+    top: 0;
+}
+
+.cd-words-wrapper b.is-visible {
+    position: relative;
+}
+
+.no-js .cd-words-wrapper b {
+    opacity: 0;
+}
+
+.no-js .cd-words-wrapper b.is-visible {
+    opacity: 1;
+}
+
+.cd-headline.rotate-1 .cd-words-wrapper {
+    -webkit-perspective: 300px;
+    -moz-perspective: 300px;
+    perspective: 300px;
+}
+
+.cd-words-wrapper b.is-visible {
+    position: relative;
+}
+
+.no-js .cd-words-wrapper b.is-visible {
+    opacity: 1;
+}
+
+.cd-headline.rotate-1 b.is-visible {
+    opacity: 1;
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    -ms-transform: rotateX(0deg);
+    -o-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    -webkit-animation: cd-rotate-1-in 1.2s;
+    -moz-animation: cd-rotate-1-in 1.2s;
+    animation: cd-rotate-1-in 1.2s;
+}
+
+.custom-btn-group .link {
+    color: red;
+    font-weight: 700;
+}
+
+/* .custom-btn-group .link:hover {
+    color: var(--link-hover-color);
+} */
+
+
+@media screen and (max-width: 991px) {
+    .hero-section {
+        position: relative;
+        top: 82px;
+        margin-bottom: 82px;
+    }
+
+}

@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const postApi = createApi({
   reducerPath: 'postApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://pioneerflix-server-new.onrender.com/'
+    baseUrl: 'https://pioneerflix-server.onrender.com/'
   }),
 
   endpoints: (builder) => ({

@@ -14,7 +14,7 @@ const useToken = user => {
 
         if (email) {
 
-            fetch(`https://pioneerflix-server-new.onrender.com/user/${email}`, {
+            fetch(`https://pioneerflix-server.onrender.com/user/${email}`, {
                 method: 'PUT',
                 headers: {
                     'content-type': 'application/json'

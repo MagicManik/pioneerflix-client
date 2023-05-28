@@ -15,7 +15,7 @@ const MyVideos = () => {
 
     const [admin] = useAdmin(user);
 
-    const url = `https://pioneerflix-server-new.onrender.com/userUploadVideo?email=${user?.email}`
+    const url = `https://pioneerflix-server.onrender.com/userUploadVideo?email=${user?.email}`
     const { data, isLoading } = useQuery(['userUploadVideo'], () =>
         fetch(url, {
             method: 'GET',

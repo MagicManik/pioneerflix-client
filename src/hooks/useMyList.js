@@ -8,7 +8,7 @@ const useMyList = () => {
     const [myList, setMyList] = useState([]);
 
     useEffect(() => {
-        fetch(`https://pioneerflix-server-new.onrender.com/mylist/${user?.email}`)
+        fetch(`https://pioneerflix-server.onrender.com/mylist/${user?.email}`)
             .then(res => res.json())
             .then(data => setMyList(data))
     }, [user, myList])

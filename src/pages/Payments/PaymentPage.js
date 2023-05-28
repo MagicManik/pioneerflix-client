@@ -8,13 +8,11 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from './CheckoutForm';
 
-
-
 const stripePromise = loadStripe('pk_test_51LXnkjI9VBJQHJJfhxESo52ItqIP3SXDLzDJKrzCyPJHe233oJNKFxWpjTO02WWRYbpv2w3qTu9HYwGgRnIRevds00glfIq8S7');
 
 const PaymentPage = () => {
     const [user] = useAuthState(auth);
-    const url = `https://pioneerflix-server-new.onrender.com/userBooking/?email=${user?.email}`;
+    const url = `https://pioneerflix-server.onrender.com/userBooking/?email=${user?.email}`;
     const { data, isLoading, refetch } = useQuery(['userBooking'], () =>
         fetch(url, {
             method: 'GET',
@@ -32,9 +30,9 @@ const PaymentPage = () => {
     // console.log(userBookingData);
 
     return (
-        <div className="bg-black pt-16">
+        <div className="bg-black lg:pt-16 pt-3">
             <div className='bg-primary'>
-                <div className="grid grid-cols-1 sm:grid-cols-2 sm:w-[60%] mx-auto min-h-screen">
+                <div className="grid grid-cols-1 sm:grid-cols-2 sm:w-[60%] mx-auto lg:min-h-screen min-h-0 lg:gap-0 gap-4">
                     <div className={`bg-[#333] rounded-2xl mx-2 shadow-lg my-auto`}>
                         {
                             userBookingData?.map(booking =>
@@ -53,8 +51,8 @@ const PaymentPage = () => {
                             )
                         }
                     </div>
-                    <div className={`bg-[#333] py-9 rounded-2xl mx-2 shadow-lg my-auto`}>
-                        <div className="card-body">
+                    <div className={`bg-[#333] py-2 rounded-2xl mx-2 shadow-lg my-auto`}>
+                        <div className="card-body lg:py-1 py-0 lg:px-3 px-2">
                             <Elements stripe={stripePromise}>
                                 <CheckoutForm userBookingData={userBookingData} refetch={refetch} />
                             </Elements>

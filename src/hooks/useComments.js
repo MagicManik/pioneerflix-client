@@ -4,7 +4,7 @@
 //     const [comments, setComments] = useState([]);
 
 //     useEffect(() => {
-//         fetch('https://pioneerflix-server-new.onrender.com/comments')
+//         fetch('https://pioneerflix-server.onrender.com/comments')
 //             .then(res => res.json())
 //             .then(data => setComments(data));
 //     }, [comments]);

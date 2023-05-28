@@ -1,7 +1,9 @@
 import { React, Fragment, useState, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { FaAlignJustify, FaTimes, FaRegMoon, FaCaretDown, FaSearch, FaCaretUp, FaGrinAlt } from "react-icons/fa";
-import { GiDramaMasks, GiRocketThruster, GiBangingGavel, GiNewBorn, GiGamepad, GiPartyPopper, GiIncomingRocket, GiPaperClip, GiSlicedBread } from "react-icons/gi";
+import { FaAlignJustify, FaTimes, FaRegMoon, FaCaretDown, FaSearch, FaCaretUp, FaGrinAlt, FaRegClipboard } from "react-icons/fa";
+import { GiDramaMasks, GiNewBorn, GiGamepad, GiPaperClip, GiSlicedBread } from "react-icons/gi";
+import { HiOutlinePaperAirplane } from "react-icons/hi";
+import { MdOutlineAttractions } from "react-icons/md";
 import userPhoto from '../../../assets/download.svg';
 import { MdLightMode } from "react-icons/md";
 import auth from "../../../firebase.init";
@@ -20,18 +22,17 @@ import VoiceSearch from "../SearchResults/VoiceSearch";
 
 
 const megaMenuR1 = [
-  { name: "Comedy", href: "/comedy", id: "293oc02c", icon: <FaGrinAlt /> },
   { name: "Drama", href: "/drama", id: "2aod030vkd", icon: <GiDramaMasks /> },
-  { name: "Thriller", href: "/thriller", id: "8aod030vk", icon: <GiRocketThruster /> },
-  { name: "Bangla", href: "/bangla", id: "6aod30kd", icon: <GiBangingGavel /> },
-  { name: "Latest", href: "/latest", id: "6aod3014kd", icon: <GiNewBorn /> },
+  { name: "Thriller", href: "/thriller", id: "8aod030vk", icon: <MdOutlineAttractions /> },
+  { name: "Clips", href: "/clips", id: "8aod030vk", icon: <FaRegClipboard /> },
+  { name: "Comedy", href: "/comedy", id: "293oc02c", icon: <FaGrinAlt /> },
 ];
+
 const megaMenuR2 = [
-  { name: "Live Games", href: "/games", id: "293oc02c", icon: <GiGamepad /> },
-  { name: "Most Popular", href: "/popular", id: "2aod030vkd", icon: <GiPartyPopper /> },
-  { name: "Clips", href: "/clips", id: "8aod030vk", icon: <GiPaperClip /> },
+  { name: "Latest", href: "/latest", id: "6aod3014kd", icon: <GiNewBorn /> },
   { name: " Episodes", href: "/episodes", id: "6a2od30kd", icon: <GiSlicedBread /> },
-  { name: "Upcoming", href: "/upComing", id: "6ao2d30kd", icon: <GiIncomingRocket /> },
+  { name: "Upcoming", href: "/upComing", id: "6ao2d30kd", icon: <HiOutlinePaperAirplane /> },
+  { name: "Live Games", href: "/games", id: "293oc02c", icon: <GiGamepad /> },
 ];
 
 const megaMenuR3 = [
@@ -144,11 +145,11 @@ const Header = ({ theme, setTheme }) => {
                     {/* nav menu start for large devices */}
                     <div className="nav-items sm:block sm:ml-4">
                       <div className="flex space-x-4">
-                        <CustomLink
+                        <Link
                           to="/"
-                          className="hover:text-error text-white">
+                          className="home">
                           {t("Home")}
-                        </CustomLink>
+                        </Link>
                         <button
                           onClick={() => handleMovies(!moviesMega)}
                           onMouseEnter={() => handleMovies()}
@@ -191,7 +192,7 @@ const Header = ({ theme, setTheme }) => {
                             <div className="grid py-5 px-4 relative mx-auto  max-w-screen-xl text-base grid-cols-2 md:grid-cols-3 md:px-10">
                               <ul className=" relative space-y-3 md:mb-0 md:block">
                                 {megaMenuR1.map((m) => (
-                                  <div className="flex items-center   hover:text-blue-600 justify-start">
+                                  <div className="flex items-center   hover:text-blue-600 justify-start zoom-div-I pb-1">
                                     <span className="text-2xl">{m.icon}</span>
                                     <li key={m.id}>
                                       <Link
@@ -206,7 +207,7 @@ const Header = ({ theme, setTheme }) => {
                               </ul>
                               <ul className="mb-4 space-y-3 md:mb-0">
                                 {megaMenuR2.map((m) => (
-                                  <div className="flex items-center hover:text-blue-600 justify-start">
+                                  <div className="flex items-center hover:text-blue-600 justify-start zoom-div-I pb-1">
                                     <span className="text-3xl  ">{m.icon}</span>
                                     <li key={m.id}>
                                       <Link
@@ -222,7 +223,7 @@ const Header = ({ theme, setTheme }) => {
                               <iframe
                                 width="100%"
                                 height="100%"
-                                className="rounded-sm hidden md:block"
+                                className="rounded-sm hidden md:block zoom-div-I"
                                 src="https://www.youtube.com/embed/sxSa0MItDkg?controls=0"
                                 title="YouTube video player"
                                 frameborder="0"
@@ -424,7 +425,7 @@ const Header = ({ theme, setTheme }) => {
                 </div>
               </div>
               {/* ----------------------- mobile devices nav items start --------------- */}
-              <Disclosure.Panel className="">
+              <Disclosure.Panel className=" border-[#333] border-b-2 border-solid">
                 <div className="px-4 pt-1 pb-3 space-y-1">
                   {/* search here */}
                   <div className="relative mb-4">
@@ -440,16 +441,15 @@ const Header = ({ theme, setTheme }) => {
                           className="block p-1 hover:p-1.5 py-1 hover:py-1 pl-9 duration-1000  text-white hover:pl-10 focus:pl-14 hover:pr-3 focus:pr-3  hover:text-white  hover:scale-x-100 mr-1 rounded-full border search-input sm:text-sm w-full pr-2"
                           placeholder="search..." />
                       </form>
-                      <VoiceSearch></VoiceSearch>
                     </div>
                   </div>
-                  <CustomLink to="/" className=" text-white mb-4 block hover:text-white">
+                  <CustomLink to="/" className=" text-white mb-6 pb-3 block hover:text-white">
                     {t("Home")}
                   </CustomLink >
                   <button
                     onClick={() => handleMovies(!moviesMega)}
                     onMouseEnter={() => handleMovies()}
-                    className=" text-white  flex  items-end  hover:text-error">
+                    className="text-white flex items-end">
                     {t("Movies")}
                     {moviesMega ?
                       (<FaCaretUp className="ml-1 text-xl" />)
@@ -474,8 +474,8 @@ const Header = ({ theme, setTheme }) => {
                     </div>}
                   <button
                     onClick={() => handleMega(!mega)}
-                    className=" text-white pt-3 flex  items-end  hover:text-white">
-                    Categories{" "}
+                    className=" text-white pt-3 flex  items-end">
+                    Categories
                     {mega ?
                       (<FaCaretUp className="ml-1 text-xl" />)
                       :
@@ -516,24 +516,24 @@ const Header = ({ theme, setTheme }) => {
                         </ul>
                       </div>
                     </div>)}
-                  <Link
-                    to="/solvePay"
-                    className=" text-white pt-2 pb-4 block text-lg hover:text-white">
+                  <CustomLink to="/pay" className=" text-white pt-3 pb-4 block hover:text-white">
                     {t("Subscribe")}
-                  </Link>
-                  <select
-                    className="border-none text-center bg-[#222] py-0 decoration-white lg:rounded-2xl rounded-md"
-                    onChange={handleLanguageChange}
-                    value={localStorage.getItem("i18nextLng")}>
-                    <option value="en">English</option>
-                    <option value="bn">বাংলা</option>
-                    <option value="amharic">አማርኛ</option>
-                    <option value="hindi">हिन्दी</option>
-                    <option value="armenian">Հայերեն</option>
-                    <option value="arabic">العربية</option>
-                    <option value="russian">Russian</option>
-                    <option value="ukraine">Ukraine</option>
-                  </select>
+                  </CustomLink >
+                  <div className="pb-3">
+                    <select
+                      className="border-none text-center bg-[#222] py-0 decoration-white lg:rounded-2xl rounded-md"
+                      onChange={handleLanguageChange}
+                      value={localStorage.getItem("i18nextLng")}>
+                      <option value="en">English</option>
+                      <option value="bn">বাংলা</option>
+                      <option value="amharic">አማርኛ</option>
+                      <option value="hindi">हिन्दी</option>
+                      <option value="armenian">Հայերեն</option>
+                      <option value="arabic">العربية</option>
+                      <option value="russian">Russian</option>
+                      <option value="ukraine">Ukraine</option>
+                    </select>
+                  </div>
                 </div>
               </Disclosure.Panel>
               {/* mobile devices nav items end */}

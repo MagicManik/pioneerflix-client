@@ -17,6 +17,15 @@
     border: 2px solid #222;
 }
 
+.home {
+    border-bottom: 1px solid transparent;
+}
+
+.home:focus {
+    color: white;
+    border-bottom: 1px solid red;
+}
+
 .user-email {
     font-size: small;
 }
@@ -106,7 +115,6 @@
     transition: 0s;
     transform: translate(0, 5%);
 }
-
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -208,7 +216,6 @@ input:-webkit-autofill {
         margin-right: 20px;
     }
 }
-
 
 @media screen and (max-width: 390px) {
     .hamburger-icon {

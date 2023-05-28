@@ -104,7 +104,7 @@ const Payments = () => {
             bookingTime: currentDate
         }
         if (user) {
-            const url = `https://pioneerflix-server-new.onrender.com/userBooking/${user?.email}`;
+            const url = `https://pioneerflix-server.onrender.com/userBooking/${user?.email}`;
             fetch(url, {
                 method: 'PUT',
                 headers: {
@@ -124,16 +124,18 @@ const Payments = () => {
     }
 
     return (
-        <div className="bg-black pt-16">
+        <div className="bg-black lg:pt-16 pt-0">
             <div className='bg-primary pb-8'>
-                <h1 className='mx-auto text-center pt-8
-                 text-2xl pb-3 font-bold text-accent'>CHOOSE A PLAN AND</h1>
-                <p className='mx-auto text-center
+                <div className='text-center'>
+                    <h1 className='mx-auto text-center pt-8
+                 text-2xl pb-3 text-accent bg-gradient-to-r from-blue-600 via-green-500 to-orange-400 inline-block text-transparent bg-clip-text font-medium'>CHOOSE A PLAN AND</h1>
+                    <p className='mx-auto text-center
                  text-xl pb-3 font-bold mb-4 text-accent'>ENJOY ALL PIONEERFLIX PREMIUM CONTENTS</p>
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 overflow-hidden sm:w-[60%] mx-auto">
                     {
                         paymentApi?.map(a =>
-                            <div key={a.package} className={`flex flex-col relative rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 mx-2 shadow-lg gap-4 post post-2 post-3 post-4 overflow-hidden`} ref={a?.ref} onMouseMove={a?.onMouseMove}>
+                            <div key={a.package} className={`flex flex-col relative rounded-2xl bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg gap-4 post post-2 post-3 post-4 overflow-hidden lg:mx-2 mx-4`} ref={a?.ref} onMouseMove={a?.onMouseMove}>
                                 <h1 className='text-2xl text-center font-bold pt-2 leading-none post-title'>{a?.month}</h1>
                                 <p className="post-des text-center font-bold my-0 py-0">USD-<span className='text-xl'>{a.taka}$</span></p>
                                 {

@@ -10,7 +10,7 @@ const MyVideosAdmin = () => {
     const [user] = useAuthState(auth);
     const { t } = useTranslation("dashboard")
 
-    const url = `https://pioneerflix-server-new.onrender.com/adminUploadVideo?email=${user?.email}`
+    const url = `https://pioneerflix-server.onrender.com/adminUploadVideo?email=${user?.email}`
     const { data, isLoading } = useQuery(['adminUploadVideo'], () =>
         fetch(url, {
             method: 'GET',

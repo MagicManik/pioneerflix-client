@@ -4,7 +4,7 @@ const useVideo = (id) => {
     const [video, setVideo] = useState({});
 
     useEffect(() => {
-        fetch(`https://pioneerflix-server-new.onrender.com/video/${id}`)
+        fetch(`https://pioneerflix-server.onrender.com/video/${id}`)
             .then(res => res.json())
             .then(data => setVideo(data))
     }, [id, video]);

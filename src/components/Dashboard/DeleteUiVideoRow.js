@@ -25,7 +25,7 @@ const DeleteUiVideoRow = ({ detail, index, refetch }) => {
         // }
 
 
-        // const url = `https://pioneerflix-server-new.onrender.com/uiVideo/${id}`;
+        // const url = `https://pioneerflix-server.onrender.com/uiVideo/${id}`;
         // fetch(url, {
         //     method: 'DELETE',
         //     headers: {

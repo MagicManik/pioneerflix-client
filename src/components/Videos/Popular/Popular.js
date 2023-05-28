@@ -10,7 +10,7 @@ import { useGetAllVideosQuery } from '../../../services/post';
 import LoaderIOS from '../../Shared/Loader/LoaderIOS';
 
 const Popular = () => {
-    const { data, refetch, isLoading } = useGetAllVideosQuery();
+    const { data } = useGetAllVideosQuery();
     const { t } = useTranslation(["home"])
     let getTheme = localStorage.getItem("colorTheme");
     const mostPopularVideos = data?.filter(video => video?.category === "Bangla Movie");
@@ -19,15 +19,15 @@ const Popular = () => {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 6,
-        slidesToScroll: 6,
+        slidesToShow: 5,
+        slidesToScroll: 5,
         initialSlide: 0,
         responsive: [
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
                     infinite: true,
                     dots: true
                 }
@@ -36,8 +36,17 @@ const Popular = () => {
                 breakpoint: 600,
                 settings: {
                     arrows: false,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
                     slidesToShow: 3,
-                    slidesToScroll: 2
+                    slidesToScroll: 3
                 }
             }
         ]

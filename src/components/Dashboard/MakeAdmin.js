@@ -7,7 +7,7 @@ const MakeAdmin = () => {
 
     const { t } = useTranslation(["dashboard"])
 
-    const url = 'https://pioneerflix-server-new.onrender.com/allUserData';
+    const url = 'https://pioneerflix-server.onrender.com/allUserData';
     const { data, refetch } = useQuery(['allUserData'], () =>
         fetch(url, {
             method: 'GET',

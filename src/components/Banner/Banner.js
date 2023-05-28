@@ -36,9 +36,9 @@ const Banner = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
+          arrows: false,
+          slidesToShow: 5,
+          slidesToScroll: 5
         }
       },
       {
