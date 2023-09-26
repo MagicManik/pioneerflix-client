@@ -135,7 +135,7 @@ const VideoDetails = () => {
                         <div className=" w-full col-start-1 col-end-13 md:col-end-10">
                             <iframe
                                 width="100%"
-                                className="p-[.5px] md:h-[520px] h-60 left-0 right-0 rounded-2xl overflow-hidden"
+                                className="p-[.5px] md:h-[520px] h-56 left-0 right-0 rounded-2xl overflow-hidden"
                                 src={video?.videoLink}
                                 title="YouTube video player"
                                 frameBorder="0"

@@ -5,20 +5,12 @@ import auth from '../../../firebase.init';
 
 const WatchList = () => {
     const [user] = useAuthState(auth);
-
     const [watchedVideo] = useWatchHistory();
-
     const navigate = useNavigate();
 
     const handlePlay = (id) => {
         navigate(`/play/${id}`)
     }
-
-    // useEffect(() => {
-    //     fetch(`https://pioneerflix-server.onrender.com/watched/${user?.email}`)
-    //         .then(res => res.json())
-    //         .then(data => setWatched(data))
-    // }, [user?.email]);
 
     return (
         <section className='bg-[#141414] lg:pt-16 pt-1'>

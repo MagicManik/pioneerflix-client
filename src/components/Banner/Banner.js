@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import banner2 from "../../assets/banner/banner (13).jpg";
@@ -6,9 +7,8 @@ import banner3 from "../../assets/banner/banner (14).jpg";
 import banner4 from "../../assets/banner/banner (15).jpg";
 import banner5 from "../../assets/banner/banner (20).jpg";
 import useChannels from "../../hooks/useChannels";
-import { useTranslation } from "react-i18next";
-import "./Banner.css";
 import LoaderIOS from "../Shared/Loader/LoaderIOS";
+import "./Banner.css";
 
 const Banner = () => {
   const { t } = useTranslation(["home"])
@@ -104,12 +104,13 @@ const Banner = () => {
       </div>
 
       {/* Tv Channels */}
+
       <div className={getTheme === 'dark' ? 'lg:absolute tv-chanels-container bottom-0 w-full video-section lg:px-12 md:px-4' : 'lg:absolute tv-chanels-container-dark bottom-0 w-full video-section px-12'}>
         <h1 className=" text-neutral lg:text-white text-lg lg:text-xl pb-2 lg:pb-7 pt-2 lg:pt-0">{t("TVCHANNELS")}</h1>
         {channels.length === 0 ?
           <LoaderIOS />
           :
-          <Slider {...settings} className=''>
+          <Slider {...settings} className='mx-auto max-w-[1440px]'>
             {
               channels?.map(tv =>
 

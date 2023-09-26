@@ -20,7 +20,7 @@ const Home = () => {
   }
 
   return (
-    <main className="z-10 mx-auto max-w-[1440px]">
+    <main className="z-10 mx-auto">
       <Banner />
       <TvChannels />
       <Popular />

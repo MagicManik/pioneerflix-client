@@ -39,7 +39,7 @@ import LiveGame from "./pages/LiveGame/LiveGame";
 import Thriller from "./pages/Thriller/Thriller";
 import Episodes from "./pages/Episodes/Episodes";
 // facebook chat
-import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
+// import MessengerCustomerChat from "react-messenger-customer-chat/lib/MessengerCustomerChat";
 // Aos
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -106,7 +106,7 @@ function App() {
         </Routes>
       </Suspense>
       {/* ...................add facebook messenger ................ */}
-      <MessengerCustomerChat pageId="105173368974353" appId="3382482022037618" />
+      {/* <MessengerCustomerChat pageId="105173368974353" appId="3382482022037618" /> */}
       <Footer></Footer>
       <ToastContainer />
     </div>

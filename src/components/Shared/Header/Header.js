@@ -1,44 +1,41 @@
-import { React, Fragment, useState, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { FaAlignJustify, FaTimes, FaRegMoon, FaCaretDown, FaSearch, FaCaretUp, FaGrinAlt, FaRegClipboard } from "react-icons/fa";
-import { GiDramaMasks, GiNewBorn, GiGamepad, GiSlicedBread } from "react-icons/gi";
-import { HiOutlinePaperAirplane } from "react-icons/hi";
-import { MdOutlineAttractions } from "react-icons/md";
-import userPhoto from '../../../assets/download.svg';
-import { MdLightMode } from "react-icons/md";
-import auth from "../../../firebase.init";
-import { BiLike } from "react-icons/bi";
-import CustomLink from "../customLink/CustomLink";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
-import pioneerFlix from "../../../assets/app-logo/pioneerflix.png";
-import "./Header.css";
-import { useTranslation } from "react-i18next";
 import i18next from "i18next";
-import Notification from "./Notification";
-import { MdPlaylistAdd } from "react-icons/md";
+import { Fragment, React, useEffect, useRef, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useTranslation } from "react-i18next";
+import { BiLike } from "react-icons/bi";
+import { FaAlignJustify, FaCaretDown, FaCaretUp, FaGrinAlt, FaRegClipboard, FaRegMoon, FaSearch, FaTimes } from "react-icons/fa";
+import { GiDramaMasks, GiGamepad, GiNewBorn, GiSlicedBread } from "react-icons/gi";
+import { HiOutlinePaperAirplane } from "react-icons/hi";
+import { MdLightMode, MdOutlineAttractions, MdPlaylistAdd } from "react-icons/md";
+import { Link, useNavigate } from "react-router-dom";
+import pioneerFlix from "../../../assets/app-logo/pioneerflix.png";
+import userPhoto from '../../../assets/download.svg';
+import auth from "../../../firebase.init";
 import VoiceSearch from "../SearchResults/VoiceSearch";
-
+import CustomLink from "../customLink/CustomLink";
+import "./Header.css";
+import Notification from "./Notification";
 
 const megaMenuR1 = [
-  { name: "Drama", href: "/drama", id: "2aod030vkd", icon: <GiDramaMasks /> },
-  { name: "Thriller", href: "/thriller", id: "8aod030vk", icon: <MdOutlineAttractions /> },
+  { name: "Drama", href: "/drama", id: "2aod030vkdb", icon: <GiDramaMasks /> },
+  { name: "Thriller", href: "/thriller", id: "8aod030vkb", icon: <MdOutlineAttractions /> },
   { name: "Clips", href: "/clips", id: "8aod030vk", icon: <FaRegClipboard /> },
-  { name: "Comedy", href: "/comedy", id: "293oc02c", icon: <FaGrinAlt /> },
+  { name: "Comedy", href: "/comedy", id: "293oc02cb", icon: <FaGrinAlt /> },
 ];
 
 const megaMenuR2 = [
   { name: "Latest", href: "/latest", id: "6aod3014kd", icon: <GiNewBorn /> },
   { name: " Episodes", href: "/episodes", id: "6a2od30kd", icon: <GiSlicedBread /> },
-  { name: "Upcoming", href: "/upComing", id: "6ao2d30kd", icon: <HiOutlinePaperAirplane /> },
-  { name: "Live Games", href: "/games", id: "293oc02c", icon: <GiGamepad /> },
+  { name: "Upcoming", href: "/upComing", id: "6ao2d3d", icon: <HiOutlinePaperAirplane /> },
+  { name: "Live Games", href: "/games", id: "29c02c", icon: <GiGamepad /> },
 ];
 
 const megaMenuR3 = [
   { name: "Bangla Movies", href: "/bangla", id: "293oc02c" },
   { name: "English Movies", href: "/english", id: "2aod030vkd" },
-  { name: "Hindi Movies", href: "/hindi", id: "8aod030vk" },
+  { name: "Hindi Movies", href: "/hindi", id: "8aod0c30vk" },
   { name: "Japanese Movies", href: "/Japanese", id: "6a3od30kd" },
   { name: "Chinese Movies", href: "/chinese", id: "69aod30kd" },
   { name: "Turkish Movies", href: "/turkish", id: "6ao2d30kd" },
@@ -49,26 +46,46 @@ function classNames(...classes) {
 }
 
 const Header = ({ theme, setTheme }) => {
+  const navigateResultPage = useNavigate();
   const [scrollNavbar, setScrollNavbar] = useState(false);
-  const [mega, setMega] = useState(false);
   const [notification, setNotification] = useState(false);
-  const [moviesMega, setMoviesMega] = useState(false);
   const [voiceSearch, setVoiceSearch] = useState(false);
 
-  const navigateResultPage = useNavigate();
+  const [arrow, setArrow] = useState(false);
+  const arrowRef = useRef();
 
-  const handleMega = () => {
-    setMega(!mega);
-    setMoviesMega(false);
-  }
-  const handleMovies = () => {
-    setMega(false);
-    setMoviesMega(!moviesMega);
-  }
+  useEffect(() => {
+    let handler = (event) => {
+      if (!arrowRef.current.contains(event.target)) {
+        setArrow(false)
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
+
+  const [arrowOne, setArrowOne] = useState(false);
+  const arrowRefOne = useRef();
+
+  useEffect(() => {
+    let handlerOne = (event) => {
+      if (!arrowRefOne.current.contains(event.target)) {
+        setArrowOne(false)
+      }
+    };
+    document.addEventListener("mousedown", handlerOne);
+    return () => {
+      document.removeEventListener("mousedown", handlerOne);
+    };
+  });
+
   const handleSearch = (e) => {
     e.preventDefault();
     const searchedValue = e.target.search.value;
     navigateResultPage(`result/${searchedValue}`);
+    e.target.reset();
   };
 
   const [user] = useAuthState(auth);
@@ -87,10 +104,10 @@ const Header = ({ theme, setTheme }) => {
       localStorage.setItem("theme", color);
     }
   };
+
   const changeBackground = () => {
     if (window.scrollY >= 80) {
       setScrollNavbar(true);
-      setMega(false);
       setNotification(false)
     } else {
       setScrollNavbar(false);
@@ -134,13 +151,12 @@ const Header = ({ theme, setTheme }) => {
                   {/* hamburger icon for smale devices*/}
                   <Disclosure.Button className="p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white hamburger-icon">
                     <span className="sr-only">Open main menu</span>
-                    {open ? (
-                      <FaTimes className="block h-6 w-6" aria-hidden="true" />
-                    ) : (
-                      <FaAlignJustify
+                    {open ?
+                      (<FaTimes className="block h-6 w-6" aria-hidden="true" />)
+                      :
+                      (<FaAlignJustify
                         className="block h-6 w-6"
-                        aria-hidden="true" />
-                    )}
+                        aria-hidden="true" />)}
                   </Disclosure.Button>
                   {/* site logo start for small and large devices */}
                   <div className="flex-1 flex items-center sm:justify-start">
@@ -154,95 +170,98 @@ const Header = ({ theme, setTheme }) => {
                     </div>
                     {/* nav menu start for large devices */}
                     <div className="nav-items sm:block sm:ml-4">
-                      <div className="flex space-x-4">
+                      <div className="flex items-center space-x-4">
                         <Link
                           to="/"
                           className="home">
                           {t("Home")}
                         </Link>
-                        <button
-                          onClick={() => handleMovies(!moviesMega)}
-                          onMouseEnter={() => handleMovies()}
-                          className=" text-white  flex  items-end  hover:text-error">
-                          {t("Movies")}
-                          {moviesMega ? (
-                            <FaCaretUp className="ml-1 text-xl" />
-                          ) : (
-                            <FaCaretDown className="ml-1 text-xl" />
-                          )}
-                        </button>
-                        {moviesMega &&
-                          <div onMouseLeave={() => handleMovies()} className="absolute lg:block hidden bg-[#222] border-2 border-indigo-600 md:top-16 rounded z-30">
-                            <div className="py-5 px-4 relative mx-auto  max-w-screen-xl text-base md:px-10">
-                              <ul className="mb-4 space-y-3 md:mb-0">
-                                {megaMenuR3.map((m) => (
-                                  <li key={m.id}>
-                                    <Link
-                                      to={m.href}
-                                      className="duration-200 hover:text-lg  hover:text-blue-600">
+                        <Menu>
+                          <Menu.Button
+                            ref={arrowRefOne}
+                            onClick={() => setArrowOne((arrowOne) => !arrowOne)}
+                            className="flex items-center text-white"
+                          >
+                            {t("Movies")}
+                            {arrowOne ?
+                              (<FaCaretUp className="ml-1 text-xl" />)
+                              :
+                              (<FaCaretDown className="ml-1 text-xl" />)}
+                          </Menu.Button>
+                          <Menu.Items className="bg-[#222] rounded-md flex gap-3 flex-col px-8 py-5 absolute z-50 md:top-16">
+                            {megaMenuR3.map((m) => (
+                              <Menu.Item key={m.id}>
+                                {({ active }) => (
+                                  <CustomLink
+                                    className={`${active && 'hover:text-red-600'} duration-200 hover:text-lg`}
+                                    to={m.href}>
+                                    {m.name}
+                                  </CustomLink>)}
+                              </Menu.Item>))}
+                            <Menu.Item disabled>
+                              <span className="opacity-75"></span>
+                            </Menu.Item>
+                          </Menu.Items>
+                        </Menu>
+
+
+                        <Menu>
+                          <Menu.Button
+                            ref={arrowRef}
+                            onClick={() => setArrow((arrow) => !arrow)}
+                            className="flex items-center text-white"
+                          >
+                            {t("Categories")}
+                            {arrow ?
+                              <FaCaretUp className="ml-1 text-xl" />
+                              :
+                              <FaCaretDown className="ml-1 text-xl" />}
+                          </Menu.Button>
+                          <Menu.Items className="absolute duration-1000 grid grid-cols-4 transition bg-[#222] border-2 rounded-md border-indigo-600 md:top-16 md:left-56 w-[80%] md:w-[60%] z-30 px-5 py-5 ">
+                            <div className="flex gap-5 flex-col py-5">
+                              {megaMenuR1.map((m) => (
+                                <Menu.Item key={m.id}>
+                                  {({ active }) => (
+                                    <CustomLink
+                                      className={`${active && 'hover:text-red-600'} duration-200 hover:text-lg flex gap-3 items-center text-base`}
+                                      to={m.href}>
+                                      <span className="text-xl">{m.icon}</span>
                                       {m.name}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
+                                    </CustomLink>)}
+                                </Menu.Item>))}
                             </div>
-                          </div>}
-                        <button
-                          onMouseEnter={() => handleMega()}
-                          className="text-white  flex  items-end  hover:text-error">
-                          {t("Categories")}
-                          {mega ? (
-                            <FaCaretUp className="ml-1 text-xl" />
-                          ) : (
-                            <FaCaretDown className="ml-1 text-xl" />
-                          )}
-                        </button>
-                        {mega && (
-                          <div onMouseLeave={() => handleMega(false)} className="absolute duration-1000 lg:block hidden transition bg-[#222] border-2 rounded-md border-indigo-600 md:top-16 md:left-56 w-[90%] md:w-[60%] z-30">
-                            <div className="grid py-5 px-4 relative mx-auto  max-w-screen-xl text-base grid-cols-2 md:grid-cols-3 md:px-10">
-                              <ul className=" relative space-y-3 md:mb-0 md:block">
-                                {megaMenuR1.map((m) => (
-                                  <div className="flex items-center   hover:text-blue-600 justify-start zoom-div-I pb-1">
-                                    <span className="text-2xl">{m.icon}</span>
-                                    <li key={m.id}>
-                                      <Link
-                                        to={m.href}
-                                        onClick={() => setMega(!mega)}
-                                        className="duration-200 ml-3 text-lg  ">
-                                        {m.name}
-                                      </Link>
-                                    </li>
-                                  </div>
-                                ))}
-                              </ul>
-                              <ul className="mb-4 space-y-3 md:mb-0">
-                                {megaMenuR2.map((m) => (
-                                  <div className="flex items-center hover:text-blue-600 justify-start zoom-div-I pb-1">
-                                    <span className="text-3xl  ">{m.icon}</span>
-                                    <li key={m.id}>
-                                      <Link
-                                        to={m.href}
-                                        onClick={() => setMega(!mega)}
-                                        className="duration-200 text-lg ml-3  ">
-                                        {m.name}
-                                      </Link>
-                                    </li>
-                                  </div>
-                                ))}
-                              </ul>
+                            <div className="flex gap-5 flex-col py-5">
+                              {megaMenuR2.map((m) => (
+                                <Menu.Item key={m.id}>
+                                  {({ active }) => (
+                                    <CustomLink
+                                      className={`${active && 'hover:text-red-600'} duration-200 hover:text-lg flex gap-3 items-center text-base`}
+                                      to={m.href}>
+                                      <span className="text-xl">{m.icon}</span>
+                                      {m.name}
+                                    </CustomLink>
+                                  )}
+                                </Menu.Item>))}
+                            </div>
+                            <div className="col-end-7 col-span-4 bg-gradient-to-r from-yellow-200 via-green-200 to-green-500 p-1 rounded-xl">
                               <iframe
                                 width="100%"
                                 height="100%"
-                                className="rounded-sm hidden md:block zoom-div-I"
-                                src="https://www.youtube.com/embed/sxSa0MItDkg?controls=0"
+                                className=" rounded-2xl overflow-hidden hidden md:block zoom-div-I  "
+                                src="https://www.youtube.com/embed/ztspvPYybIY"
                                 title="YouTube video player"
                                 frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen>
                               </iframe>
                             </div>
-                          </div>
-                        )}
+                            <Menu.Item disabled>
+                              <span className="opacity-75"></span>
+                            </Menu.Item>
+                          </Menu.Items>
+                        </Menu>
+
+
                         <select
                           className="border-none text-center bg-[#222] py-0 decoration-white text-white rounded"
                           onChange={handleLanguageChange}
@@ -366,13 +385,12 @@ const Header = ({ theme, setTheme }) => {
                                 to="watch/hisory"
                                 className={classNames(
                                   active
-                                    ? "bg-zinc-800 w-full text-left"
-                                    : "w-full",
-                                  "block px-4 py-2 text-white text-left")}>
-                                <i className="fa fas text-white fa-history mr-2" />
-                                {t("Watch history")}
-                              </Link>
-                            )}
+                                    ? "bg-zinc-800 w-full text-left flex items-center"
+                                    : "w-full flex items-center",
+                                  "block px-4 py-2 text-sm text-left text-white")}>
+                                <i className="fa fas fa-history text-white text-sm  mr-2" />
+                                {t("Watch History")}
+                              </Link>)}
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }) => (
@@ -382,7 +400,7 @@ const Header = ({ theme, setTheme }) => {
                                   active
                                     ? "bg-zinc-800 w-full text-left flex items-center"
                                     : "w-full flex items-center",
-                                  "block px-4 py-2  text-white text-sm text-left")}>
+                                  "block px-4 py-2 text-sm text-left text-white")}>
                                 <BiLike className="mr-2 text-lg" />
                                 {t("Liked Videos")}
                               </Link>)}
@@ -458,76 +476,73 @@ const Header = ({ theme, setTheme }) => {
                   <CustomLink to="/" className=" text-white mb-6 pb-3 block hover:text-white">
                     {t("Home")}
                   </CustomLink >
-                  <button
-                    onClick={() => handleMovies(!moviesMega)}
-                    onMouseEnter={() => handleMovies()}
-                    className="text-white flex items-end">
-                    {t("Movies")}
-                    {moviesMega ?
-                      (<FaCaretUp className="ml-1 text-xl" />)
-                      :
-                      (<FaCaretDown className="ml-1 text-xl" />)}
-                  </button>
-                  {moviesMega &&
-                    <div onMouseLeave={() => handleMovies()} className="absolute lg:hidden block bg-[#222] border-2 border-indigo-600 md:top-16 md:left-72 rounded z-30">
-                      <div className="py-5 px-4 relative mx-auto  max-w-screen-xl text-base md:px-10">
-                        <ul className="mb-4 space-y-3 md:mb-0">
-                          {megaMenuR3.map((m) => (
-                            <li key={m.id}>
-                              <Link
-                                to={m.href}
-                                className="duration-200 hover:text-lg  hover:text-blue-600">
+
+                  <Menu>
+                    <Menu.Button
+                      className="flex items-center text-white"
+                    >
+                      {t("Movies")}
+                      {megaMenuR1 ?
+                        (<FaCaretUp className="ml-1 text-xl" />)
+                        :
+                        (<FaCaretDown className="ml-1 text-xl" />)}
+                    </Menu.Button>
+                    <Menu.Items className="bg-[#222] rounded-md flex gap-3 flex-col px-5 py-3 absolute z-50">
+                      {megaMenuR3.map((m) => (
+                        <Menu.Item key={m.id}>
+                          {({ active }) => (
+                            <CustomLink
+                              className={`${active && 'hover:text-red-600'} duration-200 hover:text-lg`}
+                              to={m.href}>
+                              {m.name}
+                            </CustomLink>)}
+                        </Menu.Item>))}
+                      <Menu.Item disabled>
+                        <span className="opacity-75"></span>
+                      </Menu.Item>
+                    </Menu.Items>
+                  </Menu>
+
+                  <Menu>
+                    <Menu.Button className="flex items-center text-white pt-3"
+                    >
+                      {t("Categories")}
+                      {megaMenuR1 ?
+                        (<FaCaretUp className="ml-1 text-xl" />)
+                        :
+                        (<FaCaretDown className="ml-1 text-xl" />)}
+                    </Menu.Button>
+                    <Menu.Items className="bg-[#222] rounded-md flex justify-between items-center w-11/12 absolute z-50 px-5">
+                      <div className="flex gap-3 flex-col py-5">
+                        {megaMenuR1.map((m) => (
+                          <Menu.Item key={m.id}>
+                            {({ active }) => (
+                              <CustomLink
+                                className={`${active && 'hover:text-red-600'} duration-200 hover:text-lg flex gap-3 items-center`}
+                                to={m.href}>
+                                <span className="text-xl">{m.icon}</span>
                                 {m.name}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
+                              </CustomLink>)}
+                          </Menu.Item>))}
                       </div>
-                    </div>}
-                  <button
-                    onClick={() => handleMega(!mega)}
-                    className=" text-white pt-3 flex  items-end">
-                    Categories
-                    {mega ?
-                      (<FaCaretUp className="ml-1 text-xl" />)
-                      :
-                      (<FaCaretDown className="ml-1 text-xl" />)}
-                  </button>
-                  {mega && (
-                    <div onMouseLeave={() => handleMega(false)} className="absolute duration-1000 transition lg:hidden block bg-[#222] border-2 rounded-md border-indigo-600 md:top-16 md:left-56 w-[90%] md:w-[60%] z-30">
-                      <div className="grid py-5 px-4 relative mx-auto  max-w-screen-xl text-base grid-cols-2 md:grid-cols-3 md:px-10">
-                        <ul className=" relative space-y-3 md:mb-0 md:block">
-                          {megaMenuR1.map((m) => (
-                            <div className="flex items-center   hover:text-blue-600 justify-start">
-                              <span className="text-2xl  ">{m.icon}</span>
-                              <li key={m.id}>
-                                <Link
-                                  to={m.href}
-                                  onClick={() => setMega(!mega)}
-                                  className="duration-200 ml-3 text-lg  ">
-                                  {m.name}
-                                </Link>
-                              </li>
-                            </div>
-                          ))}
-                        </ul>
-                        <ul className="mb-4 space-y-3 md:mb-0">
-                          {megaMenuR2.map((m) => (
-                            <div className="flex items-center hover:text-blue-600 justify-start">
-                              <span className="text-3xl  ">{m.icon}</span>
-                              <li key={m.id}>
-                                <Link
-                                  to={m.href}
-                                  onClick={() => setMega(!mega)}
-                                  className="duration-200 text-lg ml-3">
-                                  {m.name}
-                                </Link>
-                              </li>
-                            </div>
-                          ))}
-                        </ul>
+                      <div className="flex gap-3 flex-col py-5">
+                        {megaMenuR2.map((m) => (
+                          <Menu.Item key={m.id}>
+                            {({ active }) => (
+                              <CustomLink
+                                className={`${active && 'hover:text-red-600'} duration-200 hover:text-lg flex gap-3 items-center`}
+                                to={m.href}>
+                                <span className="text-xl">{m.icon}</span>
+                                {m.name}
+                              </CustomLink>)}
+                          </Menu.Item>))}
                       </div>
-                    </div>)}
+                      <Menu.Item disabled>
+                        <span className="opacity-75"></span>
+                      </Menu.Item>
+                    </Menu.Items>
+                  </Menu>
+
                   <CustomLink to="/pay" className=" text-white pt-3 pb-4 block hover:text-white">
                     {t("Subscribe")}
                   </CustomLink >

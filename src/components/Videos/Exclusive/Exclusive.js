@@ -54,41 +54,43 @@ const Exclusive = () => {
     return (
 
         <section className='bg-primary section-border'>
-            <div className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
-                <h1 className=" text-neutral text-lg lg:text-xl pb-2 lg:pb-3 pt-2 lg:pt-3">{t("EXCLUSIVEMOVIES")}</h1>
-                {
-                    videos ?
-                        <Slider {...settings} className=''>
-                            {
-                                exclusives?.map(movie =>
+            <div className='mx-auto max-w-[1440px]'>
+                <div className={getTheme === 'white' ? 'video-section lg:px-12 md:px-4' : 'video-section px-12'}>
+                    <h1 className=" text-neutral text-lg lg:text-xl pb-2 lg:pb-3 pt-2 lg:pt-3">{t("EXCLUSIVEMOVIES")}</h1>
+                    {
+                        videos ?
+                            <Slider {...settings} className=''>
+                                {
+                                    exclusives?.map(movie =>
 
-                                    <div key={movie._id}>
+                                        <div key={movie._id}>
 
-                                        <Link to={`/play/${movie._id}`}>
-                                            <div className="mr-2 lg:mr-3 shadow py-2 lg:py-3 px-2 lg:px-0 rounded-2xl lg:pt-5">
-                                                <img className='zoom-div-2 block mx-auto rounded-lg' src={movie.imgLink} alt="" />
-                                            </div>
-                                        </Link>
+                                            <Link to={`/play/${movie._id}`}>
+                                                <div className="mr-2 lg:mr-3 shadow py-2 lg:py-3 px-2 lg:px-0 rounded-2xl lg:pt-5">
+                                                    <img className='zoom-div-2 block mx-auto rounded-lg' src={movie.imgLink} alt="" />
+                                                </div>
+                                            </Link>
 
-                                    </div>)
-                            }
-                        </Slider>
-                        :
-                        <div className='pt-10 lg:pb-0 pb-9'>
-                            <LoaderIOS />
-                        </div>
-                }
-            </div>
-            <div className='bg-primary'>
-                <div className='pb-3 wraper'>
-                    <div className={getTheme === 'white' ? 'text-container text-accent grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-accent grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
-                        <div className='text-container-left'>
-                            <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading text-neutral'>{t("WatchAndEnjoyMoreExclusiveVideos")}</h1>
-                            <p className='pt-2 text-accent lg:pt-2 lg:text-3xl'>{t("Keep touch on your exclusive videos with your enjoyment —free with your membership")}</p>
-                        </div>
-                        <div
-                            data-aos="zoom-in-left" className='our-story-card-animation-container pb-0 lg:pb-10 pt-6 lg:pt-16'>
-                            <img className='tv-img block mx-auto rounded-xl ' src={profileKids} alt="" />
+                                        </div>)
+                                }
+                            </Slider>
+                            :
+                            <div className='pt-10 lg:pb-0 pb-9'>
+                                <LoaderIOS />
+                            </div>
+                    }
+                </div>
+                <div className='bg-primary'>
+                    <div className='pb-3 wraper'>
+                        <div className={getTheme === 'white' ? 'text-container text-accent grid lg:grid-cols-2 items-center sm:grid-cols-1' : 'text-container text-accent grid lg:grid-cols-2 items-center sm:grid-cols-1'}>
+                            <div className='text-container-left'>
+                                <h1 className='pt-3 lg:pt-0 text-xl lg:text-5xl font-semibold heading text-neutral'>{t("WatchAndEnjoyMoreExclusiveVideos")}</h1>
+                                <p className='pt-2 text-accent lg:pt-2 lg:text-3xl'>{t("Keep touch on your exclusive videos with your enjoyment —free with your membership")}</p>
+                            </div>
+                            <div
+                                data-aos="zoom-in-left" className='our-story-card-animation-container pb-0 lg:pb-10 pt-6 lg:pt-16'>
+                                <img className='tv-img block mx-auto rounded-xl ' src={profileKids} alt="" />
+                            </div>
                         </div>
                     </div>
                 </div>
